@@ -1,23 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="dk">
 
 <head>
     <meta charset="utf-8" />
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
     <title>WebApp | Selskabslege</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sæt fut i din fest med spAqz">
+    <meta name="keywords" contents="festspil, festlege, druklege, alkohol, hygge">
     <meta name="robots" content="noindex, nofollow">
-    <!-- <meta name="keywords" content="XXX" FJERN?/> -->
-    <meta name="description" content="XXX" />
+
+    <!-- Style sheets -->
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
 </head>
 
-<body>
-
+<body onhashchange="pageChange()">
+    <header>
+        <nav id="nav-menu" class="nav-menu hide">
+            <input class="menu-btn" type="checkbox" id="menu-btn" />
+            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+            <ul class="menu">
+                <li><a href="#myQuestions">Dine gemte spørgsmål</a></li>
+                <li><a href="#myPage">Din profil</a></li>
+                <li><a href="#rate">Giv en anmeldelse</a></li>
+                <li><a href="#changes">Foreslå ændringer</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="content"></section>
+        <h1>This is the content of my main</h1>
+    </main>
 </body>
-<script src="js/spa.js"></script>
-<script src="js/main.js"></script>
+
+
+
+<!-- main javaScript file, works like a module -->
+<script src="js/main.js" type="module"></script>
 
 </html>

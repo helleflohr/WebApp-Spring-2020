@@ -1,0 +1,110 @@
+/* css variables */
+:root {
+    /* Color */
+    --menuBackground: #333;
+    --menuFontColor: #e3f4f8;
+    --menuHoverColor: #6138a3;
+    --menuHoverFontColor: #041a1f;
+
+    /* Font */
+    --font-family: 'Myriad Pro', Arial, sans-serif;
+}
+
+
+/* Styling of the menu button */
+.nav-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: var(--menuBackground);
+    text-align: center;
+
+}
+
+.nav-menu li a {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    color: var(--menuFontColor);
+    font-family: var(--font-family);
+    font-size: 18px;
+}
+
+.nav-menu li a:hover,
+.nav-menu .menu-btn:hover {
+    background-color: var(--menuHoverColor);
+    color: var(--menuHoverFontColor);
+}
+
+
+/* menu */
+.nav-menu .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+}
+
+/* menu icon */
+.nav-menu .menu-icon {
+    cursor: pointer;
+    display: block;
+    float: right;
+    padding: 28px 20px;
+    position: relative;
+}
+
+.nav-menu .navicon {
+    background: var(--menuBackground);
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
+}
+
+.nav-menu .navicon:before,
+.nav-menu .navicon:after {
+    background: var(--menuBackground);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+.nav-menu .navicon:before {
+    top: 5px;
+}
+
+.nav-menu .navicon:after {
+    top: -5px;
+}
+
+
+/* menu btn - how the three lines changes into an x*/
+.nav-menu .menu-btn {
+    display: none;
+}
+
+.nav-menu .menu-btn:checked~.menu {
+    max-height: 240px;
+}
+
+.nav-menu .menu-btn:checked~.menu-icon .navicon {
+    background: transparent;
+}
+
+.nav-menu .menu-btn:checked~.menu-icon .navicon:before {
+    transform: rotate(-45deg);
+}
+
+.nav-menu .menu-btn:checked~.menu-icon .navicon:after {
+    transform: rotate(45deg);
+}
+
+.nav-menu .menu-btn:checked~.menu-icon:not(.steps) .navicon:before,
+.nav-menu .menu-btn:checked~.menu-icon:not(.steps) .navicon:after {
+    top: 0;
+}
