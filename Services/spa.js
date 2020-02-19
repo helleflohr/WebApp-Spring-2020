@@ -11,7 +11,7 @@ class SpaService {
 
     // This function will hide all pages
     hideAllPages() {
-        for (let page of pages) {
+        for (let page of this.pages) {
             page.style.display = "none";
         }
     }
@@ -24,7 +24,7 @@ class SpaService {
     }
 
     // This function displays the active tab
-    setActiveTab(pageI) {
+    setActiveTab(pageId) {
         for (let navItem of this.navItems) {
             if (`#${pageId}` === navItem.getAttribute("href")) {
                 navItem.classList.add("active");
@@ -41,9 +41,9 @@ class SpaService {
 
     // This function displays the page name in the URL as a #
     pageChange() {
-        let page = this.defaultpage;
+        let page = this.defaultPage;
         if (window.location.hash) {
-            page = window.location.hash.slive(1);
+            page = window.location.hash.slice(1);
         }
         this.showPage(page);
     }
