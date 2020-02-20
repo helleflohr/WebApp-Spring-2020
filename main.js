@@ -1,5 +1,6 @@
 // Improting pages
 import LoginPage from "./pages/loginPage.js"
+import AddPredefinedPage from "./pages/addPredefinedPage.js"
 
 
 // Importing services
@@ -13,13 +14,19 @@ import authService from "./services/loginService.js";
 
 // Declaring and initiating pages
 let loginPage = new LoginPage();
+let addPredefinedPage = new AddPredefinedPage();
 
 // Initiating services
-spaService.init();
 authService.init();
+spaService.init();
+
+
 
 loginPage.template();
+console.log(loginPage)
 _categoryService.read();
+
+addPredefinedPage.template();
 
 // onclick handlers
 window.pageChange = () => spaService.pageChange();

@@ -11,4 +11,4 @@ const _firebaseConfig = {
 };
 // Initialize Firebase and database references
 firebase.initializeApp(_firebaseConfig);
-export const _db = firebase.firestore();
+const _db = firebase.firestore();

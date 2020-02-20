@@ -5,11 +5,10 @@ export default class LoginPage {
 
     template() {
 
-        document.getElementById('content').innerHTML += /*html*/ `
+        document.querySelector('#content').innerHTML += /*html*/ `
         <section id="login" class="page flexcontainer">
-        <button onclick="" class="bigBtn">Hurtigt i gang</button>
+        <button class="bigBtn">Hurtigt i gang</button>
         <article id="firebaseui-auth-container"></article>
-
         </section>`
     }
 }

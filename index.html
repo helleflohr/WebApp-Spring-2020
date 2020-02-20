@@ -28,19 +28,57 @@
         </nav>
     </header>
     <main>
-        <section id="content"></section>
+
         <h1>This is the content of my main</h1>
+        <button onclick="majasFunction()">Button</button>
+        <section id="content"></section>
+        <input type="text">
+        <select name="" id="">
+            <option value="">1</option>
+            <option value="">2</option>
+            <option value="">3</option>
+            <option value="">4</option>
+            <option value="">5</option>
+        </select>
     </main>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+    <script src="firebase-config.js"></script>
+
+    <!-- <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '{your-app-id}',
+                cookie: true,
+                xfbml: true,
+                version: '{api-version}'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script> -->
+
+    <!-- main javaScript file, works like a module -->
+    <script src="main.js" type="module"></script>
 </body>
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
-<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
-<!-- main javaScript file, works like a module -->
-<script src="main.js" type="module"></script>
 
 
 <!-- TO JAVASCRIPT -->
