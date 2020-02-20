@@ -29,7 +29,7 @@ class SpaService {
             if (`#${pageId}` === navItem.getAttribute("href")) {
                 navItem.classList.add("active");
             } else {
-                navItem.classList.remove("active")
+                navItem.classList.remove("active");
             }
         }
     }
@@ -47,6 +47,7 @@ class SpaService {
         }
         this.showPage(page);
     }
+
 
     // This function shows and hides the tabbar
     hideTabbar(hide) {
