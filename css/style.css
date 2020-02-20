@@ -2,14 +2,27 @@
 :root {
     /* Color */
     --menuBackground: #333;
-    --menuFontColor: #e3f4f8;
-    --menuHoverColor: #6138a3;
+    --menuFontColor: #FBEBF8;
+    --menuHoverColor: var(--secundary_color_light);
     --menuHoverFontColor: #041a1f;
+    --background: rgb(115, 247, 144);
+    --secundary_color_light: #EA81C1;
+    --secundary_color_dark: #80265D;
 
+    /* #b238b3 ok lilla */
+    /* #b35c9f lilla */
+    /* --menuBackground: #333 */
+    /*  --menuFontColor: #FBEBF8; */
+    /* --menuHoverFontColor: #041a1f; */
+    /* --secundary_color_dark: #440c37; */
+    /* --background: #26803A; */
     /* Font */
     --font-family: 'Myriad Pro', Arial, sans-serif;
 }
 
+html {
+    background-color: var(--background);
+}
 .flexcontainer {
     display: flex;
     flex-wrap: wrap;
@@ -28,6 +41,8 @@ Navigation - menu
     overflow: hidden;
     background-color: var(--menuBackground);
     text-align: center;
+    border: 5px solid var(--menuFontColor);
+
 
 }
 
