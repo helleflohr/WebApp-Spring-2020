@@ -1,7 +1,3 @@
-import {
-    _db
-} from "./../firebase-config.js";
-
 class CategoryService {
     constructor() {
         this.categoryRef = _db.collection("categories");

@@ -1,11 +1,11 @@
 import spaService from "./spa.js";
 import loaderService from "./loader.js";
-import _db from "./../firebase-config.js"
+// import _db from "./../firebase-config.js"
 // import movieService from "./movie.js";
 
 class AuthService {
     constructor() {
-        this.ui = new firebaseui.auth.AuthUI(firebase.auth());
+        this.ui = "";
         this.userRef = _db.collection("users");
         this.spaService = spaService;
         this.loaderService = loaderService;
@@ -44,8 +44,12 @@ class AuthService {
             ],
             signInSuccessUrl: '#home'
         };
-        this.ui.start('#firebaseui-auth-container', uiConfig);
         this.loaderService.show(false);
+        if (!this.ui) {
+            this.ui = new firebaseui.auth.AuthUI(firebase.auth());
+        }
+        this.ui.start('#firebaseui-auth-container', uiConfig);
+
     }
 
     initAuthUserRef() {
