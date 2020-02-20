@@ -12,15 +12,15 @@ class CategoryService {
         // ========== READ ==========
         // watch the database ref for changes
         console.log(this.categoryRef);
-        this.categoryRef.onSnapshot(snapshotData => {
-            let categories = [];
-            snapshotData.forEach(doc => {
-                let category = doc.data();
-                category.id = doc.id;
-                categories.push(category);
-            });
-            // this.appendcategories(categories);
-        });
+        // this.categoryRef.onSnapshot(snapshotData => {
+        //     let categories = [];
+        //     snapshotData.forEach(doc => {
+        //         let category = doc.data();
+        //         category.id = doc.id;
+        //         categories.push(category);
+        //     });
+        //     // this.appendcategories(categories);
+        // });
     }
     // 
     // template() {
