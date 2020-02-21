@@ -11,6 +11,7 @@ import YouAreReadyPage from "./pages/youAreReadyPage.js"
 import spaService from "./services/spa.js"
 import _categoryService from "./services/categoryService.js"
 import authService from "./services/loginService.js";
+import CreatePartyPage from "./pages/createPartyPage.js"
 
 
 
@@ -33,6 +34,7 @@ spaService.init();
 
 
 _categoryService.read();
+loginPage.template();
 
 
 
@@ -40,5 +42,6 @@ _categoryService.read();
 // onclick handlers
 window.pageChange = () => spaService.pageChange();
 window.createQuestion = () => addPredefinedPage.createQuestion();
+window.checkedCategory = (id) => addPredefinedPage.checkedOrNot(id)
 window.createNewQuestion = () => addQuestions.createNewQuestion();
 window.navigateTo = (hash) => spaService.navigateTo(hash);

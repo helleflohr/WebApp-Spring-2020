@@ -5,6 +5,8 @@ export default class AddPredefinedPage {
         this.categoryRef = _db.collection("categories");
         this.gameRef = _db.collection("games");
 
+        this.addedCategoryArray = [];
+
         this.createCategoryOptions();
         this.createGameOptions();
         this.template();
@@ -13,18 +15,30 @@ export default class AddPredefinedPage {
     }
 
     createQuestion() {
-        let categoriesInput = document.querySelector("#wichCategories");
+
         let gameInput = document.querySelector("#whichGame");
         let questionInput = document.querySelector("#newPreQuestion");
+
         let newPredefinedQuestion = {
-            categories: [categoriesInput.value],
+            categories: this.addedCategoryArray,
             game: gameInput.value,
             questionContent: questionInput.value
         }
         this.questionRef.add(newPredefinedQuestion);
+
     }
 
+    checkedOrNot(id) {
 
+        let checkBox = document.getElementById(`${id}`);
+
+        if (checkBox.checked === true) {
+            this.addedCategoryArray.push(`${id}`);
+        } else {
+            this.addedCategoryArray.pop(`${id}`);
+        }
+        console.log(this.addedCategoryArray)
+    }
 
     template() {
         document.querySelector('#content').innerHTML += /*html*/ `
@@ -52,11 +66,11 @@ export default class AddPredefinedPage {
 
                 let categoriyCheckboxes = document.querySelector("#wichCategories");
 
-                categoriyCheckboxes.innerHTML += /*html*/ `
-                <input type="checkbox" id="${category.id}" name="${category.contentCategory}" value="${category.id}">
+                categoriyCheckboxes.innerHTML += /*html*/ `<article>
+                <input type="checkbox" id="${category.id}" onclick="checkedCategory(this.id)" name="${category.contentCategory}" value="${category.id}">
                 <label for="${category.id}">${category.contentCategory}</label>
                
-                <br>
+                </article>
                 `
 
                 // let listOfCategories = document.getElementById("wichCategories");
