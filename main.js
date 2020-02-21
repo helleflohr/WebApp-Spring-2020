@@ -23,6 +23,14 @@ let addQuestions = new AddQuestions();
 let createPartyPage = new CreatePartyPage();
 
 
+// loginPage.template();
+// homeWarning.template();
+// addPredefinedPage.template();
+// addQuestions.template();
+// createPartyPage.template();
+
+
+
 // Initiating services
 authService.init();
 spaService.init();
@@ -31,13 +39,7 @@ spaService.init();
 
 
 _categoryService.read();
-loginPage.template();
 
-
-homeWarning.template();
-addPredefinedPage.template();
-addQuestions.template();
-createPartyPage.template();
 
 // onclick handlers
 window.pageChange = () => spaService.pageChange();
