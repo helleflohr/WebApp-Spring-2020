@@ -40,7 +40,7 @@ export default class AddQuestions {
 
         <br><input type="text" id="newQuestion" placeholder="Tilføj spil indhold her...." required>
         
-        <br><button type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
+        <br><button class="btn" type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
       </form>
       <article id="appendUserQuestions">
       <h2>Liste over indhold</h2>
@@ -85,14 +85,12 @@ export default class AddQuestions {
         questionLi = document.querySelector("#list");
 
         questionLi.innerHTML += /*html*/ `
-            <li> ${myQuestions.questionContent}</li>
-                       
+            <li> <label for="${myQuestions.id}">${myQuestions.questionContent}</label> <input type="checkbox" id="${myQuestions.id}" name="${myQuestions.questionContent}" value="${myQuestions.id}"> </li>
+                   
+            
+                
             <br>
             `
-
-        // let listOfCategories = document.getElementById("wichCategories");
-
-        // listOfCategories.add(new Option(category.contentCategory, category.id));
       });
 
     });
