@@ -28,7 +28,7 @@ export default class AddPredefinedPage {
 
     template() {
         document.querySelector('#content').innerHTML += /*html*/ `
-        <article id="addPredefinded" class="page">
+        <article id="addPredefinded" class="page collectionOfItems">
         <div name="" id="wichCategories">
         </div>
         <br>
@@ -37,7 +37,7 @@ export default class AddPredefinedPage {
         <br>
         <input type="text" id="newPreQuestion">
         <br>
-        <button type="button" onclick='createQuestion()'>Tilføj spørgsmål til databasen</button>
+        <button class="btn" type="button" onclick='createQuestion()'>Tilføj spørgsmål til databasen</button>
         </article>
         `;
 
