@@ -5,12 +5,13 @@ import loaderService from "./loader.js";
 
 class AuthService {
     constructor() {
-        this.ui = "";
+        this.ui = new firebaseui.auth.AuthUI(firebase.auth());
         this.userRef = _db.collection("users");
         this.spaService = spaService;
         this.loaderService = loaderService;
         this.authUser;
         this.authUserRef;
+
     }
 
     init() {
