@@ -20,6 +20,10 @@
     --font-family: 'Myriad Pro', Arial, sans-serif;
 }
 
+#bold {
+    font-weight: bold;
+}
+
 html {
     color: var(--menuFontColor);
     background-color: var(--background);

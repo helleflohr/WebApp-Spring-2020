@@ -30,10 +30,7 @@ spaService.init();
 _categoryService.read();
 
 
-loginPage.template();
-homeWarning.template();
-addPredefinedPage.template();
-addQuestions.template();
+
 
 // onclick handlers
 window.pageChange = () => spaService.pageChange();

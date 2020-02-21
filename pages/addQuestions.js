@@ -9,7 +9,7 @@ export default class AddQuestions {
 
 
     this.createGameOptions();
-    this.appendUserQuestions();
+    this.createQuestionsList();
     this.template();
 
 
@@ -25,6 +25,7 @@ export default class AddQuestions {
       questionContent: questionInput.value
     }
     this.questionRef.add(newUserQuestion);
+    console.log()
   }
 
 
@@ -41,20 +42,16 @@ export default class AddQuestions {
         
         <br><button type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
       </form>
-    </section>
-    <section>
+      <article id="appendUserQuestions">
+      <h2>Liste over indhold</h2>
+      <ul id="list">
       
-      <table>
-        <thead>
-          <tr>
-          <th><h2>Mit indhold</h2></th>
-          </tr>
-        </thead>
-        <tbody id="tableBody">
+      </ul>
       
-        </tbody>
-      </table> 
+  
+    </article>
     </section>
+    
     `;
 
   }
@@ -76,18 +73,29 @@ export default class AddQuestions {
     });
   }
 
-  appendUserQuestions() {
+
+  createQuestionsList() {
+    let questionLi = "";
     this.questionRef.onSnapshot(snapshotData => {
       snapshotData.forEach(doc => {
-        let questions = doc.data();
-        questions.id = doc.id;
-        let row = table.insertRow(0);
 
-        let listOfQuestions = document.getElementById("tableBody");
-        listOfQuestions.add(new row(questions.questionContent))
+        let myQuestions = doc.data();
+        myQuestions.id = doc.id;
+
+        questionLi = document.querySelector("#list");
+
+        questionLi.innerHTML += /*html*/ `
+            <li> ${myQuestions.questionContent}</li>
+                       
+            <br>
+            `
+
+        // let listOfCategories = document.getElementById("wichCategories");
+
+        // listOfCategories.add(new Option(category.contentCategory, category.id));
       });
-    })
 
+    });
   }
 
 
