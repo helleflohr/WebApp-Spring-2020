@@ -20,22 +20,61 @@
             <input class="menu-btn" type="checkbox" id="menu-btn" />
             <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
             <ul class="menu">
-                <li><a href="#myQuestions">Dine gemte spørgsmål</a></li>
-                <li><a href="#myPage">Din profil</a></li>
+                <li><a href="#myQuestions">Mine gemte spørgsmål</a></li>
+                <li><a href="#myPage">Min profil</a></li>
                 <li><a href="#rate">Giv en anmeldelse</a></li>
                 <li><a href="#changes">Foreslå ændringer</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="content"></section>
+
         <h1>This is the content of my main</h1>
+        <section id="content"></section>
+
+
     </main>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+    <script src="firebase-config.js"></script>
+
+    <!-- <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '{your-app-id}',
+                cookie: true,
+                xfbml: true,
+                version: '{api-version}'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script> -->
+
+    <!-- main javaScript file, works like a module -->
+    <script src="main.js" type="module"></script>
 </body>
 
 
 
-<!-- main javaScript file, works like a module -->
-<script src="js/main.js" type="module"></script>
+<!-- TO JAVASCRIPT -->
+
+
 
 </html>

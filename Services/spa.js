@@ -1,6 +1,6 @@
 class SpaService {
     constructor() {
-        this.defaultpage = "home"
+        this.defaultPage = "login";
     }
 
     init() {
@@ -29,7 +29,7 @@ class SpaService {
             if (`#${pageId}` === navItem.getAttribute("href")) {
                 navItem.classList.add("active");
             } else {
-                navItem.classList.remove("active")
+                navItem.classList.remove("active");
             }
         }
     }
@@ -57,7 +57,6 @@ class SpaService {
             tabbar.classList.remove("hide");
         }
     }
-
 }
 const spaService = new SpaService();
 export default spaService;
