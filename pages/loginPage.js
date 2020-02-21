@@ -7,7 +7,7 @@ export default class LoginPage {
 
         document.querySelector('#content').innerHTML += /*html*/ `
         <section id="login" class="page flexcontainer">
-        <button class="bigBtn">Hurtigt i gang</button>
+    <button class="btn" name="home" onclick="navigateTo(this.name)">Hurtigt i gang</button>
         <article id="firebaseui-auth-container"></article>
         </section>`
     }

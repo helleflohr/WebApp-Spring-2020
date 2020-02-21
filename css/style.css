@@ -9,6 +9,12 @@
     --secundary_color_light: #EA81C1;
     --secundary_color_dark: #80265D;
 
+    --border_dark: 5px solid #80265D;
+    --border_radius: 25px;
+
+    --standardWidth: 85%;
+
+
     /* #b238b3 ok lilla */
     /* #b35c9f lilla */
     /* --menuBackground: #333 */
@@ -146,6 +152,27 @@ Buttons
 -----------------------------------------------------------------------------------------*/
 .bigBtn {
     text-align: center;
+}
+
+.btn {
+    border-radius: var(--border_radius);
+    border: var(--border_dark);
+    background: var(--secundary_color_dark);
+    color: var(--menuFontColor);
+    width: auto;
+    margin: 1.5em auto 1em;
+
+    cursor: pointer;
+}
+
+
+.collectionOfItems {
+    background: var(--secundary_color_light);
+    width: var(--standardWidth);
+    padding: 1em;
+    border-radius: var(--border_radius);
+    cursor: pointer;
+    margin: 2em auto;
 }
 
 

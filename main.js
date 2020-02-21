@@ -3,7 +3,9 @@ import LoginPage from "./pages/loginPage.js"
 import AddPredefinedPage from "./pages/addPredefinedPage.js"
 import HomeWarningPage from "./pages/homeWarning.js"
 import AddQuestions from "./pages/addQuestions.js"
-
+import CreatePartyPage from "./pages/createPartyPage.js"
+import AddPlayersPage from "./pages/addPlayersPage.js"
+import YouAreReadyPage from "./pages/youAreReadyPage.js"
 
 // Importing services
 import spaService from "./services/spa.js"
@@ -18,6 +20,9 @@ let loginPage = new LoginPage();
 let addPredefinedPage = new AddPredefinedPage();
 let homeWarning = new HomeWarningPage();
 let addQuestions = new AddQuestions();
+let createPartyPage = new CreatePartyPage();
+let addPlayersPage = new AddPlayersPage();
+let youAreReadyPage = new YouAreReadyPage();
 
 
 // Initiating services
@@ -35,3 +40,4 @@ _categoryService.read();
 window.pageChange = () => spaService.pageChange();
 window.createQuestion = () => addPredefinedPage.createQuestion();
 window.createNewQuestion = () => addQuestions.createNewQuestion();
+window.navigateTo = (hash) => spaService.navigateTo(hash);

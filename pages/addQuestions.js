@@ -39,7 +39,7 @@ export default class AddQuestions {
 
         <br><input type="text" id="newQuestion" placeholder="Tilføj spil indhold her...." required>
         
-        <br><button type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
+        <br><button class="btn" type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
       </form>
     </section>
     <section>
