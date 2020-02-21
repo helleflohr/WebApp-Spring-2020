@@ -34,3 +34,4 @@ addPredefinedPage.template();
 
 // onclick handlers
 window.pageChange = () => spaService.pageChange();
+window.createQuestion = () => addPredefinedPage.createQuestion();
