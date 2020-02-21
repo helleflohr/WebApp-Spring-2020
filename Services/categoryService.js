@@ -7,7 +7,7 @@ class CategoryService {
     read() {
         // ========== READ ==========
         // watch the database ref for changes
-        console.log(this.categoryRef);
+
         // this.categoryRef.onSnapshot(snapshotData => {
         //     let categories = [];
         //     snapshotData.forEach(doc => {
