@@ -1,6 +1,6 @@
 class SpaService {
     constructor() {
-        this.defaultpage = "login"
+        this.defaultPage = "login";
     }
 
     init() {
@@ -48,7 +48,6 @@ class SpaService {
         this.showPage(page);
     }
 
-
     // This function shows and hides the tabbar
     hideTabbar(hide) {
         let tabbar = document.querySelector('#nav-menu');
@@ -58,7 +57,6 @@ class SpaService {
             tabbar.classList.remove("hide");
         }
     }
-
 }
 const spaService = new SpaService();
 export default spaService;

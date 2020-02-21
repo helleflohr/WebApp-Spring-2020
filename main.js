@@ -2,6 +2,7 @@
 import LoginPage from "./pages/loginPage.js"
 import AddPredefinedPage from "./pages/addPredefinedPage.js"
 import HomeWarningPage from "./pages/homeWarning.js"
+import AddQuestions from "./pages/addQuestions.js"
 import CreatePartyPage from "./pages/createPartyPage.js"
 
 
@@ -18,6 +19,7 @@ import CreatePartyPage from "./pages/createPartyPage.js"
 let loginPage = new LoginPage();
 let addPredefinedPage = new AddPredefinedPage();
 let homeWarning = new HomeWarningPage();
+let addQuestions = new AddQuestions();
 let createPartyPage = new CreatePartyPage();
 
 
@@ -34,9 +36,11 @@ loginPage.template();
 
 homeWarning.template();
 addPredefinedPage.template();
+addQuestions.template();
 createPartyPage.template();
 
 // onclick handlers
 window.pageChange = () => spaService.pageChange();
 window.createQuestion = () => addPredefinedPage.createQuestion();
+window.createNewQuestion = () => addQuestions.createNewQuestion();
 window.checkedCategory = (id) => addPredefinedPage.checkedOrNot(id)

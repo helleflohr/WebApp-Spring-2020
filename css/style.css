@@ -5,7 +5,7 @@
     --menuFontColor: #FBEBF8;
     --menuHoverColor: var(--secundary_color_light);
     --menuHoverFontColor: #041a1f;
-    --background: rgb(115, 247, 144);
+    --background: rgb(188, 185, 230);
     --secundary_color_light: #EA81C1;
     --secundary_color_dark: #80265D;
 
@@ -21,7 +21,13 @@
 }
 
 html {
+    color: var(--menuFontColor);
     background-color: var(--background);
+    font-family: var(--font-family);
+    height: 100%;
+    text-align: center;
+    width: 100%;
+    font-weight: 200;
 }
 
 .flexcontainer {
@@ -138,7 +144,9 @@ Navigation - menu
 /* ________________________________________________________________________________________
 Buttons
 -----------------------------------------------------------------------------------------*/
-/* .bigBtn{} */
+.bigBtn {
+    text-align: center;
+}
 
 
 
