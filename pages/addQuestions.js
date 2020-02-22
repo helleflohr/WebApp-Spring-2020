@@ -63,7 +63,7 @@ export default class AddQuestions {
 
   createQuestionsList() {
     let questionLi = "";
-    let gameTitles = "Hi";
+    let gameTitles = "";
     this.questionRef.onSnapshot(snapshotData => {
       snapshotData.forEach(doc => {
 
