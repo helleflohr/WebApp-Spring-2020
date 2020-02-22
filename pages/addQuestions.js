@@ -7,8 +7,6 @@ export default class AddQuestions {
     this.gameRef = _db.collection("games");
     this.table = document.getElementById("tableBody");
 
-
-
     this.template();
     this.createGameOptions();
     this.createQuestionsList();
@@ -65,29 +63,32 @@ export default class AddQuestions {
 
   createQuestionsList() {
     let questionLi = "";
-
+    let gameTitles = "Hi";
     this.questionRef.onSnapshot(snapshotData => {
       snapshotData.forEach(doc => {
 
-        // this.gameRef = _db.collection("games");
-        let gameTitle = "";
+
 
         let myQuestions = doc.data();
         myQuestions.id = doc.id;
-        console.log(myQuestions.game)
 
 
         let theGameRef = _db.collection("games").doc(`${myQuestions.game}`);
-        theGameRef.get().then(function (doc) {
-          gameTitle = doc.data().gameTitle;
+
+        theGameRef.get().then(function (docs) {
+          gameTitles = docs.data().gameTitle;
+
+          console.log(gameTitles)
+          return gameTitles;
         })
+        console.log(gameTitles)
 
 
         questionLi += /*html*/ `
-            <li>${gameTitle} <label for="${myQuestions.id}">${myQuestions.questionContent}</label> <input type="checkbox" id="${myQuestions.id}" name="${myQuestions.questionContent}" value="${myQuestions.id}"> </li>    
+            <li>${gameTitles}<label for="${myQuestions.id}">${myQuestions.questionContent}</label> <input type="checkbox" id="${myQuestions.id}" name="${myQuestions.questionContent}" value="${myQuestions.id}"> </li>    
             <br>
             `
-        console.log(myQuestions);
+        console.log(questionLi);
       });
 
       document.querySelector("#list").innerHTML = "";
