@@ -7,28 +7,10 @@ export default class AddQuestions {
     this.gameRef = _db.collection("games");
     this.table = document.getElementById("tableBody");
 
-
+    this.template();
     this.createGameOptions();
     this.createQuestionsList();
-    this.template();
-
-
   }
-
-
-  createNewQuestion() {
-
-    let gameInput = document.querySelector("#select-game");
-    let questionInput = document.querySelector("#newQuestion");
-    let newUserQuestion = {
-      game: gameInput.value,
-      questionContent: questionInput.value
-    }
-    this.questionRef.add(newUserQuestion);
-    console.log()
-  }
-
-
 
   template() {
     document.querySelector('#content').innerHTML += /*html*/ `
@@ -49,11 +31,21 @@ export default class AddQuestions {
     </article>
     <button class="btn" name="playersReady" onclick="navigateTo(this.name)"> Videre </button>
     </section>
-    
     `;
-
   }
 
+  createNewQuestion() {
+
+    let gameInput = document.querySelector("#select-game");
+    let questionInput = document.querySelector("#newQuestion");
+    let newUserQuestion = {
+      game: gameInput.value,
+      questionContent: questionInput.value
+    }
+    this.questionRef.add(newUserQuestion);
+    this.createQuestionsList();
+    document.querySelector("#newQuestion").reset();
+  }
 
   createGameOptions() {
     this.gameRef.onSnapshot(snapshotData => {
@@ -64,10 +56,7 @@ export default class AddQuestions {
         let listOfGames = document.getElementById("select-game");
 
         listOfGames.add(new Option(game.gameTitle, game.id));
-
-
       });
-
     });
   }
 
@@ -80,17 +69,15 @@ export default class AddQuestions {
         let myQuestions = doc.data();
         myQuestions.id = doc.id;
 
-        questionLi = document.querySelector("#list");
-
-        questionLi.innerHTML += /*html*/ `
-            <li> <label for="${myQuestions.id}">${myQuestions.questionContent}</label> <input type="checkbox" id="${myQuestions.id}" name="${myQuestions.questionContent}" value="${myQuestions.id}"> </li>
-                   
-            
-                
+        questionLi += /*html*/ `
+            <li>${myQuestions.game.id} <label for="${myQuestions.id}">${myQuestions.questionContent}</label> <input type="checkbox" id="${myQuestions.id}" name="${myQuestions.questionContent}" value="${myQuestions.id}"> </li>    
             <br>
             `
+        console.log(myQuestions);
       });
 
+      document.querySelector("#list").innerHTML = "";
+      document.querySelector("#list").innerHTML = questionLi
     });
   }
 
