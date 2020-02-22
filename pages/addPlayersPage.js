@@ -10,15 +10,32 @@ export default class AddPlayersPage {
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="addPlayers" class="page">
         <h2>Tilføj dig selv</h2>
-        <input type="text">
+        <input type="text" placeholder="Skriv dit spillernavn" class="inputfield">
         <h2>Tilføj spillere uden mobil</h2>
-        <input type="text">
-        <button class="btn" type="button">+</button>
+        <div id="playerInput">
+        <input type="text" placeholder="Skriv spillernavn" class="inputfield">
+        </div>
+        <br>
+        <button class="btn" type="button" onclick="addAnotherPlayer()">+</button>
         <br>
        
         <button class="btn" type="button" name="addQuestions" onclick="navigateTo(this.name)">GOGOGO!</button>
         </article>
         `;
 
+    }
+
+    addAnotherPlayer() {
+        // let listOfOtherPlayers = document.getElementById("playerInput");
+
+        // listOfOtherPlayers.add(new Input());
+        console.log('playerAdded')
+
+        let x = document.createElement("INPUT");
+        x.setAttribute("type", "text");
+        x.setAttribute("value", "");
+        x.setAttribute("placeholder", "Skriv spillernavn");
+        x.setAttribute("class", "inputfield")
+        document.querySelector('#playerInput').appendChild(x);
     }
 }

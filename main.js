@@ -7,6 +7,7 @@ import CreatePartyPage from "./pages/createPartyPage.js"
 import AddPlayersPage from "./pages/addPlayersPage.js"
 import YouAreReadyPage from "./pages/youAreReadyPage.js"
 import SettingsPage from "./pages/settingsPage.js"
+import GamePage from "./pages/gamePage.js"
 
 // Importing services
 import spaService from "./services/spa.js"
@@ -25,6 +26,7 @@ let createPartyPage = new CreatePartyPage();
 let addPlayersPage = new AddPlayersPage();
 let youAreReadyPage = new YouAreReadyPage();
 let settingsPage = new SettingsPage();
+let gamePage = new GamePage();
 
 // Initiating services
 authService.init();
@@ -43,3 +45,4 @@ window.pageChange = () => spaService.pageChange();
 window.createQuestion = () => addPredefinedPage.createQuestion();
 window.createNewQuestion = () => addQuestions.createNewQuestion();
 window.navigateTo = (hash) => spaService.navigateTo(hash);
+window.addAnotherPlayer = () => addPlayersPage.addAnotherPlayer()
