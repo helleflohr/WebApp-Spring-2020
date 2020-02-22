@@ -12,6 +12,8 @@
     --border_radius: 25px;
     --standardWidth: 85%;
     --font-family: 'Myriad Pro', Arial, sans-serif;
+    --font_color_light: #EA81C1;
+    --font_color_dark: #333;
 }
 
 #bold {
@@ -19,7 +21,7 @@
 }
 
 html {
-    color: var(--menuFontColor);
+    color: var(--font_color_dark);
     background-color: var(--background);
     font-family: var(--font-family);
     height: 100%;
