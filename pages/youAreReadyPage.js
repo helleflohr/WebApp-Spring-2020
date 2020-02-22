@@ -12,10 +12,13 @@ export default class YouAreReadyPage {
         <h2>I spiller på spilmesterens device</h2>
 
         <p>Du og X andre er klar :)</p>
+        <p>Der er nu tilføjet xx runder til spillet</p>
         
         <br>
              <button class="btn" type="button" name="addQuestions" onclick="navigateTo(this.name)">
              Nej vent, jeg har et spørgsmål mere!</button>
+<br>
+             <button class="btn" type="button" name="gamePage" onclick="navigateTo(this.name)">Når alle er klar</button>
         </article>
         `;
 

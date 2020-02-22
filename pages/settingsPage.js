@@ -25,7 +25,8 @@ export default class SettingsPage {
 				  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
 						<br>
 				  <p>Value: <span id="demo"></span></p>
-						<br>
+            <br>
+            <button class="btn" type="button" name="addPlayers" onclick="navigateTo(this.name)">Klar!</button>
 
 				</div>
         </section>`

@@ -171,6 +171,12 @@ Buttons
 
 
 
+.inputfield {
+    display: block;
+    margin: 0 auto;
+}
+
+
 .page {
     display: none;
     /*min heigh is screen heigh minus height of tab and top bar */
