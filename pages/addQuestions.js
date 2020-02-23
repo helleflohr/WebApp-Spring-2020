@@ -4,7 +4,10 @@ export default class AddQuestions {
   constructor() {
     this.questionRef = _db.collection("userQuestions");
     this.gameRef = _db.collection("games");
+    this.partyRef = _db.collection("parties");
 
+    // Maeby we should get the datafrom the database at put it in the new array before - for no overwrite
+    this.partyContentArray = [];
     this.games = [];
     this.questions = [];
     this.fetchGames();
@@ -35,7 +38,7 @@ export default class AddQuestions {
       <ul id="list">
       </ul>
     </article>
-    <button class="btn" name="playersReady" onclick="navigateTo(this.name)"> Videre </button>
+    <button class="btn" name="playersReady" onclick="navigateTo(this.name);addContentToPartyArr()"> Videre </button>
     </section>
     `;
   }
@@ -52,6 +55,8 @@ export default class AddQuestions {
       questionContent: questionInput.value
     }
     this.questionRef.add(newUserQuestion);
+
+    this.partyContentArray.push(newUserQuestion)
 
     this.fetchGames();
     document.querySelector("#newQuestion").value = "";
@@ -121,6 +126,16 @@ export default class AddQuestions {
 
     document.querySelector("#list").innerHTML = listItem;
     console.log(listItem)
+  }
+
+  addContentToPartyArr() {
+
+    this.partyRef.doc('UF8iwR41XmnUDSNPP6Mh').update({
+      // Get docref from elsewere `${}`
+
+      questions: this.partyContentArray
+
+    })
   }
 
 }

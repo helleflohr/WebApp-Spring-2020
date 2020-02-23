@@ -6,6 +6,7 @@ class CreatePartyService {
 
     }
 
+    // Creates a group in which players and content can be added
     createParty(nextPage) {
         console.log(this.partyId)
         navigateTo(nextPage);
@@ -24,6 +25,7 @@ class CreatePartyService {
         console.log(this.partyId)
     }
 
+    // Generates a "unique and random" ID for the group based on date and random caracters
     generateId() {
         // https://gist.github.com/gordonbrander/2230317
         let uniqueId = Date.now() + Math.random().toString(36).substr(2, 6);

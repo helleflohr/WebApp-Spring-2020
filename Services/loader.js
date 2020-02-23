@@ -3,7 +3,7 @@ class LoaderService {
         this.template();
     }
 
-    // 
+    // HTML-template for the loader
     template() {
         document.querySelector('#content').innerHTML += /*html*/ `
          <div id="loader">
@@ -12,6 +12,7 @@ class LoaderService {
         `;
     }
 
+    // Remove or add the hide-class to show or hide the loader
     show(show) {
         let loader = document.getElementById('loader');
         if (show) {

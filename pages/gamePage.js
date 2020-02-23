@@ -8,7 +8,6 @@ export default class GamePage {
     }
 
     getData() {
-
         // let inputField = document.querySelector('#joinPartyId');
         this.gamesRef.onSnapshot(snapshotData => {
             snapshotData.forEach(doc => {
@@ -19,11 +18,10 @@ export default class GamePage {
                 this.curGame = games.gameTitle;
                 this.curRule = games.rules;
             })
-
-
         })
     }
 
+    // The HTML-content for this game-"page"
     template() {
         // Onclick NEXT
         document.querySelector('#content').innerHTML += /*html*/ `
@@ -63,8 +61,8 @@ export default class GamePage {
         `;
     }
 
+    // Toggle function for the rules in the game
     showRules() {
-
         let checkBox = document.querySelector("#info");
         let rulesBox = document.querySelector("#rules");
         let infoLabel = document.querySelector('#infoLabel');
@@ -77,8 +75,8 @@ export default class GamePage {
         }
     }
 
+    // Toggle function for adding more players and content in the game
     showAdd() {
-
         let checkBox = document.querySelector("#add");
         let rulesBox = document.querySelector("#addSection");
         let infoLabel = document.querySelector('#addLabel');

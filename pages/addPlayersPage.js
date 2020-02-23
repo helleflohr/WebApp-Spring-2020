@@ -4,9 +4,8 @@ export default class AddPlayersPage {
 
     }
 
+    // The HTML-template for the "page" where you can add player names to the group
     template() {
-
-
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="addPlayers" class="page">
         <h2>Tilføj dig selv</h2>
@@ -24,9 +23,9 @@ export default class AddPlayersPage {
         <button class="btn" type="button" name="addQuestions" onclick="navigateTo(this.name);addPlayers()">GOGOGO!</button>
         </article>
         `;
-
     }
 
+    // Creates a new inputfild for more players
     addAnotherPlayer(whereToAdd) {
         // let listOfOtherPlayers = document.getElementById("playerInput");
 

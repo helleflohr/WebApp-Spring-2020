@@ -18,7 +18,6 @@ import joinPartyService from "./../services/joinPartyService.js"
 
 
 
-
 // Declaring and initiating pages
 let loginPage = new LoginPage();
 let addPredefinedPage = new AddPredefinedPage();
@@ -34,13 +33,8 @@ let gamePage = new GamePage();
 authService.init();
 spaService.init();
 
-
-
-
+// Currently not in use
 _categoryService.read();
-
-
-
 
 // onclick handlers
 window.pageChange = () => spaService.pageChange();
@@ -54,3 +48,4 @@ window.addPlayers = () => joinPartyService.addPlayers();
 window.showRules = () => gamePage.showRules();
 window.showAdd = () => gamePage.showAdd();
 window.logout = () => authService.logout();
+window.addContentToPartyArr = () => addQuestions.addContentToPartyArr();

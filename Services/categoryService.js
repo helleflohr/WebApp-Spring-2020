@@ -3,9 +3,9 @@ class CategoryService {
         this.categoryRef = _db.collection("categories");
         this.read();
     }
-
+    // Not currently in use!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     read() {
-        // ========== READ ==========
+        // ========== READ  ==========
         // watch the database ref for changes
 
         // this.categoryRef.onSnapshot(snapshotData => {

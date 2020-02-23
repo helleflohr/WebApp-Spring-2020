@@ -4,6 +4,7 @@ class AddPredefinedService {
         this.createQuestion();
     }
 
+    // Create a question in the database based on the input from the input fields  DOUBLE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     createQuestion() {
         let categoriesInput = document.querySelector("#wichCategories");
         let gameInput = document.querySelector("#whichGame");
@@ -15,20 +16,8 @@ class AddPredefinedService {
             game: gameInput.value,
             questionContent: questionInput.value
         }
-
         questionRef.add(newPredefinedQuestion);
-
-
     }
-
-    template() {
-        console.log(this.questionRef);
-        //     document.querySelector('#test').innerHTML += /*html*/ `
-        //    <p>${this.questionRef}</p>
-        //     `;
-    }
-
-
 }
 
 const _addQuestionService = new AddPredefinedService();

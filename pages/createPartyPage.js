@@ -5,10 +5,8 @@ export default class CreatePartyPage {
 
     }
 
+    // The HTML template for the "page" for creating or joining a group
     template() {
-
-
-
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="createPartyPage" class="page">
         <section class="collectionOfItems">
@@ -24,6 +22,5 @@ export default class CreatePartyPage {
         </section>
         </article>
         `;
-
     }
 }
