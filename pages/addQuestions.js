@@ -4,14 +4,18 @@ export default class AddQuestions {
   constructor() {
     this.questionRef = _db.collection("userQuestions");
     this.gameRef = _db.collection("games");
-    this.questionLi = "";
+
+    let games = this.arrayGames();
+    let questions = this.arrayQuestions();
 
     this.template();
     this.createGameOptions();
-    this.createQuestionsList();
-
+    this.createQuestionsList(games, questions);
   }
 
+  // Template over the page, that adds a dropdown menu with all the different games.
+  // Underneath there is a input field where the user can add his or her own questions til the game.
+  // Underneath again there is an article with the players own questions, sorted by game.
   template() {
     document.querySelector('#content').innerHTML += /*html*/ `
     <section id="addQuestions" class="page">
@@ -34,6 +38,8 @@ export default class AddQuestions {
     `;
   }
 
+  // This function creates the new question by taking the information from the dropdown menu over games, 
+  // and linking it with the value in the input field.
   createNewQuestion() {
 
     let gameInput = document.querySelector("#select-game");
@@ -47,6 +53,9 @@ export default class AddQuestions {
     document.querySelector("#newQuestion").reset();
   }
 
+
+  // This function creates the dropdown menu over games, by taking every new game id, and adding the game 
+  // title to the menu. gameRef refers back to the constructor, therefore the this.
   createGameOptions() {
     this.gameRef.onSnapshot(snapshotData => {
       snapshotData.forEach(doc => {
@@ -61,78 +70,89 @@ export default class AddQuestions {
   }
 
 
-  addGameTitle(game) {
-
-    this.questionLi += /*html*/ `
-    <li>${game.gameTitle}</li>`
-    console.log(this.questionLi);
-  }
-
-  createQuestionsList() {
-    let questionLi = "";
+  // This function creates an array 
 
 
-    this.gameRef.onSnapshot(snapshotData => {
+  arrayGames() {
+    let arrayGames = [];
+    this.gameRef.get().then(snapshotData => {
       snapshotData.forEach(doc => {
         let game = doc.data();
         game.id = doc.id;
-        questionLi += /*html*/ `
-      <li class="game bold">${game.gameTitle}</li>`
+        arrayGames.push(game);
 
-        this.questionRef.onSnapshot(snapshotData => {
-          snapshotData.forEach(doc => {
-            let myQuestions = doc.data();
-            myQuestions.id = doc.id;
-            console.log(myQuestions);
-            if (myQuestions.game == game.id) {
-              questionLi += /*html*/ `
-           <li>
-                <label for="${myQuestions.id}">${game.gameTitle} ${myQuestions.questionContent}</label>
-                <input type="checkbox" id="${myQuestions.id}" name="${myQuestions.questionContent}" value="${myQuestions.id}">
-           </li> `
-            }
-          })
-          document.querySelector(".game").innerHTML = questionLi
-        })
-        document.querySelector("#list").innerHTML = questionLi
-
-        // HEJ HELLE, jeg har ændret i label... skrev game.gameTitle ind i tagget.
       })
     })
+    return arrayGames;
+  }
+
+  arrayQuestions() {
+    let arrayQuestions = [];
+    this.questionRef.get().then(snapshotData => {
+      snapshotData.forEach(doc => {
+        let question = doc.data();
+        question.id = doc.id;
+        arrayQuestions.push(question);
+      })
+    })
+    return arrayQuestions;
+  }
+
+  createQuestionsList(games, questions) {
+    let listItem = "";
+
+    console.log(games);
+    console.log(questions);
+    console.log(typeof (games));
+    games.isArray();
+
+    games.forEach(game => {
+      listItem += /*html*/ `
+      <li>${game.gameTitle}</li>`
+      questions.forEach(question => {
+        if (question.game == game.id) {
+          listitem += /*html*/ `
+        <li>${question.content}</li>`
+        }
+      })
+
+    })
+
+    document.querySelector("#list").innerHTML = listItem;
   }
 
 
-
-  // createQuestionsList() {
-  //   let questionLi = "";
-  //   let gameTitles = "Hi5 ";
-  //   this.questionRef.onSnapshot(snapshotData => {
-  //     snapshotData.forEach(doc => {
-
-
-  //       let myQuestions = doc.data();
-  //       myQuestions.id = doc.id;
-
-
-  //       let theGameRef = _db.collection("games").doc(`${myQuestions.game}`);
-
-  //       theGameRef.get().then(function (docs) {
-  //         gameTitles = docs.data().gameTitle;
-
-  //         console.log(gameTitles)
-  //         return gameTitles;
-  //       })
-  //       console.log(gameTitles)
-
-  //       questionLi += /*html*/ `
-  //           <li>${gameTitles}<label for="${myQuestions.id}">${myQuestions.questionContent}</label> <input type="checkbox" id="${myQuestions.id}" name="${myQuestions.questionContent}" value="${myQuestions.id}"> </li>    
-  //           <br>
-  //           `
-  //       console.log(questionLi);
-  //     });
-
-
-  //     document.querySelector("#list").innerHTML = questionLi
-  //   });
-  // }
 }
+
+
+// createQuestionsList() {
+//   let questionLi = "";
+
+//   this.gameRef.get().then(snapshotData => {
+//     snapshotData.forEach(doc => {
+//       let game = doc.data();
+//       game.id = doc.id;
+//       questionLi += /*html*/ `
+//     <li class="game bold">${game.gameTitle}</li>`
+
+//       this.questionRef.get().then(snapshotData => {
+//         snapshotData.forEach(doc => {
+//           let myQuestions = doc.data();
+//           myQuestions.id = doc.id;
+//           // console.log(myQuestions);
+//           if (myQuestions.game == game.id) {
+//             questionLi += /*html*/ `
+//          <li>
+//               <label for="${myQuestions.id}">${game.gameTitle} ${myQuestions.questionContent}</label>
+//               <input type="checkbox" id="${myQuestions.id}" name="${myQuestions.questionContent}" value="${myQuestions.id}">
+//          </li> `
+//           }
+//         })
+//         document.querySelector("#list").innerHTML = questionLi
+//       })
+
+
+//       // HEJ HELLE, jeg har ændret i label... skrev game.gameTitle ind i tagget.
+//     })
+//   })
+// }
