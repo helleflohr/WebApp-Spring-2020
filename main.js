@@ -51,3 +51,5 @@ window.addAnotherPlayer = () => addPlayersPage.addAnotherPlayer();
 window.joinParty = (hash) => joinPartyService.joinParty(hash);
 window.createParty = (hash) => createPartyService.createParty(hash);
 window.addPlayers = () => joinPartyService.addPlayers();
+window.showRules = () => gamePage.showRules();
+window.showAdd = () => gamePage.showAdd();
