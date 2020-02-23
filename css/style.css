@@ -27,6 +27,9 @@
 html {
     color: var(--font_color_dark);
     background-color: var(--background);
+    background-image: url(../img/dance.svg);
+    background-repeat: no-repeat;
+    background-position: center;
     font-family: var(--font-family);
     height: 100%;
     text-align: center;
