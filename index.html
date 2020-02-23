@@ -20,10 +20,14 @@
             <input class="menu-btn" type="checkbox" id="menu-btn" />
             <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
             <ul class="menu">
+
                 <li><a href="#myQuestions">Mine gemte spørgsmål</a></li>
+                <li name="addPredefinded" onclick="navigateTo(this.name)">Tilføj spørsgsmål til databasen</li>
+                <li onclick="logout()">Log ud</li>
                 <li><a href="#myPage">Min profil</a></li>
                 <li><a href="#rate">Giv en anmeldelse</a></li>
                 <li><a href="#changes">Foreslå ændringer</a></li>
+
             </ul>
         </nav>
     </header>

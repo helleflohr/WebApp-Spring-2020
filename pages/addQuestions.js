@@ -51,7 +51,7 @@ export default class AddQuestions {
     }
     this.questionRef.add(newUserQuestion);
     this.createQuestionsList();
-    document.querySelector("#newQuestion").reset();
+    // document.querySelector("#newQuestion").reset();
   }
 
 
@@ -83,6 +83,7 @@ export default class AddQuestions {
         arrayGames.push(game);
       })
     })
+    console.log(arrayGames)
     return arrayGames;
   }
 
@@ -109,7 +110,7 @@ export default class AddQuestions {
       <li>${game.gameTitle}</li>`
       this.questions.forEach(question => {
         if (question.game == game.id) {
-          listitem += /*html*/ `
+          listItem += /*html*/ `
         <li>${question.questionContent}</li>`
         }
       })
@@ -117,6 +118,7 @@ export default class AddQuestions {
     })
 
     document.querySelector("#list").innerHTML = listItem;
+    console.log(listItem)
   }
 
 }

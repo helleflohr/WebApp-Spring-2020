@@ -60,7 +60,8 @@ Navigation - menu
 
 }
 
-.nav-menu li a {
+.nav-menu li a,
+.nav-menu li {
     display: block;
     padding: 20px;
     text-decoration: none;
@@ -70,7 +71,9 @@ Navigation - menu
 }
 
 .nav-menu li a:hover,
+.nav-menu li:hover,
 .nav-menu .menu-btn:hover {
+    cursor: pointer;
     background-color: var(--menuHoverColor);
     color: var(--menuHoverFontColor);
 }
@@ -79,7 +82,7 @@ Navigation - menu
 /* menu */
 .nav-menu .menu {
     clear: both;
-    max-height: 0;
+    max-height: 0px;
     transition: max-height .2s ease-out;
 }
 
@@ -127,7 +130,7 @@ Navigation - menu
 }
 
 .nav-menu .menu-btn:checked~.menu {
-    max-height: 240px;
+    max-height: 540px;
 }
 
 .nav-menu .menu-btn:checked~.menu-icon .navicon {
