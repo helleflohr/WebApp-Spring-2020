@@ -6,8 +6,9 @@ class CreatePartyService {
 
     }
 
-    createParty() {
+    createParty(nextPage) {
         console.log(this.partyId)
+        navigateTo(nextPage);
         this.generateId();
         // this.generateId();
         let newParty = {
@@ -19,7 +20,7 @@ class CreatePartyService {
         console.log(this.partyId)
         this.partyRef.add(newParty);
         // return this.partyId;
-        this.theId();
+        // this.theId();
         console.log(this.partyId)
     }
 
@@ -32,10 +33,10 @@ class CreatePartyService {
 
     }
 
-    theId() {
-        console.log(this.partyId)
-        return this.partyId;
-    }
+    // theId() {
+    //     console.log(this.partyId)
+    //     return this.partyId;
+    // }
 
 
 }

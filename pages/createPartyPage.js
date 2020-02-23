@@ -14,7 +14,7 @@ export default class CreatePartyPage {
         <section class="collectionOfItems">
         <h2>Spilmester: opret gruppe</h2>
     
-        <button class="btn" name="settingsPage" onclick="navigateTo(this.name);createParty()">Få et gruppe ID</button>
+        <button class="btn" name="settingsPage" onclick="createParty(this.name)">Få et gruppe ID</button>
         </section>
         <section class="collectionOfItems">
         <h2>Spillere: Tilslut jer gruppen</h2>

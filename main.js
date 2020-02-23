@@ -49,5 +49,5 @@ window.createNewQuestion = () => addQuestions.createNewQuestion();
 window.navigateTo = (hash) => spaService.navigateTo(hash);
 window.addAnotherPlayer = () => addPlayersPage.addAnotherPlayer();
 window.joinParty = (hash) => joinPartyService.joinParty(hash);
-window.createParty = () => createPartyService.createParty();
+window.createParty = (hash) => createPartyService.createParty(hash);
 window.addPlayers = () => joinPartyService.addPlayers();
