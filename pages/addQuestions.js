@@ -87,7 +87,7 @@ export default class AddQuestions {
             if (myQuestions.game == game.id) {
               questionLi += /*html*/ `
            <li>
-                <label for="${myQuestions.id}">${myQuestions.questionContent}</label>
+                <label for="${myQuestions.id}"><bold>${game.gameTitle}</bold> ${myQuestions.questionContent}</label>
                 <input type="checkbox" id="${myQuestions.id}" name="${myQuestions.questionContent}" value="${myQuestions.id}">
            </li> `
             }
