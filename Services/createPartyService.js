@@ -43,27 +43,3 @@ class CreatePartyService {
 
 const createPartyService = new CreatePartyService();
 export default createPartyService;
-
-// createCategoryOptions() {
-//     this.categoryRef.onSnapshot(snapshotData => {
-//         snapshotData.forEach(doc => {
-
-//             let category = doc.data();
-//             category.id = doc.id;
-
-//             let categoriyCheckboxes = document.querySelector("#wichCategories");
-
-//             categoriyCheckboxes.innerHTML += /*html*/ `
-//             <input type="checkbox" id="${category.id}" name="${category.contentCategory}" value="${category.id}">
-//             <label for="${category.id}">${category.contentCategory}</label>
-
-//             <br>
-//             `
-
-//             // let listOfCategories = document.getElementById("wichCategories");
-
-//             // listOfCategories.add(new Option(category.contentCategory, category.id));
-//         });
-
-//     });
-// }

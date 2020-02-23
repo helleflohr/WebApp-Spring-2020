@@ -18,7 +18,7 @@ export default class AddPlayersPage {
         </div>
 
         <br>
-        <button class="btn" type="button" onclick="addAnotherPlayer()">+</button>
+        <button class="btn" type="button" onclick="addAnotherPlayer('playerInput')">+</button>
         <br>
        
         <button class="btn" type="button" name="addQuestions" onclick="navigateTo(this.name);addPlayers()">GOGOGO!</button>
@@ -27,7 +27,7 @@ export default class AddPlayersPage {
 
     }
 
-    addAnotherPlayer() {
+    addAnotherPlayer(whereToAdd) {
         // let listOfOtherPlayers = document.getElementById("playerInput");
 
         // listOfOtherPlayers.add(new Input());
@@ -37,6 +37,6 @@ export default class AddPlayersPage {
         x.setAttribute("type", "text");
         x.setAttribute("placeholder", "Skriv spillernavn");
         x.setAttribute("class", "inputfield myFriends")
-        document.querySelector('#playerInput').appendChild(x);
+        document.querySelector(`#${whereToAdd}`).appendChild(x);
     }
 }

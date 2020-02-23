@@ -1,7 +1,27 @@
 export default class GamePage {
     constructor() {
+        this.gameRef = _db.collection("games");
+        this.curGame = "";
+        this.curRule = "";
         this.template();
         this.showRules();
+    }
+
+    getData() {
+
+        // let inputField = document.querySelector('#joinPartyId');
+        this.gamesRef.onSnapshot(snapshotData => {
+            snapshotData.forEach(doc => {
+
+                let games = doc.data();
+                games.id = doc.id;
+
+                this.curGame = games.gameTitle;
+                this.curRule = games.rules;
+            })
+
+
+        })
     }
 
     template() {
@@ -19,10 +39,21 @@ export default class GamePage {
         <input id="add" class="hide" type="checkbox" onclick="showAdd()"><label id="addLabel" class="btn" for="add">+</label>
         
 
-        <section class="hide" id="rules"><h2>Regler for XXX</h2>
-        <p>Reglerne...</p></section>
-        <section class="hide" id="addSection"><h2>Tilføj Spillere</h2>
-        <p>Tilføj spillere...</p>
+        <section class="hide" id="rules"><h2>Regler for ${this.curGame}</h2>
+        <p>${this.curRule}</p></section>
+        
+        <section class="hide" id="addSection">
+        
+        <h2>Tilføj flere spillere</h2>
+        <div id="morePlayers">
+        <input type="text" placeholder="Skriv spillernavn" class="inputfield myFriends">
+        </div>
+
+        <br>
+        <button class="btn" type="button" onclick="addAnotherPlayer('morePlayers')">+</button>
+        <br>
+       
+        <button class="btn" type="button" onclick="addPlayers()">GOGOGO!</button>
         
         <h2>Tilføj Spørgsmål</h2>
         <p>Tilføj...</p>

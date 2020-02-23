@@ -43,12 +43,6 @@ class JoinPartyService {
 
         }
 
-        // document.querySelector('#playerInput').forEach() {
-        //     listOfPlayers.push(value)
-        // }
-
-        console.log(listOfPlayers)
-
         this.partyRef.doc(`${this.dbId}`).update({
 
             players: listOfPlayers

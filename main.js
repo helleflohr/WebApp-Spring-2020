@@ -47,7 +47,7 @@ window.pageChange = () => spaService.pageChange();
 window.createQuestion = () => addPredefinedPage.createQuestion();
 window.createNewQuestion = () => addQuestions.createNewQuestion();
 window.navigateTo = (hash) => spaService.navigateTo(hash);
-window.addAnotherPlayer = () => addPlayersPage.addAnotherPlayer();
+window.addAnotherPlayer = (whereToAdd) => addPlayersPage.addAnotherPlayer(whereToAdd);
 window.joinParty = (hash) => joinPartyService.joinParty(hash);
 window.createParty = (hash) => createPartyService.createParty(hash);
 window.addPlayers = () => joinPartyService.addPlayers();

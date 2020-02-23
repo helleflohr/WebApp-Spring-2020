@@ -59,9 +59,6 @@ export default class AddPredefinedPage {
                 <br>
                 `
 
-                // let listOfCategories = document.getElementById("wichCategories");
-
-                // listOfCategories.add(new Option(category.contentCategory, category.id));
             });
 
         });
