@@ -16,8 +16,12 @@
     --font_color_dark: #333;
 }
 
-#bold {
+.bold {
     font-weight: bold;
+}
+
+.notBold {
+    font-weight: 0;
 }
 
 html {

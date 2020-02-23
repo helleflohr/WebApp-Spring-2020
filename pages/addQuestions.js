@@ -3,13 +3,13 @@ import _categoryService from "./../services/categoryService.js"
 export default class AddQuestions {
   constructor() {
     this.questionRef = _db.collection("userQuestions");
-    this.categoryRef = _db.collection("categories");
     this.gameRef = _db.collection("games");
-    this.table = document.getElementById("tableBody");
+    this.questionLi = "";
 
     this.template();
     this.createGameOptions();
     this.createQuestionsList();
+
   }
 
   template() {
@@ -18,8 +18,8 @@ export default class AddQuestions {
         <form id="questionForm">
         <h2>Tilføj nye spørgsmål til spillet:</h2>
         <br><select id="select-game" name="games" required>
+        
         <br><h2>Skriv indholdet her:</h2>
-
         <br><input type="text" id="newQuestion" placeholder="Tilføj spil indhold her...." required>
         
         <br><button class="btn" type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
@@ -61,40 +61,76 @@ export default class AddQuestions {
   }
 
 
+  addGameTitle(game) {
+
+    this.questionLi += /*html*/ `
+    <li>${game.gameTitle}</li>`
+    console.log(this.questionLi);
+  }
+
   createQuestionsList() {
     let questionLi = "";
-    let gameTitles = "Hi";
-    this.questionRef.onSnapshot(snapshotData => {
+
+
+    this.gameRef.onSnapshot(snapshotData => {
       snapshotData.forEach(doc => {
-
-
-
-        let myQuestions = doc.data();
-        myQuestions.id = doc.id;
-
-
-        let theGameRef = _db.collection("games").doc(`${myQuestions.game}`);
-
-        theGameRef.get().then(function (docs) {
-          gameTitles = docs.data().gameTitle;
-
-          console.log(gameTitles)
-          return gameTitles;
-        })
-        console.log(gameTitles)
-
-
+        let game = doc.data();
+        game.id = doc.id;
         questionLi += /*html*/ `
-            <li>${gameTitles}<label for="${myQuestions.id}">${myQuestions.questionContent}</label> <input type="checkbox" id="${myQuestions.id}" name="${myQuestions.questionContent}" value="${myQuestions.id}"> </li>    
-            <br>
-            `
-        console.log(questionLi);
-      });
+      <li class="game bold">${game.gameTitle}</li>`
 
-      document.querySelector("#list").innerHTML = "";
-      document.querySelector("#list").innerHTML = questionLi
-    });
+        this.questionRef.onSnapshot(snapshotData => {
+          snapshotData.forEach(doc => {
+            let myQuestions = doc.data();
+            myQuestions.id = doc.id;
+            console.log(myQuestions);
+            if (myQuestions.game == game.id) {
+              questionLi += /*html*/ `
+           <li>
+                <label for="${myQuestions.id}">${myQuestions.questionContent}</label>
+                <input type="checkbox" id="${myQuestions.id}" name="${myQuestions.questionContent}" value="${myQuestions.id}">
+           </li> `
+            }
+          })
+          document.querySelector(".game").innerHTML = questionLi
+        })
+        document.querySelector("#list").innerHTML = questionLi
+      })
+    })
   }
 
 
+
+  // createQuestionsList() {
+  //   let questionLi = "";
+  //   let gameTitles = "Hi5 ";
+  //   this.questionRef.onSnapshot(snapshotData => {
+  //     snapshotData.forEach(doc => {
+
+
+  //       let myQuestions = doc.data();
+  //       myQuestions.id = doc.id;
+
+
+  //       let theGameRef = _db.collection("games").doc(`${myQuestions.game}`);
+
+  //       theGameRef.get().then(function (docs) {
+  //         gameTitles = docs.data().gameTitle;
+
+  //         console.log(gameTitles)
+  //         return gameTitles;
+  //       })
+  //       console.log(gameTitles)
+
+  //       questionLi += /*html*/ `
+  //           <li>${gameTitles}<label for="${myQuestions.id}">${myQuestions.questionContent}</label> <input type="checkbox" id="${myQuestions.id}" name="${myQuestions.questionContent}" value="${myQuestions.id}"> </li>    
+  //           <br>
+  //           `
+  //       console.log(questionLi);
+  //     });
+
+
+  //     document.querySelector("#list").innerHTML = questionLi
+  //   });
+  // }
 }
