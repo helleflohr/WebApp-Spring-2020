@@ -5,14 +5,15 @@ export default class AddQuestions {
     this.questionRef = _db.collection("userQuestions");
     this.gameRef = _db.collection("games");
 
-    this.games = this.arrayGames();
-    this.questions = this.arrayQuestions();
+    this.games = [];
+    this.questions = [];
+    this.fetchGames();
 
     this.template();
     this.createGameOptions();
-    //this.createQuestionsList(games, questions);
-    this.createQuestionsList();
+
   }
+
 
   // Template over the page, that adds a dropdown menu with all the different games.
   // Underneath there is a input field where the user can add his or her own questions til the game.
@@ -39,6 +40,7 @@ export default class AddQuestions {
     `;
   }
 
+
   // This function creates the new question by taking the information from the dropdown menu over games, 
   // and linking it with the value in the input field.
   createNewQuestion() {
@@ -50,8 +52,9 @@ export default class AddQuestions {
       questionContent: questionInput.value
     }
     this.questionRef.add(newUserQuestion);
-    this.createQuestionsList();
-    document.querySelector("#newQuestion").reset();
+
+    this.fetchGames();
+    document.querySelector("#newQuestion").value = "";
   }
 
 
@@ -71,45 +74,45 @@ export default class AddQuestions {
   }
 
 
-  // This function creates an array 
-
-
-  arrayGames() {
-    let arrayGames = [];
+  // This function creates an empty array. It pushes a new object to the array, for each new game id. 
+  fetchGames() {
+    this.games = [];
     this.gameRef.get().then(snapshotData => {
       snapshotData.forEach(doc => {
         let game = doc.data();
         game.id = doc.id;
-        arrayGames.push(game);
+        this.games.push(game);
       })
+      this.fetchQuestions();
     })
-    return arrayGames;
+
   }
 
-  arrayQuestions() {
-    let arrayQuestions = [];
+
+  // This function creates an empty array. It pushes a new object to the array, for each new question id. 
+  fetchQuestions() {
+    this.questions = [];
     this.questionRef.get().then(snapshotData => {
       snapshotData.forEach(doc => {
         let question = doc.data();
         question.id = doc.id;
-        arrayQuestions.push(question);
+        this.questions.push(question);
       })
+      this.createQuestionsList();
     })
-    return arrayQuestions;
   }
 
+
+  // This function creates a list of all the games, and puts in all the questions, where the value of 
+  // question.game is equeal to game.id. There by sorting the questions by games.
   createQuestionsList() {
     let listItem = "";
-
-    console.log(this.games);
-    console.log(this.questions);
-
     this.games.forEach(game => {
       listItem += /*html*/ `
-      <li>${game.gameTitle}</li>`
+      <li class="bold">${game.gameTitle}</li>`
       this.questions.forEach(question => {
         if (question.game == game.id) {
-          listitem += /*html*/ `
+          listItem += /*html*/ `
         <li>${question.questionContent}</li>`
         }
       })
@@ -120,36 +123,3 @@ export default class AddQuestions {
   }
 
 }
-
-
-// createQuestionsList() {
-//   let questionLi = "";
-
-//   this.gameRef.get().then(snapshotData => {
-//     snapshotData.forEach(doc => {
-//       let game = doc.data();
-//       game.id = doc.id;
-//       questionLi += /*html*/ `
-//     <li class="game bold">${game.gameTitle}</li>`
-
-//       this.questionRef.get().then(snapshotData => {
-//         snapshotData.forEach(doc => {
-//           let myQuestions = doc.data();
-//           myQuestions.id = doc.id;
-//           // console.log(myQuestions);
-//           if (myQuestions.game == game.id) {
-//             questionLi += /*html*/ `
-//          <li>
-//               <label for="${myQuestions.id}">${game.gameTitle} ${myQuestions.questionContent}</label>
-//               <input type="checkbox" id="${myQuestions.id}" name="${myQuestions.questionContent}" value="${myQuestions.id}">
-//          </li> `
-//           }
-//         })
-//         document.querySelector("#list").innerHTML = questionLi
-//       })
-
-
-//       // HEJ HELLE, jeg har ændret i label... skrev game.gameTitle ind i tagget.
-//     })
-//   })
-// }
