@@ -87,7 +87,7 @@ export default class AddQuestions {
             if (myQuestions.game == game.id) {
               questionLi += /*html*/ `
            <li>
-                <label for="${myQuestions.id}"><bold>${game.gameTitle}</bold> ${myQuestions.questionContent}</label>
+                <label for="${myQuestions.id}">${game.gameTitle} ${myQuestions.questionContent}</label>
                 <input type="checkbox" id="${myQuestions.id}" name="${myQuestions.questionContent}" value="${myQuestions.id}">
            </li> `
             }
@@ -95,6 +95,8 @@ export default class AddQuestions {
           document.querySelector(".game").innerHTML = questionLi
         })
         document.querySelector("#list").innerHTML = questionLi
+
+        // HEJ HELLE, jeg har ændret i label... skrev game.gameTitle ind i tagget.
       })
     })
   }
