@@ -1,14 +1,19 @@
+import createPartyService from "./../services/createPartyService.js"
+
 export default class SettingsPage {
   constructor() {
     this.template();
     this.slider();
+    // this.createPartyService = createPartyService;
+
   }
 
   template() {
+    console.log(createPartyService)
     document.querySelector('#content').innerHTML += /*html*/ `
         <section id="settingsPage" class="page flexcontainer">
 
-				  <input type="text" id="myText" value="Gruppe id:">
+				  <input type="text" id="myText" value="${createPartyService.theId()}">
 
 
 

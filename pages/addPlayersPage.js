@@ -10,16 +10,18 @@ export default class AddPlayersPage {
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="addPlayers" class="page">
         <h2>Tilføj dig selv</h2>
-        <input type="text" placeholder="Skriv dit spillernavn" class="inputfield">
+        <input id="myName" type="text" placeholder="Skriv dit spillernavn" class="inputfield">
+
         <h2>Tilføj spillere uden mobil</h2>
         <div id="playerInput">
-        <input type="text" placeholder="Skriv spillernavn" class="inputfield">
+        <input type="text" placeholder="Skriv spillernavn" class="inputfield myFriends">
         </div>
+
         <br>
         <button class="btn" type="button" onclick="addAnotherPlayer()">+</button>
         <br>
        
-        <button class="btn" type="button" name="addQuestions" onclick="navigateTo(this.name)">GOGOGO!</button>
+        <button class="btn" type="button" name="addQuestions" onclick="navigateTo(this.name);addPlayers()">GOGOGO!</button>
         </article>
         `;
 
@@ -33,9 +35,8 @@ export default class AddPlayersPage {
 
         let x = document.createElement("INPUT");
         x.setAttribute("type", "text");
-        x.setAttribute("value", "");
         x.setAttribute("placeholder", "Skriv spillernavn");
-        x.setAttribute("class", "inputfield")
+        x.setAttribute("class", "inputfield myFriends")
         document.querySelector('#playerInput').appendChild(x);
     }
 }

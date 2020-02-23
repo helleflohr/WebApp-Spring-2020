@@ -83,7 +83,7 @@ export default class AddQuestions {
           snapshotData.forEach(doc => {
             let myQuestions = doc.data();
             myQuestions.id = doc.id;
-            console.log(myQuestions);
+            // console.log(myQuestions);
             if (myQuestions.game == game.id) {
               questionLi += /*html*/ `
            <li>
