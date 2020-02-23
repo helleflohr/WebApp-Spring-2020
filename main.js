@@ -13,6 +13,8 @@ import GamePage from "./pages/gamePage.js"
 import spaService from "./services/spa.js"
 import _categoryService from "./services/categoryService.js"
 import authService from "./services/loginService.js";
+import createPartyService from "./../services/createPartyService.js"
+import joinPartyService from "./../services/joinPartyService.js"
 
 
 
@@ -45,4 +47,7 @@ window.pageChange = () => spaService.pageChange();
 window.createQuestion = () => addPredefinedPage.createQuestion();
 window.createNewQuestion = () => addQuestions.createNewQuestion();
 window.navigateTo = (hash) => spaService.navigateTo(hash);
-window.addAnotherPlayer = () => addPlayersPage.addAnotherPlayer()
+window.addAnotherPlayer = () => addPlayersPage.addAnotherPlayer();
+window.joinParty = (hash) => joinPartyService.joinParty(hash);
+window.createParty = (hash) => createPartyService.createParty(hash);
+window.addPlayers = () => joinPartyService.addPlayers();
