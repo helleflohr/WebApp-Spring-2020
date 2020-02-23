@@ -5,12 +5,13 @@ export default class AddQuestions {
     this.questionRef = _db.collection("userQuestions");
     this.gameRef = _db.collection("games");
 
-    let games = this.arrayGames();
-    let questions = this.arrayQuestions();
+    this.games = this.arrayGames();
+    this.questions = this.arrayQuestions();
 
     this.template();
     this.createGameOptions();
-    this.createQuestionsList(games, questions);
+    //this.createQuestionsList(games, questions);
+    this.createQuestionsList();
   }
 
   // Template over the page, that adds a dropdown menu with all the different games.
@@ -80,7 +81,6 @@ export default class AddQuestions {
         let game = doc.data();
         game.id = doc.id;
         arrayGames.push(game);
-
       })
     })
     return arrayGames;
@@ -98,21 +98,19 @@ export default class AddQuestions {
     return arrayQuestions;
   }
 
-  createQuestionsList(games, questions) {
+  createQuestionsList() {
     let listItem = "";
 
-    console.log(games);
-    console.log(questions);
-    console.log(typeof (games));
-    games.isArray();
+    console.log(this.games);
+    console.log(this.questions);
 
-    games.forEach(game => {
+    this.games.forEach(game => {
       listItem += /*html*/ `
       <li>${game.gameTitle}</li>`
-      questions.forEach(question => {
+      this.questions.forEach(question => {
         if (question.game == game.id) {
           listitem += /*html*/ `
-        <li>${question.content}</li>`
+        <li>${question.questionContent}</li>`
         }
       })
 
@@ -120,7 +118,6 @@ export default class AddQuestions {
 
     document.querySelector("#list").innerHTML = listItem;
   }
-
 
 }
 
