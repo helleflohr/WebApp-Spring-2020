@@ -1,3 +1,4 @@
+// Helle
 import _categoryService from "./../services/categoryService.js"
 
 export default class AddQuestions {
@@ -26,17 +27,17 @@ export default class AddQuestions {
     <section id="addQuestions" class="page">
         <form id="questionForm">
         <h2>Tilføj nye spørgsmål til spillet:</h2>
-        <br><select id="select-game" name="games" required>
+        <select id="select-game" name="games" required>
         
-        <br><h2>Skriv indholdet her:</h2>
-        <br><input type="text" id="newQuestion" placeholder="Tilføj spil indhold her...." required>
+        <h2>Skriv indholdet her:</h2>
+        <input type="text" id="newQuestion" placeholder="Tilføj spil indhold her...." required>
         
-        <br><button class="btn" type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
+        <button class="btn" type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
       </form>
       <article id="appendUserQuestions">
       <h2>Liste over indhold</h2>
-      <ul id="list">
-      </ul>
+      <div id="list">
+      </div>
     </article>
     <button class="btn" name="playersReady" onclick="navigateTo(this.name);addContentToPartyArr()"> Videre </button>
     </section>
@@ -66,7 +67,7 @@ export default class AddQuestions {
   // This function creates the dropdown menu over games, by taking every new game id, and adding the game 
   // title to the menu. gameRef refers back to the constructor, therefore the this.
   createGameOptions() {
-    this.gameRef.onSnapshot(snapshotData => {
+    this.gameRef.get().then(snapshotData => {
       snapshotData.forEach(doc => {
         let game = doc.data();
         game.id = doc.id;
@@ -114,18 +115,19 @@ export default class AddQuestions {
     let listItem = "";
     this.games.forEach(game => {
       listItem += /*html*/ `
-      <li class="bold">${game.gameTitle}</li>`
+      <h3 class="bold">${game.gameTitle}</h3>`
       this.questions.forEach(question => {
         if (question.game == game.id) {
           listItem += /*html*/ `
-        <li>${question.questionContent}</li>`
+        
+        <input class="checkbox" type="checkbox" id="${question.id}" name="${question.questionContent}" value="${question.id}" onclick="checkbox(this.id)">
+        <label class="label checkboxNotCheked" for="${question.id}">${question.questionContent}</label>
+        `
         }
       })
-
     })
 
     document.querySelector("#list").innerHTML = listItem;
-    console.log(listItem)
   }
 
   addContentToPartyArr() {
@@ -136,6 +138,16 @@ export default class AddQuestions {
       questions: this.partyContentArray
 
     })
+  }
+  checkbox(id) {
+    let checkBox = document.querySelector(`#${id}`);
+    if (checkBox.checked == true) {
+      document.querySelector(`[for=${id}]`).classList.add('checkboxChecked')
+
+    } else {
+
+      document.querySelector(`[for=${id}]`).classList.remove('checkboxChecked')
+    }
   }
 
 }

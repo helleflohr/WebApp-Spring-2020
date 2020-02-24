@@ -49,3 +49,4 @@ window.showRules = () => gamePage.showRules();
 window.showAdd = () => gamePage.showAdd();
 window.logout = () => authService.logout();
 window.addContentToPartyArr = () => addQuestions.addContentToPartyArr();
+window.checkbox = (id) => addQuestions.checkbox(id);
