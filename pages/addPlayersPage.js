@@ -8,10 +8,7 @@ export default class AddPlayersPage {
     template() {
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="addPlayers" class="page">
-        <h2>Tilføj dig selv</h2>
-        <input id="myName" type="text" placeholder="Skriv dit spillernavn" class="inputfield">
-
-        <h2>Tilføj spillere uden mobil</h2>
+        <h2>Tilføj spillere</h2>
         <div id="playerInput">
         <input type="text" placeholder="Skriv spillernavn" class="inputfield myFriends">
         </div>
@@ -24,6 +21,10 @@ export default class AddPlayersPage {
         </article>
         `;
     }
+    // Gemmes til senere!
+    // 
+    // <h2>Tilføj dig selv</h2>
+    // <input id="myName" type="text" placeholder="Skriv dit spillernavn" class="inputfield">
 
     // Creates a new inputfild for more players
     addAnotherPlayer(whereToAdd) {

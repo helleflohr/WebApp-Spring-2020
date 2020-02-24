@@ -16,7 +16,7 @@ export default class CreatePartyPage {
         </section>
         <section class="collectionOfItems">
         <h2>Spillere: Tilslut jer gruppen</h2>
-        <input id="joinPartyId" type="text" placeholder="Indtast gruppeID">
+        <input class="inputfield" id="joinPartyId" type="text" placeholder="Indtast gruppeID">
         <br>
         <button class="btn" type="button" name="addPlayers" onclick="joinParty(this.name)">GOGOGO!</button>
         </section>

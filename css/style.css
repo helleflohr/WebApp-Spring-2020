@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url('Raleway-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* css variables */
 :root {
     /* Color */
@@ -11,15 +18,22 @@
     --border_dark: 5px solid #80265D;
     --border_radius: 25px;
     --border_radius_square: 5px;
-    --standardWidth: 85%;
-    --font-family: 'Myriad Pro', Arial, sans-serif;
+    --standardWidth: 75%;
+    --font-family: 'Raleway', Arial, sans-serif;
+    --secundary_font: 'Myriad Pro', Arial, sans-serif;
     --font_color_light: #EA81C1;
     --font_color_dark: #333;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: bold;
 }
 
 .bold {
     font-weight: bold;
     margin-top: 1em;
+    color: var(--menuHoverFontColor);
 }
 
 .notBold {
@@ -37,6 +51,7 @@ html {
     text-align: center;
     width: 100%;
     font-weight: 200;
+    overflow: hidden;
 }
 
 .flexcontainer {
@@ -167,8 +182,9 @@ Buttons
     color: var(--menuFontColor);
     width: auto;
     margin: 1.5em auto 1em;
-    height: 51px;
+    height: auto;
     font-size: 1.5em;
+    padding: .5em 1em;
 
     cursor: pointer;
 }
@@ -181,6 +197,18 @@ Buttons
     border-radius: var(--border_radius);
     cursor: pointer;
     margin: 2em auto;
+}
+
+#home {
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 25%;
+}
+
+#warning {
+    opacity: 80%;
+    width: var(--standardWidth);
 }
 
 
@@ -215,6 +243,22 @@ Buttons
         transform: rotate(360deg);
     }
 }
+
+/* ________________________________________________________________________________________
+Input fields and select boxes
+-----------------------------------------------------------------------------------------*/
+.inputfield {
+    width: var(--standardWidth);
+    padding: 1em;
+    margin: .5em auto;
+    display: block;
+    background: var(--secundary_color_dark);
+    color: var(--menuFontColor);
+    border-radius: var(--border_radius_square);
+    border: var(--border_dark);
+    font-size: 1.5em;
+}
+
 
 /* ---------- loader styling ---------- */
 #loader {
@@ -459,20 +503,4 @@ Checkbox
     width: var(--standardWidth);
     margin: 0 auto;
 
-}
-
-/* ________________________________________________________________________________________
-Input fields and select boxes
------------------------------------------------------------------------------------------*/
-input,
-select {
-    width: var(--standardWidth);
-    padding: 1em;
-    margin: 1em auto;
-    display: block;
-    background: var(--secundary_color_dark);
-    color: var(--menuFontColor);
-    border-radius: var(--border_radius_square);
-    border: var(--border_dark);
-    font-size: 1.5em;
 }

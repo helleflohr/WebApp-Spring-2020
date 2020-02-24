@@ -27,10 +27,10 @@ export default class AddQuestions {
     <section id="addQuestions" class="page">
         <form id="questionForm">
         <h2>Tilføj nye spørgsmål til spillet:</h2>
-        <select id="select-game" name="games" required>
+        <select class="inputfield" id="select-game" name="games" placeholder="Vælg spil..." required>
         
         <h2>Skriv indholdet her:</h2>
-        <input type="text" id="newQuestion" placeholder="Tilføj spil indhold her...." required>
+        <input class="inputfield" type="text" id="newQuestion" placeholder="Tilføj spil indhold her...." required>
         
         <button class="btn" type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
       </form>
@@ -39,7 +39,7 @@ export default class AddQuestions {
       <div id="list">
       </div>
     </article>
-    <button class="btn" name="playersReady" onclick="navigateTo(this.name);addContentToPartyArr()"> Videre </button>
+    <button class="btn" name="gamePage" onclick="navigateTo(this.name);addContentToPartyArr()"> Tilføj spørgsmål og gå videre </button>
     </section>
     `;
   }

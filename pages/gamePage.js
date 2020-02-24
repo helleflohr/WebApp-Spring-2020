@@ -9,7 +9,7 @@ export default class GamePage {
 
     getData() {
         // let inputField = document.querySelector('#joinPartyId');
-        this.gamesRef.onSnapshot(snapshotData => {
+        this.gamesRef.get().then(snapshotData => {
             snapshotData.forEach(doc => {
 
                 let games = doc.data();
