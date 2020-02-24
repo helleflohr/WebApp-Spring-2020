@@ -1,14 +1,26 @@
+import createPartyService from "./../services/createPartyService.js"
+
 export default class SettingsPage {
   constructor() {
+    this.getThePartyId();
     this.template();
-		this.slider();
+    this.slider();
+    // this.createPartyService = createPartyService;
+    this.partyId = "";
+
+  }
+
+  getThePartyId() {
+    this.partyId = createPartyService.partyId;
+    console.log(createPartyService.partyId)
   }
 
   template() {
+    console.log(createPartyService)
     document.querySelector('#content').innerHTML += /*html*/ `
         <section id="settingsPage" class="page flexcontainer">
 
-				  <input type="text" id="myText" value="Gruppe id:">
+				  <input type="text" id="myText" value="${this.partyId}">
 
 
 
@@ -25,21 +37,22 @@ export default class SettingsPage {
 				  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
 						<br>
 				  <p>Value: <span id="demo"></span></p>
-						<br>
+            <br>
+            <button class="btn" type="button" name="addPlayers" onclick="navigateTo(this.name)">Klar!</button>
 
 				</div>
         </section>`
   }
 
-slider() {
-	let slider = document.getElementById("myRange");
-	let output = document.getElementById("demo");
-	output.innerHTML = slider.value;
+  slider() {
+    let slider = document.getElementById("myRange");
+    let output = document.getElementById("demo");
+    output.innerHTML = slider.value;
 
-	slider.oninput = function() {
-		output.innerHTML = this.value;
-	}
-}
+    slider.oninput = function () {
+      output.innerHTML = this.value;
+    }
+  }
 
   myFunction() {
     var x = document.getElementById("myText").value;
@@ -58,9 +71,10 @@ slider() {
 
   }
 
-  function uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+  uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0,
+        v = c == 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);
     });
   }

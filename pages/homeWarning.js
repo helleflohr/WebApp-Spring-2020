@@ -4,9 +4,8 @@ export default class HomeWarningPage {
 
     }
 
+    // HTML-template for the home "page" with the warning
     template() {
-
-
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="home" class="page" >
         <button class="collectionOfItems btn" name="createPartyPage" onclick="navigateTo(this.name)">
@@ -15,6 +14,5 @@ export default class HomeWarningPage {
          </button>
         </article>
         `;
-
     }
 }
