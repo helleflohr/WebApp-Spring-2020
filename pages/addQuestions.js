@@ -55,7 +55,7 @@ export default class AddQuestions {
       game: gameInput.value,
       questionContent: questionInput.value
     }
-    this.questionRef.add(newUserQuestion);
+    // this.questionRef.add(newUserQuestion);
 
     this.partyContentArray.push(newUserQuestion)
 

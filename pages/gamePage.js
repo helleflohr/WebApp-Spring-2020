@@ -33,8 +33,8 @@ export default class GamePage {
         <p>Import Gamename</p>
         <p>Import Gamecontent</p>
 
-        <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn" for="info">i</label>
-        <input id="add" class="hide" type="checkbox" onclick="showAdd()"><label id="addLabel" class="btn" for="add">+</label>
+        <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn inputfield" for="info">i</label>
+        <input id="add" class="hide" type="checkbox" onclick="showAdd()"><label id="addLabel" class="btn inputfield" for="add">+</label>
         
 
         <section class="hide" id="rules"><h2>Regler for ${this.curGame}</h2>
@@ -44,7 +44,7 @@ export default class GamePage {
         
         <h2>Tilføj flere spillere</h2>
         <div id="morePlayers">
-        <input type="text" placeholder="Skriv spillernavn" class="inputfield myFriends">
+        <input type="text" placeholder="Skriv spillernavn" class="inputfield moreFriends">
         </div>
 
         <br>

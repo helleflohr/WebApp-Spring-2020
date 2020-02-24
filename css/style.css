@@ -40,6 +40,7 @@ h2 {
     font-weight: 0;
 }
 
+
 html {
     color: var(--font_color_dark);
     background-color: var(--background);
@@ -54,10 +55,15 @@ html {
     overflow: hidden;
 }
 
+
+h1 {font-size: 17em;}
+
 .flexcontainer {
     display: flex;
     flex-wrap: wrap;
 }
+
+b{font-weight:bold;}
 
 /* ________________________________________________________________________________________
 Navigation - menu
