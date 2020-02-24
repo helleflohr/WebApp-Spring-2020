@@ -54,7 +54,7 @@ export default class AddQuestions {
       game: gameInput.value,
       questionContent: questionInput.value
     }
-    this.questionRef.add(newUserQuestion);
+    // this.questionRef.add(newUserQuestion);
 
     this.partyContentArray.push(newUserQuestion)
 
@@ -66,7 +66,7 @@ export default class AddQuestions {
   // This function creates the dropdown menu over games, by taking every new game id, and adding the game 
   // title to the menu. gameRef refers back to the constructor, therefore the this.
   createGameOptions() {
-    this.gameRef.onSnapshot(snapshotData => {
+    this.gameRef.get().then(snapshotData => {
       snapshotData.forEach(doc => {
         let game = doc.data();
         game.id = doc.id;
@@ -125,7 +125,7 @@ export default class AddQuestions {
     })
 
     document.querySelector("#list").innerHTML = listItem;
-    console.log(listItem)
+    // console.log(listItem)
   }
 
   addContentToPartyArr() {
@@ -137,5 +137,6 @@ export default class AddQuestions {
 
     })
   }
+
 
 }

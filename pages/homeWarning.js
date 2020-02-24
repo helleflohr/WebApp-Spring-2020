@@ -9,8 +9,9 @@ export default class HomeWarningPage {
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="home" class="page" >
         <button class="collectionOfItems btn" name="createPartyPage" onclick="navigateTo(this.name)">
-     <h1>Drik ansvarligt gutter</h1>
-         Husk at drikke vand, for det er jer der skal passe på jer selv
+     Drik ansvarligt folkens!
+     <b class="bold">Mor er her ikke</b> til at sige I skal huske at drikke vand, så ved brug af dette spil, accepterer du at brug af spillet foregår under eget ansvar.
+    
          </button>
         </article>
         `;

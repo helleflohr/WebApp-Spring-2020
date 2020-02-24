@@ -20,9 +20,11 @@ export default class AddPlayersPage {
         <button class="btn" type="button" onclick="addAnotherPlayer('playerInput')">+</button>
         <br>
        
-        <button class="btn" type="button" name="addQuestions" onclick="navigateTo(this.name);addPlayers()">GOGOGO!</button>
+        <button class="btn" type="button" name="addQuestions" onclick="addPlayers()">GOGOGO!</button>
         </article>
         `;
+
+        // Til senere brug On gogo ;getThePartyId()
     }
 
     // Creates a new inputfild for more players
