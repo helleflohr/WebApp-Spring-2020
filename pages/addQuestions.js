@@ -45,11 +45,9 @@ export default class AddQuestions {
       <article id="appendUserQuestions">
       <h2>Liste over indhold</h2>
       <ul id="list">
-      
       </ul>
-      
-  
     </article>
+    <button class="btn" name="playersReady" onclick="navigateTo(this.name)"> Videre </button>
     </section>
     
     `;

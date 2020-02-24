@@ -14,7 +14,7 @@ export default class YouAreReadyPage {
         <p>Du og X andre er klar :)</p>
         
         <br>
-             <button class="btn" type="button" name="addPlayers" onclick="navigateTo(this.name)">
+             <button class="btn" type="button" name="addQuestions" onclick="navigateTo(this.name)">
              Nej vent, jeg har et spørgsmål mere!</button>
         </article>
         `;
