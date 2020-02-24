@@ -21,10 +21,10 @@ export default class AddPredefinedPage {
         <div name="" id="wichCategories">
         </div>
         <br>
-        <select name="whichGame" id="whichGame">
+        <select name="whichGame" id="whichGame" class="inputfield">
         </select>
         <br>
-        <input type="text" id="newPreQuestion">
+        <input type="text" id="newPreQuestion" class="inputfield">
         <br>
         <button class="btn" type="button" onclick='createQuestion()'>Tilføj spørgsmål til databasen</button>
         </article>
@@ -34,7 +34,7 @@ export default class AddPredefinedPage {
 
     // Get options from the database for the category-selectbox
     createCategoryOptions() {
-        this.categoryRef.onSnapshot(snapshotData => {
+        this.categoryRef.get().then(snapshotData => {
             snapshotData.forEach(doc => {
 
                 let category = doc.data();
@@ -42,7 +42,7 @@ export default class AddPredefinedPage {
 
                 let categoriyCheckboxes = document.querySelector("#wichCategories");
                 categoriyCheckboxes.innerHTML += /*html*/ `
-                <input type="checkbox" id="${category.id}" name="${category.contentCategory}" value="${category.id}">
+                <input type="checkbox" id="${category.id}" name="${category.contentCategory}" class="inputfield" value="${category.id}">
                 <label for="${category.id}">${category.contentCategory}</label>
                
                 </article>
@@ -53,7 +53,7 @@ export default class AddPredefinedPage {
 
     // Get options from the database for the games-selectbox
     createGameOptions() {
-        this.gameRef.onSnapshot(snapshotData => {
+        this.gameRef.get().then(snapshotData => {
             snapshotData.forEach(doc => {
                 let game = doc.data();
                 game.id = doc.id;

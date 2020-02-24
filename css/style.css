@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url('Raleway-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* css variables */
 :root {
     /* Color */
@@ -11,20 +18,28 @@
     --border_dark: 5px solid #80265D;
     --border_radius: 25px;
     --border_radius_square: 5px;
-    --standardWidth: 85%;
-    --font-family: 'Myriad Pro', Arial, sans-serif;
+    --standardWidth: 75%;
+    --font-family: 'Raleway', Arial, sans-serif;
+    --secundary_font: 'Myriad Pro', Arial, sans-serif;
     --font_color_light: #EA81C1;
     --font_color_dark: #333;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: bold;
 }
 
 .bold {
     font-weight: bold;
     margin-top: 1em;
+    color: var(--menuHoverFontColor);
 }
 
 .notBold {
     font-weight: 0;
 }
+
 
 html {
     color: var(--font_color_dark);
@@ -37,12 +52,18 @@ html {
     text-align: center;
     width: 100%;
     font-weight: 200;
+    overflow: hidden;
 }
+
+
+h1 {font-size: 17em;}
 
 .flexcontainer {
     display: flex;
     flex-wrap: wrap;
 }
+
+b{font-weight:bold;}
 
 /* ________________________________________________________________________________________
 Navigation - menu
@@ -167,6 +188,9 @@ Buttons
     color: var(--menuFontColor);
     width: auto;
     margin: 1.5em auto 1em;
+    height: auto;
+    font-size: 1.5em;
+    padding: .5em 1em;
 
     cursor: pointer;
 }
@@ -181,18 +205,16 @@ Buttons
     margin: 2em auto;
 }
 
-
-
-input,
-select {
+#home {
     display: block;
-    margin: 0 auto;
-    background: var(--secundary_color_dark);
-    width: 200px;
-    color: var(--menuFontColor);
-    border-radius: var(--border_radius_square);
-    border: var(--border_dark);
+    margin: auto;
+    position: absolute;
+    top: 25%;
+}
 
+#warning {
+    opacity: 80%;
+    width: var(--standardWidth);
 }
 
 
@@ -227,6 +249,22 @@ select {
         transform: rotate(360deg);
     }
 }
+
+/* ________________________________________________________________________________________
+Input fields and select boxes
+-----------------------------------------------------------------------------------------*/
+.inputfield {
+    width: var(--standardWidth);
+    padding: 1em;
+    margin: .5em auto;
+    display: block;
+    background: var(--secundary_color_dark);
+    color: var(--menuFontColor);
+    border-radius: var(--border_radius_square);
+    border: var(--border_dark);
+    font-size: 1.5em;
+}
+
 
 /* ---------- loader styling ---------- */
 #loader {
@@ -434,4 +472,41 @@ body {
     border: 0;
     background: url('contrasticon.png');
     cursor: pointer;
+}
+
+
+/* ________________________________________________________________________________________
+Checkbox
+-----------------------------------------------------------------------------------------*/
+
+.label {
+    display: block;
+}
+
+.checkbox {
+    display: none;
+}
+
+.checkboxNotCheked {
+    box-shadow: 0px 10px 14px -7px #276873;
+    background: var(--font_color_light);
+    border: 1px solid #cacece;
+    color: #ffffff;
+    padding: 1.2em .3em;
+    border-radius: var(--border_radius_square);
+    display: block;
+    width: var(--standardWidth);
+    margin: 0 auto;
+
+}
+
+
+.checkboxChecked {
+    box-shadow: 0px 10px 14px -7px #276873;
+    background: #7ab6ca;
+    border: 1px solid #cacece;
+    border-radius: var(--border_radius_square);
+    width: var(--standardWidth);
+    margin: 0 auto;
+
 }

@@ -8,10 +8,7 @@ export default class AddPlayersPage {
     template() {
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="addPlayers" class="page">
-        <h2>Tilføj dig selv</h2>
-        <input id="myName" type="text" placeholder="Skriv dit spillernavn" class="inputfield">
-
-        <h2>Tilføj spillere uden mobil</h2>
+        <h2>Tilføj spillere</h2>
         <div id="playerInput">
         <input type="text" placeholder="Skriv spillernavn" class="inputfield myFriends">
         </div>
@@ -20,10 +17,16 @@ export default class AddPlayersPage {
         <button class="btn" type="button" onclick="addAnotherPlayer('playerInput')">+</button>
         <br>
        
-        <button class="btn" type="button" name="addQuestions" onclick="navigateTo(this.name);addPlayers()">GOGOGO!</button>
+        <button class="btn" type="button" name="addQuestions" onclick="addPlayers()">GOGOGO!</button>
         </article>
         `;
+
+        // Til senere brug On gogo ;getThePartyId()
     }
+    // Gemmes til senere!
+    // 
+    // <h2>Tilføj dig selv</h2>
+    // <input id="myName" type="text" placeholder="Skriv dit spillernavn" class="inputfield">
 
     // Creates a new inputfild for more players
     addAnotherPlayer(whereToAdd) {

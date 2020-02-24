@@ -2,17 +2,18 @@ import createPartyService from "./../services/createPartyService.js"
 
 export default class SettingsPage {
   constructor() {
-    this.getThePartyId();
+    // this.getThePartyId();
     this.template();
     this.slider();
     // this.createPartyService = createPartyService;
-    this.partyId = "";
+    // this.partyId = "";
 
   }
 
   getThePartyId() {
     this.partyId = createPartyService.partyId;
     console.log(createPartyService.partyId)
+    document.querySelector('#myText').value = this.partyId;
   }
 
   template() {
@@ -38,7 +39,7 @@ export default class SettingsPage {
 						<br>
 				  <p>Value: <span id="demo"></span></p>
             <br>
-            <button class="btn" type="button" name="addPlayers" onclick="navigateTo(this.name)">Klar!</button>
+            <button class="btn" type="button" name="addPlayers" onclick="navigateTo(this.name);getThePartyId()">Klar!</button>
 
 				</div>
         </section>`
