@@ -35,12 +35,12 @@ spaService.init();
 
 // Currently not in use
 _categoryService.read();
-loginPage.template();
+
 
 // onclick handlers
 window.pageChange = () => spaService.pageChange();
 window.createQuestion = () => addPredefinedPage.createQuestion();
-window.checkedCategory = (id) => addPredefinedPage.checkedOrNot(id)
+// window.checkedCategory = (id) => addPredefinedPage.checkedOrNot(id)
 window.createNewQuestion = () => addQuestions.createNewQuestion();
 window.navigateTo = (hash) => spaService.navigateTo(hash);
 window.addAnotherPlayer = (whereToAdd) => addPlayersPage.addAnotherPlayer(whereToAdd);
@@ -53,6 +53,6 @@ window.logout = () => authService.logout();
 window.addContentToPartyArr = () => addQuestions.addContentToPartyArr();
 window.checkbox = (id, question) => addQuestions.checkbox(id, question);
 window.getThePartyId = () => settingsPage.getThePartyId();
-window.basket = () => addQuestions.basket();
-window.createAddedQuestionsList = () => addQuestions.createAddedQuestionsList();
-window.highlightNumber = () => addQuestions.highlightNumber();
+window.basket = () => addQuestions.barsket();
+window.createAddedQestionsList = ()=> addQuestions.createAddedQestionsList();
+window.highlightNumber = ()=> addQuestions.highlightNumber();

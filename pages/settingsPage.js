@@ -32,18 +32,18 @@ export default class SettingsPage {
 				</div>
 
 				<h1>Antal runder</h1>
+        <div class="container">
+  
+        <h1>Range Slider Picture</h1>
+        <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        <p>Value: <span id="demo"></span></p>
+      </div>
 
-				<div class="slidecontainer">
-					<br>
-				  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-						<br>
-				  <p>Value: <span id="demo"></span></p>
-            <br>
-            <button class="btn" type="button" name="addPlayers" onclick="navigateTo(this.name);getThePartyId()">Klar!</button>
-
-				</div>
-        </section>`
+      
+      </section>`
   }
+
 
   slider() {
     let slider = document.getElementById("myRange");
@@ -61,29 +61,31 @@ export default class SettingsPage {
   }
 
   myText(length) {
-    var x = document.getElementById("myText").value;
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
+    let x = document.getElementById("myText").value;
+    let result = '';
+    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let charactersLength = characters.length;
     for (var i = 0; i < length; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
 
-  }
-
-  uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      var r = Math.random() * 16 | 0,
-        v = c == 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    });
-  }
-
-
-
+  } }
+  
 
   /*Slider med antal runder*/
 
+  let slider = document.getElementById("myRange");
+ let output = document.getElementById("demo");
+  output.innerHTML = slider.value;
+  
+  slider.oninput = function() {
+    output.innerHTML = this.value;
+  }
+  
 
-}
+
+
+
+
+    
