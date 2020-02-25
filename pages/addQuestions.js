@@ -30,11 +30,12 @@ export default class AddQuestions {
     <article id="addedQuestionsArticle" class="hide">The Article</article>
         <form id="questionForm">
         <h2>Tilføj nye spørgsmål til spillet:</h2>
-        <select class="inputfield" id="select-game" name="games" placeholder="Vælg spil..." required>
+        <select class="inputfield" id="select-game" name="games" onchange="gameInputSettings(this.value, 'newQuestion', 'inputForGames')" placeholder="Vælg spil..." required></select>
         
         <h2>Skriv indholdet her:</h2>
+        <div id="inputForGames">
         <input class="inputfield" type="text" id="newQuestion" placeholder="Tilføj spil indhold her...." required>
-        
+        </div>
         <button class="btn" id="adQuestion" type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
       </form>
       <article id="appendUserQuestions">
@@ -48,6 +49,45 @@ export default class AddQuestions {
     
     </section>
     `;
+  }
+
+  async gameInputSettings(gameId, inputId, whereToPut) {
+
+    let differetInputs = "";
+    await this.gameRef.doc(`${gameId}`).get().then(function (doc) {
+      let docData = doc.data()
+
+      if (gameId === 'vRD8Spl5fQ4AfTifPtRq') { //Sandhed eller konsekvens
+        differetInputs = /*html*/ `
+        <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
+        <input type="checkbox">Sandhed
+        <input type="checkbox">Konskvens
+        `
+      } else if (gameId === 'MEF7ah2clInWlmgNpg6M') { //Quiz
+        differetInputs = /*html*/ `
+        <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
+        Svarmulighed 1<input class="inputfield" placeholder="Skriv svarmulighed..." type="text"><input type="checkbox">
+        <br>
+        Svarmulighed 2<input class="inputfield" placeholder="Skriv svarmulighed..." type="text"><input type="checkbox"><br>
+        Svarmulighed 3<input class="inputfield" placeholder="Skriv svarmulighed..." type="text"><input type="checkbox"><br>
+        Svarmulighed 4<input class="inputfield" placeholder="Skriv svarmulighed..." type="text"><input type="checkbox">
+        `
+      } else if (gameId === 'pfF2l2zwYDqcVCIjMlNr') { //Sandt eller falsk
+        differetInputs = /*html*/ `
+        <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
+        <input type="checkbox">Sandt
+        <input type="checkbox">Falsk
+        `
+      } else {
+
+        differetInputs = /*html*/ `
+        <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
+        `
+      }
+      document.querySelector(`#${inputId}`).setAttribute("placeholder", docData.gamePlaceholder);
+
+    })
+    document.querySelector(`#${whereToPut}`).innerHTML = differetInputs;
   }
 
 
@@ -123,27 +163,64 @@ export default class AddQuestions {
   // question.game is equeal to game.id. There by sorting the questions by games.
   createQuestionsList() {
     let listItem = "";
+    let listItems = "";
 
     this.games.forEach(game => {
-      listItem += /*html*/ `<article>
-      <h3 class="bold">${game.gameTitle}</h3>
-    
-      </article>`
       this.questions.forEach(question => {
 
         if (question.game == game.id) {
-          listItem += /*html*/ `
-        
-<p id="${question.id}" class="label checkboxNotCheked" onclick="checkbox(this.id)">${question.questionContent}</p>
-        `
+          if (!game.questions) {
+            game.questions = [];
+
+          }
+          game.questions.push(question);
+          console.log(game.questions)
+
+          if (game.questions.length == 1) {
 
 
+            listItem += /*html*/ `<article>
+          <h3 class="bold">${game.gameTitle}</h3>
+
+          </article>`
+            this.questions.forEach(question => {
+
+              if (question.game == game.id) {
+                listItem += /*html*/ `
+
+    <p id="${question.id}" class="label checkboxNotCheked" onclick="checkbox(this.id)">${question.questionContent}</p>
+            `
+
+
+              }
+
+            })
+          }
         }
-
       })
     })
 
+    console.log(this.games)
     document.querySelector("#list").innerHTML = listItem;
+    //     listItem += /*html*/ `<article>
+    //       <h3 class="bold">${game.gameTitle}</h3>
+
+    //       </article>`
+    //     this.questions.forEach(question => {
+
+    //       if (question.game == game.id) {
+    //         listItem += /*html*/ `
+
+    // <p id="${question.id}" class="label checkboxNotCheked" onclick="checkbox(this.id)">${question.questionContent}</p>
+    //         `
+
+
+    //       }
+
+    //     })
+    //   })
+
+    // document.querySelector("#list").innerHTML = listItem;
 
     // <input class="checkbox" type="checkbox" id="${question.id}" name="${question.questionContent}" value="${question.categories}" onclick="checkbox(this.id)">
     //     <label class="label checkboxNotCheked" for="${question.id}">${question.questionContent}</label>
@@ -154,7 +231,7 @@ export default class AddQuestions {
     this.games.forEach(game => {
       listItem += /*html*/ `
       <h3 class="bold" id="${game.id}">${game.gameTitle}</h3>`
-      console.log(this.partyContentArray)
+
       for (let question of this.partyContentArray) {
         if (question.game === game.id) {
           listItem += /*html*/ `

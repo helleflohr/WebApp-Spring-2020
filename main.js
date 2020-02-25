@@ -55,3 +55,4 @@ window.basket = () => addQuestions.basket();
 window.createAddedQuestionsList = () => addQuestions.createAddedQuestionsList();
 window.highlightNumber = () => addQuestions.highlightNumber();
 window.removeFromList = (id) => addQuestions.removeFromList(id);
+window.gameInputSettings = (gameId, inputId, whereToPut) => addQuestions.gameInputSettings(gameId, inputId, whereToPut);
