@@ -25,6 +25,9 @@ export default class AddQuestions {
   template() {
     document.querySelector('#content').innerHTML += /*html*/ `
     <section id="addQuestions" class="page">
+    <input id="addedQuestions" class="hide" type="checkbox" > 
+    <label for="addedQuestions" onclick="basket();createAddedQuestionsList()">Kurven <div id="numberOfRoundsAdded">${this.partyContentArray.length}</div></label>
+    <article id="addedQuestionsArticle" class="hide">The Article</article>
         <form id="questionForm">
         <h2>Tilføj nye spørgsmål til spillet:</h2>
         <select class="inputfield" id="select-game" name="games" placeholder="Vælg spil..." required>
@@ -32,14 +35,17 @@ export default class AddQuestions {
         <h2>Skriv indholdet her:</h2>
         <input class="inputfield" type="text" id="newQuestion" placeholder="Tilføj spil indhold her...." required>
         
-        <button class="btn" type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
+        <button class="btn" id="adQuestion" type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
       </form>
       <article id="appendUserQuestions">
       <h2>Liste over indhold</h2>
       <div id="list">
       </div>
+      <div id="predefined">
+      </div>
     </article>
     <button class="btn" name="gamePage" onclick="navigateTo(this.name);addContentToPartyArr()"> Tilføj spørgsmål og gå videre </button>
+    
     </section>
     `;
   }
@@ -58,9 +64,13 @@ export default class AddQuestions {
     // this.questionRef.add(newUserQuestion);
 
     this.partyContentArray.push(newUserQuestion)
+    console.log(this.partyContentArray)
 
-    this.fetchGames();
+    // this.fetchGames();
+    this.highlightNumber()
+    // document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded">${this.partyContentArray.length}</div>`
     document.querySelector("#newQuestion").value = "";
+
   }
 
 
@@ -120,7 +130,7 @@ export default class AddQuestions {
         if (question.game == game.id) {
           listItem += /*html*/ `
         
-        <input class="checkbox" type="checkbox" id="${question.id}" name="${question.questionContent}" value="${question.id}" onclick="checkbox(this.id)">
+        <input class="checkbox" type="checkbox" id="${question.id}" name="${question.questionContent}" value="${question.id}" onclick="checkbox(this.id, this.name)">
         <label class="label checkboxNotCheked" for="${question.id}">${question.questionContent}</label>
         `
         }
@@ -128,6 +138,41 @@ export default class AddQuestions {
     })
 
     document.querySelector("#list").innerHTML = listItem;
+  }
+
+  createAddedQuestionsList() {
+    let listItem = "";
+    this.games.forEach(game => {
+      listItem += /*html*/ `
+      <h3 class="bold" id="${game.id}">${game.gameTitle}</h3>`
+      console.log(this.partyContentArray)
+      for (let question of this.partyContentArray) {
+        if (question.game === game.id) {
+          listItem += /*html*/ `
+        
+        <p id="${question.questionContent}" name="${question.questionContent}" value="${question.id}">${question.questionContent}</p>
+        
+        `
+        }
+      }
+      // listItem = `<article>${listItem}</article>`
+      // console.log(listItem)
+
+      // ET FORSØG PÅ AT FJERNE OVERKSIFTER, HVOR DER IKKE ER NOGET INDHOLD
+      // let gameHeadline = document.querySelector(`#${game.id}`);
+      // console.log(gameHeadline.nextElementSibling)
+      // if (gameHeadline.nextElementSibling == "<h3></h3>") {
+      //   document.querySelector(`#${game.id}`).style.display = 'none';
+      // } else {
+      //   document.querySelector(`#${game.id}`).style.display = 'block';
+      // }
+
+
+    })
+
+
+    document.querySelector("#addedQuestionsArticle").innerHTML = listItem;
+
   }
 
   addContentToPartyArr() {
@@ -139,15 +184,76 @@ export default class AddQuestions {
 
     })
   }
-  checkbox(id) {
+  checkbox(id, question) {
     let checkBox = document.querySelector(`#${id}`);
     if (checkBox.checked == true) {
-      document.querySelector(`[for=${id}]`).classList.add('checkboxChecked')
+      document.querySelector(`[for=${id}]`).classList.add('checkboxChecked');
+      let questionSet = {
+        game: id,
+        questionContent: question
+      }
+      this.partyContentArray.push(questionSet);
+      this.highlightNumber()
+      console.log(this.partyContentArray)
 
     } else {
 
       document.querySelector(`[for=${id}]`).classList.remove('checkboxChecked')
+      // RASMUS HJÆLP
+      console.log(this.partyContentArray)
+      // let questionSet = {
+      //   game: id,
+      //   questionContent: question
+      // }
+      let index = this.partyContentArray.map(function (e) {
+        return e.questionContent
+      }).indexOf(question);
+      console.log(index)
+      if (index > -1) {
+        this.partyContentArray.splice(index, 1);
+      }
+      console.log(this.partyContentArray)
     }
+  }
+
+  basket() {
+    let checkBox = document.querySelector('#addedQuestions');
+    if (checkBox.checked == true) {
+      document.querySelector('#addedQuestionsArticle').classList.add('hide');
+
+    } else {
+
+      document.querySelector('#addedQuestionsArticle').classList.remove('hide');
+    }
+  }
+
+  wait(ms) {
+    var start = new Date().getTime();
+    var end = start;
+    while (end < start + ms) {
+      end = new Date().getTime();
+    }
+  }
+
+  highlightNumber() {
+    let number = document.querySelector('#numberOfRoundsAdded');
+    number.classList.add('onAdded');
+    // number.classList.add('highlightTransition');
+    // this.wait(7000);
+    document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded"> ${this.partyContentArray.length}</div>`
+
+    document.querySelector('#numberOfRoundsAdded').classList.remove('highlightTransition');
+
+
+
+
+
+    // let computedStyle = window.getComputedStyle(number),
+    //   marginLeft = computedStyle.getPropertyValue('margin-left');
+    // number.style.marginLeft = marginLeft;
+    // number.classList.remove('horizTranslate');
+
+
   }
 
 }
