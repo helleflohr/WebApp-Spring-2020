@@ -3,7 +3,7 @@ import _categoryService from "./../services/categoryService.js"
 
 export default class AddQuestions {
   constructor() {
-    this.questionRef = _db.collection("userQuestions");
+    this.questionRef = _db.collection("questions");
     this.gameRef = _db.collection("games");
     this.partyRef = _db.collection("parties");
 
@@ -38,7 +38,7 @@ export default class AddQuestions {
         <button class="btn" id="adQuestion" type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
       </form>
       <article id="appendUserQuestions">
-      <h2>Liste over indhold</h2>
+      <h2>Tilføj indhold fra databasen</h2>
       <div id="list">
       </div>
       <div id="predefined">
@@ -123,21 +123,30 @@ export default class AddQuestions {
   // question.game is equeal to game.id. There by sorting the questions by games.
   createQuestionsList() {
     let listItem = "";
+
     this.games.forEach(game => {
-      listItem += /*html*/ `
-      <h3 class="bold">${game.gameTitle}</h3>`
+      listItem += /*html*/ `<article>
+      <h3 class="bold">${game.gameTitle}</h3>
+    
+      </article>`
       this.questions.forEach(question => {
+
         if (question.game == game.id) {
           listItem += /*html*/ `
         
-        <input class="checkbox" type="checkbox" id="${question.id}" name="${question.questionContent}" value="${question.id}" onclick="checkbox(this.id, this.name)">
-        <label class="label checkboxNotCheked" for="${question.id}">${question.questionContent}</label>
+<p id="${question.id}" class="label checkboxNotCheked" onclick="checkbox(this.id)">${question.questionContent}</p>
         `
+
+
         }
+
       })
     })
 
     document.querySelector("#list").innerHTML = listItem;
+
+    // <input class="checkbox" type="checkbox" id="${question.id}" name="${question.questionContent}" value="${question.categories}" onclick="checkbox(this.id)">
+    //     <label class="label checkboxNotCheked" for="${question.id}">${question.questionContent}</label>
   }
 
   createAddedQuestionsList() {
@@ -150,7 +159,7 @@ export default class AddQuestions {
         if (question.game === game.id) {
           listItem += /*html*/ `
         
-        <p id="${question.questionContent}" name="${question.questionContent}" value="${question.id}">${question.questionContent}</p>
+        <p id="${question.addedId}" onclick="removeFromList(this.id)">${question.questionContent}</p>
         
         `
         }
@@ -184,36 +193,61 @@ export default class AddQuestions {
 
     })
   }
-  checkbox(id, question) {
-    let checkBox = document.querySelector(`#${id}`);
-    if (checkBox.checked == true) {
-      document.querySelector(`[for=${id}]`).classList.add('checkboxChecked');
-      let questionSet = {
-        game: id,
-        questionContent: question
-      }
-      this.partyContentArray.push(questionSet);
-      this.highlightNumber()
-      console.log(this.partyContentArray)
+  async checkbox(id) {
+    // let checkBox = document.querySelector(`#${id}`);
+    // if (checkBox.checked == true) {
+    document.querySelector(`#${id}`).classList.add('checkboxChecked');
 
-    } else {
+    let questionSet = {};
 
-      document.querySelector(`[for=${id}]`).classList.remove('checkboxChecked')
-      // RASMUS HJÆLP
-      console.log(this.partyContentArray)
-      // let questionSet = {
-      //   game: id,
-      //   questionContent: question
-      // }
-      let index = this.partyContentArray.map(function (e) {
-        return e.questionContent
-      }).indexOf(question);
-      console.log(index)
-      if (index > -1) {
-        this.partyContentArray.splice(index, 1);
+    await this.questionRef.doc(`${id}`).get().then(function (doc) {
+      let docData = doc.data()
+      questionSet = {
+        game: docData.game,
+        questionContent: docData.questionContent,
+        categories: docData.categories,
+        addedId: `added${id}`
       }
-      console.log(this.partyContentArray)
+    })
+
+    this.partyContentArray.push(questionSet);
+    this.highlightNumber()
+    console.log(this.partyContentArray)
+    document.querySelector(`#${id}`).style.display = "none";
+
+    // } else {
+
+    //   document.querySelector(`[for=${id}]`).classList.remove('checkboxChecked')
+
+    //   let index = this.partyContentArray.map(function (e) {
+    //     return e.questionContent
+    //   }).indexOf(question);
+    //   console.log(index)
+    //   if (index > -1) {
+    //     this.partyContentArray.splice(index, 1);
+    //   }
+    //   this.highlightNumber()
+    //   console.log(this.partyContentArray)
+    // }
+  }
+
+  removeFromList(id) {
+    console.log(id)
+    let preId = id.slice(5);
+    console.log(preId)
+    document.querySelector(`#${preId}`).style.display = "block";
+
+    let index = this.partyContentArray.map(function (e) {
+      return e.addedId
+    }).indexOf(id);
+    console.log(index)
+    if (index > -1) {
+      this.partyContentArray.splice(index, 1);
     }
+    this.highlightNumber()
+    document.querySelector(`#${id}`).style.display = 'none';
+    console.log(this.partyContentArray)
+
   }
 
   basket() {
