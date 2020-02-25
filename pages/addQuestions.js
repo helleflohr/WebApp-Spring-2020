@@ -203,18 +203,75 @@ export default class AddQuestions {
 
   createAddedQuestionsList() {
     let listItem = "";
+
+    // this.games.forEach(game => {
+    //   this.questions.forEach(question => {
+
+
+    //     if (question.game == game.id) { // Checks if the question is a part of the "current" game
+    //       if (!game.questions) { //If theres no questions for the game
+    //         game.questions = []; // the array of questions is set to empty
+    //       }
+
+    //       game.questions.push(question); //Push the questions that is a part of the "current" game into a game array of questions
+    //       console.log(game.questions.length)
+
+
+    //       if (game.questions.length == 1) { // If theres a question in the game array add it to the DOM
+    //         listItem += /*html*/ `<article>
+    //         <h3 class="bold">${game.gameTitle}</h3>
+    //         </article>`
+
+    //         // After the game headline add all the questions with the matching gameId
+    //         this.questions.forEach(question => {
+    //           if (question.game == game.id) {
+    //             listItem += /*html*/ `
+    //             <p id="${question.addedId}" class="label checkboxNotCheked" onclick="removeFromList(this.id)">${question.questionContent}</p>
+    //             `
+    //           }
+    //         })
+    //       }
+
+    //     }
+    //   })
+    // })
+
+    if (this.partyContentArray.length === 0) {
+      listItem += `Du har endnu ikke valgt nogle spørgsmål til spillet`
+    }
     this.games.forEach(game => {
-      listItem += /*html*/ `
-      <h3 class="bold" id="${game.id}">${game.gameTitle}</h3>`
+
+
 
       for (let question of this.partyContentArray) {
         if (question.game === game.id) {
+          console.log(this.partyContentArray)
+
+
+
           listItem += /*html*/ `
-        
-        <p id="${question.addedId}" onclick="removeFromList(this.id)">${question.questionContent}</p>
-        
-        `
+      <h3 class="bold" id="${game.id}">${game.gameTitle}</h3>`
+
+
+          this.partyContentArray.forEach(question => {
+            if (question.game == game.id) {
+              listItem += /*html*/ `
+
+              <p id="${question.addedId}" class="label checkboxNotCheked" onclick="removeFromList(this.id)">${question.questionContent}</p>
+      
+              `
+
+            }
+
+          })
+
+          //   listItem += /*html*/ `
+
+          // <p id="${question.addedId}" class="label checkboxNotCheked" onclick="removeFromList(this.id)">${question.questionContent}</p>
+
+          // `
         }
+
       }
       // listItem = `<article>${listItem}</article>`
       // console.log(listItem)
