@@ -52,18 +52,22 @@ html {
     text-align: center;
     width: 100%;
     font-weight: 200;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 
-h1 {font-size: 17em;}
+h1 {
+    font-size: 2em;
+}
 
 .flexcontainer {
     display: flex;
     flex-wrap: wrap;
 }
 
-b{font-weight:bold;}
+b {
+    font-weight: bold;
+}
 
 /* ________________________________________________________________________________________
 Navigation - menu
@@ -78,7 +82,7 @@ Navigation - menu
     overflow: hidden;
     background-color: var(--menuBackground);
     text-align: center;
-    border: 5px solid var(--menuFontColor);
+    /* border: 5px solid var(--menuFontColor); */
 
 
 }
@@ -147,6 +151,11 @@ Navigation - menu
 }
 
 
+/* .nav-menu .navicon:before~.menu ul,
+.nav-menu .navicon:after~.menu ul {
+    border: none;
+} */
+
 /* menu btn - how the three lines changes into an x*/
 .nav-menu .menu-btn {
     display: none;
@@ -189,7 +198,7 @@ Buttons
     width: auto;
     margin: 1.5em auto 1em;
     height: auto;
-    font-size: 1.5em;
+    font-size: 1em;
     padding: .5em 1em;
 
     cursor: pointer;
@@ -262,7 +271,7 @@ Input fields and select boxes
     color: var(--menuFontColor);
     border-radius: var(--border_radius_square);
     border: var(--border_dark);
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 
@@ -352,6 +361,21 @@ Pages
     margin: 2%;
 }
 
+#addedQuestionsArticle {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+    /* bottom: 0; */
+
+    background-color: var(--secundary_color_light);
+}
+
+[for=addedQuestions] {
+    position: absolute;
+    z-index: 5;
+    right: 2em;
+}
 
 /* -----siden med indstillinger*/
 
@@ -502,11 +526,62 @@ Checkbox
 
 
 .checkboxChecked {
-    box-shadow: 0px 10px 14px -7px #276873;
-    background: #7ab6ca;
+    box-shadow: 0px 10px 14px -7px var(--secundary_color_dark);
+    background: var(--secundary_color_dark);
     border: 1px solid #cacece;
     border-radius: var(--border_radius_square);
     width: var(--standardWidth);
     margin: 0 auto;
+    /* box-shadow: --; */
+}
 
+#numberOfRoundsAdded {
+    background: var(--secundary_color_dark);
+    border-radius: var(--border_radius);
+    color: var(--menuFontColor);
+    /* width: 1em; */
+    /* transition-property: width;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    transition-delay: 1s; */
+}
+
+/* .highlightTransition {
+    width: 4em;
+}
+
+#numberOfRoundsAdded {
+    margin: 30px;
+    height: 50px;
+    width: 50px;
+    background-color: blue;
+} */
+
+#adQuestion:target~#numberOfRoundsAdded {
+    /* -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s; */
+    animation: addContentNumberHighlight 0.5s 1;
+    animation-timing-function: ease-in-out;
+    /* IE 10+, Fx 29+ */
+    /* margin-left: 50% !important; */
+    /* background-color: var(--secundary_color_light); */
+}
+
+@keyframes addContentNumberHighlight {
+    0% {
+
+        background-color: var(--secundary_color_light);
+    }
+
+    50% {
+        background-color: yellow;
+        color: var(--secundary_color_dark);
+    }
+
+    100% {
+        background-color: var(--secundary_color_light);
+    }
 }
