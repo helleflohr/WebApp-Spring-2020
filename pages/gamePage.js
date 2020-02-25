@@ -1,3 +1,7 @@
+import swipeService from "./../services/swipeService.js"
+// import AddQuestions from "./pages/addQuestions.js"
+// let addQuestions = new AddQuestions();
+
 export default class GamePage {
     constructor() {
         this.gameRef = _db.collection("games");
@@ -5,6 +9,15 @@ export default class GamePage {
         this.curRule = "";
         this.template();
         this.showRules();
+        this.questionRef = _db.collection("questions");
+        // this.calcArrayLength();
+
+        // Slider
+        this.swipeZone = document.getElementById('container');
+        this.swiper = swipeService.swiper;
+        // slider end
+
+
     }
 
     getData() {
@@ -26,19 +39,18 @@ export default class GamePage {
         // Onclick NEXT
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="gamePage" class="page">
-        
-        <button class="btn" type="button" name="settingsPage" onclick="navigateTo(this.name)">Settings</button>
-        <p>Import x/X</p>
-        
-        <p>Import Gamename</p>
-        <p>Import Gamecontent</p>
-
-        <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn inputfield" for="info">i</label>
-        <input id="add" class="hide" type="checkbox" onclick="showAdd()"><label id="addLabel" class="btn inputfield" for="add">+</label>
-        
-
+        <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn" for="info"></label>
         <section class="hide" id="rules"><h2>Regler for ${this.curGame}</h2>
         <p>${this.curRule}</p></section>
+
+        <div id="container">
+        <img src="../img/P_20181006_163258.jpg">
+        <img src="../img/P_20181006_163258.jpg">
+        <img src="../img/P_20181006_163258.jpg">
+        <img src="../img/P_20181006_163258.jpg">
+    
+        </div>
+        
         
         <section class="hide" id="addSection">
         
@@ -48,7 +60,7 @@ export default class GamePage {
         </div>
 
         <br>
-        <button class="btn" type="button" onclick="addAnotherPlayer('morePlayers')">+</button>
+        <button class="btn" type="button" onclick="addAnotherPlayer('morePlayers')"></button>
         <br>
        
         <button class="btn" type="button" onclick="addPlayers()">GOGOGO!</button>
@@ -56,7 +68,8 @@ export default class GamePage {
         <h2>Tilføj Spørgsmål</h2>
         <p>Tilføj...</p>
         </section>
-
+        
+        <input id="add" class="hide" type="checkbox" onclick="showAdd()"><label id="addLabel" class="btn" for="add">+</label>
         </article>
         `;
     }
@@ -89,4 +102,22 @@ export default class GamePage {
         }
     }
 
+
+
+    //Function to handle swipes
+    swiper() {
+        swiper.init(swipeZone, function (swipe) {
+            console.log(swipe)
+        })
+    }
+
+    // calcArrayLength() {
+    //     let length = addQuestions.partyContentArray.length;
+    //     let widthCalc = length * 100;
+    //     document.querySelector("#container").style.width = `${widthCalc}%`
+    // }
+
+    addQuestionsToGame() {
+
+    }
 }

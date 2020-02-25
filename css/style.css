@@ -23,6 +23,7 @@
     --secundary_font: 'Myriad Pro', Arial, sans-serif;
     --font_color_light: #EA81C1;
     --font_color_dark: #333;
+
 }
 
 h2 {
@@ -55,6 +56,9 @@ html {
     /* overflow: hidden; */
 }
 
+body {
+    overflow-x: hidden;
+}
 
 h1 {
     font-size: 2em;
@@ -496,6 +500,47 @@ body {
     border: 0;
     background: url('contrasticon.png');
     cursor: pointer;
+}
+
+/*_________________________________________________________________________________________
+GamePage
+-----------------------------------------------------------------------------------------*/
+#infoLabel {
+    background-image: url(/img/Info_icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+#addLabel {
+    background-image: url(/img/plus_icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+
+#container {
+    --n: 1;
+    display: flex;
+    align-items: center;
+    overflow-y: hidden;
+    width: 100%;
+    width: calc(var(--n)*100%);
+    height: 50vw;
+    max-height: 100vh;
+    transform: translate(calc(var(--i, 0)/var(--n)*-100%));
+}
+
+#container img {
+    width: 100%;
+    width: calc(100%/var(--n));
+    user-select: none;
+    pointer-events: none;
+    image-orientation: from-image;
 }
 
 
