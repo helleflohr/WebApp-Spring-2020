@@ -163,67 +163,42 @@ export default class AddQuestions {
   // question.game is equeal to game.id. There by sorting the questions by games.
   createQuestionsList() {
     let listItem = "";
-    let listItems = "";
+
 
     this.games.forEach(game => {
       this.questions.forEach(question => {
 
-        if (question.game == game.id) {
-          if (!game.questions) {
-            game.questions = [];
 
+        if (question.game == game.id) { // Checks if the question is a part of the "current" game
+          if (!game.questions) { //If theres no questions for the game
+            game.questions = []; // the array of questions is set to empty
           }
-          game.questions.push(question);
-          console.log(game.questions)
 
-          if (game.questions.length == 1) {
+          game.questions.push(question); //Push the questions that is a part of the "current" game into a game array of questions
+          console.log(game.questions.length)
 
 
+          if (game.questions.length == 1) { // If theres a question in the game array add it to the DOM
             listItem += /*html*/ `<article>
-          <h3 class="bold">${game.gameTitle}</h3>
+            <h3 class="bold">${game.gameTitle}</h3>
+            </article>`
 
-          </article>`
+            // After the game headline add all the questions with the matching gameId
             this.questions.forEach(question => {
-
               if (question.game == game.id) {
                 listItem += /*html*/ `
-
-    <p id="${question.id}" class="label checkboxNotCheked" onclick="checkbox(this.id)">${question.questionContent}</p>
-            `
-
-
+                <p id="${question.id}" class="label checkboxNotCheked" onclick="checkbox(this.id)">${question.questionContent}</p>
+                `
               }
-
             })
           }
+
         }
       })
     })
 
-    console.log(this.games)
     document.querySelector("#list").innerHTML = listItem;
-    //     listItem += /*html*/ `<article>
-    //       <h3 class="bold">${game.gameTitle}</h3>
 
-    //       </article>`
-    //     this.questions.forEach(question => {
-
-    //       if (question.game == game.id) {
-    //         listItem += /*html*/ `
-
-    // <p id="${question.id}" class="label checkboxNotCheked" onclick="checkbox(this.id)">${question.questionContent}</p>
-    //         `
-
-
-    //       }
-
-    //     })
-    //   })
-
-    // document.querySelector("#list").innerHTML = listItem;
-
-    // <input class="checkbox" type="checkbox" id="${question.id}" name="${question.questionContent}" value="${question.categories}" onclick="checkbox(this.id)">
-    //     <label class="label checkboxNotCheked" for="${question.id}">${question.questionContent}</label>
   }
 
   createAddedQuestionsList() {
@@ -271,8 +246,6 @@ export default class AddQuestions {
     })
   }
   async checkbox(id) {
-    // let checkBox = document.querySelector(`#${id}`);
-    // if (checkBox.checked == true) {
     document.querySelector(`#${id}`).classList.add('checkboxChecked');
 
     let questionSet = {};
@@ -292,20 +265,7 @@ export default class AddQuestions {
     console.log(this.partyContentArray)
     document.querySelector(`#${id}`).style.display = "none";
 
-    // } else {
 
-    //   document.querySelector(`[for=${id}]`).classList.remove('checkboxChecked')
-
-    //   let index = this.partyContentArray.map(function (e) {
-    //     return e.questionContent
-    //   }).indexOf(question);
-    //   console.log(index)
-    //   if (index > -1) {
-    //     this.partyContentArray.splice(index, 1);
-    //   }
-    //   this.highlightNumber()
-    //   console.log(this.partyContentArray)
-    // }
   }
 
   removeFromList(id) {
