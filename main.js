@@ -15,6 +15,7 @@ import _categoryService from "./services/categoryService.js"
 import authService from "./services/loginService.js";
 import createPartyService from "./../services/createPartyService.js"
 import joinPartyService from "./../services/joinPartyService.js"
+// import * as swipeService from "./services/swipeService.js"
 
 
 
@@ -56,7 +57,7 @@ window.createAddedQuestionsList = () => addQuestions.createAddedQuestionsList();
 window.highlightNumber = () => addQuestions.highlightNumber();
 window.removeFromList = (id) => addQuestions.removeFromList(id);
 window.gameInputSettings = (gameId, inputId, whereToPut) => addQuestions.gameInputSettings(gameId, inputId, whereToPut);
-window.handleTouch = (startX, endX, left, right) => gamePage.handleTouch(startX, endX, left, right);
+window.addQuestionsToGame = () => gamePage.addQuestionsToGame();
 
 
 

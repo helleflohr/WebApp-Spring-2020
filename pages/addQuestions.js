@@ -1,5 +1,6 @@
-// Helle
+import Gamepage from "./gamePage.js"
 import _categoryService from "./../services/categoryService.js"
+let gamePage = new Gamepage;
 
 export default class AddQuestions {
   constructor() {
@@ -45,7 +46,7 @@ export default class AddQuestions {
       <div id="predefined">
       </div>
     </article>
-    <button class="btn" name="gamePage" onclick="navigateTo(this.name);addContentToPartyArr()"> Tilføj spørgsmål og gå videre </button>
+    <button class="btn" name="gamePage" onclick="navigateTo(this.name);addContentToPartyArr();addQuestionsToGame()"> Tilføj spørgsmål og gå videre </button>
     
     </section>
     `;
@@ -236,7 +237,7 @@ export default class AddQuestions {
         if (question.game === game.id) {
           listItem += /*html*/ `
         
-        <p id="${question.addedId}" onclick="removeFromList(this.id)">${question.questionContent}</p>
+        <p id="${question.addedId}" class="question" onclick="removeFromList(this.id)">${question.questionContent}</p>
         
         `
         }
@@ -255,8 +256,6 @@ export default class AddQuestions {
 
 
     })
-
-
     document.querySelector("#addedQuestionsArticle").innerHTML = listItem;
 
   }
@@ -269,7 +268,11 @@ export default class AddQuestions {
       questions: this.partyContentArray
 
     })
+
   }
+
+
+
   async checkbox(id) {
     // let checkBox = document.querySelector(`#${id}`);
     // if (checkBox.checked == true) {

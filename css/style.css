@@ -515,7 +515,7 @@ GamePage
 }
 
 #addLabel {
-    background-image: url(/img/plus_icon.svg);
+
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;

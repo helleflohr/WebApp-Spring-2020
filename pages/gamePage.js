@@ -1,6 +1,7 @@
 import swipeService from "./../services/swipeService.js"
-// import AddQuestions from "./pages/addQuestions.js"
-// let addQuestions = new AddQuestions();
+// import AddQuestions from "./addQuestions.js"
+
+
 
 export default class GamePage {
     constructor() {
@@ -9,7 +10,7 @@ export default class GamePage {
         this.curRule = "";
         this.template();
         this.showRules();
-        this.questionRef = _db.collection("questions");
+        this.questions = [];
         // this.calcArrayLength();
 
         // Slider
@@ -19,7 +20,7 @@ export default class GamePage {
 
 
     }
-
+    // let addQuestions = new AddQuestions();
     getData() {
         // let inputField = document.querySelector('#joinPartyId');
         this.gamesRef.get().then(snapshotData => {
@@ -44,10 +45,7 @@ export default class GamePage {
         <p>${this.curRule}</p></section>
 
         <div id="container">
-        <img src="../img/P_20181006_163258.jpg">
-        <img src="../img/P_20181006_163258.jpg">
-        <img src="../img/P_20181006_163258.jpg">
-        <img src="../img/P_20181006_163258.jpg">
+      
     
         </div>
         
@@ -69,7 +67,7 @@ export default class GamePage {
         <p>Tilføj...</p>
         </section>
         
-        <input id="add" class="hide" type="checkbox" onclick="showAdd()"><label id="addLabel" class="btn" for="add">+</label>
+        <input id="add" class="hide" type="checkbox" onclick="showAdd()"><label id="addLabel" class="btn" for="add"></label>
         </article>
         `;
     }
@@ -81,10 +79,10 @@ export default class GamePage {
         let infoLabel = document.querySelector('#infoLabel');
         if (checkBox.checked == true) {
             rulesBox.classList.remove('hide');
-            infoLabel.innerHTML = "X"
+            infoLabel.innerHTML = "<img src='./../X_icon.svg'>";
         } else {
             rulesBox.classList.add('hide');
-            infoLabel.innerHTML = "i"
+            infoLabel.innerHTML = "<img src='./../img /Info_icon.svg>";
         }
     }
 
@@ -95,10 +93,10 @@ export default class GamePage {
         let infoLabel = document.querySelector('#addLabel');
         if (checkBox.checked == true) {
             rulesBox.classList.remove('hide');
-            infoLabel.innerHTML = "X"
+            infoLabel.innerHTML = "<img src='./../X_icon.svg'>"
         } else {
             rulesBox.classList.add('hide');
-            infoLabel.innerHTML = "+"
+            infoLabel.innerHTML = "<img src='./../plus_icon.svg'>"
         }
     }
 
@@ -111,13 +109,15 @@ export default class GamePage {
         })
     }
 
-    // calcArrayLength() {
-    //     let length = addQuestions.partyContentArray.length;
-    //     let widthCalc = length * 100;
-    //     document.querySelector("#container").style.width = `${widthCalc}%`
-    // }
 
+    // Takes questions from the array partyContentArray from the addQuestions page, and geneeates them into single game pages
     addQuestionsToGame() {
-
+        let pages = "";
+        console.log(addQuestions.partyContentArray)
+        this.questions = addQuestions.partyContentArray;
+        console.log(this.questions);
+        pages += /*html*/ `
+<div id="game${game.id}">${game.gameTitle}<br>${question.questionContent}</div>
+`
     }
 }
