@@ -13,8 +13,9 @@ import GamePage from "./pages/gamePage.js"
 import spaService from "./services/spa.js"
 import _categoryService from "./services/categoryService.js"
 import authService from "./services/loginService.js";
-import createPartyService from "./../services/createPartyService.js"
-import joinPartyService from "./../services/joinPartyService.js"
+// import createPartyService from "./services/createPartyService.js"
+// import joinPartyService from "./services/joinPartyService.js"
+import _arrayQuestionService from "./services/arrayQuestionService.js"
 // import * as swipeService from "./services/swipeService.js"
 
 
@@ -40,7 +41,6 @@ _categoryService.read();
 // onclick handlers
 window.pageChange = () => spaService.pageChange();
 window.createQuestion = () => addPredefinedPage.createQuestion();
-window.createNewQuestion = () => addQuestions.createNewQuestion();
 window.navigateTo = (hash) => spaService.navigateTo(hash);
 window.addAnotherPlayer = (whereToAdd) => addPlayersPage.addAnotherPlayer(whereToAdd);
 window.joinParty = (hash) => joinPartyService.joinParty(hash);
@@ -57,12 +57,12 @@ window.createAddedQuestionsList = () => addQuestions.createAddedQuestionsList();
 window.highlightNumber = () => addQuestions.highlightNumber();
 window.removeFromList = (id) => addQuestions.removeFromList(id);
 window.gameInputSettings = (gameId, inputId, whereToPut) => addQuestions.gameInputSettings(gameId, inputId, whereToPut);
-window.addQuestionsToGame = () => gamePage.addQuestionsToGame();
+window.createNewQuestion = () => _arrayQuestionService.createNewQuestion();
 
 
 
 // Swipe
-const _C = document.querySelector('#container'),
+const _C = document.querySelector('#gameContainer'),
     N = _C.children.length,
     NF = 30,
     TFN = {

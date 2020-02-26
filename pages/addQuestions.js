@@ -1,5 +1,6 @@
 import Gamepage from "./gamePage.js"
 import _categoryService from "./../services/categoryService.js"
+import _arrayQuestionService from "./../services/arrayQuestionService.js"
 let gamePage = new Gamepage;
 
 export default class AddQuestions {
@@ -9,7 +10,7 @@ export default class AddQuestions {
     this.partyRef = _db.collection("parties");
 
     // Maeby we should get the datafrom the database at put it in the new array before - for no overwrite
-    this.partyContentArray = [];
+    // this.partyContentArray = _arrayQuestionService.partyContentArray;
     this.games = [];
     this.questions = [];
     this.fetchGames();
@@ -27,7 +28,7 @@ export default class AddQuestions {
     document.querySelector('#content').innerHTML += /*html*/ `
     <section id="addQuestions" class="page">
     <input id="addedQuestions" class="hide" type="checkbox" > 
-    <label for="addedQuestions" onclick="basket();createAddedQuestionsList()">Kurven <div id="numberOfRoundsAdded">${this.partyContentArray.length}</div></label>
+    <label for="addedQuestions" onclick="basket();createAddedQuestionsList()">Kurven <div id="numberOfRoundsAdded">${_arrayQuestionService.partyContentArray.length}</div></label>
     <article id="addedQuestionsArticle" class="hide">The Article</article>
         <form id="questionForm">
         <h2>Tilføj nye spørgsmål til spillet:</h2>
@@ -46,7 +47,7 @@ export default class AddQuestions {
       <div id="predefined">
       </div>
     </article>
-    <button class="btn" name="gamePage" onclick="navigateTo(this.name);addContentToPartyArr();addQuestionsToGame()"> Tilføj spørgsmål og gå videre </button>
+    <button class="btn" name="gamePage" onclick="navigateTo(this.name);addContentToPartyArr()"> Tilføj spørgsmål og gå videre </button>
     
     </section>
     `;
@@ -94,25 +95,25 @@ export default class AddQuestions {
 
   // This function creates the new question by taking the information from the dropdown menu over games, 
   // and linking it with the value in the input field.
-  createNewQuestion() {
+  // createNewQuestion() {
 
-    let gameInput = document.querySelector("#select-game");
-    let questionInput = document.querySelector("#newQuestion");
-    let newUserQuestion = {
-      game: gameInput.value,
-      questionContent: questionInput.value
-    }
-    // this.questionRef.add(newUserQuestion);
+  //   let gameInput = document.querySelector("#select-game");
+  //   let questionInput = document.querySelector("#newQuestion");
+  //   let newUserQuestion = {
+  //     game: gameInput.value,
+  //     questionContent: questionInput.value
+  //   }
+  //   // this.questionRef.add(newUserQuestion);
 
-    this.partyContentArray.push(newUserQuestion)
-    console.log(this.partyContentArray)
+  //   this.partyContentArray.push(newUserQuestion)
+  //   console.log(this.partyContentArray)
 
-    // this.fetchGames();
-    this.highlightNumber()
-    // document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded">${this.partyContentArray.length}</div>`
-    document.querySelector("#newQuestion").value = "";
+  //   // this.fetchGames();
+  //   this.highlightNumber()
+  //   // document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded">${this.partyContentArray.length}</div>`
+  //   document.querySelector("#newQuestion").value = "";
 
-  }
+  // }
 
 
   // This function creates the dropdown menu over games, by taking every new game id, and adding the game 
@@ -206,20 +207,20 @@ export default class AddQuestions {
     let listItem = "";
 
     // Insert message if basket is empty
-    if (this.partyContentArray.length === 0) {
+    if (_arrayQuestionService.partyContentArray.length === 0) {
       listItem += `Du har endnu ikke valgt nogle spørgsmål til spillet`
     }
 
 
     this.games.forEach(game => {
-      for (let question of this.partyContentArray) {
+      for (let question of _arrayQuestionService.partyContentArray) {
         if (question.game === game.id) {
 
           listItem += /*html*/ `
           <h3 class="bold" id="${game.id}">${game.gameTitle}</h3>`
 
 
-          this.partyContentArray.forEach(question => {
+          _arrayQuestionService.partyContentArray.forEach(question => {
             if (question.game == game.id) {
               listItem += /*html*/ `
               <p id="${question.addedId}" class="label checkboxNotCheked" onclick="removeFromList(this.id)">${question.questionContent}</p>
@@ -251,13 +252,13 @@ export default class AddQuestions {
   }
 
   addContentToPartyArr() {
+    console.log('test')
+    // this.partyRef.doc('UF8iwR41XmnUDSNPP6Mh').update({
+    //   // Get docref from elsewere `${}`
 
-    this.partyRef.doc('UF8iwR41XmnUDSNPP6Mh').update({
-      // Get docref from elsewere `${}`
+    //   questions: _arrayQuestionService.partyContentArray
 
-      questions: this.partyContentArray
-
-    })
+    // })
 
   }
 
@@ -278,10 +279,10 @@ export default class AddQuestions {
       }
     })
 
-    this.partyContentArray.push(questionSet);
+    _arrayQuestionService.partyContentArray.push(questionSet);
     this.highlightNumber()
     document.querySelector(`#${id}`).style.display = "none";
-
+    console.log(_arrayQuestionService.partyContentArray)
 
   }
 
@@ -290,12 +291,12 @@ export default class AddQuestions {
     let preId = id.slice(5);
     document.querySelector(`#${preId}`).style.display = "block";
 
-    let index = this.partyContentArray.map(function (e) {
+    let index = _arrayQuestionService.partyContentArray.map(function (e) {
       return e.addedId
     }).indexOf(id);
     console.log(index)
     if (index > -1) {
-      this.partyContentArray.splice(index, 1);
+      _arrayQuestionService.partyContentArray.splice(index, 1);
     }
     this.highlightNumber()
     document.querySelector(`#${id}`).style.display = 'none';
@@ -323,7 +324,7 @@ export default class AddQuestions {
   highlightNumber() {
 
     // this.wait(7000);
-    document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded"> ${this.partyContentArray.length}</div>`
+    document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded"> ${_arrayQuestionService.partyContentArray.length}</div>`
 
     document.querySelector('#numberOfRoundsAdded').classList.add('highlightAnimation');
 

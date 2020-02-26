@@ -1,4 +1,5 @@
 import swipeService from "./../services/swipeService.js"
+import _arrayQuestionService from "../services/arrayQuestionService.js"
 // import AddQuestions from "./addQuestions.js"
 
 
@@ -13,10 +14,10 @@ export default class GamePage {
         this.questions = [];
         // this.calcArrayLength();
 
-        // Slider
-        this.swipeZone = document.getElementById('container');
+        // Swipe
+        this.swipeZone = document.getElementById('gameContainer');
         this.swiper = swipeService.swiper;
-        // slider end
+        // swipe end
 
 
     }
@@ -40,11 +41,9 @@ export default class GamePage {
         // Onclick NEXT
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="gamePage" class="page">
-        <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn" for="info"></label>
-        <section class="hide" id="rules"><h2>Regler for ${this.curGame}</h2>
-        <p>${this.curRule}</p></section>
+        
 
-        <div id="container">
+        <div id="gameContainer">
       
     
         </div>
@@ -79,10 +78,10 @@ export default class GamePage {
         let infoLabel = document.querySelector('#infoLabel');
         if (checkBox.checked == true) {
             rulesBox.classList.remove('hide');
-            infoLabel.innerHTML = "<img src='./../X_icon.svg'>";
+            infoLabel.style.backgroundImage = "url(/img/X_icon.svg)"
         } else {
             rulesBox.classList.add('hide');
-            infoLabel.innerHTML = "<img src='./../img /Info_icon.svg>";
+            infoLabel.style.backgroundImage = "url(/img/info_icon.svg)"
         }
     }
 
@@ -93,10 +92,10 @@ export default class GamePage {
         let infoLabel = document.querySelector('#addLabel');
         if (checkBox.checked == true) {
             rulesBox.classList.remove('hide');
-            infoLabel.innerHTML = "<img src='./../X_icon.svg'>"
+            infoLabel.style.backgroundImage = "url(/img/X_icon.svg)"
         } else {
             rulesBox.classList.add('hide');
-            infoLabel.innerHTML = "<img src='./../plus_icon.svg'>"
+            infoLabel.style.backgroundImage = "url(/img/plus_icon.svg)"
         }
     }
 
@@ -111,13 +110,5 @@ export default class GamePage {
 
 
     // Takes questions from the array partyContentArray from the addQuestions page, and geneeates them into single game pages
-    addQuestionsToGame() {
-        let pages = "";
-        console.log(addQuestions.partyContentArray)
-        this.questions = addQuestions.partyContentArray;
-        console.log(this.questions);
-        pages += /*html*/ `
-<div id="game${game.id}">${game.gameTitle}<br>${question.questionContent}</div>
-`
-    }
+
 }
