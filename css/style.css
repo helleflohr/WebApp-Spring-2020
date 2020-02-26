@@ -63,6 +63,7 @@ h1 {
 .flexcontainer {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 b {
@@ -263,7 +264,7 @@ Buttons
 Input fields and select boxes
 -----------------------------------------------------------------------------------------*/
 .inputfield {
-    width: var(--standardWidth);
+    width: 100%;
     padding: 1em;
     margin: .5em auto;
     display: block;
@@ -271,6 +272,16 @@ Input fields and select boxes
     color: var(--menuFontColor);
     border-radius: var(--border_radius_square);
     border: var(--border_dark);
+    font-size: 1em;
+}
+
+.smallInputfield {
+    width: 43%;
+    padding: 1em;
+    background: var(--secundary_color_light);
+    color: var(--menuFontColor);
+    border-radius: var(--border_radius_square);
+    /* border: var(--border_li); */
     font-size: 1em;
 }
 
@@ -311,6 +322,10 @@ Input fields and select boxes
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s 0.4s, opacity 0.4s linear;
+}
+
+.displayNone {
+    display: none;
 }
 
 

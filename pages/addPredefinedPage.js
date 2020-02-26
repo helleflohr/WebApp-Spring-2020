@@ -26,7 +26,7 @@ export default class AddPredefinedPage {
         <select name="whichGame" id="whichGame" onchange="gameInputSettings(this.value, 'newPreQuestion', 'preInputfield', 'PredefinedPage')" class="inputfield">
         </select>
         <br>
-        <div id="preInputfield">
+        <div id="preInputfield" class="flexcontainer">
         <input type="text" id="newPreQuestion" placeholder="Tilføj spil indhold her...." class="inputfield">
         </div>
         <br>

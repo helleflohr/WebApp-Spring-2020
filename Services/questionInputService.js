@@ -3,21 +3,24 @@ class QuestionInputService {
 
 
     }
-    styleTruthOrDare(checkboxTrue, checkboxDare) {
-        let checkBoxForTrue = document.querySelector(`#${checkboxTrue}`);
-        console.log(checkBoxForTrue)
-        let trueLabel = document.querySelector(`[for=${checkboxTrue}]`);
-        console.log(trueLabel)
-        let checkBoxForDare = document.querySelector(`#${checkboxDare}`);
-        let dareLabel = document.querySelector(`[for=${checkboxDare}]`);
-        console.log(checkBoxForTrue.checked)
-        if (checkBoxForTrue.checked == true) {
-            console.log(checkBoxForTrue.checked)
-            console.log('true er checked')
-            trueLabel.style.background = '#125451';
-            dareLabel.style.background = '#000001';
-            checkBoxForDare.checked = false;
+    styleTruthOrDare(thisCheckbox, theOtherCheckbox) {
+        let checkBoxForThisCheckbox = document.querySelector(`#${thisCheckbox}`);
+        let labelForThisCheckbox = document.querySelector(`[for=${thisCheckbox}]`);
+        let otherCheckbox = document.querySelector(`#${theOtherCheckbox}`);
+        let labelForOtherCheckbox = document.querySelector(`[for=${theOtherCheckbox}]`);
+
+        if (checkBoxForThisCheckbox.checked == true) {
+            labelForThisCheckbox.style.background = 'var(--secundary_color_dark)';
+
+            labelForOtherCheckbox.style.background = 'var(--secundary_color_light)';
+            otherCheckbox.checked = false;
+        } else if (otherCheckbox.checked == true) {
+            labelForOtherCheckbox.style.background = 'var(--secundary_color_dark)';
+
+            labelForThisCheckbox.style.background = 'var(--secundary_color_light)';
+            checkBoxForThisCheckbox.checked = false;
         }
+
 
     }
 
