@@ -1,3 +1,9 @@
+import swipeService from "./../services/swipeService.js"
+import _arrayQuestionService from "../services/arrayQuestionService.js"
+// import AddQuestions from "./addQuestions.js"
+
+
+
 export default class GamePage {
     constructor() {
         this.gameRef = _db.collection("games");
@@ -5,8 +11,17 @@ export default class GamePage {
         this.curRule = "";
         this.template();
         this.showRules();
-    }
+        this.questions = [];
+        // this.calcArrayLength();
 
+        // Swipe
+        this.swipeZone = document.getElementById('gameContainer');
+        this.swiper = swipeService.swiper;
+        // swipe end
+
+
+    }
+    // let addQuestions = new AddQuestions();
     getData() {
         // let inputField = document.querySelector('#joinPartyId');
         this.gamesRef.get().then(snapshotData => {
@@ -27,18 +42,12 @@ export default class GamePage {
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="gamePage" class="page">
         
-        <button class="btn" type="button" name="settingsPage" onclick="navigateTo(this.name)">Settings</button>
-        <p>Import x/X</p>
-        
-        <p>Import Gamename</p>
-        <p>Import Gamecontent</p>
 
-        <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn inputfield" for="info">i</label>
-        <input id="add" class="hide" type="checkbox" onclick="showAdd()"><label id="addLabel" class="btn inputfield" for="add">+</label>
+        <div id="gameContainer">
+      
+    
+        </div>
         
-
-        <section class="hide" id="rules"><h2>Regler for ${this.curGame}</h2>
-        <p>${this.curRule}</p></section>
         
         <section class="hide" id="addSection">
         
@@ -48,7 +57,7 @@ export default class GamePage {
         </div>
 
         <br>
-        <button class="btn" type="button" onclick="addAnotherPlayer('morePlayers')">+</button>
+        <button class="btn" type="button" onclick="addAnotherPlayer('morePlayers')"></button>
         <br>
        
         <button class="btn" type="button" onclick="addPlayers()">GOGOGO!</button>
@@ -56,7 +65,8 @@ export default class GamePage {
         <h2>Tilføj Spørgsmål</h2>
         <p>Tilføj...</p>
         </section>
-
+        
+        <input id="add" class="hide" type="checkbox" onclick="showAdd()"><label id="addLabel" class="btn" for="add"></label>
         </article>
         `;
     }
@@ -68,10 +78,10 @@ export default class GamePage {
         let infoLabel = document.querySelector('#infoLabel');
         if (checkBox.checked == true) {
             rulesBox.classList.remove('hide');
-            infoLabel.innerHTML = "X"
+            infoLabel.style.backgroundImage = "url(/img/X_icon.svg)"
         } else {
             rulesBox.classList.add('hide');
-            infoLabel.innerHTML = "i"
+            infoLabel.style.backgroundImage = "url(/img/info_icon.svg)"
         }
     }
 
@@ -82,11 +92,23 @@ export default class GamePage {
         let infoLabel = document.querySelector('#addLabel');
         if (checkBox.checked == true) {
             rulesBox.classList.remove('hide');
-            infoLabel.innerHTML = "X"
+            infoLabel.style.backgroundImage = "url(/img/X_icon.svg)"
         } else {
             rulesBox.classList.add('hide');
-            infoLabel.innerHTML = "+"
+            infoLabel.style.backgroundImage = "url(/img/plus_icon.svg)"
         }
     }
+
+
+
+    //Function to handle swipes
+    swiper() {
+        swiper.init(swipeZone, function (swipe) {
+            console.log(swipe)
+        })
+    }
+
+
+    // Takes questions from the array partyContentArray from the addQuestions page, and geneeates them into single game pages
 
 }

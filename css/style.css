@@ -23,6 +23,7 @@
     --secundary_font: 'Myriad Pro', Arial, sans-serif;
     --font_color_light: #EA81C1;
     --font_color_dark: #333;
+
 }
 
 h2 {
@@ -55,6 +56,9 @@ html {
     /* overflow: hidden; */
 }
 
+body {
+    overflow-x: hidden;
+}
 
 h1 {
     font-size: 2em;
@@ -513,6 +517,51 @@ body {
     cursor: pointer;
 }
 
+/*_________________________________________________________________________________________
+GamePage
+-----------------------------------------------------------------------------------------*/
+#infoLabel {
+    background-image: url(/img/Info_icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 22px;
+    height: 22px;
+}
+
+#addLabel {
+    background-image: url(/img/plus_icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    width: 22px;
+    height: 22px;
+}
+
+#gameContainer {
+    --n: 1;
+    display: flex;
+    align-items: center;
+    overflow-y: hidden;
+    width: 100%;
+    width: calc(var(--n)*100%);
+    height: 50vw;
+    max-height: 100vh;
+    transform: translate(calc(var(--i, 0)/var(--n)*-100%));
+}
+
+#gameContainer img {
+    width: 100%;
+    width: calc(100%/var(--n));
+    user-select: none;
+    pointer-events: none;
+    image-orientation: from-image;
+}
+
 
 /* ________________________________________________________________________________________
 Checkbox
@@ -554,30 +603,49 @@ Checkbox
     background: var(--secundary_color_dark);
     border-radius: var(--border_radius);
     color: var(--menuFontColor);
+    /* width: 1em; */
+    /* transition-property: width;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    transition-delay: 1s; */
 }
 
-.highlightAnimation {
-    animation: addContentNumberHighlight 0.7s 1;
+/* .highlightTransition {
+    width: 4em;
+}
+
+#numberOfRoundsAdded {
+    margin: 30px;
+    height: 50px;
+    width: 50px;
+    background-color: blue;
+} */
+
+#numberOfRoundsAdded {
+    /* -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s; */
+    animation: addContentNumberHighlight 0.5s 1;
     animation-timing-function: ease-in-out;
+    /* IE 10+, Fx 29+ */
+    /* margin-left: 50% !important; */
+    /* background-color: var(--secundary_color_light); */
 }
-
 
 @keyframes addContentNumberHighlight {
     0% {
-        background-color: var(--secundary_color_dark);
+
+        background-color: var(--secundary_color_light);
     }
 
-    20% {
-        background-color: yellow;
-        color: var(--secundary_color_dark);
-    }
-
-    60% {
+    50% {
         background-color: yellow;
         color: var(--secundary_color_dark);
     }
 
     100% {
-        background-color: var(--secundary_color_dark);
+        background-color: var(--secundary_color_light);
     }
 }
