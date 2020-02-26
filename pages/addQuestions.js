@@ -1,6 +1,9 @@
 // Helle
 import _categoryService from "./../services/categoryService.js"
 
+// import questionInputService from "./../services/questionInputService.js"
+
+
 export default class AddQuestions {
   constructor() {
     this.questionRef = _db.collection("questions");
@@ -30,7 +33,7 @@ export default class AddQuestions {
     <article id="addedQuestionsArticle" class="hide">The Article</article>
         <form id="questionForm">
         <h2>Tilføj nye spørgsmål til spillet:</h2>
-        <select class="inputfield" id="select-game" name="games" onchange="gameInputSettings(this.value, 'newQuestion', 'inputForGames')" placeholder="Vælg spil..." required></select>
+        <select class="inputfield" id="select-game" name="games"s onchange="gameInputSettings(this.value, 'newQuestion', 'inputForGames', '')" placeholder="Vælg spil..." required></select>
         
         <h2>Skriv indholdet her:</h2>
         <div id="inputForGames">
@@ -51,7 +54,7 @@ export default class AddQuestions {
     `;
   }
 
-  async gameInputSettings(gameId, inputId, whereToPut) {
+  async gameInputSettings(gameId, inputId, whereToPut, preOrNot) {
 
     let differetInputs = "";
     await this.gameRef.doc(`${gameId}`).get().then(function (doc) {
@@ -60,8 +63,8 @@ export default class AddQuestions {
       if (gameId === 'vRD8Spl5fQ4AfTifPtRq') { //Sandhed eller konsekvens
         differetInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
-        <input type="checkbox">Sandhed
-        <input type="checkbox">Konskvens
+        <input id="truth${preOrNot}" onchange="styleTruthOrDare(this.id, 'dare${preOrNot}')" type="checkbox"><label for="truth${preOrNot}">Sandhed</label>
+        <input id="dare${preOrNot}" onchange="styleTruthOrDare('truth${preOrNot}', this.id)" type="checkbox"><label for="dare${preOrNot}">Konsekvens</label>
         `
       } else if (gameId === 'MEF7ah2clInWlmgNpg6M') { //Quiz
         differetInputs = /*html*/ `
@@ -88,6 +91,7 @@ export default class AddQuestions {
 
     })
     document.querySelector(`#${whereToPut}`).innerHTML = differetInputs;
+
   }
 
 
@@ -175,7 +179,7 @@ export default class AddQuestions {
           }
 
           game.questions.push(question); //Push the questions that is a part of the "current" game into a game array of questions
-          console.log(game.questions.length)
+          // console.log(game.questions.length)
 
 
           if (game.questions.length == 1) { // If theres a question in the game array add it to the DOM

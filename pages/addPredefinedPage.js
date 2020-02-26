@@ -1,13 +1,16 @@
 // import _addQuestionService from "./../services/addPredefinedService.js"
+import questionInputService from "./../services/questionInputService.js"
 export default class AddPredefinedPage {
     constructor() {
         this.questionRef = _db.collection("questions");
         this.categoryRef = _db.collection("categories");
         this.gameRef = _db.collection("games");
+        this.choosenCategoriesArr = [];
 
         this.createCategoryOptions();
         this.createGameOptions();
         this.template();
+        // questionInputService.styleTruthOrDare();
 
 
     }
@@ -20,7 +23,7 @@ export default class AddPredefinedPage {
         <div name="" id="wichCategories">
         </div>
         <br>
-        <select name="whichGame" id="whichGame" onchange="gameInputSettings(this.value, 'newPreQuestion', 'preInputfield')" class="inputfield">
+        <select name="whichGame" id="whichGame" onchange="gameInputSettings(this.value, 'newPreQuestion', 'preInputfield', 'PredefinedPage')" class="inputfield">
         </select>
         <br>
         <div id="preInputfield">
@@ -80,13 +83,30 @@ export default class AddPredefinedPage {
     //     });
     // }
 
+    //Connect the choosen categories to the question
+    choosenCategories() {
+        this.choosenCategoriesArr = [];
+        let theDivWithInputs = document.querySelector("#wichCategories");
+        let tags = theDivWithInputs.getElementsByTagName("input");
+        for (let i = 0, n = tags.length; i < n; i = i + 1) {
+            let checkBox = document.getElementById(`${tags[i].id}`);
+            if (checkBox.checked == true) {
+                this.choosenCategoriesArr.push(`${tags[i].id}`)
+            }
+            checkBox.checked = false;
+        }
+    }
+
+
     // Ad a predefined question to the database
     createQuestion() {
-        let categoriesInput = document.querySelector("#wichCategories");
+        this.choosenCategories();
+        console.log(this.choosenCategoriesArr)
+        // let categoriesInput = document.querySelector("#wichCategories");
         let gameInput = document.querySelector("#whichGame");
         let questionInput = document.querySelector("#newPreQuestion");
         let newPredefinedQuestion = {
-            categories: [categoriesInput.value],
+            categories: this.choosenCategoriesArr,
             game: gameInput.value,
             questionContent: questionInput.value
         }

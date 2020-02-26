@@ -15,6 +15,7 @@ import _categoryService from "./services/categoryService.js"
 import authService from "./services/loginService.js";
 import createPartyService from "./../services/createPartyService.js"
 import joinPartyService from "./../services/joinPartyService.js"
+import questionInputService from "./services/questionInputService.js"
 
 
 
@@ -55,4 +56,5 @@ window.basket = () => addQuestions.basket();
 window.createAddedQuestionsList = () => addQuestions.createAddedQuestionsList();
 window.highlightNumber = () => addQuestions.highlightNumber();
 window.removeFromList = (id) => addQuestions.removeFromList(id);
-window.gameInputSettings = (gameId, inputId, whereToPut) => addQuestions.gameInputSettings(gameId, inputId, whereToPut);
+window.gameInputSettings = (gameId, inputId, whereToPut, preOrNot) => addQuestions.gameInputSettings(gameId, inputId, whereToPut, preOrNot);
+window.styleTruthOrDare = (truthId, dareId) => questionInputService.styleTruthOrDare(truthId, dareId);
