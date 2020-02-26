@@ -41,7 +41,9 @@ export default class GamePage {
         // Onclick NEXT
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="gamePage" class="page">
-        
+        <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn" for="info"></label>
+            <section class="hide" id="rules"><h2>Regler for ${this.curGame}</h2>
+            <p>${this.curRule}</p></section>
 
         <div id="gameContainer">
       
