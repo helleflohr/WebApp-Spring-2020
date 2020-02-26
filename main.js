@@ -59,6 +59,8 @@ window.removeFromList = (id) => addQuestions.removeFromList(id);
 window.gameInputSettings = (gameId, inputId, whereToPut, preOrNot) => addQuestions.gameInputSettings(gameId, inputId, whereToPut, preOrNot);
 window.styleWhichValue = (truthId, dareId) => questionInputService.styleWhichValue(truthId, dareId);
 window.createNewQuestion = () => _arrayQuestionService.createNewQuestion();
+window.highlightChoosen = (checkboxId) => addPredefinedPage.highlightChoosen(checkboxId);
+window.getDataFromQuiz = (number, preOrNot) => questionInputService.getDataFromQuiz(number, preOrNot);
 
 
 

@@ -332,6 +332,10 @@ Input fields and select boxes
     display: none;
 }
 
+.displayBlock {
+    display: block;
+    width: 100%;
+}
 
 /* ---------- authentication styling ---------- */
 #firebaseui-auth-container {

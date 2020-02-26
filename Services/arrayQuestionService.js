@@ -30,13 +30,9 @@ class ArrayQuestionService {
             await this.gameRef.doc(`${gameId}`).get().then(doc => {
                 let gameData = doc.data()
                 questionList += /*html*/ `
-            
                 
             <div class="${gameId}">${gameData.gametitle} <br>${partyContentArray.questionContent}</div>
             `
-
-
-
 
             })
         });

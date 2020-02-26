@@ -72,11 +72,47 @@ export default class AddQuestions {
       } else if (gameId === 'MEF7ah2clInWlmgNpg6M') { //Quiz
         differetInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
-        Svarmulighed 1<input class="inputfield" placeholder="Skriv svarmulighed..." type="text"><input type="checkbox">
-        <br>
-        Svarmulighed 2<input class="inputfield" placeholder="Skriv svarmulighed..." type="text"><input type="checkbox"><br>
-        Svarmulighed 3<input class="inputfield" placeholder="Skriv svarmulighed..." type="text"><input type="checkbox"><br>
-        Svarmulighed 4<input class="inputfield" placeholder="Skriv svarmulighed..." type="text"><input type="checkbox">
+
+        <label class="bold displayBlock" for="answer1${preOrNot}">Svarmulighed 1</label>
+        <input id="answer1${preOrNot}" name="answer1" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
+       
+        <label class="smallInputfield" for="correct1${preOrNot}">Korrekt</label>
+        <input id="correct1${preOrNot}" name="correct" onchange="styleWhichValue(this.id, 'wrong1${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="wrong1${preOrNot}" name="wrong" onchange="styleWhichValue(this.id, 'correct1${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="wrong1${preOrNot}">Forkert</label>
+
+
+
+
+        <label class="bold displayBlock" for="answer2${preOrNot}">Svarmulighed 2</label>
+        <input id="answer2${preOrNot}" name="answer2" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
+
+        <label class="smallInputfield" for="correct2${preOrNot}">Korrekt</label>
+        <input id="correct2${preOrNot}" name="correct" onchange="styleWhichValue(this.id, 'wrong2${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="wrong2${preOrNot}" name="wrong" onchange="styleWhichValue(this.id, 'correct2${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="wrong2${preOrNot}">Forkert</label>
+
+
+
+        <label class="bold displayBlock" for="answer3${preOrNot}">Svarmulighed 3</label>
+        <input id="answer3${preOrNot}" name="answer3" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
+
+        <label class="smallInputfield" for="correct3${preOrNot}">Korrekt</label>
+        <input id="correct3${preOrNot}" name="correct" onchange="styleWhichValue(this.id, 'wrong3${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="wrong3${preOrNot}" name="wrong" onchange="styleWhichValue(this.id, 'correct3${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="wrong3${preOrNot}">Forkert</label>
+
+
+        
+
+        <label class="bold displayBlock" for="answer4${preOrNot}">Svarmulighed 4</label>
+        <input id="answer4${preOrNot}" name="answer4" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
+        
+        <label class="smallInputfield" for="correct4${preOrNot}">Korrekt</label>
+        <input id="correct4${preOrNot}" name="correct" onchange="styleWhichValue(this.id, 'wrong4${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="wrong4${preOrNot}" name="wrong" onchange="styleWhichValue(this.id, 'correct4${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="wrong4${preOrNot}">Forkert</label>
+    
         `
       } else if (gameId === 'pfF2l2zwYDqcVCIjMlNr') { //Sandt eller falsk
         differetInputs = /*html*/ `
