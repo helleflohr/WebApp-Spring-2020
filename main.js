@@ -54,7 +54,7 @@ window.checkbox = (id) => addQuestions.checkbox(id);
 window.getThePartyId = () => settingsPage.getThePartyId();
 window.basket = () => addQuestions.basket();
 window.createAddedQuestionsList = () => addQuestions.createAddedQuestionsList();
-window.highlightNumber = () => addQuestions.highlightNumber();
+window.highlightNumber = () => _arrayQuestionService.highlightNumber();
 window.removeFromList = (id) => addQuestions.removeFromList(id);
 window.gameInputSettings = (gameId, inputId, whereToPut, preOrNot) => addQuestions.gameInputSettings(gameId, inputId, whereToPut, preOrNot);
 window.styleWhichValue = (truthId, dareId) => questionInputService.styleWhichValue(truthId, dareId);

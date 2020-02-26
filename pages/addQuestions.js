@@ -153,7 +153,7 @@ export default class AddQuestions {
   //   console.log(this.partyContentArray)
 
   //   // this.fetchGames();
-  //   this.highlightNumber()
+  //   _arrayQuestionService.highlightNumber()
   //   // document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded">${this.partyContentArray.length}</div>`
   //   document.querySelector("#newQuestion").value = "";
 
@@ -324,7 +324,7 @@ export default class AddQuestions {
     })
 
     _arrayQuestionService.partyContentArray.push(questionSet);
-    this.highlightNumber()
+    _arrayQuestionService.highlightNumber()
     document.querySelector(`#${id}`).style.display = "none";
     console.log(_arrayQuestionService.partyContentArray)
 
@@ -342,7 +342,7 @@ export default class AddQuestions {
     if (index > -1) {
       _arrayQuestionService.partyContentArray.splice(index, 1);
     }
-    this.highlightNumber()
+    _arrayQuestionService.highlightNumber()
     document.querySelector(`#${id}`).style.display = 'none';
   }
 
@@ -357,33 +357,8 @@ export default class AddQuestions {
     }
   }
 
-  // wait(ms) {
-  //   var start = new Date().getTime();
-  //   var end = start;
-  //   while (end < start + ms) {
-  //     end = new Date().getTime();
-  //   }
-  // }
-
-  highlightNumber() {
-
-    // this.wait(7000);
-    document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded"> ${_arrayQuestionService.partyContentArray.length}</div>`
-
-    document.querySelector('#numberOfRoundsAdded').classList.add('highlightAnimation');
-
-    // document.querySelector('#numberOfRoundsAdded').classList.add('highlightTransition');
 
 
 
-
-
-    // let computedStyle = window.getComputedStyle(number),
-    //   marginLeft = computedStyle.getPropertyValue('margin-left');
-    // number.style.marginLeft = marginLeft;
-    // number.classList.remove('horizTranslate');
-
-
-  }
 
 }

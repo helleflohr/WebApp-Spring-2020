@@ -7,10 +7,18 @@ class ArrayQuestionService {
         this.partyContentArray = [];
     }
 
+    highlightNumber() {
+        document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded"> ${_arrayQuestionService.partyContentArray.length}</div>`
+        document.querySelector('#numberOfRoundsAdded').classList.add('highlightAnimation');
+    }
+
     createNewQuestion() {
+        // console.log(this.gameInput.value)
+        let gameInput = document.querySelector("#select-game");
+        let questionInput = document.querySelector("#newQuestion");
         let newUserQuestion = {
-            game: this.gameInput.value,
-            questionContent: this.questionInput.value
+            game: gameInput.value,
+            questionContent: questionInput.value
         }
         this.partyContentArray.push(newUserQuestion)
         console.log(this.partyContentArray)
