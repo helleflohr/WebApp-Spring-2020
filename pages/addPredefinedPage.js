@@ -6,6 +6,7 @@ export default class AddPredefinedPage {
         this.categoryRef = _db.collection("categories");
         this.gameRef = _db.collection("games");
         this.choosenCategoriesArr = [];
+        this.whichParameter = "";
 
         this.createCategoryOptions();
         this.createGameOptions();
@@ -97,11 +98,24 @@ export default class AddPredefinedPage {
         }
     }
 
+    whichParameters() {
+        let gameInput = document.querySelector("#whichGame");
+        if (gameInput.value == 'vRD8Spl5fQ4AfTifPtRq') { //Sandhed eller konsekvens
+            newPredefinedQuestion.truthOrDare = questionInputService.truthOrDare
+        }
+        // if (gameInput.value == 'vRD8Spl5fQ4AfTifPtRq') { //Sandhed eller konsekvens
+        //     newPredefinedQuestion.truthOrDare = questionInputService.truthOrDare
+        // }
+    }
+
 
     // Ad a predefined question to the database
     createQuestion() {
+
         this.choosenCategories();
+
         console.log(this.choosenCategoriesArr)
+        console.log(questionInputService.truthOrDare)
         // let categoriesInput = document.querySelector("#wichCategories");
         let gameInput = document.querySelector("#whichGame");
         let questionInput = document.querySelector("#newPreQuestion");
@@ -110,6 +124,7 @@ export default class AddPredefinedPage {
             game: gameInput.value,
             questionContent: questionInput.value
         }
+        this.whichParameters();
         this.questionRef.add(newPredefinedQuestion);
     }
 

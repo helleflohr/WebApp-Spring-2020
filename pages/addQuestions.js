@@ -63,8 +63,9 @@ export default class AddQuestions {
       if (gameId === 'vRD8Spl5fQ4AfTifPtRq') { //Sandhed eller konsekvens
         differetInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
-        <label class="smallInputfield" for="truth${preOrNot}">Sandhed</label><input id="truth${preOrNot}" onchange="styleTruthOrDare(this.id, 'dare${preOrNot}')" class="hide displayNone" type="checkbox">
-        <input id="dare${preOrNot}" onchange="styleTruthOrDare(this.id, 'truth${preOrNot}')" class="hide displayNone" type="checkbox"><label class="smallInputfield" for="dare${preOrNot}">Konsekvens</label>
+
+        <label class="smallInputfield" for="truth${preOrNot}">Sandhed</label><input id="truth${preOrNot}" name="truth" onchange="styleWhichValue(this.id, 'dare${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="dare${preOrNot}" name="dare" onchange="styleWhichValue(this.id, 'truth${preOrNot}')" class="hide displayNone" type="checkbox"><label class="smallInputfield" for="dare${preOrNot}">Konsekvens</label>
         `
       } else if (gameId === 'MEF7ah2clInWlmgNpg6M') { //Quiz
         differetInputs = /*html*/ `
@@ -78,8 +79,11 @@ export default class AddQuestions {
       } else if (gameId === 'pfF2l2zwYDqcVCIjMlNr') { //Sandt eller falsk
         differetInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
-        <input type="checkbox">Sandt
-        <input type="checkbox">Falsk
+
+        <label class="smallInputfield" for="truthfull${preOrNot}">Sandt</label>
+        <input id="truthfull${preOrNot}" name="truthfull" onchange="styleWhichValue(this.id, 'false${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="false${preOrNot}" name="false" onchange="styleWhichValue(this.id, 'truthfull${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="false${preOrNot}">Falsk</label>
         `
       } else {
 

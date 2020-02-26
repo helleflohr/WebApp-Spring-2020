@@ -1,9 +1,10 @@
 class QuestionInputService {
     constructor() {
+        this.truthOrDare = "";
 
 
     }
-    styleTruthOrDare(thisCheckbox, theOtherCheckbox) {
+    styleWhichValue(thisCheckbox, theOtherCheckbox) {
         let checkBoxForThisCheckbox = document.querySelector(`#${thisCheckbox}`);
         let labelForThisCheckbox = document.querySelector(`[for=${thisCheckbox}]`);
         let otherCheckbox = document.querySelector(`#${theOtherCheckbox}`);
@@ -14,6 +15,9 @@ class QuestionInputService {
 
             labelForOtherCheckbox.style.background = 'var(--secundary_color_light)';
             otherCheckbox.checked = false;
+
+            this.truthOrDare = checkBoxForThisCheckbox.name
+
         } else if (otherCheckbox.checked == true) {
             labelForOtherCheckbox.style.background = 'var(--secundary_color_dark)';
 
@@ -21,16 +25,11 @@ class QuestionInputService {
             checkBoxForThisCheckbox.checked = false;
         }
 
+        console.log(this.truthOrDare)
 
     }
 
-    // getTruthOrDare(checkboxTrue, checkboxDare) {
 
-
-
-    //     /* <input id="truth" type="checkbox"><label for="truth">Sandhed</label>
-    //             <input id="dare" type="checkbox"><label for="dare">Konsekvens</label> */
-    // }
 }
 const questionInputService = new QuestionInputService();
 export default questionInputService;

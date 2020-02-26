@@ -57,4 +57,4 @@ window.createAddedQuestionsList = () => addQuestions.createAddedQuestionsList();
 window.highlightNumber = () => addQuestions.highlightNumber();
 window.removeFromList = (id) => addQuestions.removeFromList(id);
 window.gameInputSettings = (gameId, inputId, whereToPut, preOrNot) => addQuestions.gameInputSettings(gameId, inputId, whereToPut, preOrNot);
-window.styleTruthOrDare = (truthId, dareId) => questionInputService.styleTruthOrDare(truthId, dareId);
+window.styleWhichValue = (truthId, dareId) => questionInputService.styleWhichValue(truthId, dareId);
