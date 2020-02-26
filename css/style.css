@@ -539,12 +539,11 @@ GamePage
     transform: translate(calc(var(--i, 0)/var(--n)*-100%));
 }
 
-#gameContainer img {
+#gameContainer article {
     width: 100%;
     width: calc(100%/var(--n));
     user-select: none;
     pointer-events: none;
-    image-orientation: from-image;
 }
 
 

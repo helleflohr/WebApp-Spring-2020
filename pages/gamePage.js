@@ -12,6 +12,8 @@ export default class GamePage {
         this.template();
         this.showRules();
         this.questions = [];
+        this.gameName();
+
         // this.calcArrayLength();
 
         // Swipe
@@ -41,10 +43,15 @@ export default class GamePage {
         // Onclick NEXT
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="gamePage" class="page">
-        
+        <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn" for="info"></label>
+    <p>${this.curRule}</p></section>
+    <section class="hide" id="rules"><h2>Regler for ${this.curGame}</h2></section>
 
         <div id="gameContainer">
-      
+      <div><h2>Du er nu klar til at<br> 
+      spille,swipe til venstre<br>
+       for at se dine<br>
+        spørgsmål</h2></div>
     
         </div>
         
@@ -110,5 +117,35 @@ export default class GamePage {
 
 
     // Takes questions from the array partyContentArray from the addQuestions page, and geneeates them into single game pages
+    gameName() {
+        let questionList = "";
+        let itemsProcessed = 0;
+        let numberOfItems = _arrayQuestionService.partyContentArray.length;
+        let randomQuestions = this.shuffle(_arrayQuestionService.partyContentArray);
+
+        randomQuestions.forEach(async question => {
+
+            await this.gameRef.doc(`${question.game}`).get().then(doc => {
+                let gameData = doc.data()
+                questionList += /*html*/ `
+
+                <article class="${question.game}"><h2>${gameData.gameTitle}</h2>${question.questionContent}</article>
+                `
+                itemsProcessed++;
+                if (itemsProcessed === numberOfItems) {
+                    document.querySelector('#gameContainer').innerHTML = questionList;
+                    console.log("hej med dig");
+                }
+
+
+
+            })
+        });
+    }
+
+    shuffle(array) {
+        array.sort(() => Math.random() - 0.5);
+        return array;
+    }
 
 }

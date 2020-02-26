@@ -21,32 +21,6 @@ class ArrayQuestionService {
 
     }
 
-    gameName() {
-        let questionList = "";
-        this.partyContentArray.forEach(async question => {
-            let gameId = question.game;
-
-            console.log(gameId);
-            await this.gameRef.doc(`${gameId}`).get().then(doc => {
-                let gameData = doc.data()
-                questionList += /*html*/ `
-            <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn" for="info"></label>
-            <section class="hide" id="rules"><h2>Regler for ${this.curGame}</h2>
-            <p>${this.curRule}</p></section>
-                
-            <div class="${gameId}">${gameData.gametitle} <br>${partyContentArray.questionContent}</div>
-            `
-
-
-
-
-            })
-        });
-        document.querySelector('#gameContainer').innerHTML = questionList;
-
-    }
-
-
 }
 const _arrayQuestionService = new ArrayQuestionService;
 export default _arrayQuestionService;

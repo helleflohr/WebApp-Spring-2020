@@ -1,7 +1,7 @@
-import Gamepage from "./gamePage.js"
+import GamePage from "./gamePage.js"
 import _categoryService from "./../services/categoryService.js"
 import _arrayQuestionService from "./../services/arrayQuestionService.js"
-let gamePage = new Gamepage;
+
 
 export default class AddQuestions {
   constructor() {
@@ -17,6 +17,7 @@ export default class AddQuestions {
 
     this.template();
     this.createGameOptions();
+    this.gamePage = new GamePage;
 
   }
 
@@ -47,7 +48,7 @@ export default class AddQuestions {
       <div id="predefined">
       </div>
     </article>
-    <button class="btn" name="gamePage" onclick="navigateTo(this.name);addContentToPartyArr()"> Tilføj spørgsmål og gå videre </button>
+    <button class="btn" name="gamePage" onclick="navigateTo(this.name);addContentToPartyArr();gameName()"> Tilføj spørgsmål og gå videre </button>
     
     </section>
     `;

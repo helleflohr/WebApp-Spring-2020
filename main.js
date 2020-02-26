@@ -12,7 +12,7 @@ import GamePage from "./pages/gamePage.js"
 // Importing services
 import spaService from "./services/spa.js"
 import _categoryService from "./services/categoryService.js"
-import authService from "./services/loginService.js";
+import authService from "./services/loginService.js"
 // import createPartyService from "./services/createPartyService.js"
 // import joinPartyService from "./services/joinPartyService.js"
 import _arrayQuestionService from "./services/arrayQuestionService.js"
@@ -58,12 +58,14 @@ window.highlightNumber = () => addQuestions.highlightNumber();
 window.removeFromList = (id) => addQuestions.removeFromList(id);
 window.gameInputSettings = (gameId, inputId, whereToPut) => addQuestions.gameInputSettings(gameId, inputId, whereToPut);
 window.createNewQuestion = () => _arrayQuestionService.createNewQuestion();
+window.gameName = () => gamePage.gameName();
 
 
 
 // Swipe
 const _C = document.querySelector('#gameContainer'),
-    N = _C.children.length,
+    // N = _C.children.length,
+    N = 4,
     NF = 30,
     TFN = {
         'linear': function (k) {
