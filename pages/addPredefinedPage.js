@@ -28,7 +28,7 @@ export default class AddPredefinedPage {
         <br>
         <button class="btn" type="button" onclick='createQuestion()'>Tilføj spørgsmål til databasen</button>
         </article>
-        `;
+        `
 
     }
 

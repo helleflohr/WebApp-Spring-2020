@@ -4,7 +4,7 @@ export default class SettingsPage {
   constructor() {
     // this.getThePartyId();
     this.template();
-    this.slider();
+    this.rangeSlider();
     // this.createPartyService = createPartyService;
     // this.partyId = "";
 
@@ -23,40 +23,67 @@ export default class SettingsPage {
 
 				  <input type="text" id="myText" value="${this.partyId}">
 
-
-
 				  <div class="toggle">
 				  <input type="checkbox" class="check">
 				  <b class="b switch"></b>
 				  <b class="b track"></b>
 				</div>
 
-				<h1>Antal runder</h1>
+				<h3>Antal runder</h3>
         <div class="container">
   
-        <h1>Range Slider Picture</h1>
-        <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-        <p>Value: <span id="demo"></span></p>
-      </div>
+        
+  <div class="rangeSlider">
+    <span id="rs-bullet" class="rs-label">0</span>
+    <input id="rs-range-line" class="rs-range" type="range" value="0" min="0" max="200">
+  </div>
+   <div class="box-minmax">
+    <span>0</span><span>200</span>
+  </div>
+</div>
 
+
+      <h3>vælg sprog</h3>
+    <label class="toggleLang">
+        <input type="checkbox" id="dabox" class="star">
+           <span   class="sliderLang">
+            
+        </span>
+      
+      </label>
+    </label>
+    <button class="btn" name="gamePage" onclick="navigateTo(this.name);addContentToPartyArr()">Fortsæt</button>
+
+    
       
       </section>`
   }
-
-
-  slider() {
-    let slider = document.getElementById("myRange");
-    let output = document.getElementById("demo");
-    output.innerHTML = slider.value;
-
-    slider.oninput = function () {
-      output.innerHTML = this.value;
-    }
+  
+  rangeSlider() { 
+  let rangeSlider = document.getElementById("rs-range-line");
+ let rangeBullet = document.getElementById("rs-bullet");
+  
+  rangeSlider.addEventListener("input", showSliderValue, false);
+  
+  function showSliderValue() {
+    rangeBullet.innerHTML = rangeSlider.value;
+    var bulletPosition = (rangeSlider.value /rangeSlider.max);
+    rangeBullet.style.left = (bulletPosition * 578) + "px";
   }
+}
+
+  //slider() {
+    //let slider = document.getElementById("myRange");
+    //let output = document.getElementById("demo");
+    //output.innerHTML = slider.value;
+
+   //slider.oninput = function () {
+     /// output.innerHTML = this.value;
+    //}
+ // }
 
   myFunction() {
-    var x = document.getElementById("myText").value;
+    let x = document.getElementById("myText").value;
     document.getElementById("demo").innerHTML = x;
   }
 
@@ -71,17 +98,9 @@ export default class SettingsPage {
     return result;
 
   } }
+
   
 
-  /*Slider med antal runder*/
-
-  let slider = document.getElementById("myRange");
- let output = document.getElementById("demo");
-  output.innerHTML = slider.value;
-  
-  slider.oninput = function() {
-    output.innerHTML = this.value;
-  }
   
 
 
