@@ -584,49 +584,30 @@ Checkbox
     background: var(--secundary_color_dark);
     border-radius: var(--border_radius);
     color: var(--menuFontColor);
-    /* width: 1em; */
-    /* transition-property: width;
-    transition-duration: 2s;
-    transition-timing-function: linear;
-    transition-delay: 1s; */
 }
 
-/* .highlightTransition {
-    width: 4em;
-}
-
-#numberOfRoundsAdded {
-    margin: 30px;
-    height: 50px;
-    width: 50px;
-    background-color: blue;
-} */
-
-#numberOfRoundsAdded {
-    /* -webkit-transition: 1s;
-    -moz-transition: 1s;
-    -ms-transition: 1s;
-    -o-transition: 1s;
-    transition: 1s; */
-    animation: addContentNumberHighlight 0.5s 1;
+.highlightAnimation {
+    animation: addContentNumberHighlight 0.7s 1;
     animation-timing-function: ease-in-out;
-    /* IE 10+, Fx 29+ */
-    /* margin-left: 50% !important; */
-    /* background-color: var(--secundary_color_light); */
 }
+
 
 @keyframes addContentNumberHighlight {
     0% {
-
-        background-color: var(--secundary_color_light);
+        background-color: var(--secundary_color_dark);
     }
 
-    50% {
+    20% {
+        background-color: yellow;
+        color: var(--secundary_color_dark);
+    }
+
+    60% {
         background-color: yellow;
         color: var(--secundary_color_dark);
     }
 
     100% {
-        background-color: var(--secundary_color_light);
+        background-color: var(--secundary_color_dark);
     }
 }

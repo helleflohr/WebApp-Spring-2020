@@ -164,83 +164,73 @@ export default class AddQuestions {
   // question.game is equeal to game.id. There by sorting the questions by games.
   createQuestionsList() {
     let listItem = "";
-    let listItems = "";
+
 
     this.games.forEach(game => {
       this.questions.forEach(question => {
 
-        if (question.game == game.id) {
-          if (!game.questions) {
-            game.questions = [];
 
+        if (question.game == game.id) { // Checks if the question is a part of the "current" game
+          if (!game.questions) { //If theres no questions for the game
+            game.questions = []; // the array of questions is set to empty
           }
-          game.questions.push(question);
-          console.log(game.questions)
 
-          if (game.questions.length == 1) {
+          game.questions.push(question); //Push the questions that is a part of the "current" game into a game array of questions
+          console.log(game.questions.length)
 
 
+          if (game.questions.length == 1) { // If theres a question in the game array add it to the DOM
             listItem += /*html*/ `<article>
-          <h3 class="bold">${game.gameTitle}</h3>
+            <h3 class="bold">${game.gameTitle}</h3>
+            </article>`
 
-          </article>`
+            // After the game headline add all the questions with the matching gameId
             this.questions.forEach(question => {
-
               if (question.game == game.id) {
                 listItem += /*html*/ `
-
-    <p id="${question.id}" class="label checkboxNotCheked" onclick="checkbox(this.id)">${question.questionContent}</p>
-            `
-
-
+                <p id="${question.id}" class="label checkboxNotCheked" onclick="checkbox(this.id)">${question.questionContent}</p>
+                `
               }
-
             })
           }
+
         }
       })
     })
 
-    console.log(this.games)
     document.querySelector("#list").innerHTML = listItem;
-    //     listItem += /*html*/ `<article>
-    //       <h3 class="bold">${game.gameTitle}</h3>
 
-    //       </article>`
-    //     this.questions.forEach(question => {
-
-    //       if (question.game == game.id) {
-    //         listItem += /*html*/ `
-
-    // <p id="${question.id}" class="label checkboxNotCheked" onclick="checkbox(this.id)">${question.questionContent}</p>
-    //         `
-
-
-    //       }
-
-    //     })
-    //   })
-
-    // document.querySelector("#list").innerHTML = listItem;
-
-    // <input class="checkbox" type="checkbox" id="${question.id}" name="${question.questionContent}" value="${question.categories}" onclick="checkbox(this.id)">
-    //     <label class="label checkboxNotCheked" for="${question.id}">${question.questionContent}</label>
   }
 
   createAddedQuestionsList() {
     let listItem = "";
-    this.games.forEach(game => {
-      listItem += /*html*/ `
-      <h3 class="bold" id="${game.id}">${game.gameTitle}</h3>`
 
+    // Insert message if basket is empty
+    if (this.partyContentArray.length === 0) {
+      listItem += `Du har endnu ikke valgt nogle spørgsmål til spillet`
+    }
+
+
+    this.games.forEach(game => {
       for (let question of this.partyContentArray) {
         if (question.game === game.id) {
+
           listItem += /*html*/ `
-        
-        <p id="${question.addedId}" class="question" onclick="removeFromList(this.id)">${question.questionContent}</p>
-        
-        `
+          <h3 class="bold" id="${game.id}">${game.gameTitle}</h3>`
+
+
+          this.partyContentArray.forEach(question => {
+            if (question.game == game.id) {
+              listItem += /*html*/ `
+              <p id="${question.addedId}" class="label checkboxNotCheked" onclick="removeFromList(this.id)">${question.questionContent}</p>
+              `
+
+            }
+
+          })
+
         }
+
       }
       // listItem = `<article>${listItem}</article>`
       // console.log(listItem)
@@ -274,8 +264,6 @@ export default class AddQuestions {
 
 
   async checkbox(id) {
-    // let checkBox = document.querySelector(`#${id}`);
-    // if (checkBox.checked == true) {
     document.querySelector(`#${id}`).classList.add('checkboxChecked');
 
     let questionSet = {};
@@ -292,29 +280,14 @@ export default class AddQuestions {
 
     this.partyContentArray.push(questionSet);
     this.highlightNumber()
-    console.log(this.partyContentArray)
     document.querySelector(`#${id}`).style.display = "none";
 
-    // } else {
 
-    //   document.querySelector(`[for=${id}]`).classList.remove('checkboxChecked')
-
-    //   let index = this.partyContentArray.map(function (e) {
-    //     return e.questionContent
-    //   }).indexOf(question);
-    //   console.log(index)
-    //   if (index > -1) {
-    //     this.partyContentArray.splice(index, 1);
-    //   }
-    //   this.highlightNumber()
-    //   console.log(this.partyContentArray)
-    // }
   }
 
   removeFromList(id) {
-    console.log(id)
+
     let preId = id.slice(5);
-    console.log(preId)
     document.querySelector(`#${preId}`).style.display = "block";
 
     let index = this.partyContentArray.map(function (e) {
@@ -326,8 +299,6 @@ export default class AddQuestions {
     }
     this.highlightNumber()
     document.querySelector(`#${id}`).style.display = 'none';
-    console.log(this.partyContentArray)
-
   }
 
   basket() {
@@ -341,22 +312,22 @@ export default class AddQuestions {
     }
   }
 
-  wait(ms) {
-    var start = new Date().getTime();
-    var end = start;
-    while (end < start + ms) {
-      end = new Date().getTime();
-    }
-  }
+  // wait(ms) {
+  //   var start = new Date().getTime();
+  //   var end = start;
+  //   while (end < start + ms) {
+  //     end = new Date().getTime();
+  //   }
+  // }
 
   highlightNumber() {
-    let number = document.querySelector('#numberOfRoundsAdded');
-    number.classList.add('onAdded');
-    // number.classList.add('highlightTransition');
+
     // this.wait(7000);
     document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded"> ${this.partyContentArray.length}</div>`
 
-    document.querySelector('#numberOfRoundsAdded').classList.remove('highlightTransition');
+    document.querySelector('#numberOfRoundsAdded').classList.add('highlightAnimation');
+
+    // document.querySelector('#numberOfRoundsAdded').classList.add('highlightTransition');
 
 
 
