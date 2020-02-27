@@ -18,6 +18,7 @@ import joinPartyService from "./../services/joinPartyService.js"
 import questionInputService from "./services/questionInputService.js"
 import _arrayQuestionService from "./services/arrayQuestionService.js"
 import addQuestionToGameService from "./services/addQuestionToGameService.js"
+// import SwipeService from ".services/swipeService.js"
 
 
 
@@ -35,6 +36,8 @@ let gamePage = new GamePage();
 // Initiating services
 authService.init();
 spaService.init();
+// SwipeService.init(idOfSwiperContainer);
+
 
 // Currently not in use
 _categoryService.read();
@@ -47,7 +50,7 @@ window.addAnotherPlayer = (whereToAdd) => addPlayersPage.addAnotherPlayer(whereT
 window.joinParty = (hash) => joinPartyService.joinParty(hash);
 window.createParty = (hash) => createPartyService.createParty(hash);
 window.addPlayers = () => joinPartyService.addPlayers();
-window.showRules = () => gamePage.showRules();
+window.showRules = (name) => gamePage.showRules(name);
 window.showAdd = () => gamePage.showAdd();
 window.logout = () => authService.logout();
 window.checkbox = (id) => addQuestions.checkbox(id);
@@ -59,14 +62,17 @@ window.removeFromList = (id) => addQuestions.removeFromList(id);
 window.gameInputSettings = (gameId, inputId, whereToPut, preOrNot) => addQuestions.gameInputSettings(gameId, inputId, whereToPut, preOrNot);
 window.styleWhichValue = (truthId, dareId) => questionInputService.styleWhichValue(truthId, dareId);
 window.createNewQuestion = () => _arrayQuestionService.createNewQuestion();
+window.gameName = () => gamePage.gameName();
 window.highlightChoosen = (checkboxId) => addPredefinedPage.highlightChoosen(checkboxId);
 window.getDataFromQuiz = (number, preOrNot) => questionInputService.getDataFromQuiz(number, preOrNot);
 
 
 
+
 // Swipe
 const _C = document.querySelector('#gameContainer'),
-    N = _C.children.length,
+    // N = _C.children.length,
+    N = 3,
     NF = 30,
     TFN = {
         'linear': function (k) {
