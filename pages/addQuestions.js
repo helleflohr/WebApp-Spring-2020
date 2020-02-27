@@ -205,9 +205,13 @@ export default class AddQuestions {
   }
 
   removeFromList(id) {
+    console.log(id)
+    console.log(id.substr(0, 5))
+    if (id.substr(0, 5) == 'added') {
 
-    let preId = id.slice(5);
-    document.querySelector(`#${preId}`).style.display = "block";
+      let preId = id.slice(5);
+      document.querySelector(`#${preId}`).style.display = "block";
+    }
 
     let index = _arrayQuestionService.partyContentArray.map(function (e) {
       return e.addedId

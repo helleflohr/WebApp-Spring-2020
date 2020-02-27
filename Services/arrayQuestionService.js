@@ -7,7 +7,6 @@ class ArrayQuestionService {
         this.gameRef = _db.collection('games');
 
         this.partyContentArray = [];
-
         this.theIdRef = "";
     }
 
@@ -34,25 +33,21 @@ class ArrayQuestionService {
     createNewQuestion() {
         this.generateIdForOwnQuestions();
 
-        // console.log(this.gameInput.value)
         let gameInput = document.querySelector("#select-game");
         let questionInput = document.querySelector("#newQuestion");
+
         questionInputService.newUserQuestion = {
             game: gameInput.value,
             questionContent: questionInput.value,
-            idRef: `i${this.theIdRef}`
+            addedId: `i${this.theIdRef}`
         }
-
 
         questionInputService.whichParameters('', 'this.newUserQuestion', 'select-game');
 
         this.partyContentArray.push(questionInputService.newUserQuestion)
-        console.log(this.partyContentArray)
 
         this.highlightNumber()
         document.querySelector("#newQuestion").value = "";
-        console.log(this.partyContentArray)
-
     }
 
 }
