@@ -1,4 +1,4 @@
-import swipeService from "./../services/swipeService.js"
+import SwiperService from "./../services/swipeService.js";
 import _arrayQuestionService from "../services/arrayQuestionService.js"
 // import AddQuestions from "./addQuestions.js"
 
@@ -17,8 +17,8 @@ export default class GamePage {
         // this.calcArrayLength();
 
         // Swipe
-        this.swipeZone = document.getElementById('gameContainer');
-        this.swiper = swipeService.swiper;
+        this.swiper = new SwiperService();
+        this.swiper.init("container");
         // swipe end
     }
 
