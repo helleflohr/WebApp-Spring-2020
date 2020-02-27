@@ -133,7 +133,7 @@ export default class AddPredefinedPage {
             game: gameInput.value,
             questionContent: questionInput.value
         }
-        questionInputService.whichParameters('PredefinedPage', 'this.newPredefinedQuestion');
+        questionInputService.whichParameters('PredefinedPage', 'this.newPredefinedQuestion', 'whichGame');
         this.questionRef.add(questionInputService.newPredefinedQuestion);
         questionInput.value = "";
     }
