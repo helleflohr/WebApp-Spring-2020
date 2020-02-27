@@ -20,9 +20,8 @@ export default class GamePage {
         this.swipeZone = document.getElementById('gameContainer');
         this.swiper = swipeService.swiper;
         // swipe end
-
-
     }
+
     // let addQuestions = new AddQuestions();
     getData() {
         // let inputField = document.querySelector('#joinPartyId');
@@ -42,16 +41,10 @@ export default class GamePage {
     template() {
         // Onclick NEXT
         document.querySelector('#content').innerHTML += /*html*/ `
-        <article id="gamePage" class="page">
-        <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn" for="info"></label>
-    <p>${this.curRule}</p></section>
-    <section class="hide" id="rules"><h2>Regler for ${this.curGame}</h2></section>
+        
 
         <div id="gameContainer">
-      <div><h2>Du er nu klar til at<br> 
-      spille,swipe til venstre<br>
-       for at se dine<br>
-        spørgsmål</h2></div>
+      
     
         </div>
         
@@ -90,6 +83,7 @@ export default class GamePage {
             rulesBox.classList.add('hide');
             infoLabel.style.backgroundImage = "url(/img/info_icon.svg)"
         }
+
     }
 
     // Toggle function for adding more players and content in the game
@@ -127,17 +121,19 @@ export default class GamePage {
 
             await this.gameRef.doc(`${question.game}`).get().then(doc => {
                 let gameData = doc.data()
+                console.log(gameData);
                 questionList += /*html*/ `
-
-                <article class="${question.game}"><h2>${gameData.gameTitle}</h2>${question.questionContent}</article>
+                <article class="${question.game}"><h2>${gameData.gameTitle}</h2>${question.questionContent} 
+                <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn" for="info"></label>
+                <section id="rules" class="hide"><h2>Regler for ${gameData.gameTitle}</h2>
+                <p>${gameData.rules}</p></section></article></article>
                 `
+
                 itemsProcessed++;
                 if (itemsProcessed === numberOfItems) {
                     document.querySelector('#gameContainer').innerHTML = questionList;
-                    console.log("hej med dig");
+
                 }
-
-
 
             })
         });
