@@ -197,6 +197,7 @@ export default class AddQuestions {
     document.querySelector(`#${id}`).style.display = "none";
     console.log(_arrayQuestionService.partyContentArray)
     document.querySelector(`#${id}`).classList.remove('checkboxChecked');
+    addQuestionToGameService.noContentForHeadline('dbGameArticle');
 
   }
 
@@ -214,6 +215,7 @@ export default class AddQuestions {
     }
     _arrayQuestionService.highlightNumber()
     document.querySelector(`#${id}`).style.display = 'none';
+    addQuestionToGameService.noContentForHeadline('dbGameArticle');
   }
 
   basket() {

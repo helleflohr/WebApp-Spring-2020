@@ -8,6 +8,7 @@ class AddQuestionToGameService {
         this.games = [];
         this.questions = [];
     }
+
     // This function creates an empty array. It pushes a new object to the array, for each new game id. 
     fetchGames() {
         this.games = [];
@@ -35,6 +36,7 @@ class AddQuestionToGameService {
         })
     }
 
+
     // This function creates a list of all the games, and puts in all the questions, where the value of 
     // question.game is equeal to game.id. There by sorting the questions by games.
     createQuestionsList() {
@@ -52,7 +54,7 @@ class AddQuestionToGameService {
                     game.questions.push(question); //Push the questions that is a part of the "current" game into a game array of questions
 
                     if (game.questions.length == 1) { // If theres a question in the game array add it to the DOM
-                        listItem += /*html*/ `<article>
+                        listItem += /*html*/ `<article id="#dbGameArticle${game.id}">
                         <h3 class="bold">${game.gameTitle}</h3>
                         </article>`
 
@@ -69,38 +71,30 @@ class AddQuestionToGameService {
                 }
             })
         })
-
         document.querySelector("#list").innerHTML = listItem;
-
     }
+
+
 
     createAddedQuestionsList() {
         let listItem = "";
-
-
 
         // Insert message if basket is empty
         if (_arrayQuestionService.partyContentArray.length === 0) {
             listItem += `Du har endnu ikke valgt nogle spørgsmål til spillet`
         }
 
-
         this.games.forEach(game => {
             let addedContent = ""
             for (let question of _arrayQuestionService.partyContentArray) {
                 if (question.game === game.id) {
-
-
-
 
                     if (question.game == game.id) {
                         addedContent += /*html*/ `
                     <p id="${question.addedId}" class="label checkboxNotCheked" onclick="removeFromList(this.id)">${question.questionContent}</p>
                     `
                     }
-
                 }
-
             }
 
             listItem += /*html*/ `<article id='gameArticle${game.id}'>
@@ -112,30 +106,20 @@ class AddQuestionToGameService {
         })
         document.querySelector("#addedQuestionsArticle").innerHTML = listItem;
         console.log(listItem)
+        this.noContentForHeadline('gameArticle');
 
+
+
+
+    }
+
+    noContentForHeadline(whichSpecificId) {
         this.games.forEach(game => {
-            let gameArticle = document.querySelector(`#gameArticle${game.id}`);
+            let gameArticle = document.querySelector(`#${whichSpecificId}${game.id}`);
             if (gameArticle.childElementCount == 1) {
                 gameArticle.classList.add('displayNone');
             }
         })
-
-
-        // let theDivWithInputs = document.querySelector("#addedQuestionsArticle");
-        // let tags = theDivWithInputs.getElementsByTagName("H3");
-        // console.log(tags)
-        // for (let i = 0, n = tags.length; i < n; i = i + 1) {
-        //   // let checkBox = document.getElementById(`${tags[i].id}`);
-        //   console.log(tags.nextElementSibling)
-        //   // if (tags.nextElementSibling == true) {
-        //   //     this.choosenCategoriesArr.push(`${tags[i].id}`)
-        //   //     // document.querySelector(`[for=${tags[i].id}]`).style.background = 'var(--secundary_color_dark)'
-        //   // }
-        //   // checkBox.checked = false;
-        // }
-
-        // let gameHeadline = document.querySelector(`#added${game.id}`);
-        // console.log(gameHeadline.nextElementSibling)
     }
 
 }
