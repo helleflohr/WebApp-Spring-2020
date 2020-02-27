@@ -1,6 +1,6 @@
-// import SwiperService from "./../services/swipeService.js";
+// import swipeService from "./../services/swipeService.js;"
 import _arrayQuestionService from "../services/arrayQuestionService.js"
-// import AddQuestions from "./addQuestions.js"
+
 
 
 
@@ -14,15 +14,9 @@ export default class GamePage {
         this.questions = [];
 
 
-        // this.calcArrayLength();
-
-        // Swipe
-        // this.swiper = new SwiperService();
-        // this.swiper.init("container");
-        // swipe end
     }
 
-    // let addQuestions = new AddQuestions();
+
     getData() {
         // let inputField = document.querySelector('#joinPartyId');
         this.gamesRef.get().then(snapshotData => {
@@ -42,7 +36,11 @@ export default class GamePage {
         // Onclick NEXT
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="gamePage" class="page">
-        
+        <input id="info" class="hide" type="checkbox" onclick="showRules()">
+                <label id="infoLabel"  class="btn" for="info"></label>
+                <div id="rules" class="hide">
+                <h2>Regler for:</h2>
+                </div>
 
         <div id="gameContainer">
       
@@ -72,10 +70,12 @@ export default class GamePage {
     }
 
     // Toggle function for the rules in the game
-    showRules(name) {
-        let checkBox = document.querySelector(`#info${name}`);
-        let rulesBox = document.querySelector(`#rules${name}`);
-        let infoLabel = document.querySelector(`[for=info${name}]`);
+    showRules() {
+        console.log("showRules");
+        let name = "";
+        let checkBox = document.querySelector(`#info`);
+        let rulesBox = document.querySelector(`#rules`);
+        let infoLabel = document.querySelector(`#infoLabel`);
         if (checkBox.checked == true) {
             rulesBox.classList.remove('hide');
             infoLabel.style.backgroundImage = "url(/img/X_icon.svg)"
@@ -105,64 +105,54 @@ export default class GamePage {
 
 
 
-    //Function to handle swipes
-    swiper() {
-        swiper.init(swipeZone, function (swipe) {
-            console.log(swipe)
-        })
-    }
-
-
     // Takes questions from the array partyContentArray from the addQuestions page, and geneeates them into single game pages
     gameName() {
         let questionList = "";
+        let insert = "";
         let itemsProcessed = 0;
         let numberOfItems = _arrayQuestionService.partyContentArray.length;
         let randomQuestions = this.shuffle(_arrayQuestionService.partyContentArray);
+        let gameRulesIds = [];
 
         randomQuestions.forEach(async question => {
 
             await this.gameRef.doc(`${question.game}`).get().then(doc => {
-                let gameData = doc.data()
-                let gameRules = gameData.rules
-                console.log(gameData);
+                let gameData = doc.data();
+                let gameId = doc.id;
+                let gameRules = gameData.rules;
+
                 questionList += /*html*/ `
-                <article class="${question.game}"><h2>${gameData.gameTitle}</h2>${question.questionContent} 
-                <input id="info${question.addedId}" name="${question.addedId}" class="hide" type="checkbox" onclick="showRules(this.name)">
-                <label class="infoLabel"  for="info${question.addedId}"></label><br>
-                <div id="rules${question.addedId}" class="hide" name="${question.addedId}"><h3>Regler for ${gameData.gameTitle}</h3>
-                <p>${gameData.rules}</p></div></article>
+                <article class="${question.game}">
+                <h2>${gameData.gameTitle}</h2>${question.questionContent}          
+                </article>
                 `
+                if (!gameRulesIds.includes(gameId)) {
+                    insert += /*html*/ `
+                <h3>${gameData.gameTitle}</h3>
+                <p>${gameRules}</p>`
+                    gameRulesIds.push(gameId);
+                }
+
 
                 itemsProcessed++;
                 if (itemsProcessed === numberOfItems) {
                     document.querySelector('#gameContainer').innerHTML = questionList;
-                    // this.showRules()
-                    document.querySelector(`#rules${question.addedId}`).innerHTML = gameRules;
+                    document.querySelector(`#rules`).innerHTML += insert;
+                    // swipeService.init('gameContainer');
                 }
+                // document.querySelector(`#rules${question.addedId}`).innerHTML = gameRules;
 
-            })
 
+            });
         });
     }
 
     shuffle(array) {
-        array.sort(() => Math.random() + 0.5);
-        return array;
-    }
-
-    background() {
-        let checkBox = document.querySelector("#info");
-        let rulesBox = document.querySelector("#rules");
-        let infoLabel = document.querySelector('#infoLabel');
-        if (checkBox.checked == true) {
-            rulesBox.classList.remove('hide');
-            infoLabel.style.backgroundImage = "url(/img/X_icon.svg)"
-        } else {
-            rulesBox.classList.add('hide');
-            infoLabel.style.backgroundImage = "url(/img/info_icon.svg)"
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
-
+        return array;
     }
 
 }

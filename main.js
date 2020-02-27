@@ -18,7 +18,7 @@ import joinPartyService from "./../services/joinPartyService.js"
 import questionInputService from "./services/questionInputService.js"
 import _arrayQuestionService from "./services/arrayQuestionService.js"
 import addQuestionToGameService from "./services/addQuestionToGameService.js"
-// import SwipeService from ".services/swipeService.js"
+// import swipeService from "./services/swipeService.js"
 
 
 
@@ -36,7 +36,7 @@ let gamePage = new GamePage();
 // Initiating services
 authService.init();
 spaService.init();
-// SwipeService.init(idOfSwiperContainer);
+
 
 
 // Currently not in use
@@ -69,6 +69,7 @@ window.createNewQuestion = () => _arrayQuestionService.createNewQuestion();
 window.gameName = () => gamePage.gameName();
 window.highlightChoosen = (checkboxId) => addPredefinedPage.highlightChoosen(checkboxId);
 window.getDataFromQuiz = (number, preOrNot) => questionInputService.getDataFromQuiz(number, preOrNot);
+// window.init = (idOfSwiperContainer) => swipeService.init(idOfSwiperContainer);
 // window.chekRangeSlider =()=> settingsPage.chekRangeSlider();
 
 // let rangeSlider = document.getElementById("myRange");

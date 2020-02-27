@@ -415,16 +415,16 @@ Pages
 }
 
 .idButton {
-    background-color: #45b88C; 
+    background-color: #45b88C;
     border-radius: 3px;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-  
+
     font-size: 12px;
     margin: 4px 2px;
 
-  }
+}
 
 
 
@@ -446,9 +446,9 @@ Pages
 }
 
 
- #antalRunderTekst {
+#antalRunderTekst {
     position: absolute;
-    top:60%;
+    top: 60%;
     left: 40%;
 
 
@@ -460,39 +460,42 @@ Pages
 
 /* slider med Antal runder */
 
-  
-  .container {
+
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  
-  .box-minmax {
+}
+
+.box-minmax {
     margin-top: 30px;
     width: 300px;
     display: flex;
     justify-content: space-between;
     font-size: 20px;
     color: #ffffff;
-  }
-  .box-minmax span:first-child {
+}
+
+.box-minmax span:first-child {
     margin-left: 10px;
-  }
-  
-  .range-slider {
+}
+
+.range-slider {
     margin-top: 30vh;
-  }
-  
-  .rs-range {
+}
+
+.rs-range {
     margin-top: 29px;
     width: 300px;
     -webkit-appearance: none;
-  }
-  .rs-range:focus {
+}
+
+.rs-range:focus {
     outline: none;
-  }
-  .rs-range::-webkit-slider-runnable-track {
+}
+
+.rs-range::-webkit-slider-runnable-track {
     width: 100%;
     height: 1px;
     cursor: pointer;
@@ -500,8 +503,9 @@ Pages
     background: #ffffff;
     border-radius: 0px;
     border: 0px solid #010101;
-  }
-  .rs-range::-moz-range-track {
+}
+
+.rs-range::-moz-range-track {
     width: 100%;
     height: 1px;
     cursor: pointer;
@@ -509,8 +513,9 @@ Pages
     background: #ffffff;
     border-radius: 0px;
     border: 0px solid #010101;
-  }
-  .rs-range::-webkit-slider-thumb {
+}
+
+.rs-range::-webkit-slider-thumb {
     box-shadow: none;
     border: 0px solid #ffffff;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
@@ -521,8 +526,9 @@ Pages
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -20px;
-  }
-  .rs-range::-moz-range-thumb {
+}
+
+.rs-range::-moz-range-thumb {
     box-shadow: none;
     border: 0px solid #ffffff;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
@@ -533,12 +539,13 @@ Pages
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -20px;
-  }
-  .rs-range::-moz-focus-outer {
+}
+
+.rs-range::-moz-focus-outer {
     border: 0;
-  }
-  
-  .rs-label {
+}
+
+.rs-label {
     position: relative;
     transform-origin: center center;
     display: block;
@@ -560,16 +567,17 @@ Pages
     font-weight: normal;
     line-height: normal;
     font-size: 15px;
-  }
-  .rs-label::after {
+}
+
+.rs-label::after {
     content: "Runder";
     display: block;
     font-size: 8px;
     letter-spacing: 0.07em;
     margin-top: -2px;
-  }
-  
-  /* Slut slider med Antal runder */
+}
+
+/* Slut slider med Antal runder */
 
 /*__________ Toggle switch Sprog */
 
@@ -577,8 +585,8 @@ Pages
 
 .toggleLang input {
     display: none;
- 
-   
+
+
 }
 
 /* The container and background */
@@ -601,7 +609,7 @@ Pages
     border: 1px solid #111;
     border-radius: 5px;
     transition: all 0.4s;
-    
+
 
 }
 
@@ -616,16 +624,16 @@ Pages
     background-color: #111;
     border-radius: 5px;
     transition: all 0.4s;
-    
+
 
 }
 
 /* On checked */
-input:checked + .sliderLang {
+input:checked+.sliderLang {
     background-color: #111;
 }
 
-input:checked + .sliderLang:before {
+input:checked+.sliderLang:before {
     transform: translateX(50px);
 }
 
@@ -635,24 +643,24 @@ input:checked + .sliderLang:before {
     top: 6px;
     right: 10px;
     color: #333;
-    font-size:0.9em;
-    font-family:sans-serif;
+    font-size: 0.9em;
+    font-family: sans-serif;
 
 
 }
 
 /* "ON" Text */
-input:checked + .sliderLang:after {
+input:checked+.sliderLang:after {
     content: "DA";
-    font-family:sans-serif;
+    font-family: sans-serif;
     left: -30px;
     color: rgb(240, 246, 247);
-    
+
 }
 
 .toggle input {
     display: none;
-  
+
 }
 
 /* The container and background */
@@ -660,7 +668,7 @@ input:checked + .sliderLang:after {
     position: relative;
     display: inline-block;
     width: 50px;
-    
+
 }
 
 .sliderLang {
@@ -670,12 +678,12 @@ input:checked + .sliderLang:after {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color:rgb(242, 243, 243);
+    background-color: rgb(242, 243, 243);
     border: 1px solid rgba(29, 150, 150, 0.133);
     border-radius: 30px;
-    transition: all 0.4;                    
+    transition: all 0.4;
     opacity: 70%;
-    
+
 }
 
 /* The sliding button */
@@ -689,18 +697,18 @@ input:checked + .sliderLang:after {
     background-color: rgb(28, 31, 29);
     border-radius: 24px;
     transition: all 0.4s;
-    
+
 }
 
 /* On checked */
-input:checked + .sliderLang {
+input:checked+.sliderLang {
     background-color: #1222;
-    background-color:  #80265D;
+    background-color: #80265D;
 }
 
-input:checked + .sliderLang:before {
+input:checked+.sliderLang:before {
     transform: translateX(50px);
-  
+
 }
 
 /* Slut toggle switch Sprog */
@@ -722,20 +730,25 @@ input:checked + .sliderLang:before {
 /*_________________________________________________________________________________________
 GamePage
 -----------------------------------------------------------------------------------------*/
-.infoLabel {
-    background-image: url(/img/Info_icon.svg);
+#infoLabel {
+    background-image: url(/img/info_icon.svg);
     background-repeat: no-repeat;
     background-position: center;
-    /* position: absolute;
+    position: absolute;
     top: 0;
-    right: 10px; */
-    width: 22px;
+    right: 10px;
+    width: 20px;
     height: 22px;
-    width: auto;
-    margin: 1.5em auto 1em;
-    height: auto;
-    font-size: 1em;
-    padding: .5em 1em;
+}
+
+#rules {
+    background-color: var(--menuBackground);
+    color: var(--menuFontColor);
+    min-height: 50vh;
+    position: absolute;
+    z-index: 999;
+    top: 15%;
+    width: 95%;
 }
 
 #addLabel {
@@ -745,7 +758,7 @@ GamePage
     position: absolute;
     bottom: 0;
     right: 10px;
-    width: 22px;
+    width: 20px;
     height: 22px;
 }
 
