@@ -1,14 +1,17 @@
 // import _addQuestionService from "./../services/addPredefinedService.js"
+import questionInputService from "./../services/questionInputService.js"
 export default class AddPredefinedPage {
     constructor() {
         this.questionRef = _db.collection("questions");
         this.categoryRef = _db.collection("categories");
         this.gameRef = _db.collection("games");
+        this.choosenCategoriesArr = [];
+        this.whichParameter = "";
+        this.newPredefinedQuestion = {};
 
         this.createCategoryOptions();
         this.createGameOptions();
         this.template();
-
 
     }
 
@@ -17,13 +20,13 @@ export default class AddPredefinedPage {
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="addPredefinded" class="page collectionOfItems">
         <h2>Tilføj prædefinerede spørgsmål</h2>
-        <div name="" id="wichCategories">
+        <div class="flexcontainer" id="wichCategories">
         </div>
         <br>
-        <select name="whichGame" id="whichGame" onchange="gameInputSettings(this.value, 'newPreQuestion', 'preInputfield')" class="inputfield">
+        <select name="whichGame" id="whichGame" onchange="gameInputSettings(this.value, 'newPreQuestion', 'preInputfield', 'PredefinedPage')" class="inputfield">
         </select>
         <br>
-        <div id="preInputfield">
+        <div id="preInputfield" class="flexcontainer">
         <input type="text" id="newPreQuestion" placeholder="Tilføj spil indhold her...." class="inputfield">
         </div>
         <br>
@@ -43,8 +46,8 @@ export default class AddPredefinedPage {
 
                 let categoriyCheckboxes = document.querySelector("#wichCategories");
                 categoriyCheckboxes.innerHTML += /*html*/ `
-                <input type="checkbox" id="${category.id}" name="${category.contentCategory}" class="inputfield" value="${category.id}">
-                <label for="${category.id}">${category.contentCategory}</label>
+                <input type="checkbox" id="the${category.id}" onchange="highlightChoosen(this.id)" name="${category.contentCategory}" class="displayNone hide" value="${category.id}">
+                <label class="smallInputfield" for="the${category.id}">${category.contentCategory}</label>
                
                 <br>
                 `
@@ -80,17 +83,84 @@ export default class AddPredefinedPage {
     //     });
     // }
 
+    //Connect the choosen categories to the question
+    choosenCategories() {
+        this.choosenCategoriesArr = [];
+        let theDivWithInputs = document.querySelector("#wichCategories");
+        let tags = theDivWithInputs.getElementsByTagName("input");
+        for (let i = 0, n = tags.length; i < n; i = i + 1) {
+            let checkBox = document.getElementById(`${tags[i].id}`);
+            if (checkBox.checked == true) {
+                this.choosenCategoriesArr.push(`${tags[i].id}`)
+                // document.querySelector(`[for=${tags[i].id}]`).style.background = 'var(--secundary_color_dark)'
+            }
+            checkBox.checked = false;
+        }
+    }
+
+    highlightChoosen(checkboxId) {
+
+        let checkBox = document.getElementById(`${checkboxId}`);
+        console.log(checkBox)
+        let label = document.querySelector(`[for=${checkboxId}]`);
+
+        if (checkBox.checked == true) {
+
+            label.style.background = 'var(--secundary_color_dark)'
+        } else {
+            label.style.background = 'var(--secundary_color_light)'
+        }
+    }
+
+    whichParameters() {
+        let gameInput = document.querySelector("#whichGame");
+
+        if (gameInput.value == 'vRD8Spl5fQ4AfTifPtRq') { //Sandhed eller konsekvens
+            this.newPredefinedQuestion.truthOrDare = questionInputService.addedValue
+        }
+        if (gameInput.value == 'pfF2l2zwYDqcVCIjMlNr') { //Sandt eller falsk
+            this.newPredefinedQuestion.trueOrFalse = questionInputService.addedValue
+        }
+        if (gameInput.value == 'MEF7ah2clInWlmgNpg6M') { //Quiz
+            questionInputService.getDataFromQuiz('1', 'PredefinedPage');
+            // this.newPredefinedQuestion.question1 = questionInputService.answerValue;
+            // this.newPredefinedQuestion.status1 = questionInputService.status;
+            // console.log(questionInputService.answerValue)
+
+            questionInputService.getDataFromQuiz('2', 'PredefinedPage');
+            // this.newPredefinedQuestion.question2 = questionInputService.answerValue;
+            // this.newPredefinedQuestion.status2 = questionInputService.status;
+
+            questionInputService.getDataFromQuiz('3', 'PredefinedPage');
+            // this.newPredefinedQuestion.question3 = questionInputService.answerValue;
+            // this.newPredefinedQuestion.status3 = questionInputService.status;
+
+            questionInputService.getDataFromQuiz('4', 'PredefinedPage');
+            // this.newPredefinedQuestion.question4 = questionInputService.answerValue;
+            // this.newPredefinedQuestion.status4 = questionInputService.status;
+            this.newPredefinedQuestion.answerOptions = questionInputService.arrOfAnswers;
+        }
+    }
+
+
     // Ad a predefined question to the database
     createQuestion() {
-        let categoriesInput = document.querySelector("#wichCategories");
+
+        this.choosenCategories();
+
+        console.log(this.choosenCategoriesArr)
+        console.log(questionInputService.addedValue)
+        // let categoriesInput = document.querySelector("#wichCategories");
         let gameInput = document.querySelector("#whichGame");
         let questionInput = document.querySelector("#newPreQuestion");
-        let newPredefinedQuestion = {
-            categories: [categoriesInput.value],
+        this.newPredefinedQuestion = {
+            categories: this.choosenCategoriesArr,
             game: gameInput.value,
             questionContent: questionInput.value
         }
-        this.questionRef.add(newPredefinedQuestion);
+        this.whichParameters();
+        this.questionRef.add(this.newPredefinedQuestion);
+        questionInput.value = "";
     }
 
 }

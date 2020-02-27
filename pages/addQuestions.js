@@ -3,6 +3,9 @@ import _categoryService from "./../services/categoryService.js"
 import _arrayQuestionService from "./../services/arrayQuestionService.js"
 
 
+// import questionInputService from "./../services/questionInputService.js"
+
+
 export default class AddQuestions {
   constructor() {
     this.questionRef = _db.collection("questions");
@@ -33,10 +36,10 @@ export default class AddQuestions {
     <article id="addedQuestionsArticle" class="hide">The Article</article>
         <form id="questionForm">
         <h2>Tilføj nye spørgsmål til spillet:</h2>
-        <select class="inputfield" id="select-game" name="games" onchange="gameInputSettings(this.value, 'newQuestion', 'inputForGames')" placeholder="Vælg spil..." required></select>
+        <select class="inputfield" id="select-game" name="games"s onchange="gameInputSettings(this.value, 'newQuestion', 'inputForGames', '')" placeholder="Vælg spil..." required></select>
         
         <h2>Skriv indholdet her:</h2>
-        <div id="inputForGames">
+        <div id="inputForGames" class="flexcontainer">
         <input class="inputfield" type="text" id="newQuestion" placeholder="Tilføj spil indhold her...." required>
         </div>
         <button class="btn" id="adQuestion" type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
@@ -54,7 +57,7 @@ export default class AddQuestions {
     `;
   }
 
-  async gameInputSettings(gameId, inputId, whereToPut) {
+  async gameInputSettings(gameId, inputId, whereToPut, preOrNot) {
 
     let differetInputs = "";
     await this.gameRef.doc(`${gameId}`).get().then(function (doc) {
@@ -63,23 +66,63 @@ export default class AddQuestions {
       if (gameId === 'vRD8Spl5fQ4AfTifPtRq') { //Sandhed eller konsekvens
         differetInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
-        <input type="checkbox">Sandhed
-        <input type="checkbox">Konskvens
+
+        <label class="smallInputfield" for="truth${preOrNot}">Sandhed</label><input id="truth${preOrNot}" name="truth" onchange="styleWhichValue(this.id, 'dare${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="dare${preOrNot}" name="dare" onchange="styleWhichValue(this.id, 'truth${preOrNot}')" class="hide displayNone" type="checkbox"><label class="smallInputfield" for="dare${preOrNot}">Konsekvens</label>
         `
       } else if (gameId === 'MEF7ah2clInWlmgNpg6M') { //Quiz
         differetInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
-        Svarmulighed 1<input class="inputfield" placeholder="Skriv svarmulighed..." type="text"><input type="checkbox">
-        <br>
-        Svarmulighed 2<input class="inputfield" placeholder="Skriv svarmulighed..." type="text"><input type="checkbox"><br>
-        Svarmulighed 3<input class="inputfield" placeholder="Skriv svarmulighed..." type="text"><input type="checkbox"><br>
-        Svarmulighed 4<input class="inputfield" placeholder="Skriv svarmulighed..." type="text"><input type="checkbox">
+
+        <label class="bold displayBlock" for="answer1${preOrNot}">Svarmulighed 1</label>
+        <input id="answer1${preOrNot}" name="answer1" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
+       
+        <label class="smallInputfield" for="correct1${preOrNot}">Korrekt</label>
+        <input id="correct1${preOrNot}" name="correct" onchange="styleWhichValue(this.id, 'wrong1${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="wrong1${preOrNot}" name="wrong" onchange="styleWhichValue(this.id, 'correct1${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="wrong1${preOrNot}">Forkert</label>
+
+
+
+
+        <label class="bold displayBlock" for="answer2${preOrNot}">Svarmulighed 2</label>
+        <input id="answer2${preOrNot}" name="answer2" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
+
+        <label class="smallInputfield" for="correct2${preOrNot}">Korrekt</label>
+        <input id="correct2${preOrNot}" name="correct" onchange="styleWhichValue(this.id, 'wrong2${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="wrong2${preOrNot}" name="wrong" onchange="styleWhichValue(this.id, 'correct2${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="wrong2${preOrNot}">Forkert</label>
+
+
+
+        <label class="bold displayBlock" for="answer3${preOrNot}">Svarmulighed 3</label>
+        <input id="answer3${preOrNot}" name="answer3" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
+
+        <label class="smallInputfield" for="correct3${preOrNot}">Korrekt</label>
+        <input id="correct3${preOrNot}" name="correct" onchange="styleWhichValue(this.id, 'wrong3${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="wrong3${preOrNot}" name="wrong" onchange="styleWhichValue(this.id, 'correct3${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="wrong3${preOrNot}">Forkert</label>
+
+
+        
+
+        <label class="bold displayBlock" for="answer4${preOrNot}">Svarmulighed 4</label>
+        <input id="answer4${preOrNot}" name="answer4" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
+        
+        <label class="smallInputfield" for="correct4${preOrNot}">Korrekt</label>
+        <input id="correct4${preOrNot}" name="correct" onchange="styleWhichValue(this.id, 'wrong4${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="wrong4${preOrNot}" name="wrong" onchange="styleWhichValue(this.id, 'correct4${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="wrong4${preOrNot}">Forkert</label>
+    
         `
       } else if (gameId === 'pfF2l2zwYDqcVCIjMlNr') { //Sandt eller falsk
         differetInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
-        <input type="checkbox">Sandt
-        <input type="checkbox">Falsk
+
+        <label class="smallInputfield" for="truthfull${preOrNot}">Sandt</label>
+        <input id="truthfull${preOrNot}" name="truthfull" onchange="styleWhichValue(this.id, 'false${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="false${preOrNot}" name="false" onchange="styleWhichValue(this.id, 'truthfull${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="false${preOrNot}">Falsk</label>
         `
       } else {
 
@@ -91,6 +134,7 @@ export default class AddQuestions {
 
     })
     document.querySelector(`#${whereToPut}`).innerHTML = differetInputs;
+
   }
 
 
@@ -110,7 +154,7 @@ export default class AddQuestions {
   //   console.log(this.partyContentArray)
 
   //   // this.fetchGames();
-  //   this.highlightNumber()
+  //   _arrayQuestionService.highlightNumber()
   //   // document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded">${this.partyContentArray.length}</div>`
   //   document.querySelector("#newQuestion").value = "";
 
@@ -178,7 +222,7 @@ export default class AddQuestions {
           }
 
           game.questions.push(question); //Push the questions that is a part of the "current" game into a game array of questions
-          console.log(game.questions.length)
+          // console.log(game.questions.length)
 
 
           if (game.questions.length == 1) { // If theres a question in the game array add it to the DOM
@@ -281,7 +325,7 @@ export default class AddQuestions {
     })
 
     _arrayQuestionService.partyContentArray.push(questionSet);
-    this.highlightNumber()
+    _arrayQuestionService.highlightNumber()
     document.querySelector(`#${id}`).style.display = "none";
     console.log(_arrayQuestionService.partyContentArray)
 
@@ -299,7 +343,7 @@ export default class AddQuestions {
     if (index > -1) {
       _arrayQuestionService.partyContentArray.splice(index, 1);
     }
-    this.highlightNumber()
+    _arrayQuestionService.highlightNumber()
     document.querySelector(`#${id}`).style.display = 'none';
   }
 
@@ -314,33 +358,8 @@ export default class AddQuestions {
     }
   }
 
-  // wait(ms) {
-  //   var start = new Date().getTime();
-  //   var end = start;
-  //   while (end < start + ms) {
-  //     end = new Date().getTime();
-  //   }
-  // }
-
-  highlightNumber() {
-
-    // this.wait(7000);
-    document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded"> ${_arrayQuestionService.partyContentArray.length}</div>`
-
-    document.querySelector('#numberOfRoundsAdded').classList.add('highlightAnimation');
-
-    // document.querySelector('#numberOfRoundsAdded').classList.add('highlightTransition');
 
 
 
-
-
-    // let computedStyle = window.getComputedStyle(number),
-    //   marginLeft = computedStyle.getPropertyValue('margin-left');
-    // number.style.marginLeft = marginLeft;
-    // number.classList.remove('horizTranslate');
-
-
-  }
 
 }

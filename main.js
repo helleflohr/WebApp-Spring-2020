@@ -12,11 +12,11 @@ import GamePage from "./pages/gamePage.js"
 // Importing services
 import spaService from "./services/spa.js"
 import _categoryService from "./services/categoryService.js"
-import authService from "./services/loginService.js"
-// import createPartyService from "./services/createPartyService.js"
-// import joinPartyService from "./services/joinPartyService.js"
+import authService from "./services/loginService.js";
+import createPartyService from "./../services/createPartyService.js"
+import joinPartyService from "./../services/joinPartyService.js"
+import questionInputService from "./services/questionInputService.js"
 import _arrayQuestionService from "./services/arrayQuestionService.js"
-// import * as swipeService from "./services/swipeService.js"
 
 
 
@@ -54,11 +54,14 @@ window.checkbox = (id) => addQuestions.checkbox(id);
 window.getThePartyId = () => settingsPage.getThePartyId();
 window.basket = () => addQuestions.basket();
 window.createAddedQuestionsList = () => addQuestions.createAddedQuestionsList();
-window.highlightNumber = () => addQuestions.highlightNumber();
+window.highlightNumber = () => _arrayQuestionService.highlightNumber();
 window.removeFromList = (id) => addQuestions.removeFromList(id);
-window.gameInputSettings = (gameId, inputId, whereToPut) => addQuestions.gameInputSettings(gameId, inputId, whereToPut);
+window.gameInputSettings = (gameId, inputId, whereToPut, preOrNot) => addQuestions.gameInputSettings(gameId, inputId, whereToPut, preOrNot);
+window.styleWhichValue = (truthId, dareId) => questionInputService.styleWhichValue(truthId, dareId);
 window.createNewQuestion = () => _arrayQuestionService.createNewQuestion();
 window.gameName = () => gamePage.gameName();
+window.highlightChoosen = (checkboxId) => addPredefinedPage.highlightChoosen(checkboxId);
+window.getDataFromQuiz = (number, preOrNot) => questionInputService.getDataFromQuiz(number, preOrNot);
 
 
 
