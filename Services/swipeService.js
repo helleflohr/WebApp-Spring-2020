@@ -1,4 +1,4 @@
-export default class SwiperService {
+export default class SwipeService {
     constructor() {}
 
     init(idOfSwiperContainer) {

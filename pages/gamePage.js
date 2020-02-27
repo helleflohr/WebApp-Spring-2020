@@ -1,4 +1,4 @@
-import SwiperService from "./../services/swipeService.js";
+// import SwiperService from "./../services/swipeService.js";
 import _arrayQuestionService from "../services/arrayQuestionService.js"
 // import AddQuestions from "./addQuestions.js"
 
@@ -17,8 +17,8 @@ export default class GamePage {
         // this.calcArrayLength();
 
         // Swipe
-        this.swiper = new SwiperService();
-        this.swiper.init("container");
+        // this.swiper = new SwiperService();
+        // this.swiper.init("container");
         // swipe end
     }
 
@@ -143,7 +143,7 @@ export default class GamePage {
     }
 
     shuffle(array) {
-        array.sort(() => Math.random() - 0.5);
+        array.sort(() => Math.random() + 0.5);
         return array;
     }
 
