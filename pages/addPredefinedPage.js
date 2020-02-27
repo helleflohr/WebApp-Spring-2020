@@ -71,20 +71,6 @@ export default class AddPredefinedPage {
         });
     }
 
-    // Try to combine the two functions above
-    // createOptions(theRef, selectID, databaseTitle) {
-    //     theRef.onSnapshot(snapshotData => {
-    //         //  let categories = [];
-    //         snapshotData.forEach(doc => {
-    //             let database = doc.data();
-    //             database.id = doc.id;
-    //             let listOfOptions = document.getElementById(`${selectID}`);
-    //             // databaseTitle = database.databaseTitle
-    //             // console.log(database.databaseTitle)
-    //             listOfOptions.add(new Option(database.databaseTitle, database.id));
-    //         });
-    //     });
-    // }
 
     //Connect the choosen categories to the question
     choosenCategories() {
@@ -114,8 +100,6 @@ export default class AddPredefinedPage {
             label.style.background = 'var(--secundary_color_light)'
         }
     }
-
-
 
 
     // Ad a predefined question to the database

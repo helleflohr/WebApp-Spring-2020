@@ -137,30 +137,6 @@ export default class AddQuestions {
 
   }
 
-
-  // This function creates the new question by taking the information from the dropdown menu over games, 
-  // and linking it with the value in the input field.
-  // createNewQuestion() {
-
-  //   let gameInput = document.querySelector("#select-game");
-  //   let questionInput = document.querySelector("#newQuestion");
-  //   let newUserQuestion = {
-  //     game: gameInput.value,
-  //     questionContent: questionInput.value
-  //   }
-  //   // this.questionRef.add(newUserQuestion);
-
-  //   this.partyContentArray.push(newUserQuestion)
-  //   console.log(this.partyContentArray)
-
-  //   // addQuestionToGameService.fetchGames();
-  //   _arrayQuestionService.highlightNumber()
-  //   // document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded">${this.partyContentArray.length}</div>`
-  //   document.querySelector("#newQuestion").value = "";
-
-  // }
-
-
   // This function creates the dropdown menu over games, by taking every new game id, and adding the game 
   // title to the menu. gameRef refers back to the constructor, therefore the this.
   createGameOptions() {
@@ -193,15 +169,11 @@ export default class AddQuestions {
       }
     })
 
-
-
     _arrayQuestionService.partyContentArray.push(questionSet);
     _arrayQuestionService.highlightNumber()
     document.querySelector(`#${id}`).style.display = "none";
     console.log(_arrayQuestionService.partyContentArray)
     document.querySelector(`#${id}`).classList.remove('checkboxChecked');
-    // addQuestionToGameService.noContentForHeadline('dbGameArticle');
-
   }
 
   removeFromList(id) {
@@ -222,22 +194,14 @@ export default class AddQuestions {
     }
     _arrayQuestionService.highlightNumber()
     document.querySelector(`#${id}`).style.display = 'none';
-    // addQuestionToGameService.noContentForHeadline('dbGameArticle');
   }
 
   basket() {
     let checkBox = document.querySelector('#addedQuestions');
     if (checkBox.checked == true) {
       document.querySelector('#addedQuestionsArticle').classList.add('hide');
-
     } else {
-
       document.querySelector('#addedQuestionsArticle').classList.remove('hide');
     }
   }
-
-
-
-
-
 }

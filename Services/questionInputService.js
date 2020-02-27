@@ -89,10 +89,6 @@ class QuestionInputService {
             } else if (whichPage == 'PredefinedPage') {
                 this.newPredefinedQuestion.answerOptions = this.arrOfAnswers;
             }
-
-            // wichObject.answerOptions = this.arrOfAnswers;
-            // this.arrOfAnswers = [];
-            // newPredefinedQuestion
         }
     }
 
