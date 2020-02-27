@@ -49,7 +49,7 @@ window.addAnotherPlayer = (whereToAdd) => addPlayersPage.addAnotherPlayer(whereT
 window.joinParty = (hash) => joinPartyService.joinParty(hash);
 window.createParty = (hash) => createPartyService.createParty(hash);
 window.addPlayers = () => joinPartyService.addPlayers();
-window.showRules = () => gamePage.showRules();
+window.showRules = (name) => gamePage.showRules(name);
 window.showAdd = () => gamePage.showAdd();
 window.logout = () => authService.logout();
 window.addContentToPartyArr = () => addQuestions.addContentToPartyArr();
@@ -72,7 +72,7 @@ window.getDataFromQuiz = (number, preOrNot) => questionInputService.getDataFromQ
 // Swipe
 const _C = document.querySelector('#gameContainer'),
     // N = _C.children.length,
-    N = 4,
+    N = 3,
     NF = 30,
     TFN = {
         'linear': function (k) {

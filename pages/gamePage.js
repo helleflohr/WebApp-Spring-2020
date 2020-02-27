@@ -10,9 +10,9 @@ export default class GamePage {
         this.curGame = "";
         this.curRule = "";
         this.template();
-        this.showRules();
+
         this.questions = [];
-        this.gameName();
+
 
         // this.calcArrayLength();
 
@@ -42,13 +42,10 @@ export default class GamePage {
         // Onclick NEXT
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="gamePage" class="page">
-        <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn" for="info"></label>
-            <section class="hide" id="rules"><h2>Regler for ${this.curGame}</h2>
-            <p>${this.curRule}</p></section>
+        
 
         <div id="gameContainer">
       
-    
         </div>
         
         
@@ -75,10 +72,10 @@ export default class GamePage {
     }
 
     // Toggle function for the rules in the game
-    showRules() {
-        let checkBox = document.querySelector("#info");
-        let rulesBox = document.querySelector("#rules");
-        let infoLabel = document.querySelector('#infoLabel');
+    showRules(name) {
+        let checkBox = document.querySelector(`#info${name}`);
+        let rulesBox = document.querySelector(`#rules${name}`);
+        let infoLabel = document.querySelector(`[for=info${name}]`);
         if (checkBox.checked == true) {
             rulesBox.classList.remove('hide');
             infoLabel.style.backgroundImage = "url(/img/X_icon.svg)"
@@ -88,6 +85,9 @@ export default class GamePage {
         }
 
     }
+    // <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn" for="info"></label>
+    //         <section class="hide" id="rules"><h2>Regler for ${this.curGame}</h2>
+    //         <p>${this.curRule}</p></section>
 
     // Toggle function for adding more players and content in the game
     showAdd() {
@@ -128,24 +128,41 @@ export default class GamePage {
                 console.log(gameData);
                 questionList += /*html*/ `
                 <article class="${question.game}"><h2>${gameData.gameTitle}</h2>${question.questionContent} 
-                <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn" for="info"></label><br>
-                <div id="rules" class=""><h3>Regler for ${gameData.gameTitle}</h3>
+                <input id="info${question.addedId}" name="${question.addedId}" class="hide" type="checkbox" onclick="showRules(this.name)">
+                <label class="infoLabel"  for="info${question.addedId}"></label><br>
+                <div id="rules${question.addedId}" class="hide" name="${question.addedId}"><h3>Regler for ${gameData.gameTitle}</h3>
                 <p>${gameData.rules}</p></div></article>
                 `
 
                 itemsProcessed++;
                 if (itemsProcessed === numberOfItems) {
                     document.querySelector('#gameContainer').innerHTML = questionList;
-
+                    // this.showRules()
+                    document.querySelector(`#rules${question.addedId}`).innerHTML = gameRules;
                 }
-                document.querySelector('#rules').innerHTML = gameRules;
+
             })
+
         });
     }
 
     shuffle(array) {
         array.sort(() => Math.random() + 0.5);
         return array;
+    }
+
+    background() {
+        let checkBox = document.querySelector("#info");
+        let rulesBox = document.querySelector("#rules");
+        let infoLabel = document.querySelector('#infoLabel');
+        if (checkBox.checked == true) {
+            rulesBox.classList.remove('hide');
+            infoLabel.style.backgroundImage = "url(/img/X_icon.svg)"
+        } else {
+            rulesBox.classList.add('hide');
+            infoLabel.style.backgroundImage = "url(/img/info_icon.svg)"
+        }
+
     }
 
 }

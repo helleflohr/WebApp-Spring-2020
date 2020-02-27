@@ -524,7 +524,7 @@ body {
 /*_________________________________________________________________________________________
 GamePage
 -----------------------------------------------------------------------------------------*/
-#infoLabel {
+.infoLabel {
     background-image: url(/img/Info_icon.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -533,6 +533,11 @@ GamePage
     right: 10px; */
     width: 22px;
     height: 22px;
+    width: auto;
+    margin: 1.5em auto 1em;
+    height: auto;
+    font-size: 1em;
+    padding: .5em 1em;
 }
 
 #addLabel {
@@ -563,8 +568,34 @@ GamePage
     width: calc(100%/var(--n));
     user-select: none;
     pointer-events: none;
+    height: 50vh;
+    margin: .7%;
 }
 
+/* sandt eller falst */
+.pfF2l2zwYDqcVCIjMlNr {
+    background-color: tomato;
+}
+
+/* Quiz */
+.MEF7ah2clInWlmgNpg6M {
+    background-color: steelblue;
+}
+
+/* Jeg har aldrig... */
+.LhhaSALqCbhu4upFC8l4 {
+    background-color: palegreen;
+}
+
+/* Kategorien er... */
+.mPfpbsdleHCjmhZhbUsQ {
+    background-color: mediumpurple;
+}
+
+/* danshed eller konsekvens */
+.vRD8Spl5fQ4AfTifPtRq {
+    background-color: hotpink;
+}
 
 /* ________________________________________________________________________________________
 Checkbox

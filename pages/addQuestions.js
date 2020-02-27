@@ -320,7 +320,7 @@ export default class AddQuestions {
         game: docData.game,
         questionContent: docData.questionContent,
         categories: docData.categories,
-        addedId: `added${id}`
+        addedId: `added${id}`,
       }
     })
 
