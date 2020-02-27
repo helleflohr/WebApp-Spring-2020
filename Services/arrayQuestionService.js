@@ -1,3 +1,4 @@
+// Imports the array with added questions to the game
 class ArrayQuestionService {
     constructor() {
         this.gameInput = document.querySelector("#select-game");

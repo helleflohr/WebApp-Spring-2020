@@ -17,6 +17,7 @@ import createPartyService from "./../services/createPartyService.js"
 import joinPartyService from "./../services/joinPartyService.js"
 import questionInputService from "./services/questionInputService.js"
 import _arrayQuestionService from "./services/arrayQuestionService.js"
+import addQuestionToGameService from "./services/addQuestionToGameService.js"
 
 
 
@@ -49,11 +50,10 @@ window.addPlayers = () => joinPartyService.addPlayers();
 window.showRules = () => gamePage.showRules();
 window.showAdd = () => gamePage.showAdd();
 window.logout = () => authService.logout();
-window.addContentToPartyArr = () => addQuestions.addContentToPartyArr();
 window.checkbox = (id) => addQuestions.checkbox(id);
 window.getThePartyId = () => settingsPage.getThePartyId();
 window.basket = () => addQuestions.basket();
-window.createAddedQuestionsList = () => addQuestions.createAddedQuestionsList();
+window.createAddedQuestionsList = () => addQuestionToGameService.createAddedQuestionsList();
 window.highlightNumber = () => _arrayQuestionService.highlightNumber();
 window.removeFromList = (id) => addQuestions.removeFromList(id);
 window.gameInputSettings = (gameId, inputId, whereToPut, preOrNot) => addQuestions.gameInputSettings(gameId, inputId, whereToPut, preOrNot);
