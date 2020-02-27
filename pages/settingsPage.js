@@ -5,10 +5,10 @@ export default class SettingsPage {
     // this.getThePartyId();
 
     this.rangeSlider = document.getElementById("rs-range-line");
-this.rangeBullet = document.getElementById("rs-bullet");
+    this.rangeBullet = document.getElementById("rs-bullet");
 
     this.template();
-    
+
     // this.rangeSlider();
     // this.createPartyService = createPartyService;
     // this.partyId = "";
@@ -54,7 +54,7 @@ this.rangeBullet = document.getElementById("rs-bullet");
       
       </label>
     </label>
-    <button class="btnSettings" name="addQuestions" onclick="navigateTo(this.name);addContentToPartyArr()">Fortsæt</button>
+    <button class="btnSettings" name="addQuestions" onclick="navigateTo(this.name)">Fortsæt</button>
 
     
       
@@ -78,11 +78,11 @@ this.rangeBullet = document.getElementById("rs-bullet");
   }
 
 
-showSliderValue() {
-  this.rangeBullet.innerHTML = rangeSlider.value;
-  var bulletPosition = (rangeSlider.value /rangeSlider.max);
-  rangeBullet.style.left = (bulletPosition * 578) + "px";
-}
+  showSliderValue() {
+    this.rangeBullet.innerHTML = rangeSlider.value;
+    var bulletPosition = (rangeSlider.value / rangeSlider.max);
+    rangeBullet.style.left = (bulletPosition * 578) + "px";
+  }
   //slider() {
   //let slider = document.getElementById("myRange");
   //let output = document.getElementById("demo");
