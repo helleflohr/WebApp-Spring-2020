@@ -250,6 +250,8 @@ export default class AddQuestions {
   createAddedQuestionsList() {
     let listItem = "";
 
+
+
     // Insert message if basket is empty
     if (_arrayQuestionService.partyContentArray.length === 0) {
       listItem += `Du har endnu ikke valgt nogle spørgsmål til spillet`
@@ -257,26 +259,50 @@ export default class AddQuestions {
 
 
     this.games.forEach(game => {
+      let addedContent = ""
       for (let question of _arrayQuestionService.partyContentArray) {
         if (question.game === game.id) {
 
-          listItem += /*html*/ `
-          <h3 class="bold" id="${game.id}">${game.gameTitle}</h3>`
 
 
-          _arrayQuestionService.partyContentArray.forEach(question => {
-            if (question.game == game.id) {
-              listItem += /*html*/ `
-              <p id="${question.addedId}" class="label checkboxNotCheked" onclick="removeFromList(this.id)">${question.questionContent}</p>
-              `
 
-            }
+          if (question.game == game.id) {
+            addedContent += /*html*/ `
+                <p id="${question.addedId}" class="label checkboxNotCheked" onclick="removeFromList(this.id)">${question.questionContent}</p>
+                `
+          }
 
-          })
+
+
+
+          // After the game headline add all the questions with the matching gameId
+
+
+
+          // _arrayQuestionService.partyContentArray.forEach(question => {
+          //   if (question.game == game.id) {
+          //     addedContent += /*html*/ `
+          //     <p id="${question.addedId}" class="label checkboxNotCheked" onclick="removeFromList(this.id)">${question.questionContent}</p>
+          //     `
+
+          //   }
+
+          // })
+
+          // listItem += /*html*/ `<article  id="added${game.id}">
+          // <h3 class="bold">${game.gameTitle}</h3> ${addedContent} </article>`
+
+
+
+
+
+
+
 
         }
 
       }
+
       // listItem = `<article>${listItem}</article>`
       // console.log(listItem)
 
@@ -288,11 +314,39 @@ export default class AddQuestions {
       // } else {
       //   document.querySelector(`#${game.id}`).style.display = 'block';
       // }
-
+      listItem += /*html*/ `<article id='gameArticle${game.id}'>
+      <h3 class="bold">${game.gameTitle}</h3>
+      ${addedContent}
+      </article>
+     `
 
     })
     document.querySelector("#addedQuestionsArticle").innerHTML = listItem;
+    console.log(listItem)
 
+    this.games.forEach(game => {
+      let gameArticle = document.querySelector(`#gameArticle${game.id}`);
+      if (gameArticle.childElementCount == 1) {
+        gameArticle.classList.add('displayNone');
+      }
+    })
+
+
+    // let theDivWithInputs = document.querySelector("#addedQuestionsArticle");
+    // let tags = theDivWithInputs.getElementsByTagName("H3");
+    // console.log(tags)
+    // for (let i = 0, n = tags.length; i < n; i = i + 1) {
+    //   // let checkBox = document.getElementById(`${tags[i].id}`);
+    //   console.log(tags.nextElementSibling)
+    //   // if (tags.nextElementSibling == true) {
+    //   //     this.choosenCategoriesArr.push(`${tags[i].id}`)
+    //   //     // document.querySelector(`[for=${tags[i].id}]`).style.background = 'var(--secundary_color_dark)'
+    //   // }
+    //   // checkBox.checked = false;
+    // }
+
+    // let gameHeadline = document.querySelector(`#added${game.id}`);
+    // console.log(gameHeadline.nextElementSibling)
   }
 
   addContentToPartyArr() {
@@ -327,6 +381,7 @@ export default class AddQuestions {
     _arrayQuestionService.highlightNumber()
     document.querySelector(`#${id}`).style.display = "none";
     console.log(_arrayQuestionService.partyContentArray)
+    document.querySelector(`#${id}`).classList.remove('checkboxChecked');
 
   }
 
