@@ -56,3 +56,16 @@ window.getThePartyId = () => settingsPage.getThePartyId();
 window.basket = () => addQuestions.barsket();
 window.createAddedQestionsList = ()=> addQuestions.createAddedQestionsList();
 window.highlightNumber = ()=> addQuestions.highlightNumber();
+// window.chekRangeSlider =()=> settingsPage.chekRangeSlider();
+
+let rangeSlider = document.getElementById("myRange");
+let rangeBullet = document.getElementById("demo");
+
+rangeSlider.addEventListener("input", showSliderValue, false);
+
+function showSliderValue(){
+    rangeBullet.innerHTML = rangeslider.value;
+    console.log(rangeslider.value)
+    let bulletPositon = rangeSlider.value / rangeSlider.max;
+    rangeBullet.style.left = bulletPositon * 578 +  "px";
+}

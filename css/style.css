@@ -25,10 +25,6 @@
     --font_color_dark: #333;
 }
 
-h2 {
-    font-size: 2em;
-    font-weight: bold;
-}
 
 .bold {
     font-weight: bold;
@@ -58,6 +54,17 @@ html {
 
 h1 {
     font-size: 2em;
+}
+
+
+h2 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1em;
+
 }
 
 .flexcontainer {
@@ -380,21 +387,29 @@ Pages
 /* -----siden med indstillinger*/
 
 #myText {
-    border-radius: 10, 10, 10, 10;
-    box-shadow: 4px 4px 2px 1px rgba(144, 137, 137, .2);
+    border-radius: 20, 20, 20, 20;
+    box-shadow: 20px 20px 20px 20px rgba(144, 137, 137, .2);
 }
 
+.idButton {
+    background-color: #45b88C; 
+    border-radius: 3px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+  
+    font-size: 12px;
+    margin: 4px 2px;
 
-html,
-body {
-    height: 100%;
-}
+  }
+
+
 
 .b {
     display: block;
 }
 
-.toggle {
+.myText {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -407,60 +422,20 @@ body {
     box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, .05);
 }
 
-.check {
+
+ #antalRunderTekst {
     position: absolute;
-    display: block;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    z-index: 6;
+    top:60%;
+    left: 40%;
+
+
+
 }
 
-.check:checked~.track {
-    box-shadow: inset 0 0 0 20px #4bd863;
-}
 
-.check:checked~.switch {
-    right: 2px;
-    left: 22px;
-    transition: .35s cubic-bezier(0.785, 0.135, 0.150, 0.860);
-    transition-property: left, right;
-    transition-delay: .05s, 0s;
-}
-
-.switch {
-    position: absolute;
-    left: 2px;
-    top: 2px;
-    bottom: 2px;
-    right: 22px;
-    background-color: #fff;
-    border-radius: 36px;
-    z-index: 1;
-    transition: .35s cubic-bezier(0.785, 0.135, 0.150, 0.860);
-    transition-property: left, right;
-    transition-delay: 0s, .05s;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
-}
-
-.track {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    transition: .35s cubic-bezier(0.785, 0.135, 0.150, 0.860);
-    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .05);
-    border-radius: 40px;
-}
 
 
 /* slider med Antal runder */
-
-
 
   
   .container {
@@ -472,7 +447,7 @@ body {
   
   .box-minmax {
     margin-top: 30px;
-    width: 608px;
+    width: 300px;
     display: flex;
     justify-content: space-between;
     font-size: 20px;
@@ -488,7 +463,7 @@ body {
   
   .rs-range {
     margin-top: 29px;
-    width: 600px;
+    width: 300px;
     -webkit-appearance: none;
   }
   .rs-range:focus {
@@ -544,49 +519,51 @@ body {
     position: relative;
     transform-origin: center center;
     display: block;
-    width: 98px;
-    height: 98px;
+    width: 40px;
+    height: 40px;
     background: transparent;
     border-radius: 50%;
     line-height: 30px;
     text-align: center;
     font-weight: bold;
-    padding-top: 22px;
+    padding-top: 0px;
     box-sizing: border-box;
     border: 2px solid #fff;
     margin-top: 20px;
-    margin-left: -38px;
+    margin-left: -8px;
     left: attr(value);
     color: #fff;
     font-style: normal;
     font-weight: normal;
     line-height: normal;
-    font-size: 36px;
+    font-size: 15px;
   }
   .rs-label::after {
-    content: "kg";
+    content: "Runder";
     display: block;
-    font-size: 20px;
+    font-size: 8px;
     letter-spacing: 0.07em;
     margin-top: -2px;
   }
   
   /* Slut slider med Antal runder */
 
-/* Toggle switch Sprog */
+/*__________ Toggle switch Sprog */
+
+
+
 .toggleLang input {
     display: none;
+ 
+   
 }
 
 /* The container and background */
 .toggleLang {
-    position: relative;
+    position: absolute;
     display: inline-block;
     width: 80px;
     height: 30px;
-  
-    
-    
 
 }
 
@@ -652,14 +629,15 @@ input:checked + .sliderLang:after {
 
 .toggle input {
     display: none;
+  
 }
 
 /* The container and background */
 .toggle {
     position: relative;
     display: inline-block;
-    width: 68px;
-    height: 30px;
+    width: 50px;
+    
 }
 
 .sliderLang {
@@ -697,14 +675,26 @@ input:checked + .sliderLang {
     background-color:  #80265D;
 }
 
-input:checked + .slider:before {
-    transform: translateX(37px);
+input:checked + .sliderLang:before {
+    transform: translateX(50px);
   
 }
 
 /* Slut toggle switch Sprog */
 
+.btnSettings {
+    border-radius: var(--border_radius);
+    border: var(--border_dark);
+    background: var(--secundary_color_dark);
+    color: var(--menuFontColor);
+    width: auto;
+    margin: 4em auto 1em;
+    height: auto;
+    font-size: 1em;
+    padding: .5em 1em;
 
+    cursor: pointer;
+}
 
 /* ________________________________________________________________________________________
 Checkbox

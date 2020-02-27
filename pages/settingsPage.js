@@ -3,8 +3,13 @@ import createPartyService from "./../services/createPartyService.js"
 export default class SettingsPage {
   constructor() {
     // this.getThePartyId();
+
+    this.rangeSlider = document.getElementById("rs-range-line");
+this.rangeBullet = document.getElementById("rs-bullet");
+
     this.template();
-    this.rangeSlider();
+    
+    // this.rangeSlider();
     // this.createPartyService = createPartyService;
     // this.partyId = "";
 
@@ -20,16 +25,13 @@ export default class SettingsPage {
     console.log(createPartyService)
     document.querySelector('#content').innerHTML += /*html*/ `
         <section id="settingsPage" class="page flexcontainer">
+        <button class="idButton">Paty Game Id</button>
+
 
 				  <input type="text" id="myText" value="${this.partyId}">
 
-				  <div class="toggle">
-				  <input type="checkbox" class="check">
-				  <b class="b switch"></b>
-				  <b class="b track"></b>
-				</div>
-
-				<h3>Antal runder</h3>
+				
+				<h3 id="antalRunder"  >Antal runder</h3>
         <div class="container">
   
         
@@ -52,35 +54,44 @@ export default class SettingsPage {
       
       </label>
     </label>
-    <button class="btn" name="gamePage" onclick="navigateTo(this.name);addContentToPartyArr()">Fortsæt</button>
+    <button class="btnSettings" name="addQuestions" onclick="navigateTo(this.name);addContentToPartyArr()">Fortsæt</button>
 
     
       
       </section>`
   }
-  
-  rangeSlider() { 
-  let rangeSlider = document.getElementById("rs-range-line");
- let rangeBullet = document.getElementById("rs-bullet");
-  
-  rangeSlider.addEventListener("input", showSliderValue, false);
-  
-  function showSliderValue() {
-    rangeBullet.innerHTML = rangeSlider.value;
-    var bulletPosition = (rangeSlider.value /rangeSlider.max);
-    rangeBullet.style.left = (bulletPosition * 578) + "px";
+
+  rangeSlider() {
+    let rangeSlider = document.getElementById("rs-range-line");
+
+
+    rangeSlider.addEventListener("input", this.showSliderValue, false);
   }
+
+  showSliderValue() {
+    let rangeBullet = document.getElementById("rs-bullet");
+    rangeBullet.innerHTML = rangeSlider.value;
+    var bulletPosition = (rangeSlider.value / rangeSlider.max);
+    let theBulletPosition = bulletPosition * 578
+    rangeBullet.style.left = `${theBulletPosition}px`;
+
+  }
+
+
+showSliderValue() {
+  this.rangeBullet.innerHTML = rangeSlider.value;
+  var bulletPosition = (rangeSlider.value /rangeSlider.max);
+  rangeBullet.style.left = (bulletPosition * 578) + "px";
 }
-
   //slider() {
-    //let slider = document.getElementById("myRange");
-    //let output = document.getElementById("demo");
-    //output.innerHTML = slider.value;
+  //let slider = document.getElementById("myRange");
+  //let output = document.getElementById("demo");
+  //output.innerHTML = slider.value;
 
-   //slider.oninput = function () {
-     /// output.innerHTML = this.value;
-    //}
- // }
+  //slider.oninput = function () {
+  /// output.innerHTML = this.value;
+  //}
+  // }
 
   myFunction() {
     let x = document.getElementById("myText").value;
@@ -88,7 +99,7 @@ export default class SettingsPage {
   }
 
   myText(length) {
-    let x = document.getElementById("myText").value;
+    let x = document.getElementById("idButton").value;
     let result = '';
     let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let charactersLength = characters.length;
@@ -97,14 +108,5 @@ export default class SettingsPage {
     }
     return result;
 
-  } }
-
-  
-
-  
-
-
-
-
-
-    
+  }
+}
