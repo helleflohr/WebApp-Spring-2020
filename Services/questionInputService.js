@@ -7,6 +7,7 @@ class QuestionInputService {
 
         this.newPredefinedQuestion = {};
         this.questionSet = {};
+        this.newUserQuestion = {};
 
 
     }
@@ -59,14 +60,23 @@ class QuestionInputService {
 
     }
 
-    whichParameters(whichPage, wichObject) {
-        let gameInput = document.querySelector("#whichGame");
-
+    whichParameters(whichPage, wichObject, gameSelectId) {
+        let gameInput = document.querySelector(`#${gameSelectId}`);
+        console.log(whichPage, wichObject, gameSelectId)
         if (gameInput.value == 'vRD8Spl5fQ4AfTifPtRq') { //Sandhed eller konsekvens
-            this.newPredefinedQuestion.truthOrDare = this.addedValue
+            if (whichPage == "") {
+                this.newUserQuestion.truthOrDare = this.addedValue
+            } else if (whichPage == 'PredefinedPage') {
+                this.newPredefinedQuestion.truthOrDare = this.addedValue
+            }
+
         }
         if (gameInput.value == 'pfF2l2zwYDqcVCIjMlNr') { //Sandt eller falsk
-            this.newPredefinedQuestion.trueOrFalse = this.addedValue
+            if (whichPage == "") {
+                this.newUserQuestion.trueOrFalse = this.addedValue
+            } else if (whichPage == 'PredefinedPage') {
+                this.newPredefinedQuestion.trueOrFalse = this.addedValue
+            }
         }
         if (gameInput.value == 'MEF7ah2clInWlmgNpg6M') { //Quiz
             this.getDataFromQuiz('1', `${whichPage}`);
@@ -74,7 +84,14 @@ class QuestionInputService {
             this.getDataFromQuiz('3', `${whichPage}`);
             this.getDataFromQuiz('4', `${whichPage}`);
 
-            wichObject.answerOptions = this.arrOfAnswers;
+            if (whichPage == "") {
+                this.newUserQuestion.answerOptions = this.arrOfAnswers;
+            } else if (whichPage == 'PredefinedPage') {
+                this.newPredefinedQuestion.answerOptions = this.arrOfAnswers;
+            }
+
+            // wichObject.answerOptions = this.arrOfAnswers;
+            // this.arrOfAnswers = [];
             // newPredefinedQuestion
         }
     }

@@ -51,7 +51,7 @@ export default class AddQuestions {
       <div id="predefined">
       </div>
     </article>
-    <button class="btn" name="gamePage" onclick="navigateTo(this.name);addContentToPartyArr();gameName()"> Tilføj spørgsmål og gå videre </button>
+    <button class="btn" name="gamePage" onclick="navigateTo(this.name);gameName()"> Tilføj spørgsmål og gå videre </button>
     
     </section>
     `;
