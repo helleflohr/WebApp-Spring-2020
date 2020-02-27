@@ -63,8 +63,7 @@ export default class GamePage {
         <h2>Tilføj Spørgsmål</h2>
         <p>Tilføj...</p>
         </section>
-        
-        <input id="add" class="hide" type="checkbox" onclick="showAdd()"><label id="addLabel" class="btn" for="add"></label>
+    
         </article>
         `;
     }
@@ -90,18 +89,18 @@ export default class GamePage {
     //         <p>${this.curRule}</p></section>
 
     // Toggle function for adding more players and content in the game
-    showAdd() {
-        let checkBox = document.querySelector("#add");
-        let rulesBox = document.querySelector("#addSection");
-        let infoLabel = document.querySelector('#addLabel');
-        if (checkBox.checked == true) {
-            rulesBox.classList.remove('hide');
-            infoLabel.style.backgroundImage = "url(/img/X_icon.svg)"
-        } else {
-            rulesBox.classList.add('hide');
-            infoLabel.style.backgroundImage = "url(/img/plus_icon.svg)"
-        }
-    }
+    // showAdd() {
+    //     let checkBox = document.querySelector("#add");
+    //     let rulesBox = document.querySelector("#addSection");
+    //     let infoLabel = document.querySelector('#addLabel');
+    //     if (checkBox.checked == true) {
+    //         rulesBox.classList.remove('hide');
+    //         infoLabel.style.backgroundImage = "url(/img/X_icon.svg)"
+    //     } else {
+    //         rulesBox.classList.add('hide');
+    //         infoLabel.style.backgroundImage = "url(/img/plus_icon.svg)"
+    //     }
+    // }
 
 
 

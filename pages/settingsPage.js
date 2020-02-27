@@ -54,7 +54,7 @@ export default class SettingsPage {
       
       </label>
     </label>
-    <button class="btnSettings" name="addQuestions" onclick="navigateTo(this.name)">Fortsæt</button>
+    <button class="btnSettings" name="addPlayers" onclick="navigateTo(this.name)">Fortsæt</button>
 
     
       
