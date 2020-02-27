@@ -72,7 +72,7 @@ window.getDataFromQuiz = (number, preOrNot) => questionInputService.getDataFromQ
 // Swipe
 const _C = document.querySelector('#gameContainer'),
     // N = _C.children.length,
-    N = 8,
+    N = 4,
     NF = 30,
     TFN = {
         'linear': function (k) {

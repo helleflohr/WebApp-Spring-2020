@@ -124,12 +124,13 @@ export default class GamePage {
 
             await this.gameRef.doc(`${question.game}`).get().then(doc => {
                 let gameData = doc.data()
+                let gameRules = gameData.rules
                 console.log(gameData);
                 questionList += /*html*/ `
                 <article class="${question.game}"><h2>${gameData.gameTitle}</h2>${question.questionContent} 
-                <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn" for="info"></label>
-                <section id="rules" class="hide"><h2>Regler for ${gameData.gameTitle}</h2>
-                <p>${gameData.rules}</p></section></article></article>
+                <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn" for="info"></label><br>
+                <div id="rules" class=""><h3>Regler for ${gameData.gameTitle}</h3>
+                <p>${gameData.rules}</p></div></article>
                 `
 
                 itemsProcessed++;
@@ -137,7 +138,7 @@ export default class GamePage {
                     document.querySelector('#gameContainer').innerHTML = questionList;
 
                 }
-
+                document.querySelector('#rules').innerHTML = gameRules;
             })
         });
     }
