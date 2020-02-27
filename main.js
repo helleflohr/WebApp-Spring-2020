@@ -71,17 +71,17 @@ window.highlightChoosen = (checkboxId) => addPredefinedPage.highlightChoosen(che
 window.getDataFromQuiz = (number, preOrNot) => questionInputService.getDataFromQuiz(number, preOrNot);
 // window.chekRangeSlider =()=> settingsPage.chekRangeSlider();
 
-let rangeSlider = document.getElementById("myRange");
-let rangeBullet = document.getElementById("demo");
+// let rangeSlider = document.getElementById("myRange");
+// let rangeBullet = document.getElementById("demo");
 
-rangeSlider.addEventListener("input", showSliderValue, false);
+// rangeSlider.addEventListener("input", showSliderValue, false);
 
-function showSliderValue() {
-    rangeBullet.innerHTML = rangeslider.value;
-    console.log(rangeslider.value)
-    let bulletPositon = rangeSlider.value / rangeSlider.max;
-    rangeBullet.style.left = bulletPositon * 578 + "px";
-}
+// function showSliderValue() {
+//     rangeBullet.innerHTML = rangeslider.value;
+//     console.log(rangeslider.value)
+//     let bulletPositon = rangeSlider.value / rangeSlider.max;
+//     rangeBullet.style.left = bulletPositon * 578 + "px";
+// }
 
 
 
