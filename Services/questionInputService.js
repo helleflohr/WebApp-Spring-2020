@@ -5,6 +5,9 @@ class QuestionInputService {
         this.status = "";
         this.arrOfAnswers = [];
 
+        this.newPredefinedQuestion = {};
+        this.questionSet = {};
+
 
     }
     styleWhichValue(thisCheckbox, theOtherCheckbox) {
@@ -54,6 +57,26 @@ class QuestionInputService {
         }
         this.arrOfAnswers.push(differentOptions);
 
+    }
+
+    whichParameters(whichPage, wichObject) {
+        let gameInput = document.querySelector("#whichGame");
+
+        if (gameInput.value == 'vRD8Spl5fQ4AfTifPtRq') { //Sandhed eller konsekvens
+            this.newPredefinedQuestion.truthOrDare = this.addedValue
+        }
+        if (gameInput.value == 'pfF2l2zwYDqcVCIjMlNr') { //Sandt eller falsk
+            this.newPredefinedQuestion.trueOrFalse = this.addedValue
+        }
+        if (gameInput.value == 'MEF7ah2clInWlmgNpg6M') { //Quiz
+            this.getDataFromQuiz('1', `${whichPage}`);
+            this.getDataFromQuiz('2', `${whichPage}`);
+            this.getDataFromQuiz('3', `${whichPage}`);
+            this.getDataFromQuiz('4', `${whichPage}`);
+
+            wichObject.answerOptions = this.arrOfAnswers;
+            // newPredefinedQuestion
+        }
     }
 
 

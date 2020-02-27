@@ -1,5 +1,6 @@
 // import _addQuestionService from "./../services/addPredefinedService.js"
 import questionInputService from "./../services/questionInputService.js"
+
 export default class AddPredefinedPage {
     constructor() {
         this.questionRef = _db.collection("questions");
@@ -7,7 +8,7 @@ export default class AddPredefinedPage {
         this.gameRef = _db.collection("games");
         this.choosenCategoriesArr = [];
         this.whichParameter = "";
-        this.newPredefinedQuestion = {};
+        // this.newPredefinedQuestion = {};
 
         this.createCategoryOptions();
         this.createGameOptions();
@@ -112,35 +113,7 @@ export default class AddPredefinedPage {
         }
     }
 
-    whichParameters() {
-        let gameInput = document.querySelector("#whichGame");
 
-        if (gameInput.value == 'vRD8Spl5fQ4AfTifPtRq') { //Sandhed eller konsekvens
-            this.newPredefinedQuestion.truthOrDare = questionInputService.addedValue
-        }
-        if (gameInput.value == 'pfF2l2zwYDqcVCIjMlNr') { //Sandt eller falsk
-            this.newPredefinedQuestion.trueOrFalse = questionInputService.addedValue
-        }
-        if (gameInput.value == 'MEF7ah2clInWlmgNpg6M') { //Quiz
-            questionInputService.getDataFromQuiz('1', 'PredefinedPage');
-            // this.newPredefinedQuestion.question1 = questionInputService.answerValue;
-            // this.newPredefinedQuestion.status1 = questionInputService.status;
-            // console.log(questionInputService.answerValue)
-
-            questionInputService.getDataFromQuiz('2', 'PredefinedPage');
-            // this.newPredefinedQuestion.question2 = questionInputService.answerValue;
-            // this.newPredefinedQuestion.status2 = questionInputService.status;
-
-            questionInputService.getDataFromQuiz('3', 'PredefinedPage');
-            // this.newPredefinedQuestion.question3 = questionInputService.answerValue;
-            // this.newPredefinedQuestion.status3 = questionInputService.status;
-
-            questionInputService.getDataFromQuiz('4', 'PredefinedPage');
-            // this.newPredefinedQuestion.question4 = questionInputService.answerValue;
-            // this.newPredefinedQuestion.status4 = questionInputService.status;
-            this.newPredefinedQuestion.answerOptions = questionInputService.arrOfAnswers;
-        }
-    }
 
 
     // Ad a predefined question to the database
@@ -153,13 +126,13 @@ export default class AddPredefinedPage {
         // let categoriesInput = document.querySelector("#wichCategories");
         let gameInput = document.querySelector("#whichGame");
         let questionInput = document.querySelector("#newPreQuestion");
-        this.newPredefinedQuestion = {
+        questionInputService.newPredefinedQuestion = {
             categories: this.choosenCategoriesArr,
             game: gameInput.value,
             questionContent: questionInput.value
         }
-        this.whichParameters();
-        this.questionRef.add(this.newPredefinedQuestion);
+        questionInputService.whichParameters('PredefinedPage', 'this.newPredefinedQuestion');
+        this.questionRef.add(questionInputService.newPredefinedQuestion);
         questionInput.value = "";
     }
 

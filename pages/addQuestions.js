@@ -177,6 +177,7 @@ export default class AddQuestions {
   }
 
 
+
   async checkbox(id) {
     document.querySelector(`#${id}`).classList.add('checkboxChecked');
 
@@ -192,12 +193,14 @@ export default class AddQuestions {
       }
     })
 
+
+
     _arrayQuestionService.partyContentArray.push(questionSet);
     _arrayQuestionService.highlightNumber()
     document.querySelector(`#${id}`).style.display = "none";
     console.log(_arrayQuestionService.partyContentArray)
     document.querySelector(`#${id}`).classList.remove('checkboxChecked');
-    addQuestionToGameService.noContentForHeadline('dbGameArticle');
+    // addQuestionToGameService.noContentForHeadline('dbGameArticle');
 
   }
 
@@ -215,7 +218,7 @@ export default class AddQuestions {
     }
     _arrayQuestionService.highlightNumber()
     document.querySelector(`#${id}`).style.display = 'none';
-    addQuestionToGameService.noContentForHeadline('dbGameArticle');
+    // addQuestionToGameService.noContentForHeadline('dbGameArticle');
   }
 
   basket() {
