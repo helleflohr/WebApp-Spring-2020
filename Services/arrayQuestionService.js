@@ -42,7 +42,7 @@ class ArrayQuestionService {
             addedId: `i${this.theIdRef}`
         }
 
-        questionInputService.whichParameters('', 'this.newUserQuestion', 'select-game');
+        questionInputService.whichParameters('', 'select-game');
 
         this.partyContentArray.push(questionInputService.newUserQuestion)
 

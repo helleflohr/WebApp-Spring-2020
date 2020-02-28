@@ -60,9 +60,9 @@ class QuestionInputService {
 
     }
 
-    whichParameters(whichPage, wichObject, gameSelectId) {
+    whichParameters(whichPage, gameSelectId) {
         let gameInput = document.querySelector(`#${gameSelectId}`);
-        console.log(whichPage, wichObject, gameSelectId)
+
         if (gameInput.value == 'vRD8Spl5fQ4AfTifPtRq') { //Sandhed eller konsekvens
             if (whichPage == "") {
                 this.newUserQuestion.truthOrDare = this.addedValue

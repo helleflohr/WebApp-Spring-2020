@@ -1,5 +1,6 @@
 // import swipeService from "./../services/swipeService.js;"
 import _arrayQuestionService from "../services/arrayQuestionService.js"
+import loaderService from "./../services/loader.js"
 
 
 
@@ -106,6 +107,7 @@ export default class GamePage {
 
     // Takes questions from the array partyContentArray from the addQuestions page, and geneeates them into single game pages
     gameName() {
+        loaderService.show(true);
         let questionList = "";
         let insert = "";
         let itemsProcessed = 0;
@@ -144,6 +146,7 @@ export default class GamePage {
 
             });
         });
+        loaderService.show(false);
     }
 
     shuffle(array) {

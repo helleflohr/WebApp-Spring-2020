@@ -105,7 +105,6 @@ class AddQuestionToGameService {
 
         })
         document.querySelector("#addedQuestionsArticle").innerHTML = listItem;
-        console.log(listItem)
         this.noContentForHeadline('gameArticle');
 
 

@@ -56,7 +56,7 @@ window.showAdd = () => gamePage.showAdd();
 window.logout = () => authService.logout();
 window.checkbox = (id) => addQuestions.checkbox(id);
 window.getThePartyId = () => settingsPage.getThePartyId();
-window.basket = () => addQuestions.barsket();
+window.basket = () => addQuestions.basket();
 window.createAddedQestionsList = () => addQuestions.createAddedQestionsList();
 window.highlightNumber = () => addQuestions.highlightNumber();
 window.basket = () => addQuestions.basket();

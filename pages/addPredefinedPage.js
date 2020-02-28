@@ -1,4 +1,3 @@
-// import _addQuestionService from "./../services/addPredefinedService.js"
 import questionInputService from "./../services/questionInputService.js"
 
 export default class AddPredefinedPage {
@@ -8,7 +7,6 @@ export default class AddPredefinedPage {
         this.gameRef = _db.collection("games");
         this.choosenCategoriesArr = [];
         this.whichParameter = "";
-        // this.newPredefinedQuestion = {};
 
         this.addedCategoryArray = [];
 
@@ -117,7 +115,7 @@ export default class AddPredefinedPage {
             game: gameInput.value,
             questionContent: questionInput.value
         }
-        questionInputService.whichParameters('PredefinedPage', 'this.newPredefinedQuestion', 'whichGame');
+        questionInputService.whichParameters('PredefinedPage', 'whichGame');
         this.questionRef.add(questionInputService.newPredefinedQuestion);
         questionInput.value = "";
     }
