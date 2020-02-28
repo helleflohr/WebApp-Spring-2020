@@ -81,43 +81,38 @@ class AddQuestionToGameService {
     createAddedQuestionsList() {
         let listItem = "";
 
-        // Insert message if basket is empty
-        if (_arrayNewQuestionService.partyContentArray.length === 0) {
-            listItem += `<h3>Du har endnu ikke valgt nogle <br>spørgsmål til spillet</h3>`
+        if (_arrayNewQuestionService.partyContentArray.length === 0) { // If basket is empty ...
+            listItem += `<h3>Du har endnu ikke valgt nogle <br>spørgsmål til spillet</h3>` // ... insert message 
         }
 
         this.games.forEach(game => {
             let addedContent = ""
-            for (let question of _arrayNewQuestionService.partyContentArray) {
-                if (question.game === game.id) {
 
-                    if (question.game == game.id) {
-                        addedContent += /*html*/ `
+            for (let question of _arrayNewQuestionService.partyContentArray) { // Run thrugh the array of added questions
+                if (question.game === game.id) { // If the game id matches add some html to a value
+                    addedContent += /*html*/ `
                         <p id="${question.addedId}" class="label checkboxNotCheked" onclick="removeFromList(this, '${question.addedId}')">${question.questionContent}</p>
                     `
-                    }
                 }
             }
             listItem += /*html*/ `<article id='gameArticle${game.id}'>
             <h3 class="bold">${game.gameTitle}</h3>
-            ${addedContent}
+            ${addedContent} <!-- add the html here if the game id´s matches -->
           </article>
          `
 
         })
         document.querySelector("#addedQuestionsArticle").innerHTML = listItem;
-        this.noContentForHeadline('gameArticle');
 
-
-
-
+        this.emptyGame('gameArticle'); // Check for games without questions in the partyContentArray
     }
 
-    noContentForHeadline(whichSpecificId) {
-        this.games.forEach(game => {
+    emptyGame(whichSpecificId) {
+        this.games.forEach(game => { // For each game in the array (added from firebase) ...
             let gameArticle = document.querySelector(`#${whichSpecificId}${game.id}`);
-            if (gameArticle.childElementCount == 1) {
-                gameArticle.classList.add('displayNone');
+
+            if (gameArticle.childElementCount == 1) { // ... if, theres only one child element (the headline) in the article ...
+                gameArticle.classList.add('displayNone'); // ... then display none to the article
             }
         })
     }
