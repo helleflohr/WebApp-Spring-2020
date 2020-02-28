@@ -31,7 +31,7 @@ export default class AddPredefinedPage {
 
     }
 
-    // Get options from the database for the category-selectbox
+    // Add a checkbox with a label for each category in the firebase database, on the addPredefineded 'page'
     createCategoryOptions() {
         this.categoryRef.get().then(snapshotData => {
             snapshotData.forEach(doc => {
@@ -41,16 +41,15 @@ export default class AddPredefinedPage {
 
                 let categoriyCheckboxes = document.querySelector("#wichCategories");
                 categoriyCheckboxes.innerHTML += /*html*/ `
-                <input type="checkbox" id="the${category.id}" onchange="highlightChoosenCategories(this.id)" name="${category.contentCategory}" class="displayNone hide" value="${category.id}">
+                <input type="checkbox" id="the${category.id}" onchange="highlightChoosenCategories(this.id)" class="displayNone hide" value="${category.id}">
+                <!--name="${category.contentCategory}"  up-->
                 <label class="smallInputfield" for="the${category.id}">${category.contentCategory}</label>
-               
-                </article>
                 `
             });
         });
     }
 
-    // Get options from the database for the games-selectbox
+    // Get options from the database for the GAME-selectbox on the addPredefineded 'page'
     createGameOptions() {
         this.gameRef.get().then(snapshotData => {
             snapshotData.forEach(doc => {

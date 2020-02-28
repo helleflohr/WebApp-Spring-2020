@@ -11,7 +11,6 @@ class AddPredefinedService {
 
         this.choosenCategories();
 
-
         let gameInput = document.querySelector("#whichGame");
         let questionInput = document.querySelector("#newPreQuestion");
         _questionInputService.newPredefinedQuestion = {
@@ -33,12 +32,15 @@ class AddPredefinedService {
         for (let i = 0, n = tags.length; i < n; i = i + 1) {
             let checkBox = document.getElementById(`${tags[i].id}`);
             if (checkBox.checked == true) {
-                this.choosenCategoriesArr.push(`${tags[i].id}`)
-                console.log(`${tags[i].id}`)
-                // document.querySelector(`[for=${tags[i].id}]`).style.background = 'var(--secundary_color_dark)'
+                let theIdForElements = tags[i].id
+                let thePureCategoryIdFromFireBase = theIdForElements.substr(3);
+                this.choosenCategoriesArr.push(`${thePureCategoryIdFromFireBase}`)
+
+                checkBox.checked = false;
+                this.highlightChoosenCategories(`${tags[i].id}`)
             }
-            checkBox.checked = false;
         }
+
     }
 
     highlightChoosenCategories(checkboxId) {
