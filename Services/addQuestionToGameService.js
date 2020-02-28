@@ -64,7 +64,7 @@ class AddQuestionToGameService {
                         this.questions.forEach(question => {
                             if (question.game == game.id) {
                                 listItem += /*html*/ `
-                                <p id="${question.id}" class="label checkboxNotCheked" onclick="checkbox(this, '${question.id}')">${question.questionContent}</p>
+                                <p id="id${question.id}" class="label checkboxNotCheked" onclick="checkbox(this, '${question.id}')">${question.questionContent}</p>
                                 `
                             }
                         })

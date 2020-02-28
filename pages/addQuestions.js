@@ -210,7 +210,7 @@ export default class AddQuestions {
     if (id.substr(0, 5) == 'added') { // If the question is a predefined question (the Id starts with 'added')
 
       let preId = id.slice(5); // Then get the id from the predefined part (same id, just without 'added' infront of)
-      document.querySelector(`#${preId}`).style.display = "block"; // And display it again
+      document.querySelector(`#id${preId}`).style.display = "block"; // And display it again
     }
   }
 
