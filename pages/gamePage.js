@@ -1,4 +1,4 @@
-import _arrayNewQuestionService from "../services/arrayNewQuestionService.js"
+import _arrayNewQuestionService from "./../services/arrayNewQuestionService.js"
 // import loaderService from "./../services/loader.js"
 
 export default class GamePage {
@@ -15,13 +15,13 @@ export default class GamePage {
         <article id="gamePage" class="page">
         <input id="info" class="hide" type="checkbox" onclick="showRules()">
          <label id="infoLabel"   for="info"></label>
-         <div id="rules" class="hide">
+         <article id="rules" class="hide">
          <h2>Regler for:</h2>
-         </div>
+         </article>
 
-        <div id="gameContainer">
+        <section id="gameContainer">
       
-        </div>
+        </section>
         
         <section class="hide" id="addSection">
         `;
@@ -53,15 +53,15 @@ export default class GamePage {
         let insert = "";
         let itemsProcessed = 0;
         let numberOfItems = _arrayNewQuestionService.partyContentArray.length;
-        let array = _arrayNewQuestionService.partyContentArray;
+        let newArray = this.shuffle(_arrayNewQuestionService.partyContentArray);
         // let randomQuestions = this.shuffle(_arrayNewQuestionService.partyContentArray);
         let gameRulesIds = [];
 
-        console.log(this.shuffle(array));
+        console.log(newArray);
 
-        array.forEach(async question => {
+        newArray.forEach(question => {
 
-            await this.gameRef.doc(`${question.game}`).get().then(doc => {
+            this.gameRef.doc(`${question.game}`).get().then(doc => {
                 let gameData = doc.data();
                 let gameId = doc.id;
                 let gameRules = gameData.rules;
@@ -80,11 +80,19 @@ export default class GamePage {
 
                 itemsProcessed++;
                 if (itemsProcessed === numberOfItems) {
-                    document.querySelector('#gameContainer').innerHTML = questionList;
+
+                    let gamePagesAndFinalPage = /*html*/ ` ${questionList}
+                    <article class="${question.game}">
+                    <h2>Tak for spillet</h2>
+                    <button class="btn" onclick="navigateTo('addQuestions')">Spil igen</button>         
+                    </article>
+                    `
+
+                    document.querySelector('#gameContainer').innerHTML = gamePagesAndFinalPage;
                     document.querySelector(`#rules`).innerHTML += insert;
                     window.swipe();
                 }
-            });
+            }); //Dem her
         });
         // loaderService.show(false);
     }

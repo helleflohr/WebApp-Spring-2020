@@ -1,6 +1,6 @@
 // This service is not active in version 1.0
 import _spaService from "./spa.js";
-import loaderService from "./loader.js";
+// import loaderService from "./loader.js";
 // import _db from "./../firebase-config.js"
 // import movieService from "./movie.js";
 
@@ -107,7 +107,7 @@ class AuthService {
         }, {
             merge: true
         }).then(() => {
-            // this.loaderService.show(false);
+            this.loaderService.show(false);
         });
 
     }

@@ -1,4 +1,4 @@
-import _questionInputService from "./../services/questionInputService.js"
+import _questionInputService from "./questionInputService.js"
 
 class AddPreQuestionService {
     constructor() {

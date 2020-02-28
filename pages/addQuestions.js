@@ -28,7 +28,7 @@ export default class AddQuestions {
     document.querySelector('#content').innerHTML += /*html*/ `
     <section id="addQuestions" class="page">
       <div for="addedQuestions" onclick="basket();createAddedQuestionsList()">Dit spilindhold<div id="numberOfRoundsAdded">${_arrayNewQuestionService.partyContentArray.length}</div></div>
-      <article id="addedQuestionsArticle" class="hide">The Article
+      <article id="addedQuestionsArticle" class="hide">
       </article>
       <form id="questionForm">
         <h2>Tilføj nye spørgsmål til spillet:</h2>

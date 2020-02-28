@@ -1,6 +1,6 @@
 // This service is not active in version 1.0
-import createPartyService from "./../services/createPartyService.js"
-// import loaderService from "./../services/loader.js"
+import createPartyService from "./createPartyService.js"
+// import loaderService from "./loader.js"
 class JoinPartyService {
     constructor() {
         this.partyRef = _db.collection("parties");

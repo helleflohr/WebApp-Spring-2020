@@ -19,6 +19,7 @@ import _questionInputService from "./services/questionInputService.js"
 import _arrayNewQuestionService from "./services/arrayNewQuestionService.js"
 import _addQuestionToGameService from "./services/addQuestionToGameService.js"
 import _addPreQuestionService from "./services/addPreQuestionService.js"
+// import loaderService from "./services/loader.js"
 
 
 // Declaring and initiating pages
@@ -37,8 +38,6 @@ let gamePage = new GamePage();
 // authService.init();
 _spaService.init();
 
-
-// Currently not in use
 
 
 // onclick handlers
