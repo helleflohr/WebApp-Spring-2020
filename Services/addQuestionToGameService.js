@@ -81,7 +81,7 @@ class AddQuestionToGameService {
 
         // Insert message if basket is empty
         if (_arrayQuestionService.partyContentArray.length === 0) {
-            listItem += `Du har endnu ikke valgt nogle spørgsmål til spillet`
+            listItem += `<h3>Du har endnu ikke valgt nogle <br>spørgsmål til spillet</h3>`
         }
 
         this.games.forEach(game => {

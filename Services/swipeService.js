@@ -102,5 +102,5 @@
 //         _C.addEventListener('touchend', move, false);
 //     }
 // }
-// // const swipeService = new SwipeService();
+// const swipeService = new SwipeService();
 // export default swipeService;

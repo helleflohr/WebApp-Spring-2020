@@ -5,15 +5,16 @@
     font-style: normal;
 }
 
+
 /* css variables */
 :root {
     /* Color */
     --menuBackground: #333;
-    --menuFontColor: #FBEBF8;
+    --menuFontColor: #FFF;
     --menuHoverColor: var(--secundary_color_light);
     --menuHoverFontColor: #041a1f;
-    --background: rgb(188, 185, 230);
-    --secundary_color_light: #EA81C1;
+    --background: #45b88C;
+    --secundary_color_light: #3b936f;
     --secundary_color_dark: #80265D;
     --border_dark: 5px solid #80265D;
     --border_radius: 25px;
@@ -21,9 +22,9 @@
     --standardWidth: 75%;
     --font-family: 'Raleway', Arial, sans-serif;
     --secundary_font: 'Myriad Pro', Arial, sans-serif;
-    --font_color_light: #EA81C1;
+    --font_color_light: #FFF;
     --font_color_dark: #333;
-
+    --yellow: #FFF3A8;
 }
 
 
@@ -60,7 +61,6 @@ h1 {
     font-size: 2em;
 }
 
-
 h2 {
     font-size: 2em;
     font-weight: bold;
@@ -68,7 +68,6 @@ h2 {
 
 h3 {
     font-size: 1em;
-
 }
 
 .flexcontainer {
@@ -77,9 +76,6 @@ h3 {
     justify-content: space-between;
 }
 
-b {
-    font-weight: bold;
-}
 
 /* ________________________________________________________________________________________
 Navigation - menu
@@ -377,12 +373,6 @@ Input fields and select boxes
     background-color: var(--green);
 }
 
-/* ________________________________________________________________________________________
-liste
------------------------------------------------------------------------------------------*/
-ul {
-    text-align: left;
-}
 
 /* ________________________________________________________________________________________
 Pages
@@ -415,7 +405,7 @@ Pages
 }
 
 .idButton {
-    background-color: #45b88C;
+    background-color: var(--secundary_color_dark);
     border-radius: 3px;
     padding: 15px 32px;
     text-align: center;
@@ -424,12 +414,6 @@ Pages
     font-size: 12px;
     margin: 4px 2px;
 
-}
-
-
-
-.b {
-    display: block;
 }
 
 .myText {
@@ -450,13 +434,7 @@ Pages
     position: absolute;
     top: 60%;
     left: 40%;
-
-
-
 }
-
-
-
 
 /* slider med Antal runder */
 
@@ -735,10 +713,10 @@ GamePage
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
-    top: 0;
-    right: 10px;
-    width: 20px;
-    height: 22px;
+    top: 5vh;
+    right: 5vh;
+    width: 5vh;
+    height: 5vh;
 }
 
 #rules {
@@ -772,6 +750,7 @@ GamePage
     height: 100vw;
     max-height: 100vh;
     transform: translate(calc(var(--i, 0)/var(--n)*-100%));
+
 }
 
 #gameContainer article {
@@ -781,31 +760,55 @@ GamePage
     pointer-events: none;
     height: 50vh;
     margin: .7%;
+    padding-top: 15%;
 }
 
 /* sandt eller falst */
 .pfF2l2zwYDqcVCIjMlNr {
     background-color: tomato;
+    opacity: 90%;
 }
 
 /* Quiz */
 .MEF7ah2clInWlmgNpg6M {
     background-color: steelblue;
+    opacity: 90%;
 }
 
 /* Jeg har aldrig... */
 .LhhaSALqCbhu4upFC8l4 {
     background-color: palegreen;
+    opacity: 90%;
 }
 
 /* Kategorien er... */
 .mPfpbsdleHCjmhZhbUsQ {
     background-color: mediumpurple;
+    opacity: 90%;
 }
 
-/* danshed eller konsekvens */
+/* Sanshed eller konsekvens */
 .vRD8Spl5fQ4AfTifPtRq {
     background-color: hotpink;
+    opacity: 90%;
+}
+
+/* Mest tilbøjelig til... */
+.xVFJqPIXWykcMf1DcqfU {
+    background-color: var(--yellow);
+    opacity: 90%;
+}
+
+/* Ordforklaring for hold */
+.xsbZmSDp9MsHyzaPUAe1 {
+    background-color: salmon;
+    opacity: 90%;
+}
+
+/* Tip en 13'er */
+.gI63nouOSvEvUXvmu0AE {
+    background-color: wheat;
+    opacity: 90%;
 }
 
 /* ________________________________________________________________________________________
@@ -822,7 +825,7 @@ Checkbox
 
 .checkboxNotCheked {
     box-shadow: 0px 10px 14px -7px #276873;
-    background: var(--font_color_light);
+    background: var(--secundary_color_dark);
     border: 1px solid #cacece;
     color: #ffffff;
     padding: 1.2em .3em;
@@ -836,7 +839,7 @@ Checkbox
 
 .checkboxChecked {
     box-shadow: 0px 10px 14px -7px var(--secundary_color_dark);
-    background: var(--secundary_color_dark);
+    background: var(--secundary_color_light);
     border: 1px solid #cacece;
     border-radius: var(--border_radius_square);
     width: var(--standardWidth);
@@ -886,7 +889,7 @@ Checkbox
     }
 
     50% {
-        background-color: yellow;
+        background-color: var(--yellow);
         color: var(--secundary_color_dark);
     }
 

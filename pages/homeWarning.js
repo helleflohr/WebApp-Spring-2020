@@ -4,7 +4,7 @@ export default class HomeWarningPage {
 
     }
 
-    // HTML-template for the home "page" with the warning
+    // HTML-template for the home "page" with the warning for not drinking too much
     template() {
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="home" class="page" >

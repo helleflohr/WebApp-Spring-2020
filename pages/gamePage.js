@@ -1,70 +1,28 @@
-// import swipeService from "./../services/swipeService.js;"
 import _arrayQuestionService from "../services/arrayQuestionService.js"
-
-
-
 
 export default class GamePage {
     constructor() {
         this.gameRef = _db.collection("games");
-        this.curGame = "";
-        this.curRule = "";
         this.template();
-
         this.questions = [];
-
-
     }
 
-
-    getData() {
-        // let inputField = document.querySelector('#joinPartyId');
-        this.gamesRef.get().then(snapshotData => {
-            snapshotData.forEach(doc => {
-
-                let games = doc.data();
-                games.id = doc.id;
-
-                this.curGame = games.gameTitle;
-                this.curRule = games.rules;
-            })
-        })
-    }
 
     // The HTML-content for this game-"page"
     template() {
-        // Onclick NEXT
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="gamePage" class="page">
         <input id="info" class="hide" type="checkbox" onclick="showRules()">
-                <label id="infoLabel"  class="btn" for="info"></label>
-                <div id="rules" class="hide">
-                <h2>Regler for:</h2>
-                </div>
+         <label id="infoLabel"   for="info"></label>
+         <div id="rules" class="hide">
+         <h2>Regler for:</h2>
+         </div>
 
         <div id="gameContainer">
       
         </div>
         
-        
         <section class="hide" id="addSection">
-        
-        <h2>Tilføj flere spillere</h2>
-        <div id="morePlayers">
-        <input type="text" placeholder="Skriv spillernavn" class="inputfield moreFriends">
-        </div>
-
-        <br>
-        <button class="btn" type="button" onclick="addAnotherPlayer('morePlayers')"></button>
-        <br>
-       
-        <button class="btn" type="button" onclick="addPlayers()">GOGOGO!</button>
-        
-        <h2>Tilføj Spørgsmål</h2>
-        <p>Tilføj...</p>
-        </section>
-    
-        </article>
         `;
     }
 
@@ -82,36 +40,21 @@ export default class GamePage {
             rulesBox.classList.add('hide');
             infoLabel.style.backgroundImage = "url(/img/info_icon.svg)"
         }
-
     }
-    // <input id="info" class="hide" type="checkbox" onclick="showRules()"><label id="infoLabel" class="btn" for="info"></label>
-    //         <section class="hide" id="rules"><h2>Regler for ${this.curGame}</h2>
-    //         <p>${this.curRule}</p></section>
-
-    // Toggle function for adding more players and content in the game
-    // showAdd() {
-    //     let checkBox = document.querySelector("#add");
-    //     let rulesBox = document.querySelector("#addSection");
-    //     let infoLabel = document.querySelector('#addLabel');
-    //     if (checkBox.checked == true) {
-    //         rulesBox.classList.remove('hide');
-    //         infoLabel.style.backgroundImage = "url(/img/X_icon.svg)"
-    //     } else {
-    //         rulesBox.classList.add('hide');
-    //         infoLabel.style.backgroundImage = "url(/img/plus_icon.svg)"
-    //     }
-    // }
-
 
 
     // Takes questions from the array partyContentArray from the addQuestions page, and geneeates them into single game pages
+    // it also takes the rules for every game and checks if it is shown in the #rules div box, if it isn't, then it adds it.
     gameName() {
         let questionList = "";
         let insert = "";
         let itemsProcessed = 0;
         let numberOfItems = _arrayQuestionService.partyContentArray.length;
+        console.log(_arrayQuestionService.partyContentArray);
         let randomQuestions = this.shuffle(_arrayQuestionService.partyContentArray);
         let gameRulesIds = [];
+
+        console.log(randomQuestions);
 
         randomQuestions.forEach(async question => {
 
@@ -132,20 +75,17 @@ export default class GamePage {
                     gameRulesIds.push(gameId);
                 }
 
-
                 itemsProcessed++;
                 if (itemsProcessed === numberOfItems) {
                     document.querySelector('#gameContainer').innerHTML = questionList;
                     document.querySelector(`#rules`).innerHTML += insert;
-                    // swipeService.init('gameContainer');
                 }
-                // document.querySelector(`#rules${question.addedId}`).innerHTML = gameRules;
-
-
             });
         });
     }
 
+    // Thus function takes the array of added questions and shuffels them, so they are displayed randomly in the game
+    // the function is called inside the gameName() function.
     shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
@@ -155,3 +95,39 @@ export default class GamePage {
     }
 
 }
+
+
+
+//  <h2>Tilføj flere spillere</h2>
+// <div id="morePlayers">
+// <input type="text" placeholder="Skriv spillernavn" class="inputfield moreFriends">
+// </div>
+
+// <br>
+// <button class="btn" type="button" onclick="addAnotherPlayer('morePlayers')"></button>
+// <br>
+
+// <button class="btn" type="button" onclick="addPlayers()">GOGOGO!</button>
+
+// <h2>Tilføj Spørgsmål</h2>
+// <p>Tilføj...</p>
+// </section>
+
+// </article> 
+
+
+// this.curGame = "";
+// this.curRule = "";
+// getData() {
+//     // let inputField = document.querySelector('#joinPartyId');
+//     this.gamesRef.get().then(snapshotData => {
+//         snapshotData.forEach(doc => {
+
+//             let games = doc.data();
+//             games.id = doc.id;
+
+//             this.curGame = games.gameTitle;
+//             this.curRule = games.rules;
+//         })
+//     })
+// }

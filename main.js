@@ -1,46 +1,45 @@
 // Improting pages
-import LoginPage from "./pages/loginPage.js"
+// import LoginPage from "./pages/loginPage.js"
 import AddPredefinedPage from "./pages/addPredefinedPage.js"
 import HomeWarningPage from "./pages/homeWarning.js"
 import AddQuestions from "./pages/addQuestions.js"
-import CreatePartyPage from "./pages/createPartyPage.js"
+// import CreatePartyPage from "./pages/createPartyPage.js"
 import AddPlayersPage from "./pages/addPlayersPage.js"
-import YouAreReadyPage from "./pages/youAreReadyPage.js"
+// import YouAreReadyPage from "./pages/youAreReadyPage.js"
 import SettingsPage from "./pages/settingsPage.js"
 import GamePage from "./pages/gamePage.js"
 
+
 // Importing services
 import spaService from "./services/spa.js"
-import _categoryService from "./services/categoryService.js"
-import authService from "./services/loginService.js";
-import createPartyService from "./../services/createPartyService.js"
+// import _categoryService from "./services/categoryService.js"
+// import authService from "./services/loginService.js";
+// import createPartyService from "./../services/createPartyService.js"
 import joinPartyService from "./../services/joinPartyService.js"
 import questionInputService from "./services/questionInputService.js"
 import _arrayQuestionService from "./services/arrayQuestionService.js"
 import addQuestionToGameService from "./services/addQuestionToGameService.js"
-// import swipeService from "./services/swipeService.js"
-
 
 
 // Declaring and initiating pages
-let loginPage = new LoginPage();
-let addPredefinedPage = new AddPredefinedPage();
+// let loginPage = new LoginPage();
+// let addPredefinedPage = new AddPredefinedPage();
 let homeWarning = new HomeWarningPage();
 let addQuestions = new AddQuestions();
-let createPartyPage = new CreatePartyPage();
+// let createPartyPage = new CreatePartyPage();
 let addPlayersPage = new AddPlayersPage();
-let youAreReadyPage = new YouAreReadyPage();
+// let youAreReadyPage = new YouAreReadyPage();
 let settingsPage = new SettingsPage();
 let gamePage = new GamePage();
 
+
 // Initiating services
-authService.init();
+// authService.init();
 spaService.init();
 
 
-
 // Currently not in use
-_categoryService.read();
+// _categoryService.read();
 
 
 // onclick handlers
@@ -49,11 +48,11 @@ window.createQuestion = () => addPredefinedPage.createQuestion();
 window.navigateTo = (hash) => spaService.navigateTo(hash);
 window.addAnotherPlayer = (whereToAdd) => addPlayersPage.addAnotherPlayer(whereToAdd);
 window.joinParty = (hash) => joinPartyService.joinParty(hash);
-window.createParty = (hash) => createPartyService.createParty(hash);
+// window.createParty = (hash) => createPartyService.createParty(hash);
 window.addPlayers = () => joinPartyService.addPlayers();
 window.showRules = (name) => gamePage.showRules(name);
 window.showAdd = () => gamePage.showAdd();
-window.logout = () => authService.logout();
+// window.logout = () => authService.logout();
 window.checkbox = (id) => addQuestions.checkbox(id);
 window.getThePartyId = () => settingsPage.getThePartyId();
 window.basket = () => addQuestions.barsket();
@@ -69,7 +68,7 @@ window.createNewQuestion = () => _arrayQuestionService.createNewQuestion();
 window.gameName = () => gamePage.gameName();
 window.highlightChoosen = (checkboxId) => addPredefinedPage.highlightChoosen(checkboxId);
 window.getDataFromQuiz = (number, preOrNot) => questionInputService.getDataFromQuiz(number, preOrNot);
-// window.init = (idOfSwiperContainer) => swipeService.init(idOfSwiperContainer);
+
 // window.chekRangeSlider =()=> settingsPage.chekRangeSlider();
 
 // let rangeSlider = document.getElementById("myRange");
@@ -91,7 +90,7 @@ window.getDataFromQuiz = (number, preOrNot) => questionInputService.getDataFromQ
 // Swipe
 const _C = document.querySelector('#gameContainer'),
     // N = _C.children.length,
-    N = 3,
+    N = 8,
     NF = 30,
     TFN = {
         'linear': function (k) {
