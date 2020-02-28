@@ -1,5 +1,5 @@
 import createPartyService from "./../services/createPartyService.js"
-import loaderService from "./../services/loader.js"
+// import loaderService from "./../services/loader.js"
 class JoinPartyService {
     constructor() {
         this.partyRef = _db.collection("parties");
@@ -52,7 +52,7 @@ class JoinPartyService {
 
     addPlayers() {
         navigateTo('addQuestions');
-        loaderService.show(true);
+        // loaderService.show(true);
         let myFriends = document.querySelectorAll('.myFriends');
         let moreFriends = document.querySelectorAll('.moreFriends');
 
@@ -62,7 +62,7 @@ class JoinPartyService {
         for (const friend of moreFriends) {
             this.listOfPlayers.push(friend.value);
         }
-        loaderService.show(false);
+        // loaderService.show(false);
     }
 
     // Ad players from the inputfields into the parties collection in the database

@@ -88,7 +88,7 @@ class AuthService {
     }
 
     updateAuthUser(name, img, birthdate, hairColor, phone) {
-        this.loaderService.show(true);
+        // this.loaderService.show(true);
 
         let user = firebase.auth().currentUser;
 
@@ -106,7 +106,7 @@ class AuthService {
         }, {
             merge: true
         }).then(() => {
-            this.loaderService.show(false);
+            // this.loaderService.show(false);
         });
 
     }

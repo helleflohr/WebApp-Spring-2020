@@ -193,7 +193,7 @@ export default class AddQuestions {
 
 
   // This removeFromList function removes the specific question from the partyContentArray, so it´s not going to be added to the game
-  removeFromList(id) {
+  removeFromList(element, id) {
     // Find the index of the question in the partyContentArray
     let index = _arrayQuestionService.partyContentArray.map(function (e) {
       return e.addedId // get the id of the question from the specific question-object
@@ -205,7 +205,7 @@ export default class AddQuestions {
 
     _arrayQuestionService.highlightNumber(); // Highligth the new nuber of added questions
 
-    document.querySelector(`#${id}`).style.display = 'none';
+    element.style.display = 'none';
 
     if (id.substr(0, 5) == 'added') { // If the question is a predefined question (the Id starts with 'added')
 
