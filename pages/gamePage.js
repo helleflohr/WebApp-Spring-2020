@@ -50,13 +50,13 @@ export default class GamePage {
         let insert = "";
         let itemsProcessed = 0;
         let numberOfItems = _arrayQuestionService.partyContentArray.length;
-        console.log(_arrayQuestionService.partyContentArray);
-        let randomQuestions = this.shuffle(_arrayQuestionService.partyContentArray);
+        let array = _arrayQuestionService.partyContentArray;
+        // let randomQuestions = this.shuffle(_arrayQuestionService.partyContentArray);
         let gameRulesIds = [];
 
-        console.log(randomQuestions);
+        console.log(this.shuffle(array));
 
-        randomQuestions.forEach(async question => {
+        array.forEach(async question => {
 
             await this.gameRef.doc(`${question.game}`).get().then(doc => {
                 let gameData = doc.data();
@@ -79,6 +79,7 @@ export default class GamePage {
                 if (itemsProcessed === numberOfItems) {
                     document.querySelector('#gameContainer').innerHTML = questionList;
                     document.querySelector(`#rules`).innerHTML += insert;
+                    window.swipe();
                 }
             });
         });
@@ -86,14 +87,33 @@ export default class GamePage {
 
     // Thus function takes the array of added questions and shuffels them, so they are displayed randomly in the game
     // the function is called inside the gameName() function.
+
+    // shuffle(array) {
+    //     for (let i = array.length - 1; i > 0; i--) {
+    //         let j = Math.floor(Math.random() * (i + 1));
+    //         [array[i], array[j]] = [array[j], array[i]];
+    //     }
+    //     return array;
+    // }
+
     shuffle(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+        let ctr = array.length;
+        let temp;
+        let index;
+
+        // While there are elements in the array
+        while (ctr > 0) {
+            // Pick a random index
+            index = Math.floor(Math.random() * ctr);
+            // Decrease ctr by 1
+            ctr--;
+            // And swap the last element with it
+            temp = array[ctr];
+            array[ctr] = array[index];
+            array[index] = temp;
         }
         return array;
     }
-
 }
 
 

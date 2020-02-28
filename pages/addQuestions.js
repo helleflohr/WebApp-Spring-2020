@@ -178,8 +178,8 @@ export default class AddQuestions {
 
 
 
-  async checkbox(id) {
-    document.querySelector(`#${id}`).classList.add('checkboxChecked');
+  async checkbox(element, id) {
+    element.classList.add('checkboxChecked');
 
     let questionSet = {};
 
@@ -197,14 +197,14 @@ export default class AddQuestions {
 
     _arrayQuestionService.partyContentArray.push(questionSet);
     _arrayQuestionService.highlightNumber()
-    document.querySelector(`#${id}`).style.display = "none";
+    element.style.display = "none";
     console.log(_arrayQuestionService.partyContentArray)
-    document.querySelector(`#${id}`).classList.remove('checkboxChecked');
+    element.classList.remove('checkboxChecked');
     // addQuestionToGameService.noContentForHeadline('dbGameArticle');
 
   }
 
-  removeFromList(id) {
+  removeFromList(element, id) {
 
     let preId = id.slice(5);
     document.querySelector(`#${preId}`).style.display = "block";
@@ -217,7 +217,7 @@ export default class AddQuestions {
       _arrayQuestionService.partyContentArray.splice(index, 1);
     }
     _arrayQuestionService.highlightNumber()
-    document.querySelector(`#${id}`).style.display = 'none';
+    element.style.display = 'none';
     // addQuestionToGameService.noContentForHeadline('dbGameArticle');
   }
 

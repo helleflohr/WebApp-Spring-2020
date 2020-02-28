@@ -729,7 +729,7 @@ GamePage
     width: 95%;
 }
 
-#addLabel {
+/* #addLabel {
     background-image: url(/img/plus_icon.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -738,7 +738,7 @@ GamePage
     right: 10px;
     width: 20px;
     height: 22px;
-}
+} */
 
 #gameContainer {
     --n: 1;
@@ -760,7 +760,7 @@ GamePage
     pointer-events: none;
     height: 50vh;
     margin: .7%;
-    padding-top: 15%;
+    padding-top: 5%;
 }
 
 /* sandt eller falst */
