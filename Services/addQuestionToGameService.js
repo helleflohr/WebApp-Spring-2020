@@ -57,14 +57,14 @@ class AddQuestionToGameService {
 
                     if (game.questions.length == 1) { // If theres a question in the game array add it to the DOM
                         listItem += /*html*/ `<article id="#dbGameArticle${game.id}">
-                        <h3 class="bold">${game.gameTitle}</h3>
+                            <h3 class="bold">${game.gameTitle}</h3>
                         </article>`
 
                         // After the game headline add all the questions with the matching gameId
                         this.questions.forEach(question => {
                             if (question.game == game.id) {
                                 listItem += /*html*/ `
-                                <p id="id${question.id}" class="label checkboxNotCheked" onclick="checkbox(this, '${question.id}')">${question.questionContent}</p>
+                                    <p id="id${question.id}" class="label checkboxNotCheked" onclick="checkbox(this, '${question.id}')">${question.questionContent}</p>
                                 `
                             }
                         })
@@ -93,14 +93,14 @@ class AddQuestionToGameService {
 
                     if (question.game == game.id) {
                         addedContent += /*html*/ `
-                    <p id="${question.addedId}" class="label checkboxNotCheked" onclick="removeFromList(this, '${question.addedId}')">${question.questionContent}</p>
+                        <p id="${question.addedId}" class="label checkboxNotCheked" onclick="removeFromList(this, '${question.addedId}')">${question.questionContent}</p>
                     `
                     }
                 }
             }
             listItem += /*html*/ `<article id='gameArticle${game.id}'>
-          <h3 class="bold">${game.gameTitle}</h3>
-          ${addedContent}
+            <h3 class="bold">${game.gameTitle}</h3>
+            ${addedContent}
           </article>
          `
 
