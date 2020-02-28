@@ -6,9 +6,6 @@ export default class AddPredefinedPage {
         this.categoryRef = _db.collection("categories");
         this.gameRef = _db.collection("games");
         this.choosenCategoriesArr = [];
-        this.whichParameter = "";
-
-        this.addedCategoryArray = [];
 
         this.createCategoryOptions();
         this.createGameOptions();
