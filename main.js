@@ -64,7 +64,7 @@ window.removeFromList = (element, id) => addQuestions.removeFromList(element, id
 window.gameInputSettings = (gameId, inputId, whereToPut, preOrNot) => addQuestions.gameInputSettings(gameId, inputId, whereToPut, preOrNot);
 window.styleWhichValue = (truthId, dareId) => _questionInputService.styleWhichValue(truthId, dareId);
 window.createNewQuestion = () => _arrayNewQuestionService.createNewQuestion();
-window.gameName = () => gamePage.gameName();
+window.generateGamePages = () => gamePage.generateGamePages();
 window.highlightChoosenCategories = (checkboxId) => _addPreQuestionService.highlightChoosenCategories(checkboxId);
 window.getDataFromQuiz = (number, preOrNot) => _questionInputService.getDataFromQuiz(number, preOrNot);
 

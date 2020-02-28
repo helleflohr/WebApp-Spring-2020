@@ -47,7 +47,7 @@ export default class AddQuestions {
         <div id="predefined">
         </div>
       </article>
-      <button class="btn" onclick="gameName()"> Tilføj spørgsmål og gå videre </button>
+      <button class="btn" onclick="generateGamePages()"> Tilføj spørgsmål og gå videre </button>
   
     </section>
     `;
