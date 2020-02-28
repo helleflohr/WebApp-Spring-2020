@@ -1,4 +1,4 @@
-import _arrayQuestionService from "./arrayQuestionService.js"
+import _arrayNewQuestionService from "./arrayNewQuestionService.js"
 
 class AddQuestionToGameService {
     constructor() {
@@ -82,13 +82,13 @@ class AddQuestionToGameService {
         let listItem = "";
 
         // Insert message if basket is empty
-        if (_arrayQuestionService.partyContentArray.length === 0) {
+        if (_arrayNewQuestionService.partyContentArray.length === 0) {
             listItem += `<h3>Du har endnu ikke valgt nogle <br>spørgsmål til spillet</h3>`
         }
 
         this.games.forEach(game => {
             let addedContent = ""
-            for (let question of _arrayQuestionService.partyContentArray) {
+            for (let question of _arrayNewQuestionService.partyContentArray) {
                 if (question.game === game.id) {
 
                     if (question.game == game.id) {

@@ -2,7 +2,7 @@ class QuestionInputService {
 
     // This service is imported to
     // AddPreQuestionService
-    // ArrayQuestionService
+    // ArrayNewQuestionService
 
     constructor() {
         this.addedValue = "";

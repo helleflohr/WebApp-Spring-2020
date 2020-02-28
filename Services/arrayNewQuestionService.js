@@ -1,6 +1,6 @@
 import _questionInputService from "./questionInputService.js"
 // Imports the array with added questions to the game
-class ArrayQuestionService {
+class ArrayNewQuestionService {
     constructor() {
         this.gameInput = document.querySelector("#select-game");
         this.questionInput = document.querySelector("#newQuestion");
@@ -11,7 +11,7 @@ class ArrayQuestionService {
     }
 
     highlightNumber() {
-        document.querySelector('[for=addedQuestions]').innerHTML = `Dit spilindhold <div id="numberOfRoundsAdded"> ${_arrayQuestionService.partyContentArray.length}</div>`
+        document.querySelector('[for=addedQuestions]').innerHTML = `Dit spilindhold <div id="numberOfRoundsAdded"> ${_arrayNewQuestionService.partyContentArray.length}</div>`
         document.querySelector('#numberOfRoundsAdded').classList.add('highlightAnimation');
     }
 
@@ -51,5 +51,5 @@ class ArrayQuestionService {
     }
 
 }
-const _arrayQuestionService = new ArrayQuestionService;
-export default _arrayQuestionService;
+const _arrayNewQuestionService = new ArrayNewQuestionService;
+export default _arrayNewQuestionService;

@@ -1,4 +1,4 @@
-import _arrayQuestionService from "../services/arrayQuestionService.js"
+import _arrayNewQuestionService from "../services/arrayNewQuestionService.js"
 // import loaderService from "./../services/loader.js"
 
 export default class GamePage {
@@ -51,9 +51,9 @@ export default class GamePage {
         let questionList = "";
         let insert = "";
         let itemsProcessed = 0;
-        let numberOfItems = _arrayQuestionService.partyContentArray.length;
-        let array = _arrayQuestionService.partyContentArray;
-        // let randomQuestions = this.shuffle(_arrayQuestionService.partyContentArray);
+        let numberOfItems = _arrayNewQuestionService.partyContentArray.length;
+        let array = _arrayNewQuestionService.partyContentArray;
+        // let randomQuestions = this.shuffle(_arrayNewQuestionService.partyContentArray);
         let gameRulesIds = [];
 
         console.log(this.shuffle(array));

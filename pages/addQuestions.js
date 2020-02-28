@@ -1,5 +1,5 @@
 import GamePage from "./gamePage.js"
-import _arrayQuestionService from "./../services/arrayQuestionService.js"
+import _arrayNewQuestionService from "./../services/arrayNewQuestionService.js"
 import _addQuestionToGameService from "./../services/addQuestionToGameService.js"
 
 
@@ -10,7 +10,7 @@ export default class AddQuestions {
     this.partyRef = _db.collection("parties");
 
     // Maeby we should get the datafrom the database at put it in the new array before - for no overwrite
-    // this.partyContentArray = _arrayQuestionService.partyContentArray;
+    // this.partyContentArray = _arrayNewQuestionService.partyContentArray;
 
     _addQuestionToGameService.fetchGames();
 
@@ -27,7 +27,7 @@ export default class AddQuestions {
   template() {
     document.querySelector('#content').innerHTML += /*html*/ `
     <section id="addQuestions" class="page">
-      <div for="addedQuestions" onclick="basket();createAddedQuestionsList()">Dit spilindhold<div id="numberOfRoundsAdded">${_arrayQuestionService.partyContentArray.length}</div></div>
+      <div for="addedQuestions" onclick="basket();createAddedQuestionsList()">Dit spilindhold<div id="numberOfRoundsAdded">${_arrayNewQuestionService.partyContentArray.length}</div></div>
       <article id="addedQuestionsArticle" class="hide">The Article
       </article>
       <form id="questionForm">
@@ -182,11 +182,11 @@ export default class AddQuestions {
       }
     })
 
-    _arrayQuestionService.partyContentArray.push(questionSet); // Pushes the obejct with database-values into an the global partyContenArray
-    _arrayQuestionService.highlightNumber() // Highlights the number of added questions
+    _arrayNewQuestionService.partyContentArray.push(questionSet); // Pushes the obejct with database-values into an the global partyContenArray
+    _arrayNewQuestionService.highlightNumber() // Highlights the number of added questions
 
     element.style.display = "none";
-    console.log(_arrayQuestionService.partyContentArray)
+    console.log(_arrayNewQuestionService.partyContentArray)
     element.classList.remove('checkboxChecked');
   }
 
@@ -194,15 +194,15 @@ export default class AddQuestions {
   // This removeFromList function removes the specific question from the partyContentArray, so it´s not going to be added to the game
   removeFromList(element, id) {
     // Find the index of the question in the partyContentArray
-    let index = _arrayQuestionService.partyContentArray.map(function (e) {
+    let index = _arrayNewQuestionService.partyContentArray.map(function (e) {
       return e.addedId // get the id of the question from the specific question-object
     }).indexOf(id);
 
     if (index > -1) { // If it exsists in the array (if it dosn´t the index will be -1)
-      _arrayQuestionService.partyContentArray.splice(index, 1); // then remove it
+      _arrayNewQuestionService.partyContentArray.splice(index, 1); // then remove it
     }
 
-    _arrayQuestionService.highlightNumber(); // Highligth the new nuber of added questions
+    _arrayNewQuestionService.highlightNumber(); // Highligth the new nuber of added questions
 
     element.style.display = 'none';
 
