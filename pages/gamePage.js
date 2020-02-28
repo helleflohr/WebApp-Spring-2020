@@ -99,26 +99,45 @@ export default class GamePage {
     //     return array;
     // }
 
-    shuffle(array) {
-        let ctr = array.length;
-        let temp;
-        let index;
+    //     shuffle(array) {
+    //         let ctr = array.length;
+    //         let temp;
+    //         let index;
 
-        // While there are elements in the array
-        while (ctr > 0) {
-            // Pick a random index
-            index = Math.floor(Math.random() * ctr);
-            // Decrease ctr by 1
-            ctr--;
-            // And swap the last element with it
-            temp = array[ctr];
-            array[ctr] = array[index];
-            array[index] = temp;
+    //         // While there are elements in the array
+    //         while (ctr > 0) {
+    //             // Pick a random index
+    //             index = Math.floor(Math.random() * ctr);
+    //             // Decrease ctr by 1
+    //             ctr--;
+    //             // And swap the last element with it
+    //             temp = array[ctr];
+    //             array[ctr] = array[index];
+    //             array[index] = temp;
+    //         }
+    //         return array;
+    //     }
+    // }
+
+    shuffle(array) {
+        var m = array.length,
+            t, i;
+
+        // While there remain elements to shuffle…
+        while (m) {
+
+            // Pick a remaining element…
+            i = Math.floor(Math.random() * m--);
+
+            // And swap it with the current element.
+            t = array[m];
+            array[m] = array[i];
+            array[i] = t;
         }
+
         return array;
     }
 }
-
 
 
 //  <h2>Tilføj flere spillere</h2>
