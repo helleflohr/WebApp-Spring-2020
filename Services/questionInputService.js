@@ -1,4 +1,9 @@
 class QuestionInputService {
+
+    // This service is imported to
+    // AddPreQuestionService
+    // ArrayQuestionService
+
     constructor() {
         this.addedValue = "";
         this.answerValue = "";
@@ -6,7 +11,6 @@ class QuestionInputService {
         this.arrOfAnswers = [];
 
         this.newPredefinedQuestion = {};
-        this.questionSet = {};
         this.newUserQuestion = {};
 
 

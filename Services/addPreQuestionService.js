@@ -1,6 +1,6 @@
 import _questionInputService from "./../services/questionInputService.js"
 
-class AddPredefinedService {
+class AddPreQuestionService {
     constructor() {
         this.questionRef = _db.collection("questions");
         this.choosenCategoriesArr = [];
@@ -62,5 +62,5 @@ class AddPredefinedService {
     }
 }
 
-const _addPreQuestionService = new AddPredefinedService();
+const _addPreQuestionService = new AddPreQuestionService();
 export default _addPreQuestionService;
