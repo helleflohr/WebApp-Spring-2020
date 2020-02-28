@@ -1,4 +1,7 @@
 class QuestionInputService {
+
+    // This service is imported to AddPreQuestionService & ArrayNewQuestionService
+
     constructor() {
         this.addedValue = "";
         this.answerValue = "";
@@ -6,7 +9,6 @@ class QuestionInputService {
         this.arrOfAnswers = [];
 
         this.newPredefinedQuestion = {};
-        this.questionSet = {};
         this.newUserQuestion = {};
 
 
@@ -31,9 +33,6 @@ class QuestionInputService {
             labelForThisCheckbox.style.background = 'var(--secundary_color_light)';
             checkBoxForThisCheckbox.checked = false;
         }
-
-        console.log(this.addedValue)
-
     }
 
     getDataFromQuiz(number, preOrNot) {
@@ -50,7 +49,6 @@ class QuestionInputService {
         }
 
         this.answerValue = input.value
-        console.log(this.status, this.answerValue)
 
         let differentOptions = {
             option: this.answerValue,
