@@ -1,3 +1,4 @@
+// This service is not active in version 1.0
 class CreatePartyService {
 
     constructor() {

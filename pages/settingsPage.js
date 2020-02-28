@@ -24,46 +24,39 @@ export default class SettingsPage {
   template() {
     console.log(createPartyService)
     document.querySelector('#content').innerHTML += /*html*/ `
-        <section id="settingsPage" class="page flexcontainer">
+      <section id="settingsPage" class="page flexcontainer">
         <button class="idButton">Paty Game Id</button>
 
+			  <input type="text" id="myText" value="${this.partyId}">
 
-				  <input type="text" id="myText" value="${this.partyId}">
-
-				
 				<h3 id="antalRunder"  >Antal runder</h3>
         <div class="container">
-  
         
-  <div class="rangeSlider">
-    <span id="rs-bullet" class="rs-label">0</span>
-    <input id="rs-range-line" class="rs-range" type="range" value="0" min="0" max="200">
-  </div>
-   <div class="box-minmax">
-    <span>0</span><span>200</span>
-  </div>
-</div>
+        <div class="rangeSlider">
+        <span id="rs-bullet" class="rs-label">0</span>
+        <input id="rs-range-line" class="rs-range" type="range" value="0" min="0" max="200">
+        </div>
+
+        <div class="box-minmax">
+        <span>0</span><span>200</span>
+        </div>
+
+        </div>
 
 
-      <h3>vælg sprog</h3>
-    <label class="toggleLang">
+        <h3>vælg sprog</h3>
+        <label class="toggleLang">
         <input type="checkbox" id="dabox" class="star">
-           <span   class="sliderLang">
-            
-        </span>
-      
-      </label>
-    </label>
-    <button class="btnSettings" name="addPlayers" onclick="navigateTo(this.name)">Fortsæt</button>
+        <span   class="sliderLang"></span>
+        </label>
+        
+        <button class="btn btnSettings" name="addPlayers" onclick="navigateTo(this.name)">Fortsæt</button>
 
-    
-      
       </section>`
   }
 
   rangeSlider() {
     let rangeSlider = document.getElementById("rs-range-line");
-
 
     rangeSlider.addEventListener("input", this.showSliderValue, false);
   }
@@ -74,7 +67,6 @@ export default class SettingsPage {
     var bulletPosition = (rangeSlider.value / rangeSlider.max);
     let theBulletPosition = bulletPosition * 578
     rangeBullet.style.left = `${theBulletPosition}px`;
-
   }
 
 
