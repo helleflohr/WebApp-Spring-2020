@@ -41,8 +41,7 @@ export default class AddPredefinedPage {
 
                 let categoriyCheckboxes = document.querySelector("#wichCategories");
                 categoriyCheckboxes.innerHTML += /*html*/ `
-                <input type="checkbox" id="the${category.id}" onchange="highlightChoosenCategories(this.id)" class="displayNone hide" value="${category.id}">
-                <!--name="${category.contentCategory}"  up-->
+                <input type="checkbox" id="the${category.id}" onchange="highlightChoosenCategories(this.id)" class="displayNone" value="${category.id}">
                 <label class="smallInputfield" for="the${category.id}">${category.contentCategory}</label>
                 `
             });
