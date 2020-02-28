@@ -1,5 +1,4 @@
 import GamePage from "./gamePage.js"
-import _categoryService from "./../services/categoryService.js"
 import _arrayQuestionService from "./../services/arrayQuestionService.js"
 import _addQuestionToGameService from "./../services/addQuestionToGameService.js"
 
