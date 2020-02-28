@@ -134,5 +134,5 @@ class JoinPartyService {
     }
 
 }
-const joinPartyService = new JoinPartyService();
-export default joinPartyService;
+const _joinPartyService = new JoinPartyService();
+export default _joinPartyService;

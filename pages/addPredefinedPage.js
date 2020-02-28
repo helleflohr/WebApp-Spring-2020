@@ -1,4 +1,4 @@
-import questionInputService from "./../services/questionInputService.js"
+import _questionInputService from "./../services/questionInputService.js"
 
 export default class AddPredefinedPage {
     constructor() {
@@ -103,17 +103,17 @@ export default class AddPredefinedPage {
         this.choosenCategories();
 
         console.log(this.choosenCategoriesArr)
-        console.log(questionInputService.addedValue)
+        console.log(_questionInputService.addedValue)
         // let categoriesInput = document.querySelector("#wichCategories");
         let gameInput = document.querySelector("#whichGame");
         let questionInput = document.querySelector("#newPreQuestion");
-        questionInputService.newPredefinedQuestion = {
+        _questionInputService.newPredefinedQuestion = {
             categories: this.choosenCategoriesArr,
             game: gameInput.value,
             questionContent: questionInput.value
         }
-        questionInputService.whichParameters('PredefinedPage', 'whichGame');
-        this.questionRef.add(questionInputService.newPredefinedQuestion);
+        _questionInputService.whichParameters('PredefinedPage', 'whichGame');
+        this.questionRef.add(_questionInputService.newPredefinedQuestion);
         questionInput.value = "";
     }
 

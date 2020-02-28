@@ -1,4 +1,4 @@
-import spaService from "./spa.js";
+import _spaService from "./spa.js";
 import loaderService from "./loader.js";
 // import _db from "./../firebase-config.js"
 // import movieService from "./movie.js";
@@ -7,7 +7,7 @@ class AuthService {
     constructor() {
         this.ui = new firebaseui.auth.AuthUI(firebase.auth());
         this.userRef = _db.collection("users");
-        this.spaService = spaService;
+        this.spaService = _spaService;
         this.loaderService = loaderService;
         this.authUser;
         this.authUserRef;

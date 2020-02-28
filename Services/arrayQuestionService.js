@@ -1,4 +1,4 @@
-import questionInputService from "./questionInputService.js"
+import _questionInputService from "./questionInputService.js"
 // Imports the array with added questions to the game
 class ArrayQuestionService {
     constructor() {
@@ -36,15 +36,15 @@ class ArrayQuestionService {
         let gameInput = document.querySelector("#select-game");
         let questionInput = document.querySelector("#newQuestion");
 
-        questionInputService.newUserQuestion = {
+        _questionInputService.newUserQuestion = {
             game: gameInput.value,
             questionContent: questionInput.value,
             addedId: `i${this.theIdRef}`
         }
 
-        questionInputService.whichParameters('', 'select-game');
+        _questionInputService.whichParameters('', 'select-game');
 
-        this.partyContentArray.push(questionInputService.newUserQuestion)
+        this.partyContentArray.push(_questionInputService.newUserQuestion)
 
         this.highlightNumber()
         document.querySelector("#newQuestion").value = "";

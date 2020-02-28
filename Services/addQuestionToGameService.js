@@ -124,5 +124,5 @@ class AddQuestionToGameService {
     }
 
 }
-const addQuestionToGameService = new AddQuestionToGameService();
-export default addQuestionToGameService;
+const _addQuestionToGameService = new AddQuestionToGameService();
+export default _addQuestionToGameService;

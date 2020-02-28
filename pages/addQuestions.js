@@ -1,7 +1,7 @@
 import GamePage from "./gamePage.js"
 import _categoryService from "./../services/categoryService.js"
 import _arrayQuestionService from "./../services/arrayQuestionService.js"
-import addQuestionToGameService from "./../services/addQuestionToGameService.js"
+import _addQuestionToGameService from "./../services/addQuestionToGameService.js"
 
 
 export default class AddQuestions {
@@ -13,7 +13,7 @@ export default class AddQuestions {
     // Maeby we should get the datafrom the database at put it in the new array before - for no overwrite
     // this.partyContentArray = _arrayQuestionService.partyContentArray;
 
-    addQuestionToGameService.fetchGames();
+    _addQuestionToGameService.fetchGames();
 
     this.template();
     this.createGameOptions();
@@ -209,8 +209,8 @@ export default class AddQuestions {
 
     if (id.substr(0, 5) == 'added') { // If the question is a predefined question (the Id starts with 'added')
 
-      let preId = id.slice(5); // Then get the id from the predefined part (same id, just without 'added' infront of)
-      document.querySelector(`#id${preId}`).style.display = "block"; // And display it again
+      let preId = id.slice(5); // Then get the id from the predefined part (same id, just without 'added' infront of...
+      document.querySelector(`#id${preId}`).style.display = "block"; // ... but 'id' in front of instead) And display it again
     }
   }
 

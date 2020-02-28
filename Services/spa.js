@@ -58,5 +58,5 @@ class SpaService {
         }
     }
 }
-const spaService = new SpaService();
-export default spaService;
+const _spaService = new SpaService();
+export default _spaService;

@@ -95,5 +95,5 @@ class QuestionInputService {
 
 
 }
-const questionInputService = new QuestionInputService();
-export default questionInputService;
+const _questionInputService = new QuestionInputService();
+export default _questionInputService;
