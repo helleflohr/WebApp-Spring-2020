@@ -11,7 +11,7 @@ class ArrayQuestionService {
     }
 
     highlightNumber() {
-        document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded"> ${_arrayQuestionService.partyContentArray.length}</div>`
+        document.querySelector('[for=addedQuestions]').innerHTML = `Dit spilindhold <div id="numberOfRoundsAdded"> ${_arrayQuestionService.partyContentArray.length}</div>`
         document.querySelector('#numberOfRoundsAdded').classList.add('highlightAnimation');
     }
 

@@ -19,6 +19,7 @@ import _joinPartyService from "./../services/joinPartyService.js"
 import _questionInputService from "./services/questionInputService.js"
 import _arrayQuestionService from "./services/arrayQuestionService.js"
 import _addQuestionToGameService from "./services/addQuestionToGameService.js"
+import _addPreQuestionService from "./services/addPredefinedService.js"
 
 
 // Declaring and initiating pages
@@ -44,7 +45,7 @@ _spaService.init();
 
 // onclick handlers
 window.pageChange = () => _spaService.pageChange();
-window.createQuestion = () => addPredefinedPage.createQuestion();
+window.createQuestion = () => _addPreQuestionService.createQuestion();
 window.navigateTo = (hash) => _spaService.navigateTo(hash);
 window.addAnotherPlayer = (whereToAdd) => addPlayersPage.addAnotherPlayer(whereToAdd);
 window.joinParty = (hash) => _joinPartyService.joinParty(hash);
@@ -66,7 +67,7 @@ window.gameInputSettings = (gameId, inputId, whereToPut, preOrNot) => addQuestio
 window.styleWhichValue = (truthId, dareId) => _questionInputService.styleWhichValue(truthId, dareId);
 window.createNewQuestion = () => _arrayQuestionService.createNewQuestion();
 window.gameName = () => gamePage.gameName();
-window.highlightChoosen = (checkboxId) => addPredefinedPage.highlightChoosen(checkboxId);
+window.highlightChoosenCategories = (checkboxId) => _addPreQuestionService.highlightChoosenCategories(checkboxId);
 window.getDataFromQuiz = (number, preOrNot) => _questionInputService.getDataFromQuiz(number, preOrNot);
 
 // window.chekRangeSlider =()=> settingsPage.chekRangeSlider();

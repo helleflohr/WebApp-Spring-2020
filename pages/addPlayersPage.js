@@ -17,7 +17,7 @@ export default class AddPlayersPage {
         <div class="addIcon" onclick="addAnotherPlayer('playerInput')"></div>
         <br>
        
-        <button class="btn" type="button" name="addQuestions" onclick="addPlayers()">GOGOGO!</button>
+        <button class="btn" type="button" name="addQuestions" onclick="addPlayers()">Klar til at tilføje indhold</button>
         </article>
         `;
     }

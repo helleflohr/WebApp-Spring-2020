@@ -37,18 +37,6 @@ class JoinPartyService {
             })
         })
     }
-    createQuestion() {
-        let categoriesInput = document.querySelector("#wichCategories");
-        let gameInput = document.querySelector("#whichGame");
-        let questionInput = document.querySelector("#newPreQuestion");
-        let newPredefinedQuestion = {
-            categories: [categoriesInput.value],
-            game: gameInput.value,
-            questionContent: questionInput.value
-        }
-        this.questionRef.add(newPredefinedQuestion);
-    }
-
 
     addPlayers() {
         navigateTo('addQuestions');

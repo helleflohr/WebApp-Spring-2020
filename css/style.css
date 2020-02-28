@@ -905,7 +905,12 @@ Checkbox
         background-color: var(--secundary_color_light);
     }
 
-    50% {
+    40% {
+        background-color: var(--yellow);
+        color: var(--secundary_color_dark);
+    }
+
+    60% {
         background-color: var(--yellow);
         color: var(--secundary_color_dark);
     }
