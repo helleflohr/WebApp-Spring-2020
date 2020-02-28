@@ -46,7 +46,8 @@ export default class GamePage {
 
     // Takes questions from the array partyContentArray from the addQuestions page, and geneeates them into single game pages
     // it also takes the rules for every game and checks if it is shown in the #rules div box, if it isn't, then it adds it.
-    gameName() {
+    generateGamePages() {
+        navigateTo('gamePage');
         // loaderService.show(true);
         let questionList = "";
         let insert = "";
@@ -89,7 +90,7 @@ export default class GamePage {
     }
 
     // Thus function takes the array of added questions and shuffels them, so they are displayed randomly in the game
-    // the function is called inside the gameName() function.
+    // the function is called inside the generateGamePages() function.
 
     // shuffle(array) {
     //     for (let i = array.length - 1; i > 0; i--) {
