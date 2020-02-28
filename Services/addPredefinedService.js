@@ -3,7 +3,6 @@ class AddPredefinedService {
     constructor() {
         this.questionRef = _db.collection("questions");
         this.choosenCategoriesArr = [];
-
     }
 
     // Ad a predefined question to the database
@@ -40,7 +39,6 @@ class AddPredefinedService {
                 this.highlightChoosenCategories(`${tags[i].id}`)
             }
         }
-
     }
 
     highlightChoosenCategories(checkboxId) {

@@ -14,18 +14,18 @@ export default class AddPredefinedPage {
     template() {
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="addPredefinded" class="page collectionOfItems">
-        <h2>Tilføj prædefinerede spørgsmål</h2>
-        <div class="flexcontainer" id="wichCategories">
-        </div>
+            <h2>Tilføj prædefinerede spørgsmål</h2>
+            <div class="flexcontainer" id="wichCategories">
+            </div>
         
-        <select name="whichGame" id="whichGame" onchange="gameInputSettings(this.value, 'newPreQuestion', 'preInputfield', 'PredefinedPage')" class="inputfield">
-        </select>
+            <select name="whichGame" id="whichGame" onchange="gameInputSettings(this.value, 'newPreQuestion', 'preInputfield', 'PredefinedPage')" class="inputfield">
+            </select>
         
-        <div id="preInputfield" class="flexcontainer">
-        <input type="text" id="newPreQuestion" placeholder="Tilføj spil indhold her...." class="inputfield">
-        </div>
+            <div id="preInputfield" class="flexcontainer">
+                <input type="text" id="newPreQuestion" placeholder="Tilføj spil indhold her...." class="inputfield">
+            </div>
         
-        <button class="btn" type="button" onclick='createQuestion()'>Tilføj spørgsmål til databasen</button>
+            <button class="btn" type="button" onclick='createQuestion()'>Tilføj spørgsmål til databasen</button>
         </article>
         `
 
