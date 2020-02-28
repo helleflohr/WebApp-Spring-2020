@@ -1,3 +1,4 @@
+// This service is not active in version 1.0
 import createPartyService from "./../services/createPartyService.js"
 // import loaderService from "./../services/loader.js"
 class JoinPartyService {
