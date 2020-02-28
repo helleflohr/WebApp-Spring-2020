@@ -245,6 +245,7 @@ Buttons
     padding: 55px 0;
 }
 
+
 /* ---------- animations ---------- */
 /* fade in */
 @keyframes fadeIn {
@@ -283,7 +284,7 @@ Input fields and select boxes
 }
 
 .smallInputfield {
-    width: 43%;
+    width: 42%;
     padding: 1em;
     background: var(--secundary_color_light);
     color: var(--menuFontColor);
@@ -302,14 +303,14 @@ Input fields and select boxes
     height: 100%;
     z-index: 9999999999;
     overflow: hidden;
-    background: var(--loader-background-color);
+    background: var(--secundary_color_dark);
     text-align: center;
 }
 
 .spinner {
-    border: 5px solid var(--light-grey);
+    border: 5px solid var(--secundary_color_light);
     border-radius: 50%;
-    border-top: 5px solid var(--light-green);
+    border-top: 5px solid var(--secundary_color_dark);
     width: 50px;
     height: 50px;
     -webkit-animation: spin 1s linear infinite;
@@ -392,9 +393,10 @@ Pages
 }
 
 [for=addedQuestions] {
-    position: absolute;
+    position: fixed;
     z-index: 5;
-    right: 2em;
+    right: 5vh;
+    top: 5vh;
 }
 
 /* -----siden med indstillinger*/
@@ -717,6 +719,21 @@ GamePage
     right: 5vh;
     width: 5vh;
     height: 5vh;
+}
+
+.addIcon {
+    background-image: url(/img/aduser_icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: .3em;
+    width: 5vh;
+    height: 5vh;
+    margin: 1.5em auto 1em;
+    font-size: 1em;
+    background-color: var(--font_color_light);
+    border-radius: var(--border_radius);
+    /* border: 3px solid var(--secundary_color_light); */
+    cursor: pointer;
 }
 
 #rules {

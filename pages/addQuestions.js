@@ -4,9 +4,6 @@ import _arrayQuestionService from "./../services/arrayQuestionService.js"
 import addQuestionToGameService from "./../services/addQuestionToGameService.js"
 
 
-// import questionInputService from "./../services/questionInputService.js"
-
-
 export default class AddQuestions {
   constructor() {
     this.questionRef = _db.collection("questions");
@@ -31,10 +28,10 @@ export default class AddQuestions {
   template() {
     document.querySelector('#content').innerHTML += /*html*/ `
     <section id="addQuestions" class="page">
-    <input id="addedQuestions" class="hide" type="checkbox" > 
-    <label for="addedQuestions" onclick="basket();createAddedQuestionsList()">Kurven <div id="numberOfRoundsAdded">${_arrayQuestionService.partyContentArray.length}</div></label>
-    <article id="addedQuestionsArticle" class="hide">The Article</article>
-        <form id="questionForm">
+      <div for="addedQuestions" onclick="basket();createAddedQuestionsList()">Dit spilindhold<div id="numberOfRoundsAdded">${_arrayQuestionService.partyContentArray.length}</div></div>
+      <article id="addedQuestionsArticle" class="hide">The Article
+      </article>
+      <form id="questionForm">
         <h2>Tilføj nye spørgsmål til spillet:</h2>
         <select class="inputfield" id="select-game" name="games"s onchange="gameInputSettings(this.value, 'newQuestion', 'inputForGames', '')" placeholder="Vælg spil..." required></select>
         
@@ -45,35 +42,49 @@ export default class AddQuestions {
         <button class="btn" id="adQuestion" type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
       </form>
       <article id="appendUserQuestions">
-      <h2>Tilføj indhold fra databasen</h2>
-      <div id="list">
-      </div>
-      <div id="predefined">
-      </div>
-    </article>
-    <button class="btn" name="gamePage" onclick="navigateTo(this.name);gameName()"> Tilføj spørgsmål og gå videre </button>
+        <h2>Tilføj indhold fra databasen</h2>
+        <div id="list">
+        </div>
+        <div id="predefined">
+        </div>
+      </article>
+      <button class="btn" name="gamePage" onclick="navigateTo(this.name);gameName()"> Tilføj spørgsmål og gå videre </button>
   
     </section>
     `;
   }
 
+
+  // This function changes the innerHTML of an article with the id ${whereToPut}.
+  // The content of this article depends on which game is selected in the select #${gameId}.
+  // It also takes the parameters of ${inputId}, which is the inserted content for the question
+  // ... and the ${preOrNot}, which tells if the action should happen on the page for adding new predefinded questions to the database
+  // ... or if it should be on the page for adding question to the game. 
   async gameInputSettings(gameId, inputId, whereToPut, preOrNot) {
 
     let differetInputs = "";
-    await this.gameRef.doc(`${gameId}`).get().then(function (doc) {
+
+    await this.gameRef.doc(`${gameId}`).get().then(function (doc) { // Get data for the selected game from the database-gameId-document
       let docData = doc.data()
 
-      if (gameId === 'vRD8Spl5fQ4AfTifPtRq') { //Sandhed eller konsekvens
+      //-------------------------- if Truth or Dare --------------------------//
+
+      if (gameId === 'vRD8Spl5fQ4AfTifPtRq') {
         differetInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
 
         <label class="smallInputfield" for="truth${preOrNot}">Sandhed</label><input id="truth${preOrNot}" name="truth" onchange="styleWhichValue(this.id, 'dare${preOrNot}')" class="hide displayNone" type="checkbox">
         <input id="dare${preOrNot}" name="dare" onchange="styleWhichValue(this.id, 'truth${preOrNot}')" class="hide displayNone" type="checkbox"><label class="smallInputfield" for="dare${preOrNot}">Konsekvens</label>
         `
-      } else if (gameId === 'MEF7ah2clInWlmgNpg6M') { //Quiz
+
+
+        //-------------------------- if Quiz --------------------------//
+
+      } else if (gameId === 'MEF7ah2clInWlmgNpg6M') {
         differetInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
 
+        <!-- Inputfields for answer 1 -->
         <label class="bold displayBlock" for="answer1${preOrNot}">Svarmulighed 1</label>
         <input id="answer1${preOrNot}" name="answer1" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
        
@@ -83,8 +94,7 @@ export default class AddQuestions {
         <label class="smallInputfield" for="wrong1${preOrNot}">Forkert</label>
 
 
-
-
+        <!-- Inputfields for answer 2 -->
         <label class="bold displayBlock" for="answer2${preOrNot}">Svarmulighed 2</label>
         <input id="answer2${preOrNot}" name="answer2" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
 
@@ -94,7 +104,7 @@ export default class AddQuestions {
         <label class="smallInputfield" for="wrong2${preOrNot}">Forkert</label>
 
 
-
+        <!-- Inputfields for answer 3 -->
         <label class="bold displayBlock" for="answer3${preOrNot}">Svarmulighed 3</label>
         <input id="answer3${preOrNot}" name="answer3" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
 
@@ -103,9 +113,8 @@ export default class AddQuestions {
         <input id="wrong3${preOrNot}" name="wrong" onchange="styleWhichValue(this.id, 'correct3${preOrNot}')" class="hide displayNone" type="checkbox">
         <label class="smallInputfield" for="wrong3${preOrNot}">Forkert</label>
 
-
         
-
+        <!-- Inputfields for answer 4 -->
         <label class="bold displayBlock" for="answer4${preOrNot}">Svarmulighed 4</label>
         <input id="answer4${preOrNot}" name="answer4" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
         
@@ -115,7 +124,10 @@ export default class AddQuestions {
         <label class="smallInputfield" for="wrong4${preOrNot}">Forkert</label>
     
         `
-      } else if (gameId === 'pfF2l2zwYDqcVCIjMlNr') { //Sandt eller falsk
+
+
+        //-------------------------- if True or False --------------------------//
+      } else if (gameId === 'pfF2l2zwYDqcVCIjMlNr') {
         differetInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
 
@@ -124,45 +136,21 @@ export default class AddQuestions {
         <input id="false${preOrNot}" name="false" onchange="styleWhichValue(this.id, 'truthfull${preOrNot}')" class="hide displayNone" type="checkbox">
         <label class="smallInputfield" for="false${preOrNot}">Falsk</label>
         `
-      } else {
 
+        //-------------------------- if the other games --------------------------//
+      } else {
         differetInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
         `
       }
-      document.querySelector(`#${inputId}`).setAttribute("placeholder", docData.gamePlaceholder);
-
     })
     document.querySelector(`#${whereToPut}`).innerHTML = differetInputs;
-
   }
 
 
-  // This function creates the new question by taking the information from the dropdown menu over games, 
-  // and linking it with the value in the input field.
-  // createNewQuestion() {
 
-  //   let gameInput = document.querySelector("#select-game");
-  //   let questionInput = document.querySelector("#newQuestion");
-  //   let newUserQuestion = {
-  //     game: gameInput.value,
-  //     questionContent: questionInput.value
-  //   }
-  //   // this.questionRef.add(newUserQuestion);
-
-  //   this.partyContentArray.push(newUserQuestion)
-  //   console.log(this.partyContentArray)
-
-  //   // addQuestionToGameService.fetchGames();
-  //   _arrayQuestionService.highlightNumber()
-  //   // document.querySelector('[for=addedQuestions]').innerHTML = `Kurven <div id="numberOfRoundsAdded">${this.partyContentArray.length}</div>`
-  //   document.querySelector("#newQuestion").value = "";
-
-  // }
-
-
-  // This function creates the dropdown menu over games, by taking every new game id, and adding the game 
-  // title to the menu. gameRef refers back to the constructor, therefore the this.
+  // This function creates the dropdown menu over games, by taking every new game id, and adding the game title to the menu.
+  // GameRef refers back to the constructor, therefore the this.
   createGameOptions() {
     this.gameRef.get().then(snapshotData => {
       snapshotData.forEach(doc => {
@@ -177,15 +165,17 @@ export default class AddQuestions {
   }
 
 
-
+  // This checkbox runs onclick on the addQuestions page. 
+  // The function adds the predefined questions to the partyContentArray
+  // ...and displays the qustion "none" afterwords.
   async checkbox(element, id) {
     element.classList.add('checkboxChecked');
 
     let questionSet = {};
 
-    await this.questionRef.doc(`${id}`).get().then(function (doc) {
+    await this.questionRef.doc(`${id}`).get().then(function (doc) { // Finds the specific question document from the database
       let docData = doc.data()
-      questionSet = {
+      questionSet = { // Sets a object with values from the database document
         game: docData.game,
         questionContent: docData.questionContent,
         categories: docData.categories,
@@ -193,47 +183,40 @@ export default class AddQuestions {
       }
     })
 
+    _arrayQuestionService.partyContentArray.push(questionSet); // Pushes the obejct with database-values into an the global partyContenArray
+    _arrayQuestionService.highlightNumber() // Highlights the number of added questions
 
-
-    _arrayQuestionService.partyContentArray.push(questionSet);
-    _arrayQuestionService.highlightNumber()
     element.style.display = "none";
     console.log(_arrayQuestionService.partyContentArray)
     element.classList.remove('checkboxChecked');
-    // addQuestionToGameService.noContentForHeadline('dbGameArticle');
-
   }
 
-  removeFromList(element, id) {
 
-    let preId = id.slice(5);
-    document.querySelector(`#${preId}`).style.display = "block";
-
+  // This removeFromList function removes the specific question from the partyContentArray, so it´s not going to be added to the game
+  removeFromList(id) {
+    // Find the index of the question in the partyContentArray
     let index = _arrayQuestionService.partyContentArray.map(function (e) {
-      return e.addedId
+      return e.addedId // get the id of the question from the specific question-object
     }).indexOf(id);
-    console.log(index)
-    if (index > -1) {
-      _arrayQuestionService.partyContentArray.splice(index, 1);
+
+    if (index > -1) { // If it exsists in the array (if it dosn´t the index will be -1)
+      _arrayQuestionService.partyContentArray.splice(index, 1); // then remove it
     }
-    _arrayQuestionService.highlightNumber()
-    element.style.display = 'none';
-    // addQuestionToGameService.noContentForHeadline('dbGameArticle');
+
+    _arrayQuestionService.highlightNumber(); // Highligth the new nuber of added questions
+
+    document.querySelector(`#${id}`).style.display = 'none';
+
+    if (id.substr(0, 5) == 'added') { // If the question is a predefined question (the Id starts with 'added')
+
+      let preId = id.slice(5); // Then get the id from the predefined part (same id, just without 'added' infront of)
+      document.querySelector(`#${preId}`).style.display = "block"; // And display it again
+    }
   }
 
+  // This basket function shows or hides the article with the questions added to the game.
+  // It does this by toggeling the class 'hide'.
   basket() {
-    let checkBox = document.querySelector('#addedQuestions');
-    if (checkBox.checked == true) {
-      document.querySelector('#addedQuestionsArticle').classList.add('hide');
-
-    } else {
-
-      document.querySelector('#addedQuestionsArticle').classList.remove('hide');
-    }
+    document.querySelector('#addedQuestionsArticle').classList.toggle('hide');
   }
-
-
-
-
-
 }

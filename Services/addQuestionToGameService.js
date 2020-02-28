@@ -9,7 +9,8 @@ class AddQuestionToGameService {
         this.questions = [];
     }
 
-    // This function creates an empty array. It pushes a new object to the array, for each new game id. 
+    // This function creates an empty array. 
+    // It pushes a new object to the array, for each new game id. 
     fetchGames() {
         this.games = [];
         this.gameRef.get().then(snapshotData => {
@@ -23,7 +24,8 @@ class AddQuestionToGameService {
     }
 
 
-    // This function creates an empty array. It pushes a new object to the array, for each new question id. 
+    // This function creates an empty array. 
+    // It pushes a new object to the array, for each new question id. 
     fetchQuestions() {
         this.questions = [];
         this.questionRef.get().then(snapshotData => {
@@ -105,7 +107,6 @@ class AddQuestionToGameService {
 
         })
         document.querySelector("#addedQuestionsArticle").innerHTML = listItem;
-        console.log(listItem)
         this.noContentForHeadline('gameArticle');
 
 

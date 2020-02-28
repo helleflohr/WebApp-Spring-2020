@@ -1,4 +1,5 @@
 import _arrayQuestionService from "../services/arrayQuestionService.js"
+import loaderService from "./../services/loader.js"
 
 export default class GamePage {
     constructor() {
@@ -46,6 +47,7 @@ export default class GamePage {
     // Takes questions from the array partyContentArray from the addQuestions page, and geneeates them into single game pages
     // it also takes the rules for every game and checks if it is shown in the #rules div box, if it isn't, then it adds it.
     gameName() {
+        loaderService.show(true);
         let questionList = "";
         let insert = "";
         let itemsProcessed = 0;
@@ -83,6 +85,7 @@ export default class GamePage {
                 }
             });
         });
+        loaderService.show(false);
     }
 
     // Thus function takes the array of added questions and shuffels them, so they are displayed randomly in the game

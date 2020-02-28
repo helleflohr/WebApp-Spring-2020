@@ -14,27 +14,17 @@ export default class AddPlayersPage {
         </div>
 
         <br>
-        <button class="btn" type="button" onclick="addAnotherPlayer('playerInput')">+</button>
+        <div class="addIcon" onclick="addAnotherPlayer('playerInput')"></div>
         <br>
        
         <button class="btn" type="button" name="addQuestions" onclick="addPlayers()">GOGOGO!</button>
         </article>
         `;
-
-        // Til senere brug On gogo ;getThePartyId()
     }
-    // Gemmes til senere!
-    // 
-    // <h2>Tilføj dig selv</h2>
-    // <input id="myName" type="text" placeholder="Skriv dit spillernavn" class="inputfield">
 
-    // Creates a new inputfild for more players
+
+    // Creates a new childInputfild for more players, with different attributes
     addAnotherPlayer(whereToAdd) {
-        // let listOfOtherPlayers = document.getElementById("playerInput");
-
-        // listOfOtherPlayers.add(new Input());
-        console.log('playerAdded')
-
         let x = document.createElement("INPUT");
         x.setAttribute("type", "text");
         x.setAttribute("placeholder", "Skriv spillernavn");

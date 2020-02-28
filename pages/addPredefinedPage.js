@@ -1,4 +1,3 @@
-// import _addQuestionService from "./../services/addPredefinedService.js"
 import questionInputService from "./../services/questionInputService.js"
 
 export default class AddPredefinedPage {
@@ -7,10 +6,6 @@ export default class AddPredefinedPage {
         this.categoryRef = _db.collection("categories");
         this.gameRef = _db.collection("games");
         this.choosenCategoriesArr = [];
-        this.whichParameter = "";
-        // this.newPredefinedQuestion = {};
-
-        this.addedCategoryArray = [];
 
         this.createCategoryOptions();
         this.createGameOptions();
@@ -71,20 +66,6 @@ export default class AddPredefinedPage {
         });
     }
 
-    // Try to combine the two functions above
-    // createOptions(theRef, selectID, databaseTitle) {
-    //     theRef.onSnapshot(snapshotData => {
-    //         //  let categories = [];
-    //         snapshotData.forEach(doc => {
-    //             let database = doc.data();
-    //             database.id = doc.id;
-    //             let listOfOptions = document.getElementById(`${selectID}`);
-    //             // databaseTitle = database.databaseTitle
-    //             // console.log(database.databaseTitle)
-    //             listOfOptions.add(new Option(database.databaseTitle, database.id));
-    //         });
-    //     });
-    // }
 
     //Connect the choosen categories to the question
     choosenCategories() {
@@ -116,8 +97,6 @@ export default class AddPredefinedPage {
     }
 
 
-
-
     // Ad a predefined question to the database
     createQuestion() {
 
@@ -133,7 +112,7 @@ export default class AddPredefinedPage {
             game: gameInput.value,
             questionContent: questionInput.value
         }
-        questionInputService.whichParameters('PredefinedPage', 'this.newPredefinedQuestion', 'whichGame');
+        questionInputService.whichParameters('PredefinedPage', 'whichGame');
         this.questionRef.add(questionInputService.newPredefinedQuestion);
         questionInput.value = "";
     }
