@@ -12,7 +12,6 @@ import GamePage from "./pages/gamePage.js"
 
 // Importing services
 import _spaService from "./services/spa.js"
-// import _categoryService from "./services/categoryService.js"
 // import authService from "./services/loginService.js";
 // import createPartyService from "./../services/createPartyService.js"
 import _joinPartyService from "./../services/joinPartyService.js"
@@ -40,7 +39,6 @@ _spaService.init();
 
 
 // Currently not in use
-// _categoryService.read();
 
 
 // onclick handlers

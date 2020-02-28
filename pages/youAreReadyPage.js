@@ -1,3 +1,5 @@
+//This page is not active in version 1.0
+
 export default class YouAreReadyPage {
     constructor() {
         this.template();

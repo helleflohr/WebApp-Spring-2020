@@ -98,7 +98,6 @@ class AddQuestionToGameService {
                     }
                 }
             }
-
             listItem += /*html*/ `<article id='gameArticle${game.id}'>
           <h3 class="bold">${game.gameTitle}</h3>
           ${addedContent}
