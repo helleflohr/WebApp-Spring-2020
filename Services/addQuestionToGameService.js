@@ -47,7 +47,6 @@ class AddQuestionToGameService {
         this.games.forEach(game => {
             this.questions.forEach(question => {
 
-
                 if (question.game == game.id) { // Checks if the question is a part of the "current" game
                     if (!game.questions) { //If theres no questions for the game
                         game.questions = []; // the array of questions is set to empty
@@ -69,7 +68,6 @@ class AddQuestionToGameService {
                             }
                         })
                     }
-
                 }
             })
         })

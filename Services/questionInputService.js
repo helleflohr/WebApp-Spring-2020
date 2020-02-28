@@ -1,8 +1,6 @@
 class QuestionInputService {
 
-    // This service is imported to
-    // AddPreQuestionService
-    // ArrayNewQuestionService
+    // This service is imported to AddPreQuestionService & ArrayNewQuestionService
 
     constructor() {
         this.addedValue = "";
