@@ -31,9 +31,6 @@ class QuestionInputService {
             labelForThisCheckbox.style.background = 'var(--secundary_color_light)';
             checkBoxForThisCheckbox.checked = false;
         }
-
-        console.log(this.addedValue)
-
     }
 
     getDataFromQuiz(number, preOrNot) {
@@ -50,7 +47,6 @@ class QuestionInputService {
         }
 
         this.answerValue = input.value
-        console.log(this.status, this.answerValue)
 
         let differentOptions = {
             option: this.answerValue,
