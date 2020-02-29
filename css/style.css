@@ -28,7 +28,8 @@
     --secundary_font: 'Myriad Pro', Arial, sans-serif;
     --font_color_light: #FFF;
     --font_color_dark: #333;
-    --yellow: #FFF3A8;
+    --yellow: rgb(255, 234, 100);
+    --pink: rgb(190, 7, 120);
 }
 
 /* ________________________________________________________________________________________

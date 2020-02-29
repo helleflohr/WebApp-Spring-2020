@@ -90,8 +90,6 @@ window.getDataFromQuiz = (number, preOrNot) => _questionInputService.getDataFrom
 window.swipe = () => {
     const _C = document.querySelector('#gameContainer');
     let N = _C.children.length;
-    // N = number,
-    console.log(N);
 
     let NF = 30,
         TFN = {

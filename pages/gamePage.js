@@ -10,7 +10,7 @@ export default class GamePage {
     }
 
 
-    // The HTML-content for this game-"page"
+    // The HTML-content for the game-"page"
     template() {
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="gamePage" class="page">
@@ -28,9 +28,8 @@ export default class GamePage {
         `;
     }
 
-    // Toggle function for the rules in the game
+    // Function that changes the icon for the rules box, and hides and shows the article with the rules
     showRules() {
-        console.log("showRules");
         let name = "";
         let checkBox = document.querySelector(`#info`);
         let rulesBox = document.querySelector(`#rules`);
@@ -61,7 +60,12 @@ export default class GamePage {
 
         console.log(newArray);
 
-        newArray.forEach(question => {
+        for (var counter = 0; counter < newArray.Lenght; counter++)
+
+        // for (let question of newArray) 
+        {
+
+            let question = newArray[counter];
 
             this.gameRef.doc(`${question.game}`).get().then(doc => {
                 let gameData = doc.data();
@@ -154,42 +158,15 @@ export default class GamePage {
                     document.querySelector(`#rules`).innerHTML += insert;
                     window.swipe();
                 }
-            }); //Dem her
-        });
+            });
+        };
         // loaderService.show(false);
     }
 
     // Thus function takes the array of added questions and shuffels them, so they are displayed randomly in the game
     // the function is called inside the generateGamePages() function.
 
-    // shuffle(array) {
-    //     for (let i = array.length - 1; i > 0; i--) {
-    //         let j = Math.floor(Math.random() * (i + 1));
-    //         [array[i], array[j]] = [array[j], array[i]];
-    //     }
-    //     return array;
-    // }
-
-    //     shuffle(array) {
-    //         let ctr = array.length;
-    //         let temp;
-    //         let index;
-
-    //         // While there are elements in the array
-    //         while (ctr > 0) {
-    //             // Pick a random index
-    //             index = Math.floor(Math.random() * ctr);
-    //             // Decrease ctr by 1
-    //             ctr--;
-    //             // And swap the last element with it
-    //             temp = array[ctr];
-    //             array[ctr] = array[index];
-    //             array[index] = temp;
-    //         }
-    //         return array;
-    //     }
-    // }
-
+    // Fisher–Yates shuffle (https://bost.ocks.org/mike/shuffle/)
     shuffle(array) {
         var m = array.length,
             t, i;
