@@ -14,7 +14,7 @@ import GamePage from "./pages/gamePage.js"
 import _spaService from "./services/spa.js"
 // import authService from "./services/loginService.js";
 // import createPartyService from "./../services/createPartyService.js"
-import _joinPartyService from "./../services/joinPartyService.js"
+// import _joinPartyService from "./../services/joinPartyService.js"
 import _questionInputService from "./services/questionInputService.js"
 import _arrayNewQuestionService from "./services/arrayNewQuestionService.js"
 import _addQuestionToGameService from "./services/addQuestionToGameService.js"
@@ -45,9 +45,9 @@ window.pageChange = () => _spaService.pageChange();
 window.createQuestion = () => _addPreQuestionService.createQuestion();
 window.navigateTo = (hash) => _spaService.navigateTo(hash);
 window.addAnotherPlayer = (whereToAdd) => addPlayersPage.addAnotherPlayer(whereToAdd);
-window.joinParty = (hash) => _joinPartyService.joinParty(hash);
+// window.joinParty = (hash) => _joinPartyService.joinParty(hash);
 // window.createParty = (hash) => createPartyService.createParty(hash);
-window.addPlayers = () => _joinPartyService.addPlayers();
+// window.addPlayers = () => _joinPartyService.addPlayers();
 window.showRules = (name) => gamePage.showRules(name);
 window.showAdd = () => gamePage.showAdd();
 // window.logout = () => authService.logout();
@@ -89,8 +89,6 @@ window.getDataFromQuiz = (number, preOrNot) => _questionInputService.getDataFrom
 window.swipe = () => {
     const _C = document.querySelector('#gameContainer');
     let N = _C.children.length;
-    // N = number,
-    console.log(N);
 
     let NF = 30,
         TFN = {
