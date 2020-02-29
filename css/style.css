@@ -15,11 +15,11 @@
     --menuHoverColor: var(--secundary_color_light);
     --menuHoverFontColor: #041a1f;
     --background: #45b88C;
-    --secundary_color_light: #ea81c1;
-    --secundary_color_dark: #80265D;
+    --secundary_color_light: #80265D;
+    --secundary_color_dark: rgb(255, 234, 100);
     /* light green: #3b936f */
-    --border_dark: 5px solid #80265D;
-    --border_light: 5px solid #ea81c1;
+    --border_dark: 5px solid var(--secundary_color_dark);
+    --border_light: 5px solid var(--secundary_color_light);
     --border_grey: 2px solid #041a1f;
     --border_radius: 25px;
     --border_radius_square: 5px;
@@ -51,6 +51,11 @@ body {
     overflow-x: hidden;
 }
 
+.standardWidth {
+    width: var(--standardWidth);
+    margin: 0 auto;
+}
+
 /* ________________________________________________________________________________________
 Font
 -----------------------------------------------------------------------------------------*/
@@ -68,9 +73,15 @@ h3 {
 }
 
 .bold {
+    margin-top: 2em;
     font-weight: bold;
-    margin-top: 1em;
-    color: var(--menuHoverFontColor);
+    font-size: 1.5em;
+    color: var(--font_color_dark);
+}
+
+.yellowText {
+    color: var(--secundary_color_dark);
+    font-weight: bold;
 }
 
 /* ________________________________________________________________________________________
@@ -192,9 +203,8 @@ buttons
 -----------------------------------------------------------------------------------------*/
 .btn {
     border-radius: var(--border_radius);
-    border: var(--border_grey);
-    background: var(--secundary_color_light);
-    color: var(--menuFontColor);
+    border: var(--border_dark);
+    background: var(--secundary_color_dark);
     color: var(--font_color_dark);
     font-weight: bold;
     letter-spacing: .1em;
@@ -215,7 +225,9 @@ buttons
     background: var(--secundary_color_light);
     width: var(--standardWidth);
     padding: 1em;
+    border: var(--border_light);
     border-radius: var(--border_radius);
+    color: var(--font_color_light);
     cursor: pointer;
     margin: 2em auto;
 }
@@ -230,7 +242,7 @@ pages
     background: var(--light-grey);
     animation: fadeIn 0.4s;
     /* padding equals height of tabbar and topbar */
-    padding: 55px 0;
+    /* padding: 55px 0; */
 }
 
 /* ---------- home / warning page ---------- */
@@ -483,7 +495,7 @@ input:checked+.sliderLang {
 }
 
 .addIcon {
-    background-image: url(/img/aduser_icon.svg);
+    background-image: url(/img/plus_icon.svg);
     background-repeat: no-repeat;
     background-position: center;
     padding: .3em;
@@ -491,7 +503,6 @@ input:checked+.sliderLang {
     height: 5vh;
     margin: 1.5em auto 1em;
     font-size: 1em;
-    background-color: var(--font_color_light);
     border-radius: var(--border_radius);
     cursor: pointer;
 }
@@ -670,14 +681,14 @@ visebility
 input fields and select boxes
 -----------------------------------------------------------------------------------------*/
 .inputfield {
-    width: 100%;
+    width: var(--standardWidth);
     padding: 1em;
     margin: .5em auto;
     display: block;
-    background: var(--secundary_color_dark);
+    background: var(--secundary_color_light);
     color: var(--menuFontColor);
     border-radius: var(--border_radius_square);
-    border: var(--border_dark);
+    border: var(--border_light);
     font-size: 1em;
 }
 
@@ -740,21 +751,19 @@ Checkbox
 }
 
 .checkboxNotCheked {
-    box-shadow: 0px 10px 14px -7px #276873;
-    background: var(--secundary_color_dark);
+    background: var(--secundary_color_light);
     border: 1px solid #cacece;
-    color: #ffffff;
+    color: var(--menuFontColor);
     padding: 1.2em .3em;
     border-radius: var(--border_radius_square);
     display: block;
-    width: var(--standardWidth);
     margin: 0 auto;
 
 }
 
 .checkboxChecked {
-    box-shadow: 0px 10px 14px -7px var(--secundary_color_dark);
-    background: var(--secundary_color_light);
+    /* box-shadow: 0px 10px 14px -7px var(--secundary_color_dark); */
+    background: var(--secundary_color_dark);
     border: 1px solid #cacece;
     border-radius: var(--border_radius_square);
     width: var(--standardWidth);
@@ -762,11 +771,15 @@ Checkbox
     /* box-shadow: --; */
 }
 
+.boxShadow {
+    box-shadow: 0px 0px 20px 5px #276873;
+}
+
 #numberOfRoundsAdded {
-    background: var(--secundary_color_light);
-    border: var(--border_grey);
+    background: var(--secundary_color_dark);
+    border: var(--border_dark);
     border-radius: var(--border_radius);
-    color: var(--menuFontColor);
+    color: var(--font_color_dark);
 }
 
 
@@ -778,20 +791,22 @@ Checkbox
 @keyframes addContentNumberHighlight {
     0% {
 
-        background-color: var(--secundary_color_light);
+        background-color: var(--secundary_color_dark);
     }
 
     40% {
-        background-color: var(--yellow);
-        color: var(--secundary_color_dark);
+        background-color: var(--secundary_color_light);
+        border: var(--border_light);
+        color: var(--font_color_light);
     }
 
     60% {
-        background-color: var(--yellow);
-        color: var(--secundary_color_dark);
+        background-color: var(--secundary_color_light);
+        border: var(--border_light);
+        color: var(--font_color_light);
     }
 
     100% {
-        background-color: var(--secundary_color_light);
+        background-color: var(--secundary_color_dark);
     }
 }

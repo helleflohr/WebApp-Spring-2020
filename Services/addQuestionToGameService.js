@@ -43,6 +43,7 @@ class AddQuestionToGameService {
     // question.game is equeal to game.id. There by sorting the questions by games.
     createQuestionsList() {
         let listItem = "";
+        let listItems = "";
 
         this.games.forEach(game => {
             this.questions.forEach(question => {
@@ -55,18 +56,23 @@ class AddQuestionToGameService {
                     game.questions.push(question); //Push the questions that is a part of the "current" game into a game array of questions
 
                     if (game.questions.length == 1) { // If theres a question in the game array add it to the DOM
-                        listItem += /*html*/ `<article id="#dbGameArticle${game.id}">
-                            <h3 class="bold">${game.gameTitle}</h3>
-                        </article>`
-
                         // After the game headline add all the questions with the matching gameId
                         this.questions.forEach(question => {
                             if (question.game == game.id) {
-                                listItem += /*html*/ `
+                                listItems += /*html*/ `
                                     <p id="id${question.id}" class="label checkboxNotCheked" onclick="checkbox(this, '${question.id}')">${question.questionContent}</p>
                                 `
                             }
                         })
+
+                        listItem += /*html*/ `<article id="#dbGameArticle${game.id}">
+                            <h3 class="bold">${game.gameTitle}</h3>
+                            <div class="boxShadow standardWidth" >
+                            ${listItems}
+                            </div>
+                        </article>`
+
+
                     }
                 }
             })
