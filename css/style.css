@@ -15,9 +15,12 @@
     --menuHoverColor: var(--secundary_color_light);
     --menuHoverFontColor: #041a1f;
     --background: #45b88C;
-    --secundary_color_light: #3b936f;
+    --secundary_color_light: #ea81c1;
     --secundary_color_dark: #80265D;
+    /* light green: #3b936f */
     --border_dark: 5px solid #80265D;
+    --border_light: 5px solid #ea81c1;
+    --border_grey: 2px solid #041a1f;
     --border_radius: 25px;
     --border_radius_square: 5px;
     --standardWidth: 75%;
@@ -189,9 +192,12 @@ buttons
 -----------------------------------------------------------------------------------------*/
 .btn {
     border-radius: var(--border_radius);
-    border: var(--border_dark);
-    background: var(--secundary_color_dark);
+    border: var(--border_grey);
+    background: var(--secundary_color_light);
     color: var(--menuFontColor);
+    color: var(--font_color_dark);
+    font-weight: bold;
+    letter-spacing: .1em;
     width: auto;
     margin: 1.5em auto 1em;
     height: auto;
@@ -757,7 +763,8 @@ Checkbox
 }
 
 #numberOfRoundsAdded {
-    background: var(--secundary_color_dark);
+    background: var(--secundary_color_light);
+    border: var(--border_grey);
     border-radius: var(--border_radius);
     color: var(--menuFontColor);
 }

@@ -33,15 +33,13 @@ export default class AddQuestions {
       <form id="questionForm">
         <h2>Tilføj nye spørgsmål til spillet:</h2>
         <select class="inputfield" id="select-game" name="games"s onchange="gameInputSettings(this.value, 'newQuestion', 'inputForGames', '')" placeholder="Vælg spil..." required></select>
-        
-        <h2>Skriv indholdet her:</h2>
         <div id="inputForGames" class="flexcontainer">
         <input class="inputfield" type="text" id="newQuestion" placeholder="Tilføj spil indhold her...." required>
         </div>
         <button class="btn" id="adQuestion" type="button" name="button" onclick="createNewQuestion()">Tilføj</button>
       </form>
       <article id="appendUserQuestions">
-        <h2>Tilføj indhold fra databasen</h2>
+        <h2>Tilføj spørgsmål fra databasen</h2>
         <div id="list">
         </div>
         <div id="predefined">
