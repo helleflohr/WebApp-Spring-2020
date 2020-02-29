@@ -1,4 +1,5 @@
 import _arrayNewQuestionService from "./../services/arrayNewQuestionService.js"
+import _addPlayersService from "./../services/addPlayersService.js"
 // import loaderService from "./../services/loader.js"
 
 export default class GamePage {
@@ -49,7 +50,8 @@ export default class GamePage {
     generateGamePages() {
         navigateTo('gamePage');
         // loaderService.show(true);
-        let questionList = "";
+        let questionCard = "";
+
         let insert = "";
         let itemsProcessed = 0;
         let numberOfItems = _arrayNewQuestionService.partyContentArray.length;
@@ -66,11 +68,71 @@ export default class GamePage {
                 let gameId = doc.id;
                 let gameRules = gameData.rules;
 
-                questionList += /*html*/ `
+                let extraInfoBefore = "";
+                let extraInfoAfter = "";
+
+
+                //-------------------------- if Truth or Dare --------------------------//
+                if (gameId === 'vRD8Spl5fQ4AfTifPtRq') {
+                    extraInfoBefore += /*html*/ `
+                    <p>${question.truthOrDare}</p>
+                    `
+
+
+                    //-------------------------- if Quiz --------------------------//
+                } else if (gameId === 'MEF7ah2clInWlmgNpg6M') {
+                    let oneOreMoreAnswers = "";
+                    for (const answer of question.answerOptions) {
+                        if (answer.status == 'Korrekt') {
+
+                            oneOreMoreAnswers += /*html*/ `${answer.option}`
+                            extraInfoAfter += /*html*/ `
+                            <p>Svar: ${oneOreMoreAnswers}</p>                        
+                            `
+                        }
+                    }
+
+                    //-------------------------- if True or False --------------------------//
+                } else if (gameId === 'pfF2l2zwYDqcVCIjMlNr') {
+                    extraInfoAfter += /*html*/ `
+                    <p>${question.trueOrFalse}</p>
+                    `
+
+
+                    //-------------------------- if Word explanation for teams --------------------------//
+                    ////-------------------------------------- OR --------------------------------------//
+                    //--------------------------------- if Tip a 13´er ---------------------------------//
+                } else if (gameId === 'xsbZmSDp9MsHyzaPUAe1' || gameId === 'gI63nouOSvEvUXvmu0AE') {
+
+                    // Shuffle array
+                    // const shuffled = _addPlayersService.listOfPlayers.sort(() => 0.5 - Math.random());
+                    let shuffled = this.shuffle(_addPlayersService.listOfPlayers)
+
+                    // Get sub-array of first n elements after shuffled
+                    let selected = shuffled.slice(0, 3);
+
+                    if (_addPlayersService.listOfPlayers.length == 0) {
+                        extraInfoAfter += /*html*/ `
+                    <p>No Players</p>
+                    `
+                    }
+
+                    extraInfoAfter += /*html*/ `
+                    <p>${selected}</p>
+                    `
+
+                }
+
+
+                questionCard += /*html*/ `
                 <article class="${question.game}">
-                <h2>${gameData.gameTitle}</h2>${question.questionContent}          
+                <h2>${gameData.gameTitle}</h2>
+                ${extraInfoBefore}   
+                ${question.questionContent}
+                ${extraInfoAfter}          
                 </article>
                 `
+
                 if (!gameRulesIds.includes(gameId)) {
                     insert += /*html*/ `
                 <h3>${gameData.gameTitle}</h3>
@@ -81,7 +143,7 @@ export default class GamePage {
                 itemsProcessed++;
                 if (itemsProcessed === numberOfItems) {
 
-                    let gamePagesAndFinalPage = /*html*/ ` ${questionList}
+                    let gamePagesAndFinalPage = /*html*/ ` ${questionCard}
                     <article class="${question.game}">
                     <h2>Tak for spillet</h2>
                     <button class="btn" onclick="navigateTo('addQuestions')">Spil igen</button>         

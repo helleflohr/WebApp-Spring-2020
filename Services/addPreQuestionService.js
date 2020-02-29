@@ -24,6 +24,8 @@ class AddPreQuestionService {
 
         this.questionRef.add(_questionInputService.newPredefinedQuestion);
         questionInput.value = "";
+        _questionInputService.resetQuizInputfields('PredefinedPage');
+
     }
 
 
@@ -56,8 +58,10 @@ class AddPreQuestionService {
 
         if (checkBox.checked == true) { // if the checkbox is checked, ...
             label.style.background = 'var(--secundary_color_dark)' // ... then change the background of it´s label
+            label.style.color = 'var(--font_color_dark)'
         } else {
             label.style.background = 'var(--secundary_color_light)'
+            label.style.color = 'var(--font_color_light)'
         }
     }
 }

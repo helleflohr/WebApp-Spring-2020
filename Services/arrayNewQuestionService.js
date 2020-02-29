@@ -45,11 +45,18 @@ class ArrayNewQuestionService {
 
         _questionInputService.whichParameters('', 'select-game');
 
+        console.log(_questionInputService.newUserQuestion)
         this.partyContentArray.push(_questionInputService.newUserQuestion)
 
         this.highlightNumber()
         document.querySelector("#newQuestion").value = "";
+        _questionInputService.resetQuizInputfields('');
     }
+
+
+
+
+
 
 }
 const _arrayNewQuestionService = new ArrayNewQuestionService;

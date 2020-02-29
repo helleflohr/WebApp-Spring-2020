@@ -1,12 +1,14 @@
 class QuestionInputService {
 
     // Some games require more information, (options for a quiz | true or false questions)
-    // This service holdes some functions for getting data from these extra add-question-input-fields
+    // This service holdes some functions for creating extra input fields for this information ...
+    // ... and for getting data from these extra add-question-input-fields
 
     // It works for both the predefined and the user generated questions ...
     // ... so this service is imported in the AddPreQuestionService & the ArrayNewQuestionService
 
     constructor() {
+        this.gameRef = _db.collection('games');
         this.addedValue = "";
         this.answerValue = "";
         this.status = "";
@@ -23,6 +25,101 @@ class QuestionInputService {
 
     }
 
+    // This function changes the innerHTML of an article with the id ${whereToPut}.
+    // The content of this article depends on which game is selected in the select #${gameId}.
+    // It also takes the parameters of ${inputId}, which is the inserted content for the question
+    // ... and the ${preOrNot}, which tells if the action should happen on the page for adding new predefinded questions to the database
+    // ... or if it should be on the page for adding question to the game. 
+    async gameInputSettings(gameId, inputId, whereToPut, preOrNot) {
+
+        let differetInputs = "";
+
+        await this.gameRef.doc(`${gameId}`).get().then(function (doc) { // Get data for the selected game from the database-gameId-document
+            let docData = doc.data()
+
+            //-------------------------- if Truth or Dare --------------------------//
+
+            if (gameId === 'vRD8Spl5fQ4AfTifPtRq') {
+                differetInputs = /*html*/ `
+        <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
+
+        <label class="smallInputfield" for="truth${preOrNot}">Sandhed</label>
+        <input id="truth${preOrNot}" name="Sandhed" onchange="styleWhichValue(this.id, 'dare${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="dare${preOrNot}" name="Konsekvens" onchange="styleWhichValue(this.id, 'truth${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="dare${preOrNot}">Konsekvens</label>
+        `
+
+
+                //-------------------------- if Quiz --------------------------//
+
+            } else if (gameId === 'MEF7ah2clInWlmgNpg6M') {
+                differetInputs = /*html*/ `
+        <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
+
+        <!-- Inputfields for answer 1 -->
+        <label class="bold displayBlock" for="answer1${preOrNot}">Svarmulighed 1</label>
+        <input id="answer1${preOrNot}" name="answer1" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
+       
+        <label class="smallInputfield" for="correct1${preOrNot}">Korrekt</label>
+        <input id="correct1${preOrNot}" name="Korrekt" onchange="styleWhichValue(this.id, 'wrong1${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="wrong1${preOrNot}" name="Falsk" onchange="styleWhichValue(this.id, 'correct1${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="wrong1${preOrNot}">Forkert</label>
+
+
+        <!-- Inputfields for answer 2 -->
+        <label class="bold displayBlock" for="answer2${preOrNot}">Svarmulighed 2</label>
+        <input id="answer2${preOrNot}" name="answer2" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
+
+        <label class="smallInputfield" for="correct2${preOrNot}">Korrekt</label>
+        <input id="correct2${preOrNot}" name="Korrekt" onchange="styleWhichValue(this.id, 'wrong2${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="wrong2${preOrNot}" name="Falsk" onchange="styleWhichValue(this.id, 'correct2${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="wrong2${preOrNot}">Forkert</label>
+
+
+        <!-- Inputfields for answer 3 -->
+        <label class="bold displayBlock" for="answer3${preOrNot}">Svarmulighed 3</label>
+        <input id="answer3${preOrNot}" name="answer3" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
+
+        <label class="smallInputfield" for="correct3${preOrNot}">Korrekt</label>
+        <input id="correct3${preOrNot}" name="Korrekt" onchange="styleWhichValue(this.id, 'wrong3${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="wrong3${preOrNot}" name="Falsk" onchange="styleWhichValue(this.id, 'correct3${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="wrong3${preOrNot}">Forkert</label>
+
+        
+        <!-- Inputfields for answer 4 -->
+        <label class="bold displayBlock" for="answer4${preOrNot}">Svarmulighed 4</label>
+        <input id="answer4${preOrNot}" name="answer4" class="inputfield" placeholder="Skriv svarmulighed..." type="text">
+        
+        <label class="smallInputfield" for="correct4${preOrNot}">Korrekt</label>
+        <input id="correct4${preOrNot}" name="Korrekt" onchange="styleWhichValue(this.id, 'wrong4${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="wrong4${preOrNot}" name="Falsk" onchange="styleWhichValue(this.id, 'correct4${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="wrong4${preOrNot}">Forkert</label>
+        `
+
+
+                //-------------------------- if True or False --------------------------//
+            } else if (gameId === 'pfF2l2zwYDqcVCIjMlNr') {
+                differetInputs = /*html*/ `
+        <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
+
+        <label class="smallInputfield" for="truthfull${preOrNot}">Sandt</label>
+        <input id="truthfull${preOrNot}" name="Sandt" onchange="styleWhichValue(this.id, 'false${preOrNot}')" class="hide displayNone" type="checkbox">
+        <input id="false${preOrNot}" name="Falsk" onchange="styleWhichValue(this.id, 'truthfull${preOrNot}')" class="hide displayNone" type="checkbox">
+        <label class="smallInputfield" for="false${preOrNot}">Falsk</label>
+        `
+
+                //-------------------------- if the other games --------------------------//
+            } else {
+                differetInputs = /*html*/ `
+        <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
+        `
+            }
+        })
+        document.querySelector(`#${whereToPut}`).innerHTML = differetInputs;
+    }
+
+
+
     // Style the two opisite options (for example: truth or dare)
     styleWhichValue(thisCheckbox, theOtherCheckbox) {
         // The clicked checkbox
@@ -38,14 +135,22 @@ class QuestionInputService {
             // ... change the color of the labels ...
             labelForThisCheckbox.style.background = 'var(--secundary_color_dark)';
             labelForOtherCheckbox.style.background = 'var(--secundary_color_light)';
+            labelForThisCheckbox.style.color = 'var(--font_color_dark)';
+            labelForOtherCheckbox.style.color = 'var(--font_color_light)';
 
             // ... and set the other checkbox to false
             otherCheckbox.checked = false;
 
             // Set the name for the checkbox to the addedValue variable
             this.addedValue = checkBoxForThisCheckbox.name
+        } else {
+            labelForThisCheckbox.style.background = 'var(--secundary_color_light)';
+            labelForOtherCheckbox.style.background = 'var(--secundary_color_dark)';
+            labelForThisCheckbox.style.color = 'var(--font_color_light)';
+            labelForOtherCheckbox.style.color = 'var(--font_color_dark)';
         }
     }
+
 
     // If the game is a quiz this function will run, to get the data from the input fields
     getDataFromQuiz(number, preOrNot) {
@@ -64,7 +169,6 @@ class QuestionInputService {
         } else if (wrong.checked == true) { // If the option status is wrong
             this.status = wrong.name;
         }
-
         this.answerValue = input.value // Add the option-content to the variable answerValue ...
 
         // ... before connecting the option value with the option status in an object.
@@ -118,6 +222,25 @@ class QuestionInputService {
                 this.newPredefinedQuestion.answerOptions = this.arrOfAnswers;
             }
         }
+    }
+
+    resetQuizInputfields(whichPage) {
+
+
+        let number;
+        for (number = 1; number <= 4; number++) {
+
+            let answerField = document.querySelector(`#answer${number}${whichPage}`);
+            let correct = document.querySelector(`#correct${number}${whichPage}`);
+            let wrong = document.querySelector(`#wrong${number}${whichPage}`);
+            correct.checked = false;
+            wrong.checked = false;
+            answerField.value = "";
+
+        }
+
+
+
     }
 
 

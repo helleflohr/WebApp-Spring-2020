@@ -551,6 +551,7 @@ input:checked+.sliderLang {
     height: 50vh;
     margin: .7%;
     padding-top: 5%;
+    overflow: hidden;
 }
 
 /* sandt eller falst */
@@ -693,7 +694,7 @@ input fields and select boxes
 }
 
 .smallInputfield {
-    width: 42%;
+    width: 35%;
     padding: 1em;
     background: var(--secundary_color_light);
     color: var(--menuFontColor);
@@ -758,6 +759,7 @@ Checkbox
     border-radius: var(--border_radius_square);
     display: block;
     margin: 0 auto;
+    width: var(--standardWidth);
 
 }
 

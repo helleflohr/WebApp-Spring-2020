@@ -14,11 +14,12 @@ import GamePage from "./pages/gamePage.js"
 import _spaService from "./services/spa.js"
 // import authService from "./services/loginService.js";
 // import createPartyService from "./../services/createPartyService.js"
-import _joinPartyService from "./../services/joinPartyService.js"
+// import _joinPartyService from "./../services/joinPartyService.js"
 import _questionInputService from "./services/questionInputService.js"
 import _arrayNewQuestionService from "./services/arrayNewQuestionService.js"
 import _addQuestionToGameService from "./services/addQuestionToGameService.js"
 import _addPreQuestionService from "./services/addPreQuestionService.js"
+import _addPlayersService from "./services/addPlayersService.js"
 // import loaderService from "./services/loader.js"
 
 
@@ -45,9 +46,9 @@ window.pageChange = () => _spaService.pageChange();
 window.createQuestion = () => _addPreQuestionService.createQuestion();
 window.navigateTo = (hash) => _spaService.navigateTo(hash);
 window.addAnotherPlayer = (whereToAdd) => addPlayersPage.addAnotherPlayer(whereToAdd);
-window.joinParty = (hash) => _joinPartyService.joinParty(hash);
+// window.joinParty = (hash) => _joinPartyService.joinParty(hash);
 // window.createParty = (hash) => createPartyService.createParty(hash);
-window.addPlayers = () => _joinPartyService.addPlayers();
+window.addPlayers = () => _addPlayersService.addPlayers();
 window.showRules = (name) => gamePage.showRules(name);
 window.showAdd = () => gamePage.showAdd();
 // window.logout = () => authService.logout();
@@ -60,7 +61,7 @@ window.basket = () => addQuestions.basket();
 window.createAddedQuestionsList = () => _addQuestionToGameService.createAddedQuestionsList();
 window.highlightNumber = () => _arrayNewQuestionService.highlightNumber();
 window.removeFromList = (element, id) => addQuestions.removeFromList(element, id);
-window.gameInputSettings = (gameId, inputId, whereToPut, preOrNot) => addQuestions.gameInputSettings(gameId, inputId, whereToPut, preOrNot);
+window.gameInputSettings = (gameId, inputId, whereToPut, preOrNot) => _questionInputService.gameInputSettings(gameId, inputId, whereToPut, preOrNot);
 window.styleWhichValue = (truthId, dareId) => _questionInputService.styleWhichValue(truthId, dareId);
 window.createNewQuestion = () => _arrayNewQuestionService.createNewQuestion();
 window.generateGamePages = () => gamePage.generateGamePages();
