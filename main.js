@@ -67,6 +67,7 @@ window.createNewQuestion = () => _arrayNewQuestionService.createNewQuestion();
 window.generateGamePages = () => gamePage.generateGamePages();
 window.highlightChoosenCategories = (checkboxId) => _addPreQuestionService.highlightChoosenCategories(checkboxId);
 window.getDataFromQuiz = (number, preOrNot) => _questionInputService.getDataFromQuiz(number, preOrNot);
+window.showOrHideContent = (idForGameArticle) => _addQuestionToGameService.showOrHideContent(idForGameArticle)
 
 // window.chekRangeSlider =()=> settingsPage.chekRangeSlider();
 

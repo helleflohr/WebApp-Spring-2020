@@ -68,10 +68,10 @@ class AddQuestionToGameService {
 
 
                         listItem += /*html*/ `<article id="#dbGameArticle${game.id}">
-                            <h3 class="bold">${game.gameTitle}</h3>
-                          
-                            ${listItems}
-                           
+                            <h3 class="bold" onclick="showOrHideContent(this)">${game.gameTitle}</h3>
+                            <div>
+                                ${listItems}
+                            </div>
                         </article>`
 
                     }
@@ -115,11 +115,24 @@ class AddQuestionToGameService {
     emptyGame(whichSpecificId) {
         this.games.forEach(game => { // For each game in the array (added from firebase) ...
             let gameArticle = document.querySelector(`#${whichSpecificId}${game.id}`);
+            let pContainer = gameArticle.getElementsByTagName("DIV");
 
-            if (gameArticle.childElementCount == 1) { // ... if, theres only one child element (the headline) in the article ...
+            if (pContainer.childElementCount == 1) { // ... if, theres only one child element (the headline) in the article ...
                 gameArticle.classList.add('displayNone'); // ... then display none to the article
             }
         })
+    }
+
+    showOrHideContent(headline) {
+        // console.log(idForGameArticle)
+        // let gameArticle = document.querySelector(`#${headline}`)
+        let pContainer = headline.nextElementSibling;
+        console.log(headline, pContainer)
+
+        pContainer.classList.toggle('displayNone')
+        // gameArticle.classList.add("displayNone");
+
+
     }
 
 }
