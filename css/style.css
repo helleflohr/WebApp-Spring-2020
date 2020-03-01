@@ -563,7 +563,7 @@ input:checked+.sliderLang {
     pointer-events: none;
     height: 50vh;
     margin: .7%;
-    padding-top: 5%;
+    padding-top: 2%;
     overflow: hidden;
 }
 
