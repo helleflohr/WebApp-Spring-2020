@@ -278,7 +278,7 @@ pages
     z-index: 2;
     width: 100%;
     height: auto;
-    background-color: var(--secundary_color_light);
+    background-color: var(--secundary_color_dark);
 }
 
 #addedQuestions {
