@@ -11,9 +11,10 @@ export default class AddPlayersPage {
         <h2>Tilføj spillere</h2>
         <div id="playerInput">
         <input type="text" placeholder="Skriv spillernavn" class="inputfield myFriends">
+        <input type="text" placeholder="Skriv spillernavn" class="inputfield myFriends">
         </div>
 
-        <br>
+        
         <div class="addIcon" onclick="addAnotherPlayer('playerInput')"></div>
         <br>
        
