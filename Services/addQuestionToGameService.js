@@ -135,7 +135,7 @@ class AddQuestionToGameService {
             hide = "./../img/hide.svg";
         let imgElement = document.getElementById(`#arrow${game.id}`);
 
-        imgElement.src = (imgElement.src === show) ? hide : show;
+        imgElement.src = (imgElement.src === hide) ? show : hide;
     }
 
 }
