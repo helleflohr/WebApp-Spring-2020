@@ -21,10 +21,11 @@ class AddPreQuestionService {
         }
 
         _questionInputService.whichParameters('PredefinedPage', 'whichGame'); // Add extra parameteres for special games
-
+        console.log(_questionInputService.newPredefinedQuestion)
         this.questionRef.add(_questionInputService.newPredefinedQuestion);
         questionInput.value = "";
         _questionInputService.resetQuizInputfields('PredefinedPage');
+
 
     }
 

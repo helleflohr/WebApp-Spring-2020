@@ -50,7 +50,7 @@ class ArrayNewQuestionService {
 
         this.highlightNumber()
         document.querySelector("#newQuestion").value = "";
-        _questionInputService.resetQuizInputfields('');
+
     }
 
 

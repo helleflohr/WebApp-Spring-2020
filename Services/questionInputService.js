@@ -1,3 +1,4 @@
+import _addPreQuestionService from "./../services/addPreQuestionService.js"
 class QuestionInputService {
 
     // Some games require more information, (options for a quiz | true or false questions)
@@ -145,9 +146,9 @@ class QuestionInputService {
             this.addedValue = checkBoxForThisCheckbox.name
         } else {
             labelForThisCheckbox.style.background = 'var(--secundary_color_light)';
-            labelForOtherCheckbox.style.background = 'var(--secundary_color_dark)';
+            labelForOtherCheckbox.style.background = 'var(--secundary_color_light)';
             labelForThisCheckbox.style.color = 'var(--font_color_light)';
-            labelForOtherCheckbox.style.color = 'var(--font_color_dark)';
+            labelForOtherCheckbox.style.color = 'var(--font_color_light)';
         }
     }
 
@@ -195,7 +196,7 @@ class QuestionInputService {
             } else if (whichPage == 'PredefinedPage') {
                 this.newPredefinedQuestion.truthOrDare = this.addedValue
             }
-
+            this.resetTwoOptions(`${whichPage}`, 'truth', 'dare')
         }
 
         //-------------------------- if True or false --------------------------//
@@ -205,6 +206,7 @@ class QuestionInputService {
             } else if (whichPage == 'PredefinedPage') {
                 this.newPredefinedQuestion.trueOrFalse = this.addedValue
             }
+            this.resetTwoOptions(`${whichPage}`, 'truthfull', 'false')
         }
 
         //-------------------------- if Quiz --------------------------//
@@ -218,11 +220,30 @@ class QuestionInputService {
 
             if (whichPage == "") {
                 this.newUserQuestion.answerOptions = this.arrOfAnswers;
+                this.resetQuizInputfields(whichPage);
             } else if (whichPage == 'PredefinedPage') {
                 this.newPredefinedQuestion.answerOptions = this.arrOfAnswers;
+                this.resetQuizInputfields(whichPage);
             }
+
         }
+
     }
+
+    resetTwoOptions(preOrNot, trueProp, falseProp) {
+        let theTrueProp = document.querySelector(`#${trueProp}${preOrNot}`);
+        let theFalseProp = document.querySelector(`#${falseProp}${preOrNot}`);
+
+        theTrueProp.checked = false;
+        theFalseProp.checked = false;
+        console.log(trueProp, preOrNot, theTrueProp.checked, theFalseProp.checked)
+        this.styleWhichValue(`${trueProp}${preOrNot}`, `${falseProp}${preOrNot}`);
+
+    }
+    //     truth${preOrNot}
+    //     dare${preOrNot}
+    //     truthfull${preOrNot}
+    // false${preOrNot}
 
     resetQuizInputfields(whichPage) {
 
@@ -235,6 +256,9 @@ class QuestionInputService {
             let wrong = document.querySelector(`#wrong${number}${whichPage}`);
             correct.checked = false;
             wrong.checked = false;
+
+            _addPreQuestionService.highlightChoosenCategories(`correct${number}${whichPage}`);
+            _addPreQuestionService.highlightChoosenCategories(`wrong${number}${whichPage}`);
             answerField.value = "";
 
         }
