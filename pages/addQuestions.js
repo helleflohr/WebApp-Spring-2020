@@ -2,6 +2,7 @@ import GamePage from "./gamePage.js"
 import _arrayNewQuestionService from "./../services/arrayNewQuestionService.js"
 import _addQuestionToGameService from "./../services/addQuestionToGameService.js"
 import _questionInputService from "./../services/questionInputService.js"
+import _spaService from "./../services/spa.js"
 
 
 export default class AddQuestions {
@@ -28,9 +29,9 @@ export default class AddQuestions {
   template() {
     document.querySelector('#content').innerHTML += /*html*/ `
     <section id="addQuestions" class="page">
-      <div id="addedQuestions" for="addedQuestions" onclick="basket();createAddedQuestionsList()"><b>Dit spilindhold</b><div id="numberOfRoundsAdded">${_arrayNewQuestionService.partyContentArray.length}</div></div>
-      <article id="addedQuestionsArticle" class="hide">
-      </article>
+      <div for="addedQuestions" onclick="basket();createAddedQuestionsList()"><b>Dit spilindhold</b><div id="numberOfRoundsAdded">${_arrayNewQuestionService.partyContentArray.length}</div></div>
+      <!--<article id="addedQuestionsArticle" class="hide">
+      </article>-->
       <form id="questionForm">
         <h2>Tilføj nye spørgsmål til spillet:</h2>
         <select class="inputfield" id="select-game" name="games"s onchange="gameInputSettings(this.value, 'newQuestion', 'inputForGames', '')" placeholder="Vælg spil..." required></select>
@@ -139,6 +140,7 @@ export default class AddQuestions {
   // This basket function shows or hides the article with the questions added to the game.
   // It does this by toggeling the class 'hide'.
   basket() {
-    document.querySelector('#addedQuestionsArticle').classList.toggle('hide');
+    // document.querySelector('#addedQuestionsArticle').classList.toggle('hide');
+    _spaService.navigateTo('basketPage');
   }
 }

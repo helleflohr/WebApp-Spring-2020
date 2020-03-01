@@ -1,5 +1,6 @@
 import _questionInputService from "./questionInputService.js"
 
+
 class AddPreQuestionService {
     constructor() {
         this.questionRef = _db.collection("questions");
@@ -25,6 +26,7 @@ class AddPreQuestionService {
         this.questionRef.add(_questionInputService.newPredefinedQuestion);
         questionInput.value = "";
         _questionInputService.resetQuizInputfields('PredefinedPage');
+
 
 
     }

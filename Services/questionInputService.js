@@ -180,6 +180,7 @@ class QuestionInputService {
 
         this.arrOfAnswers.push(differentOptions); // Object is pushed into array of answers
 
+
     }
 
     // This function declares if extra information for a game is needed, and if yes, then what
@@ -226,7 +227,9 @@ class QuestionInputService {
                 this.resetQuizInputfields(whichPage);
             }
 
+
         }
+
 
     }
 
@@ -238,6 +241,7 @@ class QuestionInputService {
         theFalseProp.checked = false;
         console.log(trueProp, preOrNot, theTrueProp.checked, theFalseProp.checked)
         this.styleWhichValue(`${trueProp}${preOrNot}`, `${falseProp}${preOrNot}`);
+        this.addedValue = "";
 
     }
     //     truth${preOrNot}
@@ -248,7 +252,8 @@ class QuestionInputService {
     resetQuizInputfields(whichPage) {
 
 
-        let number;
+
+        let number = 1;
         for (number = 1; number <= 4; number++) {
 
             let answerField = document.querySelector(`#answer${number}${whichPage}`);
@@ -260,10 +265,9 @@ class QuestionInputService {
             _addPreQuestionService.highlightChoosenCategories(`correct${number}${whichPage}`);
             _addPreQuestionService.highlightChoosenCategories(`wrong${number}${whichPage}`);
             answerField.value = "";
-
         }
 
-
+        this.arrOfAnswers = [];
 
     }
 

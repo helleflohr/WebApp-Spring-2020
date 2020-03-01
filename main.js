@@ -8,6 +8,7 @@ import AddPlayersPage from "./pages/addPlayersPage.js"
 // import YouAreReadyPage from "./pages/youAreReadyPage.js"
 import SettingsPage from "./pages/settingsPage.js"
 import GamePage from "./pages/gamePage.js"
+import BasketPage from "./pages/basketPage.js"
 
 
 // Importing services
@@ -33,6 +34,7 @@ let addPlayersPage = new AddPlayersPage();
 // let youAreReadyPage = new YouAreReadyPage();
 let settingsPage = new SettingsPage();
 let gamePage = new GamePage();
+let basketPage = new BasketPage();
 
 
 // Initiating services

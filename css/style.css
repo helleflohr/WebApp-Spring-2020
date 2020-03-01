@@ -269,13 +269,13 @@ pages
     margin: 2%;
 }
 
-#addedQuestionsArticle {
+/* #addedQuestionsArticle {
     position: absolute;
     z-index: 2;
     width: 100%;
     height: auto;
     background-color: var(--secundary_color_light);
-}
+} */
 
 #addedQuestions {
     background-color: var(--secundary_color_light);
