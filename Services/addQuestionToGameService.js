@@ -86,10 +86,6 @@ class AddQuestionToGameService {
     createAddedQuestionsList() {
         let listItem = "";
 
-        if (_arrayNewQuestionService.partyContentArray.length === 0) { // If basket is empty ...
-            listItem += `<h3>Du har endnu ikke valgt nogle <br>spørgsmål til spillet</h3>` // ... insert message 
-        }
-
         this.games.forEach(game => {
             let addedContent = ""
 
@@ -112,12 +108,13 @@ class AddQuestionToGameService {
         this.emptyGame('gameArticle'); // Check for games without questions in the partyContentArray
     }
 
+
+    // Bruges ikke 
     emptyGame(whichSpecificId) {
         this.games.forEach(game => { // For each game in the array (added from firebase) ...
             let gameArticle = document.querySelector(`#${whichSpecificId}${game.id}`);
-            let pContainer = gameArticle.getElementsByTagName("DIV");
 
-            if (pContainer.childElementCount == 1) { // ... if, theres only one child element (the headline) in the article ...
+            if (gameArticle.childElementCount == 1) { // ... if, theres only one child element (the headline) in the article ...
                 gameArticle.classList.add('displayNone'); // ... then display none to the article
             }
         })

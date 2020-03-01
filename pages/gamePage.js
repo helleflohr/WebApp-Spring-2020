@@ -58,15 +58,13 @@ export default class GamePage {
         // let randomQuestions = this.shuffle(_arrayNewQuestionService.partyContentArray);
         let gameRulesIds = [];
 
+        console.log(_arrayNewQuestionService.partyContentArray)
         console.log(newArray);
 
-        for (var counter = 0; counter < newArray.Lenght; counter++)
 
-        // for (let question of newArray) 
+        for (const question of newArray)
+
         {
-
-            let question = newArray[counter];
-
             this.gameRef.doc(`${question.game}`).get().then(doc => {
                 let gameData = doc.data();
                 let gameId = doc.id;
@@ -157,9 +155,28 @@ export default class GamePage {
                     document.querySelector('#gameContainer').innerHTML = gamePagesAndFinalPage;
                     document.querySelector(`#rules`).innerHTML += insert;
                     window.swipe();
+
+                    console.log(questionCard)
                 }
+
             });
+
+
         };
+
+
+        // console.log(questionCard)
+        // let gamePagesAndFinalPage = /*html*/ ` ${questionCard}
+        //     <article>
+        //     <h2>Tak for spillet</h2>
+        //     <button class="btn" onclick="navigateTo('addQuestions')">Spil igen</button>         
+        //     </article>
+        //     `
+
+        // document.querySelector('#gameContainer').innerHTML = gamePagesAndFinalPage;
+        // document.querySelector(`#rules`).innerHTML += insert;
+        // window.swipe();
+
         // loaderService.show(false);
     }
 
