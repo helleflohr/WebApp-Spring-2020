@@ -235,7 +235,8 @@ buttons
 .arrow {
     width: 1em;
     height: 1em;
-    margin-left: 2em;
+    float: right;
+    padding-right: 1em;
 }
 
 /* ________________________________________________________________________________________

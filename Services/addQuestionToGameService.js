@@ -68,7 +68,7 @@ class AddQuestionToGameService {
 
 
                         listItem += /*html*/ `<article id="#dbGameArticle${game.id}">
-                            <h3 class="bold" onclick="showOrHideContent(this)">${game.gameTitle}<img src="./../img/hide.svg" class="arrow"> </h3>
+                            <h3 class="bold" onclick="showOrHideContent(this)">${game.gameTitle}<img src="./../img/hide.svg" id="arrow${game.id}" class="arrow"> </h3>
                             <div>
                                 ${listItems}
                             </div>
@@ -133,7 +133,7 @@ class AddQuestionToGameService {
 
         let show = "./../img/show.svg",
             hide = "./../img/hide.svg";
-        let imgElement = document.querySelector('.arrow');
+        let imgElement = document.getElementById(`#arrow${game.id}`);
 
         imgElement.src = (imgElement.src === show) ? hide : show;
     }
