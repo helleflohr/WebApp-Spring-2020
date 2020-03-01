@@ -244,14 +244,9 @@ class QuestionInputService {
         this.addedValue = "";
 
     }
-    //     truth${preOrNot}
-    //     dare${preOrNot}
-    //     truthfull${preOrNot}
-    // false${preOrNot}
+
 
     resetQuizInputfields(whichPage) {
-
-
 
         let number = 1;
         for (number = 1; number <= 4; number++) {
