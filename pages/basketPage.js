@@ -9,6 +9,7 @@ export default class BasketPage {
         <section id="basketPage" class="page">
         <h2>Din kurv</h2>
         <p>Du har tilføjet ${_arrayNewQuestionService.partyContentArray.length} spørgsmål til spillet</p>
+        <p>Hvis du alligevel ikke ønsker et spørgsmål, så tryk på det for at fjerne det fra din liste.</p>
         <article id="addedQuestionsArticle">
         </article>
         <button class="btn" onclick="navigateTo('addQuestions')">Tilføj flere spørgsmål</button>
