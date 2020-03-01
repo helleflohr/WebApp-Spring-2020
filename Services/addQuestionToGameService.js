@@ -68,7 +68,7 @@ class AddQuestionToGameService {
 
 
                         listItem += /*html*/ `<article id="#dbGameArticle${game.id}">
-                            <h3 class="bold" onclick="showOrHideContent(this)">${game.gameTitle}</h3>
+                            <h3 class="bold" onclick="showOrHideContent(this)">${game.gameTitle}<img src="./../img/hide.svg" class="arrow"> </h3>
                             <div>
                                 ${listItems}
                             </div>
@@ -80,7 +80,6 @@ class AddQuestionToGameService {
         })
         document.querySelector("#list").innerHTML = listItem;
     }
-
 
 
     createAddedQuestionsList() {
@@ -132,7 +131,11 @@ class AddQuestionToGameService {
         pContainer.classList.toggle('displayNone')
         // gameArticle.classList.add("displayNone");
 
+        let show = "./../img/show.svg",
+            hide = "./../img/hide.svg";
+        let imgElement = document.querySelector('.arrow');
 
+        imgElement.src = (imgElement.src === show) ? hide : show;
     }
 
 }
