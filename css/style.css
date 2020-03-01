@@ -17,6 +17,7 @@
     --background: #45b88C;
     --secundary_color_dark: #80265D;
     --secundary_color_light: rgb(255, 234, 100);
+    --border_light: 5px solid var(--secundary_color_light);
     --border_dark: 5px solid var(--secundary_color_dark);
     --border_radius: 25px;
     --border_radius_square: 5px;
@@ -91,9 +92,6 @@ Navigation - menu
     overflow: hidden;
     background-color: var(--menuBackground);
     text-align: center;
-    /* border: 5px solid var(--menuFontColor); */
-
-
 }
 
 .nav-menu li a,
@@ -199,7 +197,7 @@ buttons
 -----------------------------------------------------------------------------------------*/
 .btn {
     border-radius: var(--border_radius);
-    border: var(--border_dark);
+    border: var(--border_light);
     background: var(--secundary_color_light);
     color: var(--font_color_dark);
     font-weight: bold;
@@ -221,7 +219,7 @@ buttons
     background: var(--secundary_color_dark);
     width: var(--standardWidth);
     padding: 1em;
-    border: var(--border_dark);
+    border: var(--border_light);
     border-radius: var(--border_radius);
     color: var(--font_color_light);
     cursor: pointer;
@@ -231,10 +229,7 @@ buttons
 .fixedBottom {
     position: fixed;
     bottom: 5px;
-    /* margin: 5% auto; */
     left: 28.5%;
-
-
 }
 
 /* ________________________________________________________________________________________
@@ -243,11 +238,9 @@ pages
 .page {
     display: none;
     /*min heigh is screen heigh minus height of tab and top bar */
-    min-height: calc(100vh - 110px);
+    min-height: 100vh;
     background: var(--light-grey);
     animation: fadeIn 0.4s;
-    /* padding equals height of tabbar and topbar */
-    /* padding: 55px 0; */
 }
 
 /* ---------- home / warning page ---------- */
@@ -278,7 +271,7 @@ pages
 
 #addedQuestions {
     background-color: var(--secundary_color_light);
-    border: var(--border_dark);
+    border: var(--border_light);
     border-radius: var(--border_radius);
     padding: .3em;
 }
@@ -791,7 +784,7 @@ Checkbox
 
 #numberOfRoundsAdded {
     background: var(--secundary_color_light);
-    border: var(--border_dark);
+    border: var(--border_light);
     border-radius: var(--border_radius);
     color: var(--font_color_dark);
 }
