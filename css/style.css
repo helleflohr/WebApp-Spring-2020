@@ -696,7 +696,7 @@ input fields and select boxes
 -----------------------------------------------------------------------------------------*/
 .inputfield {
     width: var(--standardWidth);
-    padding: 1em;
+    padding: 1em 0;
     margin: .5em auto;
     display: block;
     background: var(--secundary_color_dark);
