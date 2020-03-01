@@ -225,8 +225,10 @@ class QuestionInputService {
                 this.newPredefinedQuestion.answerOptions = this.arrOfAnswers;
                 this.resetQuizInputfields(whichPage);
             }
+            this.arrOfAnswers = "";
 
         }
+
 
     }
 
@@ -238,6 +240,7 @@ class QuestionInputService {
         theFalseProp.checked = false;
         console.log(trueProp, preOrNot, theTrueProp.checked, theFalseProp.checked)
         this.styleWhichValue(`${trueProp}${preOrNot}`, `${falseProp}${preOrNot}`);
+        this.addedValue = "";
 
     }
     //     truth${preOrNot}
@@ -260,7 +263,6 @@ class QuestionInputService {
             _addPreQuestionService.highlightChoosenCategories(`correct${number}${whichPage}`);
             _addPreQuestionService.highlightChoosenCategories(`wrong${number}${whichPage}`);
             answerField.value = "";
-
         }
 
 

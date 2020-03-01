@@ -60,9 +60,10 @@ export default class GamePage {
 
         console.log(_arrayNewQuestionService.partyContentArray)
         console.log(newArray);
+        // Bland spillernavnene
+        let shuffled = this.shuffle(_addPlayersService.listOfPlayers)
 
-
-        for (const question of newArray)
+        for (let question of newArray)
 
         {
             this.gameRef.doc(`${question.game}`).get().then(doc => {
@@ -76,15 +77,21 @@ export default class GamePage {
 
                 //-------------------------- if Truth or Dare --------------------------//
                 if (gameId === 'vRD8Spl5fQ4AfTifPtRq') {
+                    let selected = shuffled.slice(0, 1);
                     extraInfoBefore += /*html*/ `
-                    <p>${question.truthOrDare}</p>
+                    <p>${question.truthOrDare} til ${selected}</p>
                     `
 
 
                     //-------------------------- if Quiz --------------------------//
                 } else if (gameId === 'MEF7ah2clInWlmgNpg6M') {
                     let oneOreMoreAnswers = "";
-                    for (const answer of question.answerOptions) {
+                    for (let answer of question.answerOptions) {
+
+                        extraInfoAfter += /*html*/ `
+                        <p>${answer.option}</p>                        
+                        `
+
                         if (answer.status == 'Korrekt') {
 
                             oneOreMoreAnswers += /*html*/ `${answer.option}`
@@ -108,10 +115,11 @@ export default class GamePage {
 
                     // Shuffle array
                     // const shuffled = _addPlayersService.listOfPlayers.sort(() => 0.5 - Math.random());
-                    let shuffled = this.shuffle(_addPlayersService.listOfPlayers)
+
 
                     // Get sub-array of first n elements after shuffled
                     let selected = shuffled.slice(0, 3);
+                    console.log(selected)
 
                     if (_addPlayersService.listOfPlayers.length == 0) {
                         extraInfoAfter += /*html*/ `
@@ -119,9 +127,16 @@ export default class GamePage {
                     `
                     }
 
-                    extraInfoAfter += /*html*/ `
-                    <p>${selected}</p>
+                    if (gameId === 'xsbZmSDp9MsHyzaPUAe1') {
+
+                        extraInfoAfter += /*html*/ `
+                    <p>${selected[0]}, ${selected[1]} & ${selected[2]}</p>
                     `
+                    } else if (gameId === 'gI63nouOSvEvUXvmu0AE') {
+                        extraInfoAfter += /*html*/ `
+                    <p>${selected[0]}, ${selected[1]} eller ${selected[2]}</p>
+                    `
+                    }
 
                 }
 
