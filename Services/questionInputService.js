@@ -134,8 +134,8 @@ class QuestionInputService {
         if (checkBoxForThisCheckbox.checked == true) { // Based on which checkbox is checked ...
 
             // ... change the color of the labels ...
-            labelForThisCheckbox.style.background = 'var(--secundary_color_dark)';
-            labelForOtherCheckbox.style.background = 'var(--secundary_color_light)';
+            labelForThisCheckbox.style.background = 'var(--secundary_color_light)';
+            labelForOtherCheckbox.style.background = 'var(--secundary_color_dark)';
             labelForThisCheckbox.style.color = 'var(--font_color_dark)';
             labelForOtherCheckbox.style.color = 'var(--font_color_light)';
 
@@ -145,8 +145,8 @@ class QuestionInputService {
             // Set the name for the checkbox to the addedValue variable
             this.addedValue = checkBoxForThisCheckbox.name
         } else {
-            labelForThisCheckbox.style.background = 'var(--secundary_color_light)';
-            labelForOtherCheckbox.style.background = 'var(--secundary_color_light)';
+            labelForThisCheckbox.style.background = 'var(--secundary_color_dark)';
+            labelForOtherCheckbox.style.background = 'var(--secundary_color_dark)';
             labelForThisCheckbox.style.color = 'var(--font_color_light)';
             labelForOtherCheckbox.style.color = 'var(--font_color_light)';
         }

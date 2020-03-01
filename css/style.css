@@ -12,14 +12,14 @@
     /* Color */
     --menuBackground: #333;
     --menuFontColor: #FFF;
-    --menuHoverColor: var(--secundary_color_light);
+    --menuHoverColor: var(--secundary_color_dark);
     --menuHoverFontColor: #041a1f;
     --background: #45b88C;
-    --secundary_color_light: #80265D;
-    --secundary_color_dark: rgb(255, 234, 100);
+    --secundary_color_dark: #80265D;
+    --secundary_color_light: rgb(255, 234, 100);
     /* light green: #3b936f */
-    --border_dark: 5px solid var(--secundary_color_dark);
-    --border_light: 5px solid var(--secundary_color_light);
+    --border_dark: 5px solid var(--secundary_color_light);
+    --border_light: 5px solid var(--secundary_color_dark);
     --border_grey: 2px solid #041a1f;
     --border_radius: 25px;
     --border_radius_square: 5px;
@@ -81,7 +81,7 @@ h3 {
 }
 
 .yellowText {
-    color: var(--secundary_color_dark);
+    color: var(--secundary_color_light);
     font-weight: bold;
 }
 
@@ -205,7 +205,7 @@ buttons
 .btn {
     border-radius: var(--border_radius);
     border: var(--border_dark);
-    background: var(--secundary_color_dark);
+    background: var(--secundary_color_light);
     color: var(--font_color_dark);
     font-weight: bold;
     letter-spacing: .1em;
@@ -223,7 +223,7 @@ buttons
 }
 
 .collectionOfItems {
-    background: var(--secundary_color_light);
+    background: var(--secundary_color_dark);
     width: var(--standardWidth);
     padding: 1em;
     border: var(--border_light);
@@ -278,11 +278,11 @@ pages
     z-index: 2;
     width: 100%;
     height: auto;
-    background-color: var(--secundary_color_dark);
+    background-color: var(--secundary_color_light);
 }
 
 #addedQuestions {
-    background-color: var(--secundary_color_dark);
+    background-color: var(--secundary_color_light);
     border: var(--border_dark);
     border-radius: var(--border_radius);
     padding: .3em;
@@ -302,7 +302,7 @@ pages
 }
 
 .idButton {
-    background-color: var(--secundary_color_dark);
+    background-color: var(--secundary_color_light);
     border-radius: 3px;
     padding: 15px 32px;
     text-align: center;
@@ -494,7 +494,7 @@ input:checked+.sliderLang:after {
 
 /* On checked */
 input:checked+.sliderLang {
-    background-color: var(--secundary_color_dark);
+    background-color: var(--secundary_color_light);
 }
 
 /* Slut toggle switch Sprog */
@@ -654,14 +654,14 @@ this part is not active in version 1.0
     height: 100%;
     z-index: 9999999999;
     overflow: hidden;
-    background: var(--secundary_color_dark);
+    background: var(--secundary_color_light);
     text-align: center;
 }
 
 .spinner {
-    border: 5px solid var(--secundary_color_light);
+    border: 5px solid var(--secundary_color_dark);
     border-radius: 50%;
-    border-top: 5px solid var(--secundary_color_dark);
+    border-top: 5px solid var(--secundary_color_light);
     width: 50px;
     height: 50px;
     -webkit-animation: spin 1s linear infinite;
@@ -703,7 +703,7 @@ input fields and select boxes
     padding: 1em;
     margin: .5em auto;
     display: block;
-    background: var(--secundary_color_light);
+    background: var(--secundary_color_dark);
     color: var(--menuFontColor);
     border-radius: var(--border_radius_square);
     border: var(--border_light);
@@ -713,7 +713,7 @@ input fields and select boxes
 .smallInputfield {
     width: 35%;
     padding: 1em;
-    background: var(--secundary_color_light);
+    background: var(--secundary_color_dark);
     color: var(--menuFontColor);
     border-radius: var(--border_radius_square);
     /* border: var(--border_li); */
@@ -769,7 +769,7 @@ Checkbox
 }
 
 .checkboxNotCheked {
-    background: var(--secundary_color_light);
+    background: var(--secundary_color_dark);
     border: 1px solid #cacece;
     color: var(--menuFontColor);
     padding: 1.2em .3em;
@@ -781,8 +781,8 @@ Checkbox
 }
 
 .checkboxChecked {
-    /* box-shadow: 0px 10px 14px -7px var(--secundary_color_dark); */
-    background: var(--secundary_color_dark);
+    /* box-shadow: 0px 10px 14px -7px var(--secundary_color_light); */
+    background: var(--secundary_color_light);
     border: 1px solid #cacece;
     border-radius: var(--border_radius_square);
     width: var(--standardWidth);
@@ -795,7 +795,7 @@ Checkbox
 }
 
 #numberOfRoundsAdded {
-    background: var(--secundary_color_dark);
+    background: var(--secundary_color_light);
     border: var(--border_dark);
     border-radius: var(--border_radius);
     color: var(--font_color_dark);
@@ -810,22 +810,22 @@ Checkbox
 @keyframes addContentNumberHighlight {
     0% {
 
-        background-color: var(--secundary_color_dark);
+        background-color: var(--secundary_color_light);
     }
 
     40% {
-        background-color: var(--secundary_color_light);
+        background-color: var(--secundary_color_dark);
         border: var(--border_light);
         color: var(--font_color_light);
     }
 
     60% {
-        background-color: var(--secundary_color_light);
+        background-color: var(--secundary_color_dark);
         border: var(--border_light);
         color: var(--font_color_light);
     }
 
     100% {
-        background-color: var(--secundary_color_dark);
+        background-color: var(--secundary_color_light);
     }
 }

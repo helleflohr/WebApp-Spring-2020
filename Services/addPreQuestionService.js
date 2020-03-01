@@ -58,10 +58,10 @@ class AddPreQuestionService {
         let label = document.querySelector(`[for=${checkboxId}]`);
 
         if (checkBox.checked == true) { // if the checkbox is checked, ...
-            label.style.background = 'var(--secundary_color_dark)' // ... then change the background of it´s label
+            label.style.background = 'var(--secundary_color_light)' // ... then change the background of it´s label
             label.style.color = 'var(--font_color_dark)'
         } else {
-            label.style.background = 'var(--secundary_color_light)'
+            label.style.background = 'var(--secundary_color_dark)'
             label.style.color = 'var(--font_color_light)'
         }
     }
