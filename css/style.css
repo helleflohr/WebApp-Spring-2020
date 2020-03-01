@@ -236,7 +236,8 @@ buttons
     width: 1em;
     height: 1em;
     float: right;
-    padding-right: 1em;
+    margin-right: 1em;
+    transform: rotate(0deg);
 }
 
 /* ________________________________________________________________________________________
@@ -822,5 +823,21 @@ Checkbox
 
     100% {
         background-color: var(--secundary_color_light);
+    }
+}
+
+.arrowAnimation {
+    animation: animationArrow 0s 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes animationArrow {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(180deg);
     }
 }
