@@ -13,11 +13,10 @@ export default class AddPlayersPage {
         <input type="text" placeholder="Skriv spillernavn" class="inputfield myFriends">
         <input type="text" placeholder="Skriv spillernavn" class="inputfield myFriends">
         </div>
-
-        
         <div class="addIcon" onclick="addAnotherPlayer('playerInput')"></div>
         <br>
-       
+        <br>
+        <br>
         <button class="btn" type="button" name="addQuestions" onclick="addPlayers()">Klar til at tilføje indhold</button>
         </article>
         `;
