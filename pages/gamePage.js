@@ -40,7 +40,7 @@ export default class GamePage {
         let infoLabel = document.querySelector(`#infoLabel`);
         if (checkBox.checked == true) {
             rulesBox.classList.remove('hide');
-            infoLabel.style.backgroundImage = "url(../img/X_icon.svg)"
+            infoLabel.style.backgroundImage = "url(../img/xicon.svg)"
         } else {
             rulesBox.classList.add('hide');
             infoLabel.style.backgroundImage = "url(../img/info_icon.svg)"
@@ -115,7 +115,7 @@ export default class GamePage {
 
                     //-------------------------- if Word explanation for teams --------------------------//
                     ////-------------------------------------- OR --------------------------------------//
-                    //--------------------------------- if Tip a 13´er ---------------------------------//
+                    //--------------------------------- if Tip en 13´er ---------------------------------//
                 } else if (gameId === 'xsbZmSDp9MsHyzaPUAe1' || gameId === 'gI63nouOSvEvUXvmu0AE') {
 
                     // Shuffle array
