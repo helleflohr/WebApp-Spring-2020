@@ -12,6 +12,7 @@ export default class AddPlayersPage {
     template() {
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="addPlayers" class="page">
+        <img class="goBack" onclick="navigateTo('settingsPage')" src="img/hide.svg">
         <h2>Tilføj spillere</h2>
         <div id="playerInput">
         <input type="text" placeholder="Skriv spillernavn" class="inputfield myFriends">

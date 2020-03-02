@@ -30,7 +30,7 @@ export default class SettingsPage {
     console.log(createPartyService)
     document.querySelector('#content').innerHTML += /*html*/ `
         <section id="settingsPage" class="page flexcontainer">
-        
+          <img class="goBack" onclick="navigateTo('home')" src="img/hide.svg">
           <input value="Party Id" class="inputfield" type="text" id="myText" value="${this.partyId}">  
 
           <input type="image" id="text-to-copy" alt="copy"
