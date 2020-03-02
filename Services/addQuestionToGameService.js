@@ -9,6 +9,11 @@ class AddQuestionToGameService {
         this.questions = [];
     }
 
+    // ---------------------------------------------------------------------
+    // ---------------------------- Helle -----------------------------------
+    // ---------------------------------------------------------------------
+
+
     // This function creates an empty array. 
     // It pushes a new object to the array, for each new game id. 
     fetchGames() {
@@ -68,7 +73,7 @@ class AddQuestionToGameService {
 
 
                         listItem += /*html*/ `<article id="#dbGameArticle${game.id}">
-                            <h3 class="bold" onclick="showOrHideContent(this)">${game.gameTitle}<img src="./../img/hide.svg" class="arrow"></h3>
+                            <h3 class="bold" onclick="showOrHideContent(this)">${game.gameTitle}<img src="/img/hide.svg" class="arrow"></h3>
                             <div>
                                 ${listItems}
                             </div>
@@ -81,6 +86,9 @@ class AddQuestionToGameService {
         document.querySelector("#list").innerHTML = listItem;
     }
 
+    // ---------------------------------------------------------------------
+    // ---------------------------- Maja -----------------------------------
+    // ---------------------------------------------------------------------
 
     createAddedQuestionsList() {
         let listItem = "";
@@ -119,25 +127,17 @@ class AddQuestionToGameService {
         })
     }
 
+
+    // ---------------------------------------------------------------------
+    // ---------------------------- Helle & Maja -----------------------------------
+    // ---------------------------------------------------------------------
     showOrHideContent(headline) {
-        // console.log(idForGameArticle)
-        // let gameArticle = document.querySelector(`#${headline}`)
         let pContainer = headline.nextElementSibling;
-        // console.log(headline, pContainer)
 
         pContainer.classList.toggle('displayNone')
-        // gameArticle.classList.add("displayNone");
 
-        let show = "./../img/show.svg",
-            hide = "./../img/hide.svg";
-
-        // let imgElement = document.querySelector('.arrow');
         let arrow = headline.getElementsByTagName('img')[0];
         arrow.classList.toggle('arrowAnimation');
-        // imgElement.src = (imgElement.src === hide) ? show : hide;
-        // console.log(imgElement);
-
-
     }
 
 

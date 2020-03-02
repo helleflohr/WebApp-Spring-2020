@@ -1,6 +1,12 @@
+// ---------------------------------------------------------------------
+// ---------------------------- Maja -----------------------------------
+// ---------------------------------------------------------------------
+
 // This service is not active in version 1.0
+
+
 import createPartyService from "./createPartyService.js"
-// import loaderService from "./loader.js"
+import loaderService from "./loader.js"
 class JoinPartyService {
     constructor() {
         this.partyRef = _db.collection("parties");

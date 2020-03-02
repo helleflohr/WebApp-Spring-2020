@@ -1,6 +1,10 @@
+// ---------------------------------------------------------------------
+// ---------------------------- Helle -----------------------------------
+// ---------------------------------------------------------------------
+
 import _arrayNewQuestionService from "./../services/arrayNewQuestionService.js"
 import _addPlayersService from "./../services/addPlayersService.js"
-// import loaderService from "./../services/loader.js"
+import loaderService from "./../services/loader.js"
 
 export default class GamePage {
     constructor() {
@@ -36,10 +40,10 @@ export default class GamePage {
         let infoLabel = document.querySelector(`#infoLabel`);
         if (checkBox.checked == true) {
             rulesBox.classList.remove('hide');
-            infoLabel.style.backgroundImage = "url(/img/X_icon.svg)"
+            infoLabel.style.backgroundImage = "url(../img/X_icon.svg)"
         } else {
             rulesBox.classList.add('hide');
-            infoLabel.style.backgroundImage = "url(/img/info_icon.svg)"
+            infoLabel.style.backgroundImage = "url(../img/info_icon.svg)"
         }
     }
 
@@ -48,7 +52,7 @@ export default class GamePage {
     // it also takes the rules for every game and checks if it is shown in the #rules div box, if it isn't, then it adds it.
     generateGamePages() {
         navigateTo('gamePage');
-        // loaderService.show(true);
+        loaderService.show(true);
         let questionCard = "";
 
         let insert = "";
@@ -192,7 +196,7 @@ export default class GamePage {
         // document.querySelector(`#rules`).innerHTML += insert;
         // window.swipe();
 
-        // loaderService.show(false);
+        loaderService.show(false);
     }
 
     // Thus function takes the array of added questions and shuffels them, so they are displayed randomly in the game

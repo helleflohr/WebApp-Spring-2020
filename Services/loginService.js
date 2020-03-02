@@ -1,6 +1,10 @@
+// ---------------------------------------------------------------------
+// ---------------------------- Helle -----------------------------------
+// ---------------------------------------------------------------------
+
 // This service is not active in version 1.0
 import _spaService from "./spa.js";
-// import loaderService from "./loader.js";
+import loaderService from "./loader.js";
 // import _db from "./../firebase-config.js"
 // import movieService from "./movie.js";
 
@@ -89,7 +93,7 @@ class AuthService {
     }
 
     updateAuthUser(name, img, birthdate, hairColor, phone) {
-        // this.loaderService.show(true);
+        this.loaderService.show(true);
 
         let user = firebase.auth().currentUser;
 

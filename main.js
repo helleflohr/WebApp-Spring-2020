@@ -1,3 +1,8 @@
+// --------------------------------------------------------------------------------------
+//     ---------------------------- Helle, Louise, Maja -------------------------------------
+// ----------------------------------------------------------------------------------------
+
+
 // Improting pages
 // import LoginPage from "./pages/loginPage.js"
 import AddPredefinedPage from "./pages/addPredefinedPage.js"
@@ -21,7 +26,7 @@ import _arrayNewQuestionService from "./services/arrayNewQuestionService.js"
 import _addQuestionToGameService from "./services/addQuestionToGameService.js"
 import _addPreQuestionService from "./services/addPreQuestionService.js"
 import _addPlayersService from "./services/addPlayersService.js"
-// import loaderService from "./services/loader.js"
+import loaderService from "./services/loader.js"
 
 
 // Declaring and initiating pages
@@ -40,6 +45,7 @@ let basketPage = new BasketPage();
 // Initiating services
 // authService.init();
 _spaService.init();
+loaderService.show(false)
 
 
 
@@ -72,7 +78,7 @@ window.getDataFromQuiz = (number, preOrNot) => _questionInputService.getDataFrom
 window.showOrHideContent = (idForGameArticle) => _addQuestionToGameService.showOrHideContent(idForGameArticle)
 
 // window.chekRangeSlider =()=> settingsPage.chekRangeSlider();
-window.showSliderValue =()=> settingsPage.showSliderValue();
+window.showSliderValue = () => settingsPage.showSliderValue();
 
 // let rangeSlider = document.getElementById("myRange");
 // let rangeBullet = document.getElementById("demo");

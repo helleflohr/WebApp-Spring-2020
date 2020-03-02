@@ -1,3 +1,7 @@
+// ---------------------------------------------------------------------
+// ---------------------------- Maja -----------------------------------
+// ---------------------------------------------------------------------
+
 import _arrayNewQuestionService from "./../services/arrayNewQuestionService.js"
 export default class BasketPage {
     constructor() {

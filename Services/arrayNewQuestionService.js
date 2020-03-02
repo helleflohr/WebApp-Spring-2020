@@ -1,3 +1,7 @@
+// ---------------------------------------------------------------------
+// ---------------------------- Helle & Maja -----------------------------------
+// ---------------------------------------------------------------------
+
 import _questionInputService from "./questionInputService.js"
 
 // Imports the array with added questions to the game
@@ -30,6 +34,7 @@ class ArrayNewQuestionService {
         this.theIdRef = uniqueId;
 
     }
+
 
     createNewQuestion() {
         this.generateIdForOwnQuestions();

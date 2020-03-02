@@ -22,6 +22,9 @@ export default class AddQuestions {
 
   }
 
+  // ---------------------------------------------------------------------
+  // ---------------------------- Helle -----------------------------------
+  // ---------------------------------------------------------------------
 
   // Template over the page, that adds a dropdown menu with all the different games.
   // Underneath there is a input field where the user can add his or her own questions til the game.
@@ -69,6 +72,11 @@ export default class AddQuestions {
     });
   }
 
+
+
+  // ---------------------------------------------------------------------
+  // ---------------------------- Maja -----------------------------------
+  // ---------------------------------------------------------------------
 
   // This checkbox runs onclick on the addQuestions page. 
   // The function adds the predefined questions to the partyContentArray

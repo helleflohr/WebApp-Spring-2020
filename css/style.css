@@ -1,3 +1,7 @@
+/*  ------------------------------------------------------------------------
+ ---------------------------- Helle, Louise & Maja -------------------------
+ --------------------------------------------------------------------------- */
+
 @font-face {
     font-family: 'Raleway';
     src: url('Raleway-Regular.ttf') format('truetype');
@@ -189,7 +193,7 @@ flexcontainer
 .flexcontainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 /* ________________________________________________________________________________________
@@ -208,7 +212,7 @@ buttons
     font-size: 1em;
     padding: .5em 1em;
     cursor: pointer;
-    z-index: 99999999999999;
+    z-index: 99999;
 }
 
 .btnSettings {
@@ -229,7 +233,8 @@ buttons
 .fixedBottom {
     position: fixed;
     bottom: 5px;
-    left: 28.5%;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 .arrow {
@@ -535,7 +540,7 @@ input:checked+.sliderLang {
 
 /* ---------- settings ---------- */
 #infoLabel {
-    background-image: url(/img/info_icon.svg);
+    background-image: url(../img/info_icon.svg);
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
@@ -546,7 +551,7 @@ input:checked+.sliderLang {
 }
 
 .addIcon {
-    background-image: url(/img/plus_icon.svg);
+    background-image: url(../img/plus_icon.svg);
     background-repeat: no-repeat;
     background-position: center;
     padding: .3em;
