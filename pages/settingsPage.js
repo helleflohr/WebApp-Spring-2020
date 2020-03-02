@@ -3,15 +3,16 @@ import createPartyService from "./../services/createPartyService.js"
 export default class SettingsPage {
   constructor() {
     // this.getThePartyId();
-
-    this.rangeSlider = document.getElementById("rs-range-line");
-this.rangeBullet = document.getElementById("rs-bullet");
-
-    this.template();
-    
     // this.rangeSlider();
     // this.createPartyService = createPartyService;
     // this.partyId = "";
+    this.template();
+    this.showSliderValue();
+
+    // this.rangeSlider = document.getElementById("rs-range-line");
+    this.rangeBullet = document.getElementById("rs-bullet");
+
+    // this.template();
 
   }
 
@@ -25,40 +26,44 @@ this.rangeBullet = document.getElementById("rs-bullet");
     console.log(createPartyService)
     document.querySelector('#content').innerHTML += /*html*/ `
         <section id="settingsPage" class="page flexcontainer">
-        <button class="idButton">Paty Game Id</button>
+        
+          <input value="Party Id" type="text" id="myText" value="${this.partyId}">  
+
+          <input type="image" id="text-to-copy" alt="copy"
+          src="img/icon_copy.svg" id="copy-text" height="20px" width="20px">
+          <span id="Party Id" style="display: none;">Copied!</span>
 
 
-				  <input type="text" id="myText" value="${this.partyId}">
-
-				
-				<h3 id="antalRunder"  >Antal runder</h3>
+          <button name="settingsPage" class="idButton" onclick="createParty(this.name);getThePartyId()">Få et gruppe ID</button> </button>
+	
         <div class="container">
   
         
-  <div class="rangeSlider">
-    <span id="rs-bullet" class="rs-label">0</span>
-    <input id="rs-range-line" class="rs-range" type="range" value="0" min="0" max="200">
-  </div>
-   <div class="box-minmax">
-    <span>0</span><span>200</span>
-  </div>
-</div>
-
-
-      <h3>vælg sprog</h3>
+        <div class="slidecontainer">
+        <p id="valueText"> Antal runder: <span id="rs-bullet" class"rs-label">0</span></p>
+        <input type="range" min="0" max="100" value="0" class="rs-range" id="rs-range-line" oninput="showSliderValue()">
+      
+      </div>
+  
     <label class="toggleLang">
         <input type="checkbox" id="dabox" class="star">
-           <span   class="sliderLang">
-            
+           <span class="sliderLang">
+           
         </span>
       
       </label>
     </label>
     <button class="btnSettings" name="addQuestions" onclick="navigateTo(this.name);addContentToPartyArr()">Fortsæt</button>
-
-    
       
       </section>`
+  }
+
+  myFunction() {
+    let copyText = document.getElementById("myText");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    alert("Copied the text: " + copyText.value);
   }
 
   rangeSlider() {
@@ -68,21 +73,29 @@ this.rangeBullet = document.getElementById("rs-bullet");
     rangeSlider.addEventListener("input", this.showSliderValue, false);
   }
 
-  showSliderValue() {
-    let rangeBullet = document.getElementById("rs-bullet");
-    rangeBullet.innerHTML = rangeSlider.value;
-    var bulletPosition = (rangeSlider.value / rangeSlider.max);
-    let theBulletPosition = bulletPosition * 578
-    rangeBullet.style.left = `${theBulletPosition}px`;
+  // showSliderValue() {
+  //   let rangeBullet = document.getElementById("rs-bullet");
+  //   rangeBullet.innerHTML = rangeSlider.value;
+  //   var bulletPosition = (rangeSlider.value / rangeSlider.max);
+  //   let theBulletPosition = bulletPosition * 578
+  //   rangeBullet.style.left = `${theBulletPosition}px`;
 
+  // }
+
+  showSliderValue() {
+    let slider = document.getElementById("rs-range-line");
+    let output = document.getElementById("rs-bullet");
+    output.innerHTML = slider.value;
+    console.log(slider.value);
+    let bulletPosition = slider.value / slider.max;
+    output.style.left = bulletPosition * 578 + "px";
   }
 
-
-showSliderValue() {
-  this.rangeBullet.innerHTML = rangeSlider.value;
-  var bulletPosition = (rangeSlider.value /rangeSlider.max);
-  rangeBullet.style.left = (bulletPosition * 578) + "px";
-}
+  // showSliderValue() {
+  //   this.rangeBullet.innerHTML = rangeSlider.value;
+  //   var bulletPosition = (rangeSlider.value / rangeSlider.max);
+  //   rangeBullet.style.left = (bulletPosition * 578) + "px";
+  // }
   //slider() {
   //let slider = document.getElementById("myRange");
   //let output = document.getElementById("demo");

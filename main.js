@@ -59,7 +59,7 @@ window.getThePartyId = () => settingsPage.getThePartyId();
 window.basket = () => addQuestions.barsket();
 window.createAddedQestionsList = ()=> addQuestions.createAddedQestionsList();
 window.highlightNumber = ()=> addQuestions.highlightNumber();
-// window.chekRangeSlider =()=> settingsPage.chekRangeSlider();
+window.showSliderValue =()=> settingsPage.showSliderValue();
 
 let rangeSlider = document.getElementById("myRange");
 let rangeBullet = document.getElementById("demo");

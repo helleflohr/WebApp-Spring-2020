@@ -409,90 +409,105 @@ Pages
 
 /* -----siden med indstillinger*/
 
+
+/* -----boks få et grupppe id*/
+
+
+
 #myText {
-    border-radius: 20, 20, 20, 20;
-    box-shadow: 20px 20px 20px 20px rgba(144, 137, 137, .2);
+    display: block;
+    top: 30%;
+    width: 120px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: rgb(245, 238, 238);
+    overflow: hidden;
+    box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, .05);
+    padding: 0 0 0 1em;
+    margin: 0 auto;
+
 }
 
 .idButton {
-    background-color: #45b88C; 
-    border-radius: 3px;
-    padding: 15px 32px;
-    text-align: center;
+
+    display: inline-block;
+    margin: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.15rem;
+    outline: none;
+    background-color: rgb(52, 185, 141);
+    color: white;
+    font-size: 0.8em;
+    font-weight: 400;
+    line-height: 1.5rem;
     text-decoration: none;
-  
-    font-size: 12px;
-    margin: 4px 2px;
+    cursor: pointer;
+    margin-top: 1%;
 
-  }
-
-
-
-.b {
-    display: block;
 }
 
-.myText {
+
+/* kopi knap */
+
+#copy_icon{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120px;
-    height: 40px;
-    border-radius: 100px;
-    background-color: #ddd;
-    margin: -20px -40px;
-    overflow: hidden;
-    box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, .05);
+    margin-left: 200px;
+    margin-top: -28px;
+    z-index: 2;
 }
-
-
- #antalRunderTekst {
-    position: absolute;
-    top:60%;
-    left: 40%;
-
-
-
-}
-
-
 
 
 /* slider med Antal runder */
 
-  
-  .container {
+#valueText {
+
+    color: white;
+    font-weight: bold;
+    margin-top: 40px;
+
+}
+
+.slidecontainer {
+
+    display: block;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  
-  .box-minmax {
+    top: 30px;
+
+}
+
+.box-minmax {
     margin-top: 30px;
     width: 300px;
     display: flex;
     justify-content: space-between;
     font-size: 20px;
     color: #ffffff;
-  }
-  .box-minmax span:first-child {
+}
+
+.box-minmax span:first-child {
     margin-left: 10px;
-  }
-  
-  .range-slider {
+}
+
+.range-slider {
     margin-top: 30vh;
-  }
-  
-  .rs-range {
+}
+
+.rs-range {
     margin-top: 29px;
     width: 300px;
     -webkit-appearance: none;
-  }
-  .rs-range:focus {
+}
+
+.rs-range:focus {
     outline: none;
-  }
-  .rs-range::-webkit-slider-runnable-track {
+}
+
+.rs-range::-webkit-slider-runnable-track {
     width: 100%;
     height: 1px;
     cursor: pointer;
@@ -500,8 +515,9 @@ Pages
     background: #ffffff;
     border-radius: 0px;
     border: 0px solid #010101;
-  }
-  .rs-range::-moz-range-track {
+}
+
+.rs-range::-moz-range-track {
     width: 100%;
     height: 1px;
     cursor: pointer;
@@ -509,8 +525,9 @@ Pages
     background: #ffffff;
     border-radius: 0px;
     border: 0px solid #010101;
-  }
-  .rs-range::-webkit-slider-thumb {
+}
+
+.rs-range::-webkit-slider-thumb {
     box-shadow: none;
     border: 0px solid #ffffff;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
@@ -521,8 +538,9 @@ Pages
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -20px;
-  }
-  .rs-range::-moz-range-thumb {
+}
+
+.rs-range::-moz-range-thumb {
     box-shadow: none;
     border: 0px solid #ffffff;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
@@ -533,12 +551,13 @@ Pages
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -20px;
-  }
-  .rs-range::-moz-focus-outer {
+}
+
+.rs-range::-moz-focus-outer {
     border: 0;
-  }
-  
-  .rs-label {
+}
+
+.rs-label {
     position: relative;
     transform-origin: center center;
     display: block;
@@ -560,16 +579,17 @@ Pages
     font-weight: normal;
     line-height: normal;
     font-size: 15px;
-  }
-  .rs-label::after {
+}
+
+.rs-label::after {
     content: "Runder";
     display: block;
     font-size: 8px;
     letter-spacing: 0.07em;
     margin-top: -2px;
-  }
-  
-  /* Slut slider med Antal runder */
+}
+
+/* Slut slider med Antal runder */
 
 /*__________ Toggle switch Sprog */
 
@@ -577,8 +597,12 @@ Pages
 
 .toggleLang input {
     display: none;
- 
-   
+    margin: 0 auto;
+
+
+
+
+
 }
 
 /* The container and background */
@@ -587,11 +611,17 @@ Pages
     display: inline-block;
     width: 80px;
     height: 30px;
+    display:block;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-left:42%;
+
 
 }
 
 .sliderLang {
-    position: absolute;
+    display: block;
+    margin: 0 auto;
     cursor: pointer;
     top: 0;
     left: 0;
@@ -601,7 +631,7 @@ Pages
     border: 1px solid #111;
     border-radius: 5px;
     transition: all 0.4s;
-    
+
 
 }
 
@@ -616,66 +646,72 @@ Pages
     background-color: #111;
     border-radius: 5px;
     transition: all 0.4s;
-    
+
 
 }
 
 /* On checked */
-input:checked + .sliderLang {
+input:checked+.sliderLang {
     background-color: #111;
 }
 
-input:checked + .sliderLang:before {
+input:checked+.sliderLang:before {
     transform: translateX(50px);
 }
 
 .sliderLang:after {
     position: absolute;
-    content: "EN";
+    content: "DA";
     top: 6px;
     right: 10px;
     color: #333;
-    font-size:0.9em;
-    font-family:sans-serif;
+    font-size: 0.9em;
+    font-family: sans-serif;
 
 
 }
 
 /* "ON" Text */
-input:checked + .sliderLang:after {
-    content: "DA";
-    font-family:sans-serif;
+input:checked+.sliderLang:after {
+    content: "EN";
+    font-family: sans-serif;
     left: -30px;
     color: rgb(240, 246, 247);
-    
+
 }
 
 .toggle input {
+    display: block;
+    margin: 0 auto;
     display: none;
-  
+    
+
 }
 
 /* The container and background */
 .toggle {
-    position: relative;
+
     display: inline-block;
     width: 50px;
     
+
 }
 
 .sliderLang {
+    display: block;
+    margin: 0 auto;
     position: absolute;
     cursor: pointer;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color:rgb(242, 243, 243);
+    background-color: rgb(242, 243, 243);
     border: 1px solid rgba(29, 150, 150, 0.133);
     border-radius: 30px;
-    transition: all 0.4;                    
+    transition: all 0.4;
     opacity: 70%;
-    
+
 }
 
 /* The sliding button */
@@ -689,18 +725,18 @@ input:checked + .sliderLang:after {
     background-color: rgb(28, 31, 29);
     border-radius: 24px;
     transition: all 0.4s;
-    
+
 }
 
 /* On checked */
-input:checked + .sliderLang {
+input:checked+.sliderLang {
     background-color: #1222;
-    background-color:  #80265D;
+    background-color: #80265D;
 }
 
-input:checked + .sliderLang:before {
+input:checked+.sliderLang:before {
     transform: translateX(50px);
-  
+
 }
 
 /* Slut toggle switch Sprog */
@@ -711,12 +747,14 @@ input:checked + .sliderLang:before {
     background: var(--secundary_color_dark);
     color: var(--menuFontColor);
     width: auto;
-    margin: 4em auto 1em;
-    height: auto;
+    margin-top: 90%;
     font-size: 1em;
     padding: .5em 1em;
-
     cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-top: 120px;
+
 }
 
 /*_________________________________________________________________________________________
