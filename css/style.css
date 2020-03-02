@@ -293,11 +293,21 @@ pages
 
 /* ---------- settings ---------- */
 #myText {
-    border-radius: 20, 20, 20, 20;
-    box-shadow: 20px 20px 20px 20px rgba(144, 137, 137, .2);
+    display: block;
+    top: 30%;
+    width: 120px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: rgb(245, 238, 238);
+    overflow: hidden;
+    box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, .05);
+    padding: 0 0 0 1em;
+    margin: 0 auto;
+
 }
 
 .idButton {
+    display: inline-block;
     background-color: var(--secundary_color_light);
     border-radius: 3px;
     padding: 15px 32px;
@@ -306,15 +316,35 @@ pages
     font-size: 12px;
     margin: 4px 2px;
 }
+/* kopi knap */
+
+#copy_icon{
+    position: absolute;
+    margin-left: 200px;
+    margin-top: -28px;
+    z-index: 2;
+}
+
 
 /* slider med Antal runder */
-.container {
+
+#valueText {
+
+    color: white;
+    font-weight: bold;
+    margin-top: 40px;
+
+}
+
+.slidecontainer {
+    display: block;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    top: 30px;
 }
-
 .box-minmax {
     margin-top: 30px;
     width: 300px;
@@ -445,7 +475,7 @@ input:checked+.sliderLang:before {
 
 .sliderLang:after {
     position: absolute;
-    content: "EN";
+    content: "DA";
     top: 6px;
     right: 10px;
     color: #333;
@@ -455,13 +485,17 @@ input:checked+.sliderLang:before {
 
 /* "ON" Text */
 input:checked+.sliderLang:after {
-    content: "DA";
+    content: "EN";
+    font-family: sans-serif;
     font-family: sans-serif;
     left: -30px;
     color: rgb(240, 246, 247);
+
 }
 
 .sliderLang {
+    display: block;
+    margin: 0 auto;
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -473,6 +507,7 @@ input:checked+.sliderLang:after {
     border-radius: 30px;
     transition: all 0.4;
     opacity: 70%;
+
 }
 
 /* The sliding button */
@@ -486,6 +521,7 @@ input:checked+.sliderLang:after {
     background-color: rgb(28, 31, 29);
     border-radius: 24px;
     transition: all 0.4s;
+
 }
 
 /* On checked */

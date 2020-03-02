@@ -72,6 +72,7 @@ window.getDataFromQuiz = (number, preOrNot) => _questionInputService.getDataFrom
 window.showOrHideContent = (idForGameArticle) => _addQuestionToGameService.showOrHideContent(idForGameArticle)
 
 // window.chekRangeSlider =()=> settingsPage.chekRangeSlider();
+window.showSliderValue =()=> settingsPage.showSliderValue();
 
 // let rangeSlider = document.getElementById("myRange");
 // let rangeBullet = document.getElementById("demo");
