@@ -27,14 +27,14 @@ export default class SettingsPage {
     document.querySelector('#content').innerHTML += /*html*/ `
         <section id="settingsPage" class="page flexcontainer">
         
-          <input value="Party Id" type="text" id="myText" value="${this.partyId}">  
+          <input value="Party Id" class="inputfield" type="text" id="myText" value="${this.partyId}">  
 
           <input type="image" id="text-to-copy" alt="copy"
           src="img/icon_copy.svg" id="copy-text" height="20px" width="20px">
           <span id="Party Id" style="display: none;">Copied!</span>
 
 
-          <button name="settingsPage" class="idButton" onclick="createParty(this.name);getThePartyId()">Få et gruppe ID</button> </button>
+          <button name="settingsPage" class="btn" onclick="createParty(this.name);getThePartyId()">Få et gruppe ID</button> </button>
 	
         <div class="container">
         
@@ -52,7 +52,15 @@ export default class SettingsPage {
       
       </label>
     </label>
-    <button class="btnSettings" name="addQuestions" onclick="navigateTo(this.name);addContentToPartyArr()">Fortsæt</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button class="btn" name="addPlayers" onclick="navigateTo(this.name);addContentToPartyArr()">Fortsæt</button>
       
       </section>`
   }
