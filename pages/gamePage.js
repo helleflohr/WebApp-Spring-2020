@@ -65,7 +65,7 @@ export default class GamePage {
         console.log(_arrayNewQuestionService.partyContentArray)
         console.log(newArray);
         // Bland spillernavnene
-        let shuffled = this.shuffle(_addPlayersService.listOfPlayers)
+
 
         for (let question of newArray)
 
@@ -81,6 +81,7 @@ export default class GamePage {
 
                 //-------------------------- if Truth or Dare --------------------------//
                 if (gameId === 'vRD8Spl5fQ4AfTifPtRq') {
+                    let shuffled = this.shuffle(_addPlayersService.listOfPlayers)
                     let selected = shuffled.slice(0, 1);
                     extraInfoBefore += /*html*/ `
                     <p>${question.truthOrDare} til ${selected}</p>
@@ -120,7 +121,7 @@ export default class GamePage {
                     // Shuffle array
                     // const shuffled = _addPlayersService.listOfPlayers.sort(() => 0.5 - Math.random());
 
-
+                    let shuffled = this.shuffle(_addPlayersService.listOfPlayers)
                     // Get sub-array of first n elements after shuffled
                     let selected = shuffled.slice(0, 3);
                     console.log(selected)
