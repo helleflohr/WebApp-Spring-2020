@@ -40,10 +40,10 @@ export default class GamePage {
         let infoLabel = document.querySelector(`#infoLabel`);
         if (checkBox.checked == true) {
             rulesBox.classList.remove('hide');
-            infoLabel.style.backgroundImage = "url(../img/xicon.svg)"
+            infoLabel.style.backgroundImage = "url(img/xicon.svg)"
         } else {
             rulesBox.classList.add('hide');
-            infoLabel.style.backgroundImage = "url(../img/info_icon.svg)"
+            infoLabel.style.backgroundImage = "url(img/info_icon.svg)"
         }
     }
 
