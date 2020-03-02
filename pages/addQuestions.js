@@ -33,6 +33,7 @@ export default class AddQuestions {
     document.querySelector('#content').innerHTML += /*html*/ `
     <section id="addQuestions" class="page">
       <div for="addedQuestions" onclick="basket();createAddedQuestionsList()"><b>Dit spilindhold</b><div id="numberOfRoundsAdded">${_arrayNewQuestionService.partyContentArray.length}</div></div>
+      <img class="goBack" onclick="navigateTo('addPlayers')" src="img/hide.svg">
       <!--<article id="addedQuestionsArticle" class="hide">
       </article>-->
       <form id="questionForm">
