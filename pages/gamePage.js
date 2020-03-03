@@ -14,7 +14,7 @@ export default class GamePage {
     }
 
 
-    // The HTML-content for the game-"page"
+    // The HTML-content for the game"page"
     template() {
         document.querySelector('#content').innerHTML += /*html*/ `
         <article id="gamePage" class="page">
@@ -40,10 +40,10 @@ export default class GamePage {
         let infoLabel = document.querySelector(`#infoLabel`);
         if (checkBox.checked == true) {
             rulesBox.classList.remove('hide');
-            infoLabel.style.backgroundImage = "url(img/xicon.svg)"
+            infoLabel.style.backgroundImage = "url(./webapp/img/xicon.svg)"
         } else {
             rulesBox.classList.add('hide');
-            infoLabel.style.backgroundImage = "url(img/info_icon.svg)"
+            infoLabel.style.backgroundImage = "url(./webapp/img/info_icon.svg)"
         }
     }
 
@@ -54,18 +54,13 @@ export default class GamePage {
         navigateTo('gamePage');
         loaderService.show(true);
         let questionCard = "";
-
-        let insert = "";
+        let insertRules = "";
         let itemsProcessed = 0;
         let numberOfItems = _arrayNewQuestionService.partyContentArray.length;
         let newArray = this.shuffle(_arrayNewQuestionService.partyContentArray);
-        // let randomQuestions = this.shuffle(_arrayNewQuestionService.partyContentArray);
         let gameRulesIds = [];
-
-        console.log(_arrayNewQuestionService.partyContentArray)
-        console.log(newArray);
-        // Bland spillernavnene
-
+        // console.log(_arrayNewQuestionService.partyContentArray)
+        // console.log(newArray);
 
         for (let question of newArray)
 
@@ -117,10 +112,6 @@ export default class GamePage {
                     ////-------------------------------------- OR --------------------------------------//
                     //--------------------------------- if Tip en 13´er ---------------------------------//
                 } else if (gameId === 'xsbZmSDp9MsHyzaPUAe1' || gameId === 'gI63nouOSvEvUXvmu0AE') {
-
-                    // Shuffle array
-                    // const shuffled = _addPlayersService.listOfPlayers.sort(() => 0.5 - Math.random());
-
                     let shuffled = this.shuffle(_addPlayersService.listOfPlayers)
                     // Get sub-array of first n elements after shuffled
                     let selected = shuffled.slice(0, 3);
@@ -156,7 +147,7 @@ export default class GamePage {
                 `
 
                 if (!gameRulesIds.includes(gameId)) {
-                    insert += /*html*/ `
+                    insertRules += /*html*/ `
                 <h3>${gameData.gameTitle}</h3>
                 <p>${gameRules}</p>`
                     gameRulesIds.push(gameId);
@@ -173,7 +164,7 @@ export default class GamePage {
                     `
 
                     document.querySelector('#gameContainer').innerHTML = gamePagesAndFinalPage;
-                    document.querySelector(`#rules`).innerHTML += insert;
+                    document.querySelector(`#rules`).innerHTML += insertRules;
                     window.swipe();
 
                     console.log(questionCard)
