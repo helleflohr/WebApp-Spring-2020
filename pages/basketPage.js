@@ -11,8 +11,9 @@ export default class BasketPage {
     template() {
         document.querySelector('#content').innerHTML += /*html*/ `
         <section id="basketPage" class="page">
+        <img class="goBack" onclick="navigateTo('addQuestions')" src="img/hide.svg">
         <h2>Din kurv</h2>
-        <p>Du har tilføjet ${_arrayNewQuestionService.partyContentArray.length} spørgsmål til spillet</p>
+        <p id="numberOfAdded">Du har tilføjet <b>${_arrayNewQuestionService.partyContentArray.length}</b> spørgsmål til spillet</p>
         <p>Hvis du alligevel ikke ønsker et spørgsmål, så tryk på det for at fjerne det fra din liste.</p>
         <article id="addedQuestionsArticle">
         </article>

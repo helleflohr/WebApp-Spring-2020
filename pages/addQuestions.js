@@ -150,6 +150,8 @@ export default class AddQuestions {
   // It does this by toggeling the class 'hide'.
   basket() {
     // document.querySelector('#addedQuestionsArticle').classList.toggle('hide');
+
+    document.querySelector('#numberOfAdded').innerHTML = `Du har tilføjet <b>${_arrayNewQuestionService.partyContentArray.length}</b> spørgsmål til spillet`
     _spaService.navigateTo('basketPage');
   }
 }
