@@ -342,6 +342,12 @@ pages
     z-index: 2;
 }
 
+#text-to-copy {
+    position: absolute;
+    margin-left: 35%;
+    margin-top: -8%;
+}
+
 
 /* slider med Antal runder */
 
