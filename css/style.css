@@ -322,6 +322,14 @@ pages
 
 }
 
+#text-to-copy {
+    position: absolute;
+    margin-left: 35%;
+    margin-top: -8%;
+
+
+}
+
 .idButton {
     display: inline-block;
     background-color: var(--secundary_color_light);
