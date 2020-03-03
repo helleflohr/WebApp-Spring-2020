@@ -37,7 +37,7 @@ class QuestionInputService {
     // ... or if it should be on the page for adding question to the game. 
     async gameInputSettings(gameId, inputId, whereToPut, preOrNot) {
 
-        let differetInputs = "";
+        let differentInputs = "";
 
         await this.gameRef.doc(`${gameId}`).get().then(function (doc) { // Get data for the selected game from the database-gameId-document
             let docData = doc.data()
@@ -45,7 +45,7 @@ class QuestionInputService {
             //-------------------------- if Truth or Dare --------------------------//
 
             if (gameId === 'vRD8Spl5fQ4AfTifPtRq') {
-                differetInputs = /*html*/ `
+                differentInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
 
         <label class="smallInputfield" for="truth${preOrNot}">Sandhed</label>
@@ -58,7 +58,7 @@ class QuestionInputService {
                 //-------------------------- if Quiz --------------------------//
 
             } else if (gameId === 'MEF7ah2clInWlmgNpg6M') {
-                differetInputs = /*html*/ `
+                differentInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
 
         <!-- Inputfields for answer 1 -->
@@ -104,7 +104,7 @@ class QuestionInputService {
 
                 //-------------------------- if True or False --------------------------//
             } else if (gameId === 'pfF2l2zwYDqcVCIjMlNr') {
-                differetInputs = /*html*/ `
+                differentInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
 
         <label class="smallInputfield" for="truthfull${preOrNot}">Sandt</label>
@@ -115,12 +115,12 @@ class QuestionInputService {
 
                 //-------------------------- if the other games --------------------------//
             } else {
-                differetInputs = /*html*/ `
+                differentInputs = /*html*/ `
         <input class="inputfield" type="text" id="${inputId}" placeholder='${docData.gamePlaceholder}' required>
         `
             }
         })
-        document.querySelector(`#${whereToPut}`).innerHTML = differetInputs;
+        document.querySelector(`#${whereToPut}`).innerHTML = differentInputs;
     }
 
 
