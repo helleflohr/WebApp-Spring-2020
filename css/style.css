@@ -588,7 +588,7 @@ input:checked+.sliderLang {
 
 /*----- This is not active in version 1.0 ------*/
 /* #addLabel {
-    background-image: url(/img/plus_icon.svg);
+    background-image: url(../img/plus_icon.svg);
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;

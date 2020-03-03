@@ -73,7 +73,7 @@ class AddQuestionToGameService {
 
 
                         listItem += /*html*/ `<article id="#dbGameArticle${game.id}">
-                            <h3 class="bold" onclick="showOrHideContent(this)">${game.gameTitle}<img src="./../img/hide.svg" alt="show/hide icon" class="arrow"></h3>
+                            <h3 class="bold" onclick="showOrHideContent(this)">${game.gameTitle}<img src="img/hide.svg" alt="show/hide icon" class="arrow"></h3>
                             <div>
                                 ${listItems}
                             </div>
